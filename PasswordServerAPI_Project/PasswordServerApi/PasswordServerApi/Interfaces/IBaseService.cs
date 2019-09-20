@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.Interfaces
 {
-	interface IBaseService
+    public interface IBaseService
 	{
 	}
 }

@@ -32,7 +32,7 @@ namespace PasswordServerApi.Controllers
 				FirstName = "nikolas",
 				LastName = "papazian",
 				UserName = "npapazian",
-				Email = "npapazian@cite.Gr",
+				Email = "npapazian@cite.gr",
 				Password = "123",
 				Sex = Sex.Male,
 				LastLogIn = null,

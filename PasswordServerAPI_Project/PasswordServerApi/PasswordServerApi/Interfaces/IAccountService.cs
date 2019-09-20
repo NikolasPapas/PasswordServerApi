@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.Interfaces
 {
-	interface IAccountService
+	public interface IAccountService
 	{
 		IEnumerable<AccountDto> GetAccounts();
 
