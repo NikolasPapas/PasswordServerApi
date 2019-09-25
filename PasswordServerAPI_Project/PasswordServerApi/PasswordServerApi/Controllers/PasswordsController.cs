@@ -10,55 +10,31 @@ using PasswordServerApi.Models.Enums;
 
 namespace PasswordServerApi.Controllers
 {
-    [Route("api/[controller]")]
+	//api/passwords
+	[Route("api/[controller]")]
     [ApiController]
     public class PasswordsController : ControllerBase
 	{
-		private readonly IAccountService _accountService;
+		private readonly IPasswordService _passwordService;
 
-		public PasswordsController(IAccountService accountService)
+		public PasswordsController(IPasswordService passwordService)
 		{
-			_accountService = accountService;
+			_passwordService = passwordService;
 		}
 
 		// GET: api/Passwords
 		[HttpGet]
 		[ActionName("getPasswords")]
-		public IEnumerable<AccountDto> Get()
+		public IEnumerable<PasswordDto> Get()
         {
-			var account = new AccountDto()
-			{
-				AccountId = Guid.NewGuid(),
-				FirstName = "nikolas",
-				LastName = "papazian",
-				UserName = "npapazian",
-				Email = "npapazian@cite.gr",
-				Password = "123",
-				Sex = Sex.Male,
-				LastLogIn = null,
-				Passwords =new List<PasswordDto>() { },
-			};
-
-			var pass = new PasswordDto()
-			{
-				PasswordId = Guid.NewGuid(),
-				Name="Google",
-				UserName="nikolaspapazian@gmail.com",
-				Password="123",
-				LogInLink="google.com",
-				Sensitivity = Sensitivity.OnlyUser,
-				Strength=Strength.VeryWeak
-			};
-			account.Passwords.Add(pass);
-
-			return new AccountDto[] { account };
+			return _passwordService.GetPasswords();
         }
 
         // GET: api/Passwords/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetPasswords")]
         public string Get(int id)
         {
-            return "value";
+            return "GetPasswords";
         }
 
         // POST: api/Passwords

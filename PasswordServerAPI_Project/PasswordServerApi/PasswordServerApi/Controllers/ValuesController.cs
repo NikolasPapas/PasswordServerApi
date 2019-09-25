@@ -19,9 +19,9 @@ namespace PasswordServerApi.Controllers
 
 		// GET api/values/5
 		[HttpGet("{id}")]
-		public ActionResult<string> Get(int id)
+		public ActionResult<string> GetValues(int id)
 		{
-			return "value";
+			return "GetValues";
 		}
 
 		// POST api/values
