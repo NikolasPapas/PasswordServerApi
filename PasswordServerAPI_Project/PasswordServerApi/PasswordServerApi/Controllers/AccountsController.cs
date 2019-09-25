@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PasswordServerApi.DTO;
@@ -10,6 +11,7 @@ using PasswordServerApi.Interfaces;
 namespace PasswordServerApi.Controllers
 {
 	//api/accounts
+	[Authorize]
 	[Route("api/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PasswordServerApi.DTO;
@@ -11,8 +12,9 @@ using PasswordServerApi.Models.Enums;
 namespace PasswordServerApi.Controllers
 {
 	//api/passwords
+	[Authorize]
 	[Route("api/[controller]")]
-    [ApiController]
+	[ApiController]
     public class PasswordsController : ControllerBase
 	{
 		private readonly IPasswordService _passwordService;
