@@ -46,5 +46,13 @@ namespace PasswordServerApi.Service
 		}
 
 
+		public AccountDto GetDumyfullAccount(int i)
+		{
+			AccountDto results = GetDumyAccount(i);
+			for (int dumyi = 0; dumyi <= i; dumyi++)
+				results.Passwords.Add(GetDumyPassword(dumyi));
+			return results;
+		}
+
 	}
 }
