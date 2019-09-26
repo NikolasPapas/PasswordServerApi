@@ -9,7 +9,9 @@ namespace PasswordServerApi.Security
 	{
 		public bool IsValidUser(string userName, string password)
 		{
-			return true;
+			if (userName == "123" && password == "123")
+				return true;
+			return false;
 		}
 	}
 }

@@ -8,5 +8,6 @@ namespace PasswordServerApi.Security
 	{
 		bool IsAuthenticated(TokenRequest request, out string token);
 
+		bool IsAuthorized(string id);
 	}
 }

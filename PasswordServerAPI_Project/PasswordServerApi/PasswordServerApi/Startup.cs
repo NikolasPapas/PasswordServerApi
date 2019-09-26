@@ -13,6 +13,7 @@ using PasswordServerApi.Security.SecurityModels;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Threading.Tasks;
 
 namespace PasswordServerApi
 {
@@ -43,6 +44,19 @@ namespace PasswordServerApi
 				x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 			}).AddJwtBearer(x =>
 			{
+				x.Events = new JwtBearerEvents
+				{
+					OnTokenValidated = context =>
+					{
+						var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
+						if (userService.IsAuthorized(context.Principal.Identity.Name))
+						{
+							// return unauthorized if user no longer exists
+							context.Fail("Unauthorized");
+						}
+						return Task.CompletedTask;
+					}
+				};
 				x.RequireHttpsMetadata = false;
 				x.SaveToken = true;
 				x.TokenValidationParameters = new TokenValidationParameters
@@ -54,6 +68,7 @@ namespace PasswordServerApi
 					ValidateIssuer = false,
 					ValidateAudience = false
 				};
+				
 			});
 
 

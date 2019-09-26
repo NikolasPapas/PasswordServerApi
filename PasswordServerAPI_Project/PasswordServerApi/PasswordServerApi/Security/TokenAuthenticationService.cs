@@ -19,7 +19,6 @@ namespace PasswordServerApi.Security
 			_tokenManagement = tokenManagement.Value;
 		}
 
-
 		public bool IsAuthenticated(TokenRequest request, out string token)
 		{
 
@@ -37,12 +36,20 @@ namespace PasswordServerApi.Security
 				_tokenManagement.Issuer,
 				_tokenManagement.Audience,
 				claim,
-				expires: DateTime.Now.AddMinutes(_tokenManagement.AccessExpiration),
+				expires: DateTime.Now.AddMinutes(3),
 				signingCredentials: credentials
 			);
 			token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
 			return true;
 
+		}
+
+
+		public bool IsAuthorized(string id)
+		{
+			if (id == "1")
+				return true;
+			return false;
 		}
 	}
 }
