@@ -21,6 +21,7 @@ using PasswordServerApi.DataSqliteDB.DataModels;
 using System.Collections.Generic;
 using PasswordServerApi.Models.Enums;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace PasswordServerApi
 {
@@ -37,7 +38,7 @@ namespace PasswordServerApi
 		public void ConfigureServices(IServiceCollection services)
 		{
 
-			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
+			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
 
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
@@ -113,9 +114,19 @@ namespace PasswordServerApi
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext)
 		{
-			dbContext.Database.EnsureCreated();
-			FieldDatabae(dbContext);
-			if (env.IsDevelopment())
+            dbContext.Database.EnsureCreated();
+
+            List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
+            List<EndityAbstractModelPassword> oldPasswords = dbContext.Passwords.Select(x => x).ToList();
+            if (oldAccounds != null)
+                dbContext.Accounts.RemoveRange(oldAccounds);
+            if (oldPasswords != null)
+                dbContext.Passwords.RemoveRange(oldPasswords);
+            dbContext.SaveChanges();
+            FieldDatabae(dbContext);
+            dbContext.SaveChanges();
+
+            if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
@@ -138,11 +149,11 @@ namespace PasswordServerApi
 
 		private void FieldDatabae(ApplicationDbContext dbContext)
 		{
-			for(int i = 105; i <= 130; i++)
+			for(int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				dbContext.Accounts.Add(JsonConvert.SerializeObject(setData.Item1));
-				dbContext.Passwords.AddRange(setData.Item2);
+				dbContext.Accounts.Add(new EndityAbstractModelAccount() {EndityId = setData.Item1.AccountId,JsonData= JsonConvert.SerializeObject(setData.Item1) });
+				dbContext.Passwords.AddRange(setData.Item2.Select(x=> new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
 			}
 		}
 
@@ -181,18 +192,18 @@ namespace PasswordServerApi
 		}
 
 
-		private Tuple<AccountModel, List<string>> GetDumyfullAccount(int i)
+		private Tuple<AccountModel, List<PasswordModel>> GetDumyfullAccount(int i)
 		{
 			AccountModel account = GetDumyAccount(i);
-			List<string> passwords = new List<string>();
-			for (int dumyi = 0; dumyi <= i; dumyi++)
+			List<PasswordModel> passwords = new List<PasswordModel>();
+			for (int dumyi = i; dumyi <= i+5; dumyi++)
 			{
 				PasswordModel pass = GetDumyPassword(dumyi);
-				passwords.Add(JsonConvert.SerializeObject(pass));
+				passwords.Add(pass);
 				account.PasswordIds.Add(pass.PasswordId);
 			}
 
-			return new Tuple<AccountModel, List<string>>(account, passwords);
+			return new Tuple<AccountModel, List<PasswordModel>>(account, passwords);
 		}
 
 	}

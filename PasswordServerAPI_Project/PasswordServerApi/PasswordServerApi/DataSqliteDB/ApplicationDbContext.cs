@@ -16,9 +16,9 @@ namespace PasswordServerApi.DataSqliteDB
 
 		}
 
-		public DbSet<string> Accounts { get; set; }
+		public DbSet<EndityAbstractModelAccount> Accounts { get; set; }
 
-		public DbSet<string> Passwords { get; set; }
+		public DbSet<EndityAbstractModelPassword> Passwords { get; set; }
 
-	}
+    }
 }

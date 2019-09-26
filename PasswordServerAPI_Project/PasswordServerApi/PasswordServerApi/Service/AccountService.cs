@@ -2,7 +2,6 @@
 using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
-using PasswordServerApi.DataSqliteDB.DataModels;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
@@ -11,31 +10,34 @@ namespace PasswordServerApi.Service
 {
 	public class AccountService : IAccountService
 	{
-		IBaseService _baseService;
 		ApplicationDbContext _dbContext;
 
-		public AccountService(IBaseService baseService, ApplicationDbContext dbContext)
+		public AccountService( ApplicationDbContext dbContext)
 		{
-			_baseService = baseService;
 			_dbContext = dbContext;
 		}
 
 		public IEnumerable<AccountDto> GetAccounts()
 		{
-			List<AccountDto> accountds = new List<AccountDto>();
-			_dbContext.Accounts.ToList().ForEach(x => accountds.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x))));
-			return accountds;
+			List<AccountDto> accounts = new List<AccountDto>();
+			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
+			return accounts;
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto)
 		{
-			_dbContext.Update(GetAccount(accountDto));
-			return accountDto;
+            var updateAccount = GetAccount(accountDto);
+            var AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
+            AccountModelData.JsonData = JsonConvert.SerializeObject(updateAccount);
+            _dbContext.Accounts.Update(AccountModelData);
+            _dbContext.SaveChanges();
+
+            return accountDto;
 		}
 
 		public AccountDto GetAccount(Guid id)
 		{
-			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts.ToList().Find(x => Guid.Parse(JsonConvert.DeserializeObject<AccountModel>(x).AccountId) == id))));
+			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
 		}
 
 		private AccountDto GetAccountDto(AccountModel dbAccount)

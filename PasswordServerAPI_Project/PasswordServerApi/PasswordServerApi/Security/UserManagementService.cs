@@ -16,7 +16,7 @@ namespace PasswordServerApi.Security
 			_accountService = accountService;
 		}
 
-		public AccountDto FindValiduser(string userName, string password)
+		public AccountDto FindValidUser(string userName, string password)
 		{
 			return _accountService.GetAccounts().FirstOrDefault(x => x.UserName == userName && x.Password == password);
 		}
@@ -26,7 +26,9 @@ namespace PasswordServerApi.Security
 			var account = FindValidUserID(id);
 			if (account == null) throw new Exception("No User");
 			account.CurentToken = Token;
-			_accountService.UpdateAccount(account);
+            account.LastLogIn = DateTime.Now;
+
+            _accountService.UpdateAccount(account);
 		}
 
 

@@ -23,7 +23,7 @@ namespace PasswordServerApi.Security
 		{
 
 			token = string.Empty;
-			AccountDto user = _userManagementService.FindValiduser(request.Username, request.Password);
+			AccountDto user = _userManagementService.FindValidUser(request.Username, request.Password);
 			if (user == null) return false;
 			var claim = new[]
 			{

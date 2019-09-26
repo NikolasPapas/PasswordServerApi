@@ -12,6 +12,6 @@ namespace PasswordServerApi.Security
 
 		void SaveNewToken(Guid id, string Token);
 
-		AccountDto FindValiduser(string userName, string password);
+		AccountDto FindValidUser(string userName, string password);
 	}
 }
