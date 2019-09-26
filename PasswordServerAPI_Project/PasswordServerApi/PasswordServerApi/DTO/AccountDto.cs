@@ -43,6 +43,15 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "password")]
 		public string Password { get; set; }
 
+		[Required]
+		[DataMember(Name = "role")]
+		public string Role { get; set; }
+
+		[Required]
+		[DataMember(Name = "curentTocke")]
+		public string CurentToken { get; set; }
+
+
 		[DataMember(Name = "passwords")]
 		public List<PasswordDto> Passwords { get; set; }
 	}

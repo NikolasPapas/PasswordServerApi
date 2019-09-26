@@ -10,6 +10,8 @@ namespace PasswordServerApi.Interfaces
 	{
 		IEnumerable<AccountDto> GetAccounts();
 
-		AccountDto GetAccount();
+		AccountDto UpdateAccount(AccountDto account);
+
+		AccountDto GetAccount(Guid id);
 	}
 }

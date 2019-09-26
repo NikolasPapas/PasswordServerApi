@@ -14,6 +14,13 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using PasswordServerApi.DataSqliteDB;
+using Microsoft.EntityFrameworkCore;
+using PasswordServerApi.DataSqliteDB.DataModels;
+using System.Collections.Generic;
+using PasswordServerApi.Models.Enums;
+using Newtonsoft.Json;
 
 namespace PasswordServerApi
 {
@@ -29,6 +36,9 @@ namespace PasswordServerApi
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+
+			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
+
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
@@ -49,7 +59,7 @@ namespace PasswordServerApi
 					OnTokenValidated = context =>
 					{
 						var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
-						if (userService.IsAuthorized(context.Principal.Identity.Name))
+						if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), (context.SecurityToken as JwtSecurityToken).ToString()))
 						{
 							// return unauthorized if user no longer exists
 							context.Fail("Unauthorized");
@@ -101,8 +111,10 @@ namespace PasswordServerApi
 
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext)
 		{
+			dbContext.Database.EnsureCreated();
+			FieldDatabae(dbContext);
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
@@ -123,5 +135,65 @@ namespace PasswordServerApi
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "PasswordServerApi");
 			});
 		}
+
+		private void FieldDatabae(ApplicationDbContext dbContext)
+		{
+			for(int i = 105; i <= 130; i++)
+			{
+				var setData = GetDumyfullAccount(i);
+				dbContext.Accounts.Add(JsonConvert.SerializeObject(setData.Item1));
+				dbContext.Passwords.AddRange(setData.Item2);
+			}
+		}
+
+
+
+
+		private PasswordModel GetDumyPassword(int i)
+		{
+			return new PasswordModel()
+			{
+				PasswordId = Guid.NewGuid().ToString(),
+				Name = "Google" + i * i,
+				UserName = $"nikolaspapazian{ i * i}@gmail.com",
+				Password = $"123{ i * i}",
+				LogInLink = "google.com",
+				Sensitivity = Sensitivity.OnlyUser,
+				Strength = Strength.VeryWeak
+			};
+		}
+
+		private AccountModel GetDumyAccount(int i)
+		{
+			return new AccountModel()
+			{
+				AccountId = Guid.NewGuid().ToString(),
+				FirstName = $"nikolas{i}",
+				LastName = $"papazian{i}",
+				UserName = $"npapazian{i}",
+				Email = $"npapazian{i}@cite.gr",
+				Role = i == 1 ? Role.Admin : i == 2 ? Role.User : Role.Viewer,
+				Password = $"123{i}",
+				Sex = Sex.Male,
+				LastLogIn = null,
+				PasswordIds = new List<string>() { },
+			};
+		}
+
+
+		private Tuple<AccountModel, List<string>> GetDumyfullAccount(int i)
+		{
+			AccountModel account = GetDumyAccount(i);
+			List<string> passwords = new List<string>();
+			for (int dumyi = 0; dumyi <= i; dumyi++)
+			{
+				PasswordModel pass = GetDumyPassword(dumyi);
+				passwords.Add(JsonConvert.SerializeObject(pass));
+				account.PasswordIds.Add(pass.PasswordId);
+			}
+
+			return new Tuple<AccountModel, List<string>>(account, passwords);
+		}
+
 	}
 }

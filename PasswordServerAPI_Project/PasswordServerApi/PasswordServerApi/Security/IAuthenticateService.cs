@@ -1,6 +1,7 @@
 ﻿
 
 using PasswordServerApi.Security.SecurityModels;
+using System;
 
 namespace PasswordServerApi.Security
 {
@@ -8,6 +9,6 @@ namespace PasswordServerApi.Security
 	{
 		bool IsAuthenticated(TokenRequest request, out string token);
 
-		bool IsAuthorized(string id);
+		bool IsAuthorized(Guid id, string Token);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Enums;
+using PasswordServerApi.Security.SecurityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace PasswordServerApi.Service
 				LastName = $"papazian{i}",
 				UserName = $"npapazian{i}",
 				Email = $"npapazian{i}@cite.gr",
+				Role = i==1?Role.Admin:i==2?Role.User:Role.Viewer,
 				Password = $"123{i}",
 				Sex = Sex.Male,
 				LastLogIn = null,

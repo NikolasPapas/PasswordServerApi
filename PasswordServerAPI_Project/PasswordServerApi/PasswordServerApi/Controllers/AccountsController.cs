@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
+using PasswordServerApi.Security.SecurityModels;
 
 namespace PasswordServerApi.Controllers
 {
 	//api/accounts
 	[Authorize]
+	[Authorize(Roles = Role.Admin)]
 	[Route("api/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase

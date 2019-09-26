@@ -8,14 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Enums;
+using PasswordServerApi.Security.SecurityModels;
 
 namespace PasswordServerApi.Controllers
 {
 	//api/passwords
 	[Authorize]
+	[Authorize(Roles = Role.User + "," + Role.Admin)]
 	[Route("api/[controller]")]
 	[ApiController]
-    public class PasswordsController : ControllerBase
+	public class PasswordsController : ControllerBase
 	{
 		private readonly IPasswordService _passwordService;
 
@@ -28,33 +30,33 @@ namespace PasswordServerApi.Controllers
 		[HttpGet]
 		[ActionName("getPasswords")]
 		public IEnumerable<PasswordDto> Get()
-        {
+		{
 			return _passwordService.GetPasswords();
-        }
+		}
 
-        // GET: api/Passwords/5
-        [HttpGet("{id}", Name = "GetPasswords")]
-        public string Get(int id)
-        {
-            return "GetPasswords";
-        }
+		// GET: api/Passwords/5
+		[HttpGet("{id}", Name = "GetPasswords")]
+		public string Get(int id)
+		{
+			return "GetPasswords";
+		}
 
-        // POST: api/Passwords
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+		// POST: api/Passwords
+		[HttpPost]
+		public void Post([FromBody] string value)
+		{
+		}
 
-        // PUT: api/Passwords/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+		// PUT: api/Passwords/5
+		[HttpPut("{id}")]
+		public void Put(int id, [FromBody] string value)
+		{
+		}
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-    }
+		// DELETE: api/ApiWithActions/5
+		[HttpDelete("{id}")]
+		public void Delete(int id)
+		{
+		}
+	}
 }

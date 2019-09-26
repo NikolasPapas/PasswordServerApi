@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PasswordServerApi.DTO;
+using PasswordServerApi.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,11 +9,31 @@ namespace PasswordServerApi.Security
 {
 	public class UserManagementService : IUserManagementService
 	{
-		public bool IsValidUser(string userName, string password)
+
+		IAccountService _accountService;
+		public UserManagementService(IAccountService accountService)
 		{
-			if (userName == "123" && password == "123")
-				return true;
-			return false;
+			_accountService = accountService;
+		}
+
+		public AccountDto FindValiduser(string userName, string password)
+		{
+			return _accountService.GetAccounts().FirstOrDefault(x => x.UserName == userName && x.Password == password);
+		}
+
+		public void SaveNewToken(Guid id, string Token)
+		{
+			var account = FindValidUserID(id);
+			if (account == null) throw new Exception("No User");
+			account.CurentToken = Token;
+			_accountService.UpdateAccount(account);
+		}
+
+
+
+		public AccountDto FindValidUserID(Guid UserId)
+		{
+			return _accountService.GetAccounts().FirstOrDefault(x => x.AccountId == UserId);
 		}
 	}
 }

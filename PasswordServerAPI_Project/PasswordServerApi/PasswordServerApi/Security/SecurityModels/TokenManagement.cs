@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace PasswordServerApi.Security.SecurityModels
 {
@@ -19,6 +20,9 @@ namespace PasswordServerApi.Security.SecurityModels
 
 		[JsonProperty("refreshExpiration")]
 		public int RefreshExpiration { get; set; }
+
+		[JsonProperty("role")]
+		public List<string> Roles { get; set; }
 
 	}
 }

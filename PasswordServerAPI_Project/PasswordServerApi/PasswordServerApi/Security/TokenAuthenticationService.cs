@@ -1,10 +1,10 @@
 ﻿using PasswordServerApi.Security.SecurityModels;
 using System;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using PasswordServerApi.DTO;
 
 namespace PasswordServerApi.Security
 {
@@ -23,11 +23,12 @@ namespace PasswordServerApi.Security
 		{
 
 			token = string.Empty;
-			if (!_userManagementService.IsValidUser(request.Username, request.Password)) return false;
-
+			AccountDto user = _userManagementService.FindValiduser(request.Username, request.Password);
+			if (user == null) return false;
 			var claim = new[]
 			{
-				new Claim(ClaimTypes.Name, request.Username)
+				new Claim(ClaimTypes.Name, user.AccountId.ToString()),
+				new Claim(ClaimTypes.Role, user.Role)
 			};
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenManagement.Secret));
 			var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -36,18 +37,21 @@ namespace PasswordServerApi.Security
 				_tokenManagement.Issuer,
 				_tokenManagement.Audience,
 				claim,
-				expires: DateTime.Now.AddMinutes(3),
+				expires: DateTime.Now.AddMinutes(1),
 				signingCredentials: credentials
 			);
 			token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
+
+			_userManagementService.SaveNewToken(user.AccountId, token);
 			return true;
 
 		}
 
 
-		public bool IsAuthorized(string id)
+		public bool IsAuthorized(Guid id, string Token)
 		{
-			if (id == "1")
+			AccountDto account = _userManagementService.FindValidUserID(id);
+			if (account != null && account.CurentToken == Token)
 				return true;
 			return false;
 		}

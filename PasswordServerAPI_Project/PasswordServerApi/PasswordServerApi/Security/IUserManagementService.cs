@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordServerApi.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,10 @@ namespace PasswordServerApi.Security
 {
 	public interface IUserManagementService
 	{
-		bool IsValidUser(string username, string password);
+		AccountDto FindValidUserID(Guid UserId);
+
+		void SaveNewToken(Guid id, string Token);
+
+		AccountDto FindValiduser(string userName, string password);
 	}
 }
