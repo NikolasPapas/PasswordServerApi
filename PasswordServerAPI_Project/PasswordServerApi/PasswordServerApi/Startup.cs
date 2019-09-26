@@ -5,11 +5,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Service;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using System;
+using System.Reflection;
+using System.IO;
 using PasswordServerApi.Security;
 using PasswordServerApi.Security.SecurityModels;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PasswordServerApi
 {
@@ -28,13 +31,12 @@ namespace PasswordServerApi
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-
+			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
+			services.AddScoped<IUserManagementService, UserManagementService>();
 
 			services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
 			var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
-			var secret = Encoding.ASCII.GetBytes(token.Secret);
+			var secret = System.Text.Encoding.ASCII.GetBytes(token.Secret);
 			services.AddAuthentication(x =>
 			{
 				x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,15 +48,39 @@ namespace PasswordServerApi
 				x.TokenValidationParameters = new TokenValidationParameters
 				{
 					ValidateIssuerSigningKey = true,
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(token.Secret)),
-					ValidIssuer = token.Issuer,
-					ValidAudience = token.Audience,
+					IssuerSigningKey = new SymmetricSecurityKey(secret),
+					ValidIssuer = Configuration["jwt:Issuer"], //token.Issuer,
+					ValidAudience = Configuration["jwt:Issuer"], //token.Audience,
 					ValidateIssuer = false,
 					ValidateAudience = false
 				};
 			});
-			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
-			services.AddScoped<IUserManagementService, UserManagementService>();
+
+
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Version = "v1",
+					Title = "PasswordServerApi",
+					Description = "A simple PasswordServerApi ASP.NET Core2.2 Web API",
+					TermsOfService = new Uri("https://example.com/terms"),
+					Contact = new OpenApiContact
+					{
+						Name = "Papazian Nikolaos",
+						Email = "nikolaspapazian@gmail.com",
+					},
+					License = new OpenApiLicense
+					{
+						Name = "Use under LICX",
+					}
+				});
+
+				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+				c.IncludeXmlComments(xmlPath);
+			});
 		}
 
 
@@ -76,6 +102,11 @@ namespace PasswordServerApi
 			app.UseAuthentication();
 			app.UseHttpsRedirection();
 			app.UseMvc();
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "PasswordServerApi");
+			});
 		}
 	}
 }

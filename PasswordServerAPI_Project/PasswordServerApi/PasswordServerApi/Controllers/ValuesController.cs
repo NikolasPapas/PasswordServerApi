@@ -12,6 +12,10 @@ namespace PasswordServerApi.Controllers
 	[ApiController]
 	public class ValuesController : ControllerBase
 	{
+		/// <summary>
+		/// Get Values
+		/// </summary>
+		/// <returns>string[]</returns>
 		// GET api/values
 		[HttpGet]
 		public ActionResult<IEnumerable<string>> Get()

@@ -15,9 +15,10 @@ namespace PasswordServerApi.Security
 			_authService = authService;
 		}
 
-
+		//http://localhost:53257/api/Authentication/logIn
+		//https://localhost:44390/api/Authentication/logIn
 		[AllowAnonymous]
-		[HttpPost]
+		[HttpPost("logIn")]
 		public ActionResult RequestToken([FromBody] TokenRequest request)
 		{
 			if (!ModelState.IsValid)

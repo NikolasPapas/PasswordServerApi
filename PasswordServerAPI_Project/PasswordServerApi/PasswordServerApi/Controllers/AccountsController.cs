@@ -23,7 +23,10 @@ namespace PasswordServerApi.Controllers
 			_accountService = accountService;
 		}
 
-
+		/// <summary>
+		/// Get Accounts List
+		/// </summary>
+		/// <returns>200</returns>
 		// GET: api/Accounts
 		[HttpGet]
         public IEnumerable<AccountDto> Get()
