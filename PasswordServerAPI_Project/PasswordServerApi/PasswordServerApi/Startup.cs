@@ -59,13 +59,15 @@ namespace PasswordServerApi
 				{
 					OnTokenValidated = context =>
 					{
-						var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
-						if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), (context.SecurityToken as JwtSecurityToken).ToString()))
+                        var accessToken = context.SecurityToken as JwtSecurityToken;
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
+						if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), accessToken.RawData))
 						{
 							// return unauthorized if user no longer exists
 							context.Fail("Unauthorized");
 						}
-						return Task.CompletedTask;
+
+                        return Task.CompletedTask;
 					}
 				};
 				x.RequireHttpsMetadata = false;

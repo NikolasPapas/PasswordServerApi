@@ -8,8 +8,11 @@ namespace PasswordServerApi.Interfaces
 {
     public interface IPasswordService
 	{
-		IEnumerable<PasswordDto> GetPasswords();
+        IEnumerable<PasswordDto> GetPasswords();
 
-		PasswordDto GetPassword();
-	}
+        PasswordDto GetPassword(Guid id);
+
+        PasswordDto UpdatePassword(PasswordDto passwordDto);
+
+    }
 }

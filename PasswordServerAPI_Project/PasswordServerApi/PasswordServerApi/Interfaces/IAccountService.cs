@@ -12,6 +12,7 @@ namespace PasswordServerApi.Interfaces
 
 		AccountDto UpdateAccount(AccountDto account);
 
-		AccountDto GetAccount(Guid id);
-	}
+        AccountDto GetAccount(Guid id);
+
+    }
 }

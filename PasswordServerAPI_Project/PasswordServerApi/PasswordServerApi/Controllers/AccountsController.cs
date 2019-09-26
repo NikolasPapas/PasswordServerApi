@@ -11,54 +11,39 @@ using PasswordServerApi.Security.SecurityModels;
 
 namespace PasswordServerApi.Controllers
 {
-	//api/accounts
-	[Authorize]
-	[Authorize(Roles = Role.Admin)]
-	[Route("api/[controller]")]
+    //api/accounts
+    [Authorize(Roles = Role.Admin + " , " + Role.Viewer)]
+    [Route("api/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
-		private readonly IAccountService _accountService;
+        private readonly IAccountService _accountService;
 
-		public AccountsController(IAccountService accountService)
-		{
-			_accountService = accountService;
-		}
+        public AccountsController(IAccountService accountService)
+        {
+            _accountService = accountService;
+        }
 
-		/// <summary>
-		/// Get Accounts List
-		/// </summary>
-		/// <returns>200</returns>
-		// GET: api/Accounts
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Return A List With All Accounts</returns>
 		[HttpGet]
         public IEnumerable<AccountDto> Get()
         {
-			return _accountService.GetAccounts();
+            return _accountService.GetAccounts();
         }
 
-        // GET: api/Accounts/5
-        [HttpGet("{id}", Name = "GetAccounts")]
-        public string Get(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return A Account From Guid</returns>
+        [HttpPost("getById")]
+        public AccountDto GetById([FromBody] string id)
         {
-            return "GetAccounts";
+            return _accountService.GetAccount(Guid.Parse(id));
         }
 
-        // POST: api/Accounts
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Accounts/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

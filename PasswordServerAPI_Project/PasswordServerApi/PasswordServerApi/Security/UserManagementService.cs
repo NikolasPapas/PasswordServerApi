@@ -31,11 +31,9 @@ namespace PasswordServerApi.Security
             _accountService.UpdateAccount(account);
 		}
 
-
-
 		public AccountDto FindValidUserID(Guid UserId)
 		{
-			return _accountService.GetAccounts().FirstOrDefault(x => x.AccountId == UserId);
+			return _accountService.GetAccount(UserId);
 		}
 	}
 }

@@ -13,8 +13,7 @@ using PasswordServerApi.Security.SecurityModels;
 namespace PasswordServerApi.Controllers
 {
 	//api/passwords
-	[Authorize]
-	[Authorize(Roles = Role.User + "," + Role.Admin)]
+	[Authorize(Roles = Role.User + " , " + Role.Admin)]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class PasswordsController : ControllerBase
@@ -26,37 +25,26 @@ namespace PasswordServerApi.Controllers
 			_passwordService = passwordService;
 		}
 
-		// GET: api/Passwords
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Return List With All Passwords</returns>
 		[HttpGet]
-		[ActionName("getPasswords")]
+        [ActionName("getPasswords")]
 		public IEnumerable<PasswordDto> Get()
 		{
 			return _passwordService.GetPasswords();
 		}
 
-		// GET: api/Passwords/5
-		[HttpGet("{id}", Name = "GetPasswords")]
-		public string Get(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>return Passworn With Guid</returns>
+		[HttpPost("getById")]
+        public PasswordDto GetById([FromBody] string id)
 		{
-			return "GetPasswords";
-		}
-
-		// POST: api/Passwords
-		[HttpPost]
-		public void Post([FromBody] string value)
-		{
-		}
-
-		// PUT: api/Passwords/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
-		{
-		}
-
-		// DELETE: api/ApiWithActions/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
-		{
+            return _passwordService.GetPassword(Guid.Parse(id)); 
 		}
 	}
 }
