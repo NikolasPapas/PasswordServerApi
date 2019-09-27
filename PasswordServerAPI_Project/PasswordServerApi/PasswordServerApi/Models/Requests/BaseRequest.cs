@@ -9,8 +9,5 @@ namespace PasswordServerApi.Models.Requests
 		[DataMember(Name = "actionId")]
 		public Guid ActionId { get; set; }
 
-		[DataMember(Name = "role")]
-		public string Role { get; set; }
-
 	}
 }

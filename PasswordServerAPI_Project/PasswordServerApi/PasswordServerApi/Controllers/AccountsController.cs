@@ -22,8 +22,6 @@ namespace PasswordServerApi.Controllers
 	 * }
 	*/
 
-
-
 	//api/accounts
 	[Authorize(Roles = Role.Admin + " , " + Role.Viewer)]
 	[Route("api/[controller]")]
@@ -46,7 +44,6 @@ namespace PasswordServerApi.Controllers
 		 *		//"Password":"123105",
 		 *		//"Email":"npapazian105@cite.gr",
 		 *	}
-		*/
 		/// <summary>
 		/// 
 		/// </summary>
@@ -60,6 +57,7 @@ namespace PasswordServerApi.Controllers
 				Warnnings = new List<string>()
 			};
 		}
+		*/
 
 
 		/*
@@ -67,7 +65,6 @@ namespace PasswordServerApi.Controllers
 		 *	 {
  		 *		"ActionId":"1086495e-fd61-4397-b3a9-87b737adeddd",
  		 *		"Role":"Admin",
- 		 *		"Password":"123105",
 		 *		"Account":
 		 *			{
 		 *				"accountId": "2a645ff3-79ba-48ed-9725-2d09189b64d9",

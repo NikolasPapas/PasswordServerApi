@@ -5,12 +5,13 @@ using System.Runtime.Serialization;
 namespace PasswordServerApi.Models.Account.Requests
 {
 	[DataContract]
-	public class AccountActionRequest :BaseRequest
+	public class AccountActionRequest : SearchAccountsRequest
 	{
 		[DataMember(Name = "account")]
 		public AccountDto Account { get; set; }
 
-		[DataMember(Name = "password")]
-		public string Password { get; set; }
+
+
+		
 	}
 }

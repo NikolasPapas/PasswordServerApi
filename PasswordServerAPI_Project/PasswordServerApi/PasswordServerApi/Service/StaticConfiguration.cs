@@ -15,8 +15,8 @@ namespace PasswordServerApi.Service
 		public static readonly Guid ActionSaveAccountId = new Guid("1086495E-FD61-4397-B3A9-87B737ADEDDD");
 
 		//Password
-		public static readonly Guid ActionGetPasswordId = new Guid("1086495E-FD61-4397-B3A9-87B737ADEDDD");
-		public static readonly Guid ActionSavePasswordId = new Guid("1086495E-FD61-4397-B3A9-87B737ADEDDD");
+		public static readonly Guid ActionGetPasswordId = new Guid("AF897163-6642-4C27-8084-DB99788E77E9");
+		public static readonly Guid ActionSavePasswordId = new Guid("887B5253-A8F5-462E-8200-330C3D60D62A");
 
 		#endregion
 
@@ -38,7 +38,7 @@ namespace PasswordServerApi.Service
 		public static readonly Dictionary<string, List<ApplicationAction>> GetAcrionByRole = new Dictionary<string, List<ApplicationAction>>()
 		{
 			//Admin Actions
-			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts,ActionSaveAccount } },
+			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts,ActionSaveAccount, ActionGetPassword } },
 
 			//User Actions
 			{ Role.User, new List<ApplicationAction>(){ ActionGetPassword, ActionSavePassword } },

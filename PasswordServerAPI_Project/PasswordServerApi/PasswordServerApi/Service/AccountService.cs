@@ -15,67 +15,77 @@ namespace PasswordServerApi.Service
 	public class AccountService : IAccountService
 	{
 		ApplicationDbContext _dbContext;
-
-		public AccountService(ApplicationDbContext dbContext)
+		IPasswordService _passwordService;
+		public AccountService(ApplicationDbContext dbContext, IPasswordService passwordService)
 		{
 			_dbContext = dbContext;
+			_passwordService = passwordService;
 		}
 
-
 		#region Dictionary ActionId To Function
-		private Dictionary<Guid, Func<AccountDto, string, Response<AccountDto>>> _actionIdToFunction;
+		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> _actionIdToFunction;
 
-		private Dictionary<Guid, Func<AccountDto, string, Response<AccountDto>>> ActionIdToFunction
+		private Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> ActionIdToFunction
 		{
 			get
 			{
 				return _actionIdToFunction ??
-					new Dictionary<Guid, Func<AccountDto, string, Response<AccountDto>>>()
+					new Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>>()
 					{
-						{ StaticConfiguration.ActionSaveAccountId, SeveAccountFunc }
+						{ StaticConfiguration.ActionSaveAccountId, SeveAccountFunc },
+						{ StaticConfiguration.ActionGetPasswordId, GetAccountAndPaswordsFunc }
 					};
 			}
 		}
 
 		#endregion
 
-
-
-
-
-
 		public Response<AccountDto> ExecuteAction(AccountActionRequest request)
 		{
-			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(request.Role))
+			AccountDto savedAccount = GetAccounts(request).FirstOrDefault();
+			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(savedAccount.Role))
 				throw new Exception("Invalid Profile");
 			else
 			{
-				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[request.Role].Find(x => x.Id == request.ActionId);
+				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[savedAccount.Role].Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
-				Func<AccountDto, string, Response<AccountDto>> func;
+				Func<AccountDto, AccountDto, Response<AccountDto>> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το ActionId: " + request.ActionId);
-				return func(request.Account, request.Account.Password);
+				return func(savedAccount,request.Account);
 			}
 		}
 
-
 		#region Actions
 
-		private Response<AccountDto> SeveAccountFunc(AccountDto account, string password)
+		private Response<AccountDto> SeveAccountFunc(AccountDto savedAccount , AccountDto requestedAccount)
 		{
-			if (account.AccountId == null)
+			if (requestedAccount.AccountId == null)
 				throw new Exception("NoAccountID ForUpdate");
 
 			return new Response<AccountDto>()
 			{
-				Payload = UpdateAccount(account),
+				Payload = UpdateAccount(requestedAccount),
 				Warnnings = new List<string>()
 			};
 		}
 
-		#endregion
 
+		private Response<AccountDto> GetAccountAndPaswordsFunc(AccountDto savedAccount, AccountDto requestedAccount)
+		{
+			if (savedAccount.AccountId == null)
+				throw new Exception("NoAccountID ForUpdate");
+			List<PasswordDto> passwords = new List<PasswordDto>();
+			savedAccount.Passwords.ForEach(x => passwords.Add(_passwordService.GetPassword(x.PasswordId)));
+			savedAccount.Passwords = passwords;
+			return new Response<AccountDto>()
+			{
+				Payload = savedAccount
+			};
+		}
+
+
+		#endregion
 
 		#region Database Connections
 
@@ -117,7 +127,6 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
-
 		#region Helper Transformer
 
 		private AccountDto GetAccountDto(AccountModel dbAccount)
@@ -134,7 +143,7 @@ namespace PasswordServerApi.Service
 				Sex = dbAccount.Sex,
 				LastLogIn = dbAccount.LastLogIn,
 				CurentToken = dbAccount.CurentToken,
-				Passwords = new List<PasswordDto>() { },
+				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
 			};
 		}
 
