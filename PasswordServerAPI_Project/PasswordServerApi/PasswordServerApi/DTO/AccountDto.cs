@@ -48,7 +48,7 @@ namespace PasswordServerApi.DTO
 		public string Role { get; set; }
 
 		[Required]
-		[DataMember(Name = "curentTocke")]
+		[DataMember(Name = "curentTocken")]
 		public string CurentToken { get; set; }
 
 

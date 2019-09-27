@@ -185,7 +185,7 @@ namespace PasswordServerApi
 				LastName = $"papazian{i}",
 				UserName = $"npapazian{i}",
 				Email = $"npapazian{i}@cite.gr",
-				Role = i == 1 ? Role.Admin : i == 2 ? Role.User : Role.Viewer,
+				Role = i == 105 ? Role.Admin : i == 106 ? Role.User : Role.Viewer,
 				Password = $"123{i}",
 				Sex = Sex.Male,
 				LastLogIn = null,

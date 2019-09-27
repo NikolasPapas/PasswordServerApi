@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PasswordServerApi.Models;
+using PasswordServerApi.Models.Responces;
 using PasswordServerApi.Security.SecurityModels;
+using PasswordServerApi.Service;
+using System.Collections.Generic;
 
 namespace PasswordServerApi.Security
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthenticationController : ControllerBase
-    {
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AuthenticationController : ControllerBase
+	{
 
 		private readonly IAuthenticateService _authService;
 		public AuthenticationController(IAuthenticateService authService)
@@ -19,19 +23,25 @@ namespace PasswordServerApi.Security
 		//https://localhost:44390/api/Authentication/logIn
 		[AllowAnonymous]
 		[HttpPost("logIn")]
-		public ActionResult RequestToken([FromBody] TokenRequest request)
+		public Response<ResponceTokenRequest> RequestToken([FromBody] TokenRequest request)
 		{
 			if (!ModelState.IsValid)
 			{
-				return BadRequest(ModelState);
+				return null;// BadRequest(ModelState);
 			}
 
 			string token;
-			if (_authService.IsAuthenticated(request, out token))
+			List<ApplicationAction> actionsForUser = _authService.IsAuthenticated(request, out token);
+			if (actionsForUser != null)
 			{
-				return Ok(token);
+				return new Response<ResponceTokenRequest>()
+				{
+					Payload = new ResponceTokenRequest() { Token = token, Actions = actionsForUser },
+					Warnnings = new List<string>()
+				};
+				//return  Ok(token, actionsForUser);
 			}
-			return BadRequest("Invalid Request");
+			return null; //BadRequest("Invalid Request");
 		}
-    }
+	}
 }

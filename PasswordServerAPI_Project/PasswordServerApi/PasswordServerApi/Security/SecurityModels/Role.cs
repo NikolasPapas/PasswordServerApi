@@ -7,4 +7,5 @@ namespace PasswordServerApi.Security.SecurityModels
 		public const string User = "User";
 		public const string Viewer = "Viewer";
 	}
+
 }

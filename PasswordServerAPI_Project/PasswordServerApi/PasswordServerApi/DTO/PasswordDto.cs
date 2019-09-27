@@ -19,15 +19,6 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "userName")]
 		public string UserName { get; set; }
 
-
-		/// <summary>
-		/// passwoidfgsdjkfsbdkhfvgsbd
-		/// skdhfjsodfjsdifkh
-		/// sdjhflksdhfnsd;
-		/// skdhfiosdfnhlsk
-		/// sjkdghfiosldfn
-		/// skjdfhsuioejdn
-		/// </summary>
 		[DataMember(Name = "password")]
 		public string Password { get; set; }
 

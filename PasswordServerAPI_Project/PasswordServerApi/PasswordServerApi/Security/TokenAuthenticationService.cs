@@ -5,6 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using PasswordServerApi.DTO;
+using PasswordServerApi.Models;
+using System.Collections.Generic;
+using PasswordServerApi.Service;
 
 namespace PasswordServerApi.Security
 {
@@ -19,12 +22,12 @@ namespace PasswordServerApi.Security
 			_tokenManagement = tokenManagement.Value;
 		}
 
-		public bool IsAuthenticated(TokenRequest request, out string token)
+		public List<ApplicationAction> IsAuthenticated(TokenRequest request, out string token)
 		{
-
+			List<ApplicationAction> ActionList =new List<ApplicationAction>();
 			token = string.Empty;
 			AccountDto user = _userManagementService.FindValidUser(request.Username, request.Password);
-			if (user == null) return false;
+			if (user == null) return null;
 			var claim = new[]
 			{
 				new Claim(ClaimTypes.Name, user.AccountId.ToString()),
@@ -43,7 +46,9 @@ namespace PasswordServerApi.Security
 			token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
 
 			_userManagementService.SaveNewToken(user.AccountId, token);
-			return true;
+			if (StaticConfiguration.GetAcrionByRole.ContainsKey(user.Role.ToString()))
+				ActionList = StaticConfiguration.GetAcrionByRole[user.Role.ToString()];
+			return ActionList;
 
 		}
 
