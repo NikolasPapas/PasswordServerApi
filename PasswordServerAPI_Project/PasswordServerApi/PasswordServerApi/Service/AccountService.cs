@@ -14,12 +14,11 @@ namespace PasswordServerApi.Service
 {
 	public class AccountService : IAccountService
 	{
-		ApplicationDbContext _dbContext;
-		IPasswordService _passwordService;
-		public AccountService(ApplicationDbContext dbContext, IPasswordService passwordService)
+		IBaseService _baseService;
+
+		public AccountService( IBaseService baseService)
 		{
-			_dbContext = dbContext;
-			_passwordService = passwordService;
+			_baseService = baseService;
 		}
 
 		#region Dictionary ActionId To Function
@@ -43,7 +42,7 @@ namespace PasswordServerApi.Service
 
 		public Response<AccountDto> ExecuteAction(AccountActionRequest request)
 		{
-			AccountDto savedAccount = GetAccounts(request).FirstOrDefault();
+			AccountDto savedAccount = _baseService.GetAccounts(request).FirstOrDefault();
 			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(savedAccount.Role))
 				throw new Exception("Invalid Profile");
 			else
@@ -52,7 +51,7 @@ namespace PasswordServerApi.Service
 				if (actions == null)
 					throw new Exception("Invalid Action");
 				Func<AccountDto, AccountDto, Response<AccountDto>> func;
-				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το ActionId: " + request.ActionId);
+				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
 				return func(savedAccount, request.Account);
 			}
 		}
@@ -66,7 +65,7 @@ namespace PasswordServerApi.Service
 
 			return new Response<AccountDto>()
 			{
-				Payload = UpdateAccount(requestedAccount),
+				Payload = _baseService.UpdateAccount(requestedAccount,false),
 				Warnnings = new List<string>()
 			};
 		}
@@ -77,7 +76,7 @@ namespace PasswordServerApi.Service
 			if (savedAccount.AccountId == null)
 				throw new Exception("NoAccountID ForUpdate");
 			List<PasswordDto> passwords = new List<PasswordDto>();
-			savedAccount.Passwords.ForEach(x => passwords.Add(_passwordService.GetPassword(x.PasswordId)));
+			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			savedAccount.Passwords = passwords;
 			return new Response<AccountDto>()
 			{
@@ -87,92 +86,5 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
-		#region Database Connections
-
-		public IEnumerable<AccountDto> GetAccounts(SearchAccountsRequest request)
-		{
-			List<AccountDto> accounts = new List<AccountDto>();
-			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
-			List<AccountDto> filteredAccounts = new List<AccountDto>();
-
-			var filtered = accounts.FindAll(x =>
-			{
-				bool isCorrectAccount = false;
-				isCorrectAccount = (x.UserName == request?.UserName) || (x.Email == request?.Email);
-
-				if (request.Password != null)
-					isCorrectAccount = x.Password == request?.Password && x.UserName == request?.UserName;
-				return isCorrectAccount;
-			});
-			return filtered.Select(x => { if (request.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
-		}
-
-		public AccountDto UpdateAccount(AccountDto accountDto)
-		{
-			AccountModel updateAccount = GetAccountModel(accountDto);
-			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
-			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
-			if (updateAccount.Password != dbAccountModel.Password)
-				throw new Exception("Invalid Password");
-
-			dbAccountModel.Email = updateAccount.Email;
-			dbAccountModel.FirstName = updateAccount.FirstName;
-			dbAccountModel.LastName = updateAccount.LastName;
-			dbAccountModel.Role = updateAccount.Role;
-			dbAccountModel.Sex = updateAccount.Sex;
-
-			AccountModelData.JsonData = JsonConvert.SerializeObject(dbAccountModel);
-			_dbContext.Accounts.Update(AccountModelData);
-			_dbContext.SaveChanges();
-
-			return accountDto;
-		}
-
-		public AccountDto GetAccountById(Guid id)
-		{
-			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
-		}
-
-		#endregion
-
-		#region Helper Transformer
-
-		private AccountDto GetAccountDto(AccountModel dbAccount)
-		{
-			return new AccountDto()
-			{
-				AccountId = Guid.Parse(dbAccount.AccountId),
-				FirstName = dbAccount.FirstName,
-				LastName = dbAccount.LastName,
-				UserName = dbAccount.UserName,
-				Email = dbAccount.Email,
-				Role = dbAccount.Role,
-				Password = dbAccount.Password,
-				Sex = dbAccount.Sex,
-				LastLogIn = dbAccount.LastLogIn,
-				CurentToken = dbAccount.CurentToken,
-				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
-			};
-		}
-
-		private AccountModel GetAccountModel(AccountDto dtoAccount)
-		{
-			return new AccountModel()
-			{
-				AccountId = dtoAccount.AccountId.ToString(),
-				FirstName = dtoAccount.FirstName,
-				LastName = dtoAccount.LastName,
-				UserName = dtoAccount.UserName,
-				Email = dtoAccount.Email,
-				Role = dtoAccount.Role,
-				Password = dtoAccount.Password,
-				Sex = dtoAccount.Sex,
-				LastLogIn = dtoAccount.LastLogIn,
-				CurentToken = dtoAccount.CurentToken,
-				PasswordIds = dtoAccount.Passwords.Select(x => x.PasswordId.ToString()).ToList(),
-			};
-		}
-
-		#endregion
 	}
 }

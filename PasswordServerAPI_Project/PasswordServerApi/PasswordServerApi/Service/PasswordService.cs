@@ -6,70 +6,84 @@ using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.DataSqliteDB.DataModels;
+using PasswordServerApi.Models.Responces;
+using PasswordServerApi.Models.Requests.Password;
+using PasswordServerApi.Models;
 
 namespace PasswordServerApi.Service
 {
-    public class PasswordService : IPasswordService
-    {
-        ApplicationDbContext _dbContext;
-
-        public PasswordService(ApplicationDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
-        public IEnumerable<PasswordDto> GetPasswords()
-        {
-            List<PasswordDto> passwords = new List<PasswordDto>();
-            _dbContext.Passwords.ToList().ForEach(x => passwords.Add(GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(x.JsonData))));
-            return passwords;
-        }
-
-        public PasswordDto GetPassword(Guid id)
-        {
-            return GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>((_dbContext.Passwords.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
-        }
-
-        public PasswordDto UpdatePassword(PasswordDto passwordDto)
-        {
-            var updatePassword = GetPasswordModel(passwordDto);
-            var passwordModelData = _dbContext.Passwords.ToList().Find(x => x.EndityId == updatePassword.Password);
-            passwordModelData.JsonData = JsonConvert.SerializeObject(updatePassword);
-            _dbContext.Passwords.Update(passwordModelData);
-            _dbContext.SaveChanges();
-            return passwordDto;
-        }
+	public class PasswordService : IPasswordService
+	{
+		IBaseService _baseService;
+		public PasswordService(IBaseService baseService)
+		{
+			_baseService = baseService;
+		}
 
 
-        private PasswordDto GetPasswordDto(PasswordModel dbPassword)
-        {
-            return new PasswordDto()
-            {
-                PasswordId = Guid.Parse(dbPassword.PasswordId),
-                Name = dbPassword.Name,
-                UserName = dbPassword.UserName,
-                Password = dbPassword.Password,
-                LogInLink = dbPassword.LogInLink,
-                Sensitivity = dbPassword.Sensitivity,
-                Strength = dbPassword.Strength
-            };
 
-        }
+		#region Dictionary ActionId To Function
 
-        private PasswordModel GetPasswordModel(PasswordDto dtoPassword)
-        {
-            return new PasswordModel()
-            {
-                PasswordId = dtoPassword.PasswordId.ToString(),
-                Name = dtoPassword.Name,
-                UserName = dtoPassword.UserName,
-                Password = dtoPassword.Password,
-                LogInLink = dtoPassword.LogInLink,
-                Sensitivity = dtoPassword.Sensitivity,
-                Strength = dtoPassword.Strength
-            };
-        }
+		private readonly Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>> _actionIdToFunction;
+
+		private Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>> ActionIdToFunction
+		{
+			get
+			{
+				return _actionIdToFunction ??
+					new Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>>()
+					{
+						{ StaticConfiguration.ActionGetPasswordsId, GetPaswordsFunc },
+						{ StaticConfiguration.ActionSavePasswordId, SeveAccountFunc },
+					};
+			}
+		}
+
+		#endregion
 
 
-    }
+
+
+		public Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request)
+		{
+			AccountDto account = _baseService.GetAccountById(request.AccountId);
+			PasswordDto savedPassword = _baseService.GetPasswords(request).FirstOrDefault();
+
+			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(account.Role))
+				throw new Exception("Invalid Profile");
+			else
+			{
+				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[account.Role].Find(x => x.Id == request.ActionId);
+				if (actions == null)
+					throw new Exception("Invalid Action");
+				Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>> func;
+				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
+				return func(savedPassword, request.Password);
+			}
+
+		}
+
+		#region Actions 
+
+		private Response<List<PasswordDto>> GetPaswordsFunc(PasswordDto savedPass, PasswordDto requesPass)
+		{
+			return new Response<List<PasswordDto>>()
+			{
+				Payload = new List<PasswordDto>() { savedPass }
+			};
+
+		}
+
+
+		private Response<List<PasswordDto>> SeveAccountFunc(PasswordDto savedPass, PasswordDto requesPass)
+		{
+			return new Response<List< PasswordDto >> ()
+			{
+				Payload = new List<PasswordDto>() { savedPass }
+			};
+		}
+
+		#endregion
+
+	}
 }

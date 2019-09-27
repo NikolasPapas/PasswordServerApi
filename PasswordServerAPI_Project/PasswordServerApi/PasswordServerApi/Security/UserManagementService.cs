@@ -12,16 +12,16 @@ namespace PasswordServerApi.Security
 	public class UserManagementService : IUserManagementService
 	{
 
-		IAccountService _accountService;
-		public UserManagementService(IAccountService accountService)
+		IBaseService _baseService;
+		public UserManagementService(IBaseService baseService)
 		{
-			_accountService = accountService;
+			_baseService = baseService;
 		}
 
 		public AccountDto FindValidUser(string userName, string password)
 		{
 
-			return _accountService.GetAccounts(new SearchAccountsRequest()
+			return _baseService.GetAccounts(new SearchAccountsRequest()
 			{
 				UserName = userName,
 				Password = password
@@ -35,12 +35,12 @@ namespace PasswordServerApi.Security
 			account.CurentToken = Token;
 			account.LastLogIn = DateTime.Now;
 
-			_accountService.UpdateAccount(account);
+			_baseService.UpdateAccount(account,true);
 		}
 
 		public AccountDto FindValidUserID(Guid UserId)
 		{
-			return _accountService.GetAccountById(UserId);
+			return _baseService.GetAccountById(UserId);
 		}
 	}
 }

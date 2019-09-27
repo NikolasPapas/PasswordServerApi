@@ -81,12 +81,11 @@ namespace PasswordServerApi.Controllers
 		 *			}
 		 *	 }
 		*/
-
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="id"></param>
-		/// <returns>Return A Account From Guid</returns>
+		/// <param name="request"></param>
+		/// <returns></returns>
 		[HttpPost("accountAction")]
 		public Response<AccountDto> AccountAction([FromBody] AccountActionRequest request)
 		{

@@ -1,4 +1,6 @@
 ﻿using PasswordServerApi.DTO;
+using PasswordServerApi.Models.Account.Requests;
+using PasswordServerApi.Models.Requests.Password;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,18 @@ namespace PasswordServerApi.Interfaces
 {
     public interface IBaseService
 	{
-		PasswordDto GetDumyPassword(int i);
+		IEnumerable<AccountDto> GetAccounts(SearchAccountsRequest request);
 
-		AccountDto GetDumyAccount(int i);
+		AccountDto UpdateAccount(AccountDto accountDto, bool full);
+
+		AccountDto GetAccountById(Guid id);
+
+
+		PasswordDto GetPassword(Guid id);
+
+		PasswordDto UpdatePassword(PasswordDto passwordDto);
+
+		IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request);
 
 	}
 }

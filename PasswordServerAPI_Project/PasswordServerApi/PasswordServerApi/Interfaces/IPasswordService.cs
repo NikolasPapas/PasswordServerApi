@@ -1,4 +1,6 @@
 ﻿using PasswordServerApi.DTO;
+using PasswordServerApi.Models.Requests.Password;
+using PasswordServerApi.Models.Responces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,8 @@ namespace PasswordServerApi.Interfaces
 {
     public interface IPasswordService
 	{
-        IEnumerable<PasswordDto> GetPasswords();
+		Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request);
 
-        PasswordDto GetPassword(Guid id);
-
-        PasswordDto UpdatePassword(PasswordDto passwordDto);
-
+		
     }
 }

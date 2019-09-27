@@ -14,11 +14,5 @@ namespace PasswordServerApi.Interfaces
 		Response<AccountDto> ExecuteAction(AccountActionRequest request);
 
 
-		IEnumerable<AccountDto> GetAccounts(SearchAccountsRequest request);
-
-		AccountDto UpdateAccount(AccountDto account);
-
-        AccountDto GetAccountById(Guid id);
-
     }
 }
