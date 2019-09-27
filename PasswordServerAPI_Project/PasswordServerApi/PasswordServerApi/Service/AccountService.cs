@@ -23,6 +23,7 @@ namespace PasswordServerApi.Service
 		}
 
 		#region Dictionary ActionId To Function
+
 		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> _actionIdToFunction;
 
 		private Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> ActionIdToFunction
@@ -33,7 +34,7 @@ namespace PasswordServerApi.Service
 					new Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>>()
 					{
 						{ StaticConfiguration.ActionSaveAccountId, SeveAccountFunc },
-						{ StaticConfiguration.ActionGetPasswordId, GetAccountAndPaswordsFunc }
+						{ StaticConfiguration.ActionGetAccountAndPasswordId, GetAccountAndPaswordsFunc },
 					};
 			}
 		}
@@ -52,13 +53,13 @@ namespace PasswordServerApi.Service
 					throw new Exception("Invalid Action");
 				Func<AccountDto, AccountDto, Response<AccountDto>> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το ActionId: " + request.ActionId);
-				return func(savedAccount,request.Account);
+				return func(savedAccount, request.Account);
 			}
 		}
 
 		#region Actions
 
-		private Response<AccountDto> SeveAccountFunc(AccountDto savedAccount , AccountDto requestedAccount)
+		private Response<AccountDto> SeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount)
 		{
 			if (requestedAccount.AccountId == null)
 				throw new Exception("NoAccountID ForUpdate");
@@ -83,7 +84,6 @@ namespace PasswordServerApi.Service
 				Payload = savedAccount
 			};
 		}
-
 
 		#endregion
 
@@ -110,10 +110,18 @@ namespace PasswordServerApi.Service
 		public AccountDto UpdateAccount(AccountDto accountDto)
 		{
 			AccountModel updateAccount = GetAccountModel(accountDto);
-			var AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
-			if (updateAccount.Password != JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData).Password)
+			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
+			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
+			if (updateAccount.Password != dbAccountModel.Password)
 				throw new Exception("Invalid Password");
-			AccountModelData.JsonData = JsonConvert.SerializeObject(updateAccount);
+
+			dbAccountModel.Email = updateAccount.Email;
+			dbAccountModel.FirstName = updateAccount.FirstName;
+			dbAccountModel.LastName = updateAccount.LastName;
+			dbAccountModel.Role = updateAccount.Role;
+			dbAccountModel.Sex = updateAccount.Sex;
+
+			AccountModelData.JsonData = JsonConvert.SerializeObject(dbAccountModel);
 			_dbContext.Accounts.Update(AccountModelData);
 			_dbContext.SaveChanges();
 
