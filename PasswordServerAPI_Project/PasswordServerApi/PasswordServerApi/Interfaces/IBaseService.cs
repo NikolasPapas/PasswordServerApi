@@ -30,5 +30,8 @@ namespace PasswordServerApi.Interfaces
 
 		PasswordDto AddNewPassword(PasswordDto requestPassword);
 
+		PasswordDto RemovePassword(PasswordDto requestPassword);
+
+
 	}
 }

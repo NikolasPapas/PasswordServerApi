@@ -4,13 +4,10 @@ using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
-using PasswordServerApi.Models.Enums;
 using PasswordServerApi.Models.Requests.Password;
-using PasswordServerApi.Security.SecurityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PasswordServerApi.Service
 {
@@ -176,6 +173,15 @@ namespace PasswordServerApi.Service
 				EndityId = requestPassword.PasswordId.ToString(),
 				JsonData = JsonConvert.SerializeObject(newPassword)
 			});
+			_dbContext.SaveChanges();
+			return requestPassword;
+		}
+
+		public PasswordDto RemovePassword(PasswordDto requestPassword)
+		{
+			var passToRemove =_dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
+			requestPassword = GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(passToRemove.JsonData));
+			_dbContext.Passwords.Remove(passToRemove);
 			_dbContext.SaveChanges();
 			return requestPassword;
 		}

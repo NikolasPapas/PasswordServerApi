@@ -210,7 +210,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZjEzZjkxOGMtZjMwNy00NWJjLWIyODQtMTkyNzI2ODMwZWZmIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTU2OTg1MTYwNCwiaXNzIjoibG9jYWxob3N0IiwiYXVkIjoiU2FtcGxlQXVkaWVuY2UifQ.TlNGyR4aYoFAN1nmYkirZKt8xtvu2XWNpxIL9h8x47s",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMzhhNWE4MDgtZjAzMS00MWY0LTk2NmEtMWUwMzZkMjdkMDBhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTU2OTg1NDE5NiwiaXNzIjoibG9jYWxob3N0IiwiYXVkIjoiU2FtcGxlQXVkaWVuY2UifQ.60ysdG5uBnNF_239oRwM0CZ8rZV5ZPvHhGtg_hdsfTo",
 							"type": "string"
 						}
 					]
@@ -321,6 +321,53 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"ActionId\": \"887b5253-a8f5-462e-8200-330c3d60d62a\",\n    \"password\": \n        {\n            \"passwordId\": \"d49a37eb-fdd9-4da4-979e-e377a604c180\",\n            \"name\": \"nan\",\n            \"userName\": \"sd@gmail.com\",\n            \"password\": \"sd\",\n            \"logInLink\": \"sd.com\",\n            \"sensitivity\": 3,\n            \"strength\": 3\n        }\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/passwords/passwordAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"passwords",
+						"passwordAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMzhhNWE4MDgtZjAzMS00MWY0LTk2NmEtMWUwMzZkMjdkMDBhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTU2OTg1NDE5NiwiaXNzIjoibG9jYWxob3N0IiwiYXVkIjoiU2FtcGxlQXVkaWVuY2UifQ.60ysdG5uBnNF_239oRwM0CZ8rZV5ZPvHhGtg_hdsfTo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ActionId\": \"f7200c3f-af6f-4cd2-91b1-595f9101e78e\",\n    \"password\": \n        {\n            \"passwordId\": \"bef511ce-56e9-43fa-8b55-bf4f20d543e2\",\n            \"name\": \"Google11449\",\n            \"userName\": \"nikolaspapazian11449@gmail.com\",\n            \"password\": \"12311449\",\n            \"logInLink\": \"google.com\",\n            \"sensitivity\": 0,\n            \"strength\": 4\n        }\n    \n}",
 					"options": {
 						"raw": {
 							"language": "json"

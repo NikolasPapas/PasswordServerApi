@@ -21,6 +21,7 @@ namespace PasswordServerApi.Service
 		//Password
 		public static readonly Guid ActionGetPasswordsId = new Guid("3CF704FB-6D37-4661-A543-7C7A1BAC3284");
 		public static readonly Guid ActionUpdateOrAddPasswordId = new Guid("887B5253-A8F5-462E-8200-330C3D60D62A");
+		public static readonly Guid ActionRemovePasswordId = new Guid("F7200C3F-AF6F-4CD2-91B1-595F9101E78E");
 
 		#endregion
 
@@ -36,7 +37,8 @@ namespace PasswordServerApi.Service
 
 		//Password
 		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full };
-		public static readonly ApplicationAction ActionActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
+		public static readonly ApplicationAction ActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
+		public static readonly ApplicationAction ActionRemovePassword = new ApplicationAction { Id = ActionRemovePasswordId, Name = "Διαγραφή", ToolTipText = "Διαγραφή κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
 
 		#endregion
 
@@ -46,7 +48,7 @@ namespace PasswordServerApi.Service
 			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, } },
 
 			//User Actions
-			{ Role.User, new List<ApplicationAction>(){ ActionActionUpdateOrAddPassword, ActionGetPasswords } },
+			{ Role.User, new List<ApplicationAction>(){ ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword } },
 
 			//Viewer Actions
 			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetPasswords } },

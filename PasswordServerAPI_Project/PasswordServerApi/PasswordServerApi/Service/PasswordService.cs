@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
-using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.Models.Responces;
 using PasswordServerApi.Models.Requests.Password;
 using PasswordServerApi.Models;
@@ -33,6 +30,7 @@ namespace PasswordServerApi.Service
 					{
 						{ StaticConfiguration.ActionGetPasswordsId, GetPaswordsFunc },
 						{ StaticConfiguration.ActionUpdateOrAddPasswordId, UpdateOrAddPasswordFunc },
+						{ StaticConfiguration.ActionRemovePasswordId, RemovePasswordFunc },
 					};
 			}
 		}
@@ -73,13 +71,7 @@ namespace PasswordServerApi.Service
 
 		private Response<List<PasswordDto>> UpdateOrAddPasswordFunc(PasswordDto savedPass, PasswordDto requesPass, AccountDto account, PasswordActionRequest request)
 		{
-			if (account.Passwords.Find(pass =>
-			 {
-				 bool passExist = false;
-				 passExist |= requesPass?.PasswordId == pass.PasswordId;
-				 passExist |= requesPass?.UserName == pass.UserName && requesPass?.LogInLink == pass.LogInLink;
-				 return passExist;
-			 }) != null)
+			if (account.Passwords.Find(pass => requesPass?.PasswordId == pass.PasswordId) != null)
 			{
 				_baseService.UpdatePassword(requesPass);
 			}
@@ -97,6 +89,26 @@ namespace PasswordServerApi.Service
 				Payload = new List<PasswordDto>() { requesPass }
 			};
 		}
+
+
+		private Response<List<PasswordDto>> RemovePasswordFunc(PasswordDto savedPass, PasswordDto requesPass, AccountDto account, PasswordActionRequest request)
+		{
+			int index = account.Passwords.FindIndex(pass => requesPass?.PasswordId == pass.PasswordId);
+			if (index < 0 && index > account.Passwords.Count())
+				throw new Exception("invalid PasswordId");
+
+			account.Password.Remove(index);
+			_baseService.UpdateAccount(account, true);
+			_baseService.RemovePassword(requesPass);
+
+			return new Response<List<PasswordDto>>()
+			{
+				Payload = new List<PasswordDto>() { requesPass }
+			};
+
+		}
+
+
 
 		#endregion
 
