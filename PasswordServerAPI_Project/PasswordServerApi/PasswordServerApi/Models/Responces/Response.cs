@@ -9,6 +9,8 @@ namespace PasswordServerApi.Models.Responces
 	{
 		public T Payload { get; set; }
 
+		public Guid SelectedAction { get; set; }
+
 		public List<string> Warnnings { get; set; }
 	}
 }

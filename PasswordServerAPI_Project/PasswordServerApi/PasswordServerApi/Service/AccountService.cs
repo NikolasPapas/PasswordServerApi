@@ -52,7 +52,10 @@ namespace PasswordServerApi.Service
 					throw new Exception("Invalid Action");
 				Func<AccountDto, AccountDto, Response<AccountDto>> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
-				return func(savedAccount, request.Account);
+
+				Response < AccountDto > results = func(savedAccount, request.Account);
+				results.SelectedAction = request.ActionId;
+				return results;
 			}
 		}
 
@@ -60,9 +63,9 @@ namespace PasswordServerApi.Service
 
 		private Response<AccountDto> SeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount)
 		{
-			if (requestedAccount.AccountId == null)
+			if (savedAccount.AccountId == null)
 				throw new Exception("NoAccountID ForUpdate");
-
+			requestedAccount.AccountId = savedAccount.AccountId;
 			return new Response<AccountDto>()
 			{
 				Payload = _baseService.UpdateAccount(requestedAccount,false),

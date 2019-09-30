@@ -24,14 +24,14 @@ namespace PasswordServerApi.Service
 
 		#region Dictionary ActionId To Function
 
-		private readonly Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>> _actionIdToFunction;
+		private readonly Dictionary<Guid, Func<PasswordDto, PasswordDto, PasswordActionRequest, Response<List<PasswordDto>>>> _actionIdToFunction;
 
-		private Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>> ActionIdToFunction
+		private Dictionary<Guid, Func<PasswordDto, PasswordDto, PasswordActionRequest, Response<List<PasswordDto>>>> ActionIdToFunction
 		{
 			get
 			{
 				return _actionIdToFunction ??
-					new Dictionary<Guid, Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>>>()
+					new Dictionary<Guid, Func<PasswordDto, PasswordDto, PasswordActionRequest, Response<List<PasswordDto>>>>()
 					{
 						{ StaticConfiguration.ActionGetPasswordsId, GetPaswordsFunc },
 						{ StaticConfiguration.ActionSavePasswordId, SeveAccountFunc },
@@ -56,28 +56,28 @@ namespace PasswordServerApi.Service
 				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[account.Role].Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
-				Func<PasswordDto, PasswordDto, Response<List<PasswordDto>>> func;
+				Func<PasswordDto, PasswordDto, PasswordActionRequest, Response<List<PasswordDto>>> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
-				return func(savedPassword, request.Password);
+				return func(savedPassword, request.Password, request);
 			}
 
 		}
 
 		#region Actions 
 
-		private Response<List<PasswordDto>> GetPaswordsFunc(PasswordDto savedPass, PasswordDto requesPass)
+		private Response<List<PasswordDto>> GetPaswordsFunc(PasswordDto savedPass, PasswordDto requesPass, PasswordActionRequest request)
 		{
 			return new Response<List<PasswordDto>>()
 			{
-				Payload = new List<PasswordDto>() { savedPass }
+				Payload = _baseService.GetPasswords(request).ToList()
 			};
 
 		}
 
 
-		private Response<List<PasswordDto>> SeveAccountFunc(PasswordDto savedPass, PasswordDto requesPass)
+		private Response<List<PasswordDto>> SeveAccountFunc(PasswordDto savedPass, PasswordDto requesPass, PasswordActionRequest request)
 		{
-			return new Response<List< PasswordDto >> ()
+			return new Response<List<PasswordDto>>()
 			{
 				Payload = new List<PasswordDto>() { savedPass }
 			};

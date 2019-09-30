@@ -89,6 +89,7 @@ namespace PasswordServerApi.Controllers
 		[HttpPost("accountAction")]
 		public Response<AccountDto> AccountAction([FromBody] AccountActionRequest request)
 		{
+			request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
 			return _accountService.ExecuteAction(request);
 		}
 

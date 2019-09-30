@@ -48,7 +48,7 @@ namespace PasswordServerApi.Service
 			throw new NotImplementedException();
 		}
 
-		public AccountDto UpdateAccount(AccountDto accountDto, bool full =false)
+		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
 		{
 			AccountModel updateAccount = GetAccountModel(accountDto);
 			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
@@ -59,11 +59,12 @@ namespace PasswordServerApi.Service
 			dbAccountModel.Email = updateAccount.Email;
 			dbAccountModel.FirstName = updateAccount.FirstName;
 			dbAccountModel.LastName = updateAccount.LastName;
-			dbAccountModel.Role = updateAccount.Role;
 			dbAccountModel.Sex = updateAccount.Sex;
 
 			if (full)
 			{
+				dbAccountModel.LastLogIn = updateAccount.LastLogIn;
+				dbAccountModel.Role = updateAccount.Role;
 				dbAccountModel.CurentToken = updateAccount.CurentToken;
 				dbAccountModel.Password = updateAccount.Password;
 				dbAccountModel.AccountId = updateAccount.AccountId;
@@ -133,7 +134,7 @@ namespace PasswordServerApi.Service
 			{
 				var passwordModel = JsonConvert.DeserializeObject<PasswordModel>(x.JsonData);
 				bool haseCorrectValues = false;
-				haseCorrectValues = request.Name == passwordModel.Name || request.LogInLink == passwordModel.LogInLink;
+				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Name) ? request?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.LogInLink) ? request?.LogInLink == passwordModel?.LogInLink : true);
 				if (haseCorrectValues)
 					passwords.Add(GetPasswordDto(passwordModel));
 			});

@@ -10,7 +10,6 @@ namespace PasswordServerApi.DTO
 	[DataContract]
 	public class AccountDto
 	{
-		[Required]
 		[DataMember(Name = "accountId")]
 		public Guid AccountId { get; set; }
 
@@ -33,24 +32,19 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "sex")]
 		public Sex Sex { get; set; }
 
-		[Required]
 		[DataMember(Name = "lastLogIn")]
 		public DateTime? LastLogIn { get; set; }
 
 		
 		//PRIVATE
-		[Required]
 		[DataMember(Name = "password")]
 		public string Password { get; set; }
 
-		[Required]
 		[DataMember(Name = "role")]
 		public string Role { get; set; }
 
-		[Required]
 		[DataMember(Name = "curentTocken")]
 		public string CurentToken { get; set; }
-
 
 		[DataMember(Name = "passwords")]
 		public List<PasswordDto> Passwords { get; set; }
