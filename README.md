@@ -66,12 +66,7 @@ Authorization : Admin : Bearer Token => Token from login responce
 Body: json = >
     {
         "ActionId":" From login responce ",
-        "AccountId":""          *2
-        "UserName":"",          *1
-        "Password":"",          *1
-        "Email":"",             *1
-        "CustomFilterID":"",    *1 
-        "CustomFilterValue":"", *1
+        "AccountId":"00000000-0000-0000-0000-000000000000"          *2
         "Account":
 	      {
             "firstName": "...",
@@ -88,6 +83,7 @@ Responce : Json =>
     {
       "payload": [
                     {
+		    	"AccountId":"00000000-0000-0000-0000-000000000000"
                         "firstName": "...",
                         "lastName": "...",
                         "userName": "...",
@@ -109,12 +105,10 @@ Authorization : Admin + User : Bearer Token => Token from login responce
 Body: json = >
     {
     	  "ActionId":" From login responce ",
-	      "name":"...",
-	      "LoginLink":"..."
         "password":
             {
-              "passwordId":"..",
-              "AccountId":""          *2
+              "passwordId":"00000000-0000-0000-0000-000000000000",
+              "AccountId":"00000000-0000-0000-0000-000000000000",          *2
               "name":"",
               "userName":"",
               "password":"",
@@ -127,8 +121,8 @@ Responce : Json =>
     {
       "payload": [
                     {
-                        "passwordId":"..",
-                        "AccountId":""          *2
+                        "passwordId":"00000000-0000-0000-0000-000000000000",
+                        "AccountId":"00000000-0000-0000-0000-000000000000"          *2
                         "name":"",
                         "userName":"",
                         "password":"",
