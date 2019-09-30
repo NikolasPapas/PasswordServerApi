@@ -94,7 +94,7 @@ namespace PasswordServerApi.Service
 
 			return new Response<List<PasswordDto>>()
 			{
-				Payload = new List<PasswordDto>() { savedPass }
+				Payload = new List<PasswordDto>() { requesPass }
 			};
 		}
 

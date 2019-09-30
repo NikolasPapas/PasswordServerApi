@@ -146,7 +146,7 @@ namespace PasswordServerApi.Service
 					return;
 				var passwordModel = JsonConvert.DeserializeObject<PasswordModel>(x.JsonData);
 				bool haseCorrectValues = false;
-				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Password.Name) ? request?.Password?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.Password?.LogInLink) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true) && (!string.IsNullOrWhiteSpace(request?.Password?.UserName) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true);
+				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Password?.Name) ? request?.Password?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.Password?.LogInLink) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true) && (!string.IsNullOrWhiteSpace(request?.Password?.UserName) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true);
 				if (haseCorrectValues)
 					passwords.Add(GetPasswordDto(passwordModel));
 			});
@@ -161,7 +161,7 @@ namespace PasswordServerApi.Service
 		public PasswordDto UpdatePassword(PasswordDto passwordDto)
 		{
 			var updatePassword = GetPasswordModel(passwordDto);
-			var passwordModelData = _dbContext.Passwords.ToList().Find(x => x.EndityId == updatePassword.Password);
+			var passwordModelData = _dbContext.Passwords.ToList().Find(x => x.EndityId == updatePassword.PasswordId);
 			passwordModelData.JsonData = JsonConvert.SerializeObject(updatePassword);
 			_dbContext.Passwords.Update(passwordModelData);
 			_dbContext.SaveChanges();
