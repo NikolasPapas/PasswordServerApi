@@ -59,15 +59,15 @@ namespace PasswordServerApi
 				{
 					OnTokenValidated = context =>
 					{
-                        var accessToken = context.SecurityToken as JwtSecurityToken;
-                        var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
+						var accessToken = context.SecurityToken as JwtSecurityToken;
+						var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
 						if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), accessToken.RawData))
 						{
 							// return unauthorized if user no longer exists
 							context.Fail("Unauthorized");
 						}
 
-                        return Task.CompletedTask;
+						return Task.CompletedTask;
 					}
 				};
 				x.RequireHttpsMetadata = false;
@@ -81,7 +81,7 @@ namespace PasswordServerApi
 					ValidateIssuer = false,
 					ValidateAudience = false
 				};
-				
+
 			});
 
 
@@ -116,19 +116,19 @@ namespace PasswordServerApi
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext)
 		{
-            dbContext.Database.EnsureCreated();
+			dbContext.Database.EnsureCreated();
 
-            List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
-            List<EndityAbstractModelPassword> oldPasswords = dbContext.Passwords.Select(x => x).ToList();
-            if (oldAccounds != null)
-                dbContext.Accounts.RemoveRange(oldAccounds);
-            if (oldPasswords != null)
-                dbContext.Passwords.RemoveRange(oldPasswords);
-            dbContext.SaveChanges();
-            FieldDatabae(dbContext);
-            dbContext.SaveChanges();
+			List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
+			List<EndityAbstractModelPassword> oldPasswords = dbContext.Passwords.Select(x => x).ToList();
+			if (oldAccounds != null)
+				dbContext.Accounts.RemoveRange(oldAccounds);
+			if (oldPasswords != null)
+				dbContext.Passwords.RemoveRange(oldPasswords);
+			dbContext.SaveChanges();
+			FieldDatabae(dbContext);
+			dbContext.SaveChanges();
 
-            if (env.IsDevelopment())
+			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
@@ -151,11 +151,11 @@ namespace PasswordServerApi
 
 		private void FieldDatabae(ApplicationDbContext dbContext)
 		{
-			for(int i = 105; i <= 115; i++)
+			for (int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				dbContext.Accounts.Add(new EndityAbstractModelAccount() {EndityId = setData.Item1.AccountId,JsonData= JsonConvert.SerializeObject(setData.Item1) });
-				dbContext.Passwords.AddRange(setData.Item2.Select(x=> new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
+				dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = setData.Item1.AccountId, JsonData = JsonConvert.SerializeObject(setData.Item1) });
+				dbContext.Passwords.AddRange(setData.Item2.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
 			}
 		}
 
@@ -198,7 +198,7 @@ namespace PasswordServerApi
 		{
 			AccountModel account = GetDumyAccount(i);
 			List<PasswordModel> passwords = new List<PasswordModel>();
-			for (int dumyi = i; dumyi <= i+5; dumyi++)
+			for (int dumyi = i; dumyi <= i + 5; dumyi++)
 			{
 				PasswordModel pass = GetDumyPassword(dumyi);
 				passwords.Add(pass);

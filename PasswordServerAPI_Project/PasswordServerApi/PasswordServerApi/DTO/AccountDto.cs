@@ -13,19 +13,15 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "accountId")]
 		public Guid AccountId { get; set; }
 
-		[Required]
 		[DataMember(Name = "firstName")]
 		public string FirstName { get; set; }
 
-		[Required]
 		[DataMember(Name = "lastName")]
 		public string LastName { get; set; }
 
-		[Required]
 		[DataMember(Name = "userName")]
 		public string UserName { get; set; }
 
-		[Required]
 		[DataMember(Name = "email")]
 		public string Email { get; set; }
 

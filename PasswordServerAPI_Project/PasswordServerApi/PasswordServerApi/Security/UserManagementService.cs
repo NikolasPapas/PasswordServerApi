@@ -20,12 +20,14 @@ namespace PasswordServerApi.Security
 
 		public AccountDto FindValidUser(string userName, string password)
 		{
-
-			return _baseService.GetAccounts(new SearchAccountsRequest()
+			return _baseService.GetSpesificAccount(new AccountActionRequest()
 			{
-				UserName = userName,
-				Password = password
-			}).FirstOrDefault();
+				Account = new AccountDto()
+				{
+					UserName = userName,
+					Password = password
+				}
+			});
 		}
 
 		public void SaveNewToken(Guid id, string Token)
@@ -35,7 +37,7 @@ namespace PasswordServerApi.Security
 			account.CurentToken = Token;
 			account.LastLogIn = DateTime.Now;
 
-			_baseService.UpdateAccount(account,true);
+			_baseService.UpdateAccount(account, true);
 		}
 
 		public AccountDto FindValidUserID(Guid UserId)

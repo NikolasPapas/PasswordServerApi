@@ -8,13 +8,18 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.Interfaces
 {
-    public interface IBaseService
+	public interface IBaseService
 	{
-		IEnumerable<AccountDto> GetAccounts(SearchAccountsRequest request);
+		AccountDto GetSpesificAccount(AccountActionRequest request);
+
+		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request);
 
 		AccountDto UpdateAccount(AccountDto accountDto, bool full);
 
 		AccountDto GetAccountById(Guid id);
+
+		AccountDto AddNewAccount(AccountDto request);
+
 
 
 		PasswordDto GetPassword(Guid id);

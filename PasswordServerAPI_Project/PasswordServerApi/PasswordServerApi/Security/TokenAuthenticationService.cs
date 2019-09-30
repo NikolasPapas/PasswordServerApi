@@ -24,7 +24,7 @@ namespace PasswordServerApi.Security
 
 		public List<ApplicationAction> IsAuthenticated(TokenRequest request, out string token)
 		{
-			List<ApplicationAction> ActionList =new List<ApplicationAction>();
+			List<ApplicationAction> ActionList = new List<ApplicationAction>();
 			token = string.Empty;
 			AccountDto user = _userManagementService.FindValidUser(request.Username, request.Password);
 			if (user == null) return null;

@@ -25,7 +25,16 @@ namespace PasswordServerApi.Service
 
 		#region Database Connections Account
 
-		public IEnumerable<AccountDto> GetAccounts(SearchAccountsRequest request)
+		public AccountDto GetSpesificAccount(AccountActionRequest request)
+		{
+			List<AccountDto> accounts = new List<AccountDto>();
+			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
+
+			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
+		}
+
+
+		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request)
 		{
 			List<AccountDto> accounts = new List<AccountDto>();
 			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
@@ -34,18 +43,14 @@ namespace PasswordServerApi.Service
 			var filtered = accounts.FindAll(x =>
 			{
 				bool isCorrectAccount = false;
-				isCorrectAccount = (x.UserName == request?.UserName) || (x.Email == request?.Email);
-
-				if (request.Password != null)
-					isCorrectAccount = x.Password == request?.Password && x.UserName == request?.UserName;
+				isCorrectAccount = (!string.IsNullOrWhiteSpace(request?.Account?.UserName) ? x.UserName == request?.Account?.UserName : true) &&
+									(!string.IsNullOrWhiteSpace(request?.Account?.Email) ? x.Email == request?.Account?.Email : true) &&
+									(!string.IsNullOrWhiteSpace(request?.Account?.FirstName) ? x.FirstName == request?.Account?.FirstName : true) &&
+									(!string.IsNullOrWhiteSpace(request?.Account?.LastName) ? x.FirstName == request?.Account?.LastName : true) &&
+									(!string.IsNullOrWhiteSpace(request?.Account?.Role) ? x.Role == request?.Account?.Role : true);
 				return isCorrectAccount;
 			});
 			return filtered.Select(x => { if (request.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
-		}
-
-		private AccountDto GetAccountDto(object p)
-		{
-			throw new NotImplementedException();
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
@@ -80,6 +85,13 @@ namespace PasswordServerApi.Service
 		public AccountDto GetAccountById(Guid id)
 		{
 			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
+		}
+
+		public AccountDto AddNewAccount(AccountDto request)
+		{
+			_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
+			_dbContext.SaveChanges();
+			return request;
 		}
 
 		#region Account Converter

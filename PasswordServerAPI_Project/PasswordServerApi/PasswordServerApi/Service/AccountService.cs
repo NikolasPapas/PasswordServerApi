@@ -16,33 +16,38 @@ namespace PasswordServerApi.Service
 	{
 		IBaseService _baseService;
 
-		public AccountService( IBaseService baseService)
+		public AccountService(IBaseService baseService)
 		{
 			_baseService = baseService;
 		}
 
 		#region Dictionary ActionId To Function
 
-		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> _actionIdToFunction;
+		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> _actionIdToFunction;
 
-		private Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>> ActionIdToFunction
+		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> ActionIdToFunction
 		{
 			get
 			{
 				return _actionIdToFunction ??
-					new Dictionary<Guid, Func<AccountDto, AccountDto, Response<AccountDto>>>()
+					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>>()
 					{
-						{ StaticConfiguration.ActionSaveAccountId, SeveAccountFunc },
-						{ StaticConfiguration.ActionGetAccountAndPasswordId, GetAccountAndPaswordsFunc },
+						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
+						{ StaticConfiguration.ActionGetAccountId, ActionGetActionGetAccountFunc },
+						{ StaticConfiguration.ActionAddNewAccountId, ActionAddNewAccountFunc },
+						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordIdFunc },
+
 					};
 			}
 		}
 
 		#endregion
 
-		public Response<AccountDto> ExecuteAction(AccountActionRequest request)
+		public Response<List<AccountDto>> ExecuteAction(AccountActionRequest request)
 		{
-			AccountDto savedAccount = _baseService.GetAccounts(request).FirstOrDefault();
+			if (request.AccountId == null)
+				throw new Exception("No AccountID");
+			AccountDto savedAccount = _baseService.GetAccountById(request.AccountId);
 			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(savedAccount.Role))
 				throw new Exception("Invalid Profile");
 			else
@@ -50,10 +55,10 @@ namespace PasswordServerApi.Service
 				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[savedAccount.Role].Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
-				Func<AccountDto, AccountDto, Response<AccountDto>> func;
+				Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
 
-				Response < AccountDto > results = func(savedAccount, request.Account);
+				Response<List<AccountDto>> results = func(savedAccount, request.Account, request);
 				results.SelectedAction = request.ActionId;
 				return results;
 			}
@@ -61,32 +66,54 @@ namespace PasswordServerApi.Service
 
 		#region Actions
 
-		private Response<AccountDto> SeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount)
+		private Response<List<AccountDto>> ActionSeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
-			if (savedAccount.AccountId == null)
-				throw new Exception("NoAccountID ForUpdate");
 			requestedAccount.AccountId = savedAccount.AccountId;
-			return new Response<AccountDto>()
+			return new Response<List<AccountDto>>()
 			{
-				Payload = _baseService.UpdateAccount(requestedAccount,false),
+				Payload = new List<AccountDto>() { _baseService.UpdateAccount(requestedAccount, false) },
 				Warnnings = new List<string>()
 			};
 		}
 
 
-		private Response<AccountDto> GetAccountAndPaswordsFunc(AccountDto savedAccount, AccountDto requestedAccount)
+		private Response<List<AccountDto>> ActionGetActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
-			if (savedAccount.AccountId == null)
-				throw new Exception("NoAccountID ForUpdate");
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			savedAccount.Passwords = passwords;
-			return new Response<AccountDto>()
+			return new Response<List<AccountDto>>()
 			{
-				Payload = savedAccount
+				Payload = new List<AccountDto>() { savedAccount }
 			};
 		}
 
+
+		private Response<List<AccountDto>> ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		{
+			requestedAccount.AccountId = Guid.NewGuid();
+			requestedAccount.Passwords = new List<PasswordDto>();
+
+			if (_baseService.GetAccounts(new AccountActionRequest() { UserName = requestedAccount.UserName }).ToList().Count > 0)
+				throw new Exception("Rong Username");
+
+			_baseService.AddNewAccount(requestedAccount);
+
+			return new Response<List<AccountDto>>()
+			{
+				Payload = new List<AccountDto>() { requestedAccount }
+			};
+		}
+
+
+		private Response<List<AccountDto>> ActionGetAccountAndPasswordIdFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		{
+
+			return new Response<List<AccountDto>>()
+			{
+				Payload = _baseService.GetAccounts(request).ToList()
+			};
+		}
 		#endregion
 
 	}
