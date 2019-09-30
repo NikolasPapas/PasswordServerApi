@@ -10,7 +10,9 @@ Project .Net Core Rest Api For Saving Passwords
 Dillinger uses a number of open source projects to work properly:
 
 * [c#] - AspNetCore 2.2 !
-* [Visual Studio IDE] - awesome web-based text editor
+* [Visual Studio IDE] - Code editor
+* [Postman] - Collaboration Platform for APIs
+
 
 ---
 ##  Postman Requests
