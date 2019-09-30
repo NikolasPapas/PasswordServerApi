@@ -42,7 +42,7 @@ Responce : Json =>
           "token":"...",
           "actions":
                     [
-                        "id": "c25b9787-8751-4fbd-bc6c-c63a48026d30",
+                        "id": "00000000-0000-0000-0000-000000000000",
                         "name": "...",
                         "needsComment": true || false,             *1
                         "tooltip": "...",                          *1
