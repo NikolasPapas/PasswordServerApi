@@ -48,7 +48,7 @@ namespace PasswordServerApi.Service
 									(!string.IsNullOrWhiteSpace(request?.Account?.Role) ? x.Role == request?.Account?.Role : true);
 				return isCorrectAccount;
 			});
-			return filtered.Select(x => { if (request.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
+			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
@@ -71,6 +71,7 @@ namespace PasswordServerApi.Service
 				dbAccountModel.CurentToken = updateAccount.CurentToken;
 				dbAccountModel.Password = updateAccount.Password;
 				dbAccountModel.AccountId = updateAccount.AccountId;
+				dbAccountModel.PasswordIds = updateAccount.PasswordIds;
 			}
 
 			AccountModelData.JsonData = JsonConvert.SerializeObject(dbAccountModel);
@@ -136,14 +137,16 @@ namespace PasswordServerApi.Service
 
 		#region Database Connections Passwords
 
-		public IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request)
+		public IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request, AccountDto account)
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			_dbContext.Passwords.ToList().ForEach(x =>
 			{
+				if (account.Passwords.Find(accountPass => accountPass.PasswordId.ToString() == x.EndityId) == null)
+					return;
 				var passwordModel = JsonConvert.DeserializeObject<PasswordModel>(x.JsonData);
 				bool haseCorrectValues = false;
-				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Name) ? request?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.LogInLink) ? request?.LogInLink == passwordModel?.LogInLink : true);
+				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Password.Name) ? request?.Password?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.Password?.LogInLink) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true) && (!string.IsNullOrWhiteSpace(request?.Password?.UserName) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true);
 				if (haseCorrectValues)
 					passwords.Add(GetPasswordDto(passwordModel));
 			});
@@ -163,6 +166,18 @@ namespace PasswordServerApi.Service
 			_dbContext.Passwords.Update(passwordModelData);
 			_dbContext.SaveChanges();
 			return passwordDto;
+		}
+
+		public PasswordDto AddNewPassword(PasswordDto requestPassword)
+		{
+			var newPassword = GetPasswordModel(requestPassword);
+			_dbContext.Passwords.Add(new EndityAbstractModelPassword()
+			{
+				EndityId = requestPassword.PasswordId.ToString(),
+				JsonData = JsonConvert.SerializeObject(newPassword)
+			});
+			_dbContext.SaveChanges();
+			return requestPassword;
 		}
 
 		#region Converters Password

@@ -26,7 +26,9 @@ namespace PasswordServerApi.Interfaces
 
 		PasswordDto UpdatePassword(PasswordDto passwordDto);
 
-		IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request);
+		IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request, AccountDto account);
+
+		PasswordDto AddNewPassword(PasswordDto requestPassword);
 
 	}
 }

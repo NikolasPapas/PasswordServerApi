@@ -20,7 +20,7 @@ namespace PasswordServerApi.Service
 
 		//Password
 		public static readonly Guid ActionGetPasswordsId = new Guid("3CF704FB-6D37-4661-A543-7C7A1BAC3284");
-		public static readonly Guid ActionSavePasswordId = new Guid("887B5253-A8F5-462E-8200-330C3D60D62A");
+		public static readonly Guid ActionUpdateOrAddPasswordId = new Guid("887B5253-A8F5-462E-8200-330C3D60D62A");
 
 		#endregion
 
@@ -36,7 +36,7 @@ namespace PasswordServerApi.Service
 
 		//Password
 		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full };
-		public static readonly ApplicationAction ActionSavePassword = new ApplicationAction { Id = ActionSavePasswordId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
+		public static readonly ApplicationAction ActionActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
 
 		#endregion
 
@@ -46,7 +46,7 @@ namespace PasswordServerApi.Service
 			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, } },
 
 			//User Actions
-			{ Role.User, new List<ApplicationAction>(){ ActionSavePassword, ActionGetPasswords } },
+			{ Role.User, new List<ApplicationAction>(){ ActionActionUpdateOrAddPassword, ActionGetPasswords } },
 
 			//Viewer Actions
 			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetPasswords } },

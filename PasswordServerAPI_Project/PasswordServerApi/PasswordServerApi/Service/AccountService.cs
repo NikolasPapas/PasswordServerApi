@@ -92,7 +92,7 @@ namespace PasswordServerApi.Service
 			requestedAccount.AccountId = Guid.NewGuid();
 			requestedAccount.Passwords = new List<PasswordDto>();
 
-			if (_baseService.GetAccounts(new AccountActionRequest() { UserName = requestedAccount.UserName }).ToList().Count > 0)
+			if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } }).ToList().Count > 0)
 				throw new Exception("Rong Username");
 
 			_baseService.AddNewAccount(requestedAccount);
