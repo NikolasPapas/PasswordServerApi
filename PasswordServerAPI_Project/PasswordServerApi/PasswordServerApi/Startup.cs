@@ -181,12 +181,12 @@ namespace PasswordServerApi
 			return new AccountModel()
 			{
 				AccountId = Guid.NewGuid().ToString(),
-				FirstName = $"nikolas{i}",
-				LastName = $"papazian{i}",
-				UserName = $"npapazian{i}",
-				Email = $"npapazian{i}@cite.gr",
+				FirstName = $"FirstName{i}",
+				LastName = $"LastName{i}",
+				UserName = $"username{i}",
+				Email = $"email{i}@cite.gr",
 				Role = i == 105 ? Role.Admin : i == 106 ? Role.User : Role.Viewer,
-				Password = $"123{i}",
+				Password = $"{i}",
 				Sex = Sex.Male,
 				LastLogIn = null,
 				PasswordIds = new List<string>() { },

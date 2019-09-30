@@ -48,7 +48,7 @@ namespace PasswordServerApi.Service
 			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, } },
 
 			//User Actions
-			{ Role.User, new List<ApplicationAction>(){ ActionGetAccountAndPassword, ActionSavePassword, ActionGetPasswords } },
+			{ Role.User, new List<ApplicationAction>(){ ActionSavePassword, ActionGetPasswords } },
 
 			//Viewer Actions
 			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetAccountAndPassword } },

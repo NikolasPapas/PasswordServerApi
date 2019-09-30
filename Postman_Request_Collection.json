@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "b721d3d3-2cf3-41ef-a4ae-15d73260f5b8",
+		"name": "PasswordServerApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "logIn",
+			"protocolProfileBehavior": {
+				"tlsDisabledProtocols": [
+					"SSLv2",
+					"SSLv3"
+				]
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "123",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "123",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"username105\",\n\t\"password\":\"105\"\n\n\n//\t\"username\":\"username106\",\n//\t\"password\":\"106\"\n\n\n//\t\"username\":\"username107\",\n//\t\"password\":\"107\"\n\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/Authentication/logIn",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"Authentication",
+						"logIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account AccountAction",
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiNmJiMDdiZGUtYTM0OC00YWJjLTgzMjAtOTEyMjVmZGU0NDdkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzM3NzUsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.Jvf8bsU-4mMmtGBHF4GGSm3VfmN0gpVx2qVAMcg-BsU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ActionId\":\"C25B9787-8751-4FBD-BC6C-C63A48026D30\",\n\t//\"UserName\":\"npapazian105\",\n\t//\"Password\":\"123105\",\n\t//\"Email\":\"npapazian105@cite.gr\",\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/accountAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"accountAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Account AccountAction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZDRjNjRkNTUtZGU3Yi00OGIwLWEyZmItZmMxOTk3OGQ3NDMwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4Mjk3NTEsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.pcTprrjS2RzJheZKIDQ9yLco5Q7MIPQCX73FYWvNOJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n \t\r\n \t\"ActionId\":\"1086495e-fd61-4397-b3a9-87b737adeddd\",\r\n \t\"UserName\":\"npapazian105\",\r\n\t\r\n\t\"Account\":\r\n\t{\r\n        \"firstName\": \"nikolasPapazian\",\r\n        \"lastName\": \"papazianNikolas\",\r\n        \"userName\": \"npapazianNikolas\",\r\n        \"email\": \"npapaziancite@cite.gr\",\r\n        \"sex\": 0,\r\n        \"password\": \"123105\",\r\n        \"passwords\": []\r\n   }\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/accountAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"accountAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scan oll Accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmNiZWJhYjItMjFjMS00ZTUyLWIzZGYtNTliZmIwMGM1ZmU1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzQ3MTgsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.5P0_RXDfSKRr3SUmVbgeCRa2c3Sg-5ylw-Dq2hagf9g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ActionId\":\"af897163-6642-4c27-8084-db99788e77e9\",\n\t\"account\":{\n\t//\"UserName\":\"npapazian105\",\n\t//\"Password\":\"123105\",\n\t//\"Email\":\"npapazian105@cite.gr\",\n\t//\"firstName\":\"nikolas105\",\n\t//\"lastName\": \"papazian105\",\n\t//\"role\": \"Admin\",\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/accountAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"accountAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Passwords  Action",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMWZlMzk3NjktMWUyMy00YjUwLTk3MzgtMDU1M2E4NzViZTI2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTU2OTg0MDk4MywiaXNzIjoibG9jYWxob3N0IiwiYXVkIjoiU2FtcGxlQXVkaWVuY2UifQ.oj9_zm7a3G74odAKiroqAwPxwERxqx9RfSmRc6-4T4U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ActionId\":\"3cf704fb-6d37-4661-a543-7c7a1bac3284\",\n\t\"name\":\"Google11449\",\n\t\"LoginLink\":\"google.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/passwords/passwordAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"passwords",
+						"passwordAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Info Action",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiNmJiMDdiZGUtYTM0OC00YWJjLTgzMjAtOTEyMjVmZGU0NDdkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzM3NzUsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.Jvf8bsU-4mMmtGBHF4GGSm3VfmN0gpVx2qVAMcg-BsU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n \t\r\n \t\"ActionId\":\"3cb81d8a-c477-440a-81cd-36745e6e79d8\",\r\n \t\"UserName\":\"npapazian105\",\r\n\t\r\n\t\"Account\":\r\n\t{\r\n        \"firstName\": \"nikolasPapazian\",\r\n        \"lastName\": \"papazianNikolas\",\r\n        \"userName\": \"tasos\",\r\n        \"email\": \"npapaziancite@cite.gr\",\r\n        \"sex\": 0,\r\n        \"role\": \"Admin\",\r\n        \"password\": \"tasos\",\r\n        \"passwords\": []\r\n   }\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/accountAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"accountAction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

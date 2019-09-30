@@ -11,14 +11,6 @@ using PasswordServerApi.Security.SecurityModels;
 
 namespace PasswordServerApi.Controllers
 {
-	/*
-	 * https://localhost:44390/api/Authentication/logIn
-	 * {
-	 * "username":"npapazian105",
-	 * "password":"123105"
-	 * }
-	*/
-
 	//api/passwords
 	[Authorize(Roles = Role.User + " , " + Role.Admin)]
 	[Route("api/[controller]")]
@@ -32,25 +24,7 @@ namespace PasswordServerApi.Controllers
 			_passwordService = passwordService;
 		}
 
-		/*
-		 * https://localhost:44390/api/passwords
 		
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns>Return List With All Passwords</returns>
-		[HttpPost]
-		[ActionName("getPasswords")]
-		public Response<IEnumerable<PasswordDto>> Get()
-		{
-			return new Response<IEnumerable<PasswordDto>>()
-			{
-				Payload = _passwordService.GetPasswords(),
-				Warnnings = new List<string>()
-			};
-		}
-		 */
-
 		/// <summary>
 		/// 
 		/// </summary>
