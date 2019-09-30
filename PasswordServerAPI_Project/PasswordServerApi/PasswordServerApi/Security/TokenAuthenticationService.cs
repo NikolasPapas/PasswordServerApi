@@ -52,7 +52,6 @@ namespace PasswordServerApi.Security
 
 		}
 
-
 		public bool IsAuthorized(Guid id, string Token)
 		{
 			AccountDto account = _userManagementService.FindValidUserID(id);

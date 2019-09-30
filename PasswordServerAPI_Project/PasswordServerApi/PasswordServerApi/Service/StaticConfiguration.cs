@@ -38,9 +38,7 @@ namespace PasswordServerApi.Service
 		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full };
 		public static readonly ApplicationAction ActionSavePassword = new ApplicationAction { Id = ActionSavePasswordId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση κωδικου", NeedsComment = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full };
 
-
 		#endregion
-
 
 		public static readonly Dictionary<string, List<ApplicationAction>> GetAcrionByRole = new Dictionary<string, List<ApplicationAction>>()
 		{
@@ -51,7 +49,7 @@ namespace PasswordServerApi.Service
 			{ Role.User, new List<ApplicationAction>(){ ActionSavePassword, ActionGetPasswords } },
 
 			//Viewer Actions
-			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetAccountAndPassword } },
+			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetPasswords } },
 		};
 
 

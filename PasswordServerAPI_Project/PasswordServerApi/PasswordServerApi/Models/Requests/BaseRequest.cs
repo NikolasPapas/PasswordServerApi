@@ -9,7 +9,6 @@ namespace PasswordServerApi.Models.Requests
 		[DataMember(Name = "accountId")]
 		public Guid AccountId { get; set; }
 
-
 		[DataMember(Name = "actionId")]
 		public Guid ActionId { get; set; }
 

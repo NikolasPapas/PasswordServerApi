@@ -20,8 +20,6 @@ namespace PasswordServerApi.Service
 			_baseService = baseService;
 		}
 
-
-
 		#region Dictionary ActionId To Function
 
 		private readonly Dictionary<Guid, Func<PasswordDto, PasswordDto, PasswordActionRequest, Response<List<PasswordDto>>>> _actionIdToFunction;
@@ -40,9 +38,6 @@ namespace PasswordServerApi.Service
 		}
 
 		#endregion
-
-
-
 
 		public Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request)
 		{
@@ -73,7 +68,6 @@ namespace PasswordServerApi.Service
 			};
 
 		}
-
 
 		private Response<List<PasswordDto>> SeveAccountFunc(PasswordDto savedPass, PasswordDto requesPass, PasswordActionRequest request)
 		{

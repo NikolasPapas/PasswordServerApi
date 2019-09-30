@@ -22,7 +22,6 @@ namespace PasswordServerApi.Service
 			_dbContext = dbContext;
 		}
 
-
 		#region Database Connections Account
 
 		public AccountDto GetSpesificAccount(AccountActionRequest request)
@@ -32,7 +31,6 @@ namespace PasswordServerApi.Service
 
 			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
 		}
-
 
 		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request)
 		{
@@ -135,7 +133,6 @@ namespace PasswordServerApi.Service
 		#endregion
 
 		#endregion
-
 
 		#region Database Connections Passwords
 

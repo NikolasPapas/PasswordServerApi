@@ -76,7 +76,6 @@ namespace PasswordServerApi.Service
 			};
 		}
 
-
 		private Response<List<AccountDto>> ActionGetActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
@@ -87,7 +86,6 @@ namespace PasswordServerApi.Service
 				Payload = new List<AccountDto>() { savedAccount }
 			};
 		}
-
 
 		private Response<List<AccountDto>> ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
@@ -105,7 +103,6 @@ namespace PasswordServerApi.Service
 			};
 		}
 
-
 		private Response<List<AccountDto>> ActionGetAccountAndPasswordIdFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 
@@ -114,6 +111,7 @@ namespace PasswordServerApi.Service
 				Payload = _baseService.GetAccounts(request).ToList()
 			};
 		}
+
 		#endregion
 
 	}
