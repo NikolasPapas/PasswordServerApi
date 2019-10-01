@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,10 +22,12 @@ namespace PasswordServerApi.Controllers
 	public class AccountsController : ControllerBase
 	{
 		private readonly IAccountService _accountService;
+		private readonly IExportService _exportService;
 
-		public AccountsController(IAccountService accountService)
+		public AccountsController(IAccountService accountService, IExportService exportService)
 		{
 			_accountService = accountService;
+			_exportService = exportService;
 		}
 
 		/*
@@ -60,6 +63,14 @@ namespace PasswordServerApi.Controllers
 		{
 			request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
 			return _accountService.ExecuteAction(request);
+		}
+
+
+
+		[HttpPost("exportReport")]
+		public HttpResponseMessage ExportReport()
+		{ 
+			return _exportService.Export();
 		}
 
 	}

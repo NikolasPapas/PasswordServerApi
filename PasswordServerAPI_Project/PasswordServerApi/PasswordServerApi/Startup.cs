@@ -39,12 +39,14 @@ namespace PasswordServerApi
 		{
 
 			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
-
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
+			services.AddTransient<IExportService, ExportService>();
+
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
 			services.AddScoped<IUserManagementService, UserManagementService>();
+
 
 			services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
 			var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();

@@ -33,7 +33,7 @@ namespace PasswordServerApi.Service
 					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>>()
 					{
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
-						{ StaticConfiguration.ActionGetAccountId, ActionGetActionGetAccountFunc },
+						{ StaticConfiguration.ActionGetAccountId, ActionGetAccountFunc },
 						{ StaticConfiguration.ActionAddNewAccountId, ActionAddNewAccountFunc },
 						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
 						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
@@ -77,7 +77,7 @@ namespace PasswordServerApi.Service
 			};
 		}
 
-		private Response<List<AccountDto>> ActionGetActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private Response<List<AccountDto>> ActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));

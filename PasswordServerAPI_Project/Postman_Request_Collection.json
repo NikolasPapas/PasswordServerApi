@@ -436,6 +436,37 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Export Report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYTg0ZDEyNmUtZjNjMS00YWNhLTg4NmEtYThhNDAwM2YwNTQ4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5Mzg5MDAsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.W7-FrvFR1WFiuamFW-E0MR8fwDCxysWURh7bK0RJ0io",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/exportReport",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"exportReport"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
