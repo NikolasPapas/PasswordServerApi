@@ -20,6 +20,8 @@ namespace PasswordServerApi.Interfaces
 
 		AccountDto AddNewAccount(AccountDto request);
 
+		AccountDto RemoveAccount(AccountDto request);
+
 
 
 		PasswordDto GetPassword(Guid id);

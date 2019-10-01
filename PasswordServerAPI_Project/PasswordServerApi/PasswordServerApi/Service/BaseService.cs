@@ -80,12 +80,20 @@ namespace PasswordServerApi.Service
 
 		public AccountDto GetAccountById(Guid id)
 		{
-			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
+			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
 		}
 
 		public AccountDto AddNewAccount(AccountDto request)
 		{
 			_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
+			_dbContext.SaveChanges();
+			return request;
+		}
+
+		public AccountDto RemoveAccount(AccountDto request)
+		{
+			var accountToRemove =_dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
+			_dbContext.Accounts.Remove(accountToRemove);
 			_dbContext.SaveChanges();
 			return request;
 		}

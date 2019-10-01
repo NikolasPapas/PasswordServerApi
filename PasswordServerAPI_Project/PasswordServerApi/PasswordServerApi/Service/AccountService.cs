@@ -35,7 +35,8 @@ namespace PasswordServerApi.Service
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
 						{ StaticConfiguration.ActionGetAccountId, ActionGetActionGetAccountFunc },
 						{ StaticConfiguration.ActionAddNewAccountId, ActionAddNewAccountFunc },
-						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordIdFunc },
+						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
+						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
 
 					};
 			}
@@ -103,7 +104,7 @@ namespace PasswordServerApi.Service
 			};
 		}
 
-		private Response<List<AccountDto>> ActionGetAccountAndPasswordIdFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private Response<List<AccountDto>> ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 
 			return new Response<List<AccountDto>>()
@@ -112,6 +113,21 @@ namespace PasswordServerApi.Service
 			};
 		}
 
+		private Response<List<AccountDto>> ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		{
+			AccountDto accountToDelete = _baseService.GetAccountById(requestedAccount.AccountId);
+			accountToDelete.Passwords.ForEach(password =>
+			{
+				password = _baseService.GetPassword(password.PasswordId);
+				_baseService.RemovePassword(password);
+			});
+			_baseService.RemoveAccount(accountToDelete);
+
+			return new Response<List<AccountDto>>()
+			{
+				Payload = new List<AccountDto> { accountToDelete }
+			};
+		}
 		#endregion
 
 	}

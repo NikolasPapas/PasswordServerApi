@@ -40,7 +40,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n//\t\"username\":\"username105\",\n//\t\"password\":\"105\"\n\n\n\t\"username\":\"username106\",\n\t\"password\":\"106\"\n\n\n//\t\"username\":\"username107\",\n//\t\"password\":\"107\"\n\n}"
+					"raw": "{\n\t\"username\":\"username105\",\n\t\"password\":\"105\"\n\n\n//\t\"username\":\"username106\",\n//\t\"password\":\"106\"\n\n\n//\t\"username\":\"username107\",\n//\t\"password\":\"107\"\n\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44390/api/Authentication/logIn",
@@ -59,7 +59,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Account AccountAction",
+			"name": "Get Account",
 			"protocolProfileBehavior": {
 				"followAuthorizationHeader": false
 			},
@@ -69,7 +69,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiNmJiMDdiZGUtYTM0OC00YWJjLTgzMjAtOTEyMjVmZGU0NDdkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzM3NzUsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.Jvf8bsU-4mMmtGBHF4GGSm3VfmN0gpVx2qVAMcg-BsU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMWNlNmQyYTEtMzE1ZS00OWI2LTkxZTQtODQzYTA2ZTI1MGI5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5MTM3MDIsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.9ec0STRBFqgdJWwm1-MpP4GSNzKCf0SoAr_4NTw7hzE",
 							"type": "string"
 						}
 					]
@@ -85,7 +85,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"ActionId\":\"C25B9787-8751-4FBD-BC6C-C63A48026D30\",\n\t//\"UserName\":\"npapazian105\",\n\t//\"Password\":\"123105\",\n\t//\"Email\":\"npapazian105@cite.gr\",\n}",
+					"raw": "{\n\t\"ActionId\":\"c25b9787-8751-4fbd-bc6c-c63a48026d30\",\n\t//\"UserName\":\"npapazian105\",\n\t//\"Password\":\"123105\",\n\t//\"Email\":\"npapazian105@cite.gr\",\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -109,14 +109,14 @@
 			"response": []
 		},
 		{
-			"name": "Update Account AccountAction",
+			"name": "Update Account",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZDRjNjRkNTUtZGU3Yi00OGIwLWEyZmItZmMxOTk3OGQ3NDMwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4Mjk3NTEsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.pcTprrjS2RzJheZKIDQ9yLco5Q7MIPQCX73FYWvNOJ4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiODE0ODRjZjctMzYxYi00OTQ1LWJlNGQtYTU3OTYxMGVjZmVmIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5MTQ0MDcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.aaxO54zYPbLu-VZdTzRkuanjHnmvpJy9zrLNFMCVPVc",
 							"type": "string"
 						}
 					]
@@ -132,7 +132,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n \t\r\n \t\"ActionId\":\"1086495e-fd61-4397-b3a9-87b737adeddd\",\r\n \t\"UserName\":\"npapazian105\",\r\n\t\r\n\t\"Account\":\r\n\t{\r\n        \"firstName\": \"nikolasPapazian\",\r\n        \"lastName\": \"papazianNikolas\",\r\n        \"userName\": \"npapazianNikolas\",\r\n        \"email\": \"npapaziancite@cite.gr\",\r\n        \"sex\": 0,\r\n        \"password\": \"123105\",\r\n        \"passwords\": []\r\n   }\r\n }",
+					"raw": " {\r\n \t\r\n \t\"ActionId\":\"1086495e-fd61-4397-b3a9-87b737adeddd\",\r\n \t\"UserName\":\"npapazian105\",\r\n\t\r\n\t\"Account\":\r\n\t{\r\n        \"firstName\": \"nikolasPapazian\",\r\n        \"lastName\": \"papazianNikolas\",\r\n        \"userName\": \"npapazianNikolas\",\r\n        \"email\": \"npapaziancite@cite.gr\",\r\n        \"sex\": 0,\r\n        \"password\": \"105\",\r\n        \"passwords\": []\r\n   }\r\n }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -156,14 +156,14 @@
 			"response": []
 		},
 		{
-			"name": "Scan oll Accounts",
+			"name": "Scan  Accounts and Passwords",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmNiZWJhYjItMjFjMS00ZTUyLWIzZGYtNTliZmIwMGM1ZmU1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzQ3MTgsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.5P0_RXDfSKRr3SUmVbgeCRa2c3Sg-5ylw-Dq2hagf9g",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZTJhNTkwZDQtNTJiNy00MjY1LWIzYWEtNjM4OGQyMWRmMDg0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5MTUwMDYsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.lnWYZtV22Rwt8Mx8tEIromSfe76Mo6ISVJ7ZAH7Ou0A",
 							"type": "string"
 						}
 					]
@@ -203,7 +203,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Passwords  Action",
+			"name": "Get Password",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -250,14 +250,14 @@
 			"response": []
 		},
 		{
-			"name": "Get Account Info Action",
+			"name": "Add Account",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiNmJiMDdiZGUtYTM0OC00YWJjLTgzMjAtOTEyMjVmZGU0NDdkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk4MzM3NzUsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.Jvf8bsU-4mMmtGBHF4GGSm3VfmN0gpVx2qVAMcg-BsU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZTJhNTkwZDQtNTJiNy00MjY1LWIzYWEtNjM4OGQyMWRmMDg0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5MTUwMDYsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.lnWYZtV22Rwt8Mx8tEIromSfe76Mo6ISVJ7ZAH7Ou0A",
 							"type": "string"
 						}
 					]
@@ -385,6 +385,53 @@
 						"api",
 						"passwords",
 						"passwordAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZTJhNTkwZDQtNTJiNy00MjY1LWIzYWEtNjM4OGQyMWRmMDg0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1Njk5MTUwMDYsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.lnWYZtV22Rwt8Mx8tEIromSfe76Mo6ISVJ7ZAH7Ou0A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ActionId\": \"fc1dccad-b915-422c-a23f-8dce1a2c27f3\",\n    \"Account\": {\n        \"accountId\": \"7ca80cb5-518d-45f6-86e2-312173efd45c\",\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44390/api/accounts/accountAction",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44390",
+					"path": [
+						"api",
+						"accounts",
+						"accountAction"
 					]
 				}
 			},
