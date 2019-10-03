@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.Service
 {
-	public class ExportService :IExportService
+	public class ExportService : IExportService
 	{
 
 		private List<ExcelWorksheet> _worksheets;
@@ -31,22 +31,21 @@ namespace PasswordServerApi.Service
 			{
 				ExcelWorksheet FirstFirstWorksheet = package.Workbook.Worksheets.Add("Λίστα λογαριασμόν");
 				FirstFirstWorksheet.PrinterSettings.Orientation = eOrientation.Landscape;
-								
+
 				FirstRowData(FirstFirstWorksheet);
 				RestData(FirstFirstWorksheet, accounts);
 				SetExcelStyles(FirstFirstWorksheet);
 
-				accounts.ForEach(account => {
+				accounts.ForEach(account =>
+				{
 					ExcelWorksheet data = (package.Workbook.Worksheets.Add(account.UserName));
 					AddWorksheetData(data, account);
-
-
-					});
+				});
 
 				var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
 				response.Headers.Clear();
 				response.Content = new ByteArrayContent(package.GetAsByteArray());
-				SetFileSettings("Report_"+DateTime.Now.Date.ToShortDateString(), response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				SetFileSettings("Report_" + DateTime.Now.Date.ToShortDateString(), response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 				package.SaveAs(new FileInfo("C:\\exporPasswordServerApi.xlsx"));
 				return response;
 			}
@@ -78,7 +77,6 @@ namespace PasswordServerApi.Service
 				rowIndex++;
 			}
 			Worksheet.Cells[1, 1, accounts.Count(), 2].AutoFilter = true;
-
 		}
 
 
@@ -128,10 +126,10 @@ namespace PasswordServerApi.Service
 			AddCell(Worksheet, rowIndexData, 4, account?.Email, false);
 
 			AddCell(Worksheet, rowIndexHeder, 5, "Sex", true);
-			AddCell(Worksheet, rowIndexData, 5, account?.Sex+"", false);
+			AddCell(Worksheet, rowIndexData, 5, account?.Sex + "", false);
 
 			AddCell(Worksheet, rowIndexHeder, 6, "LastLogIn", true);
-			AddCell(Worksheet, rowIndexData, 6, account?.LastLogIn != null ? account?.LastLogIn.Value.ToShortDateString() : "" , false);
+			AddCell(Worksheet, rowIndexData, 6, account?.LastLogIn != null ? account?.LastLogIn.Value.ToShortDateString() : "", false);
 
 			AddCell(Worksheet, rowIndexHeder, 7, "Password", true);
 			AddCell(Worksheet, rowIndexData, 7, account?.Password, false);
@@ -141,7 +139,6 @@ namespace PasswordServerApi.Service
 
 			AddCell(Worksheet, rowIndexHeder, 9, "AccountId", true);
 			AddCell(Worksheet, rowIndexData, 9, account?.AccountId.ToString(), false);
-
 		}
 
 		private void AddPassworddata(ExcelWorksheet Worksheet, List<PasswordDto> paswords)
@@ -156,7 +153,7 @@ namespace PasswordServerApi.Service
 			AddCell(Worksheet, 11, 1, "PasswordId", true);
 
 			int columnIndexData = 2;
-			int index = 1; 
+			int index = 1;
 			paswords.ForEach(pasword =>
 			{
 				pasword = _baseService.GetPassword(pasword.PasswordId);
@@ -173,7 +170,7 @@ namespace PasswordServerApi.Service
 			});
 		}
 
-		private void AddCell(ExcelWorksheet Worksheet, int row,int column,string Value,bool Header)
+		private void AddCell(ExcelWorksheet Worksheet, int row, int column, string Value, bool Header)
 		{
 			Worksheet.Cells[row, column].Value = Value;
 			Worksheet.Cells[row, column].Style.Font.Size = 12;

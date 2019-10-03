@@ -31,7 +31,7 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "lastLogIn")]
 		public DateTime? LastLogIn { get; set; }
 
-		
+
 		//PRIVATE
 		[DataMember(Name = "password")]
 		public string Password { get; set; }

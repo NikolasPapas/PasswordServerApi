@@ -12,7 +12,5 @@ namespace PasswordServerApi.Interfaces
 	public interface IAccountService
 	{
 		Response<List<AccountDto>> ExecuteAction(AccountActionRequest request);
-
-
 	}
 }

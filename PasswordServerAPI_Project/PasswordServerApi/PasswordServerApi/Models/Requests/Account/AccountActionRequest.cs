@@ -9,9 +9,5 @@ namespace PasswordServerApi.Models.Account.Requests
 	{
 		[DataMember(Name = "account")]
 		public AccountDto Account { get; set; }
-
-
-
-		
 	}
 }

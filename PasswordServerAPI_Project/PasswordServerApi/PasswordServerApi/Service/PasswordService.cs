@@ -62,19 +62,14 @@ namespace PasswordServerApi.Service
 
 		private Response<List<PasswordDto>> GetPaswordsFunc(PasswordDto savedPass, PasswordDto requesPass, AccountDto account, PasswordActionRequest request)
 		{
-			return new Response<List<PasswordDto>>()
-			{
-				Payload = _baseService.GetPasswords(request, account).ToList()
-			};
+			return new Response<List<PasswordDto>>() { Payload = _baseService.GetPasswords(request, account).ToList() };
 
 		}
 
 		private Response<List<PasswordDto>> UpdateOrAddPasswordFunc(PasswordDto savedPass, PasswordDto requesPass, AccountDto account, PasswordActionRequest request)
 		{
 			if (account.Passwords.Find(pass => requesPass?.PasswordId == pass.PasswordId) != null)
-			{
 				_baseService.UpdatePassword(requesPass);
-			}
 			else
 			{
 				Guid newPassId = Guid.NewGuid();
@@ -84,10 +79,7 @@ namespace PasswordServerApi.Service
 				_baseService.AddNewPassword(requesPass);
 			}
 
-			return new Response<List<PasswordDto>>()
-			{
-				Payload = new List<PasswordDto>() { requesPass }
-			};
+			return new Response<List<PasswordDto>>() { Payload = new List<PasswordDto>() { requesPass } };
 		}
 
 
@@ -101,11 +93,7 @@ namespace PasswordServerApi.Service
 			_baseService.UpdateAccount(account, true);
 			_baseService.RemovePassword(requesPass);
 
-			return new Response<List<PasswordDto>>()
-			{
-				Payload = new List<PasswordDto>() { requesPass }
-			};
-
+			return new Response<List<PasswordDto>>() { Payload = new List<PasswordDto>() { requesPass } };
 		}
 
 

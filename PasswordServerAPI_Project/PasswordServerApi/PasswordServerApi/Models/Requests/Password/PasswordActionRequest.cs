@@ -8,6 +8,5 @@ namespace PasswordServerApi.Models.Requests.Password
 	{
 		[DataMember(Name = "password")]
 		public PasswordDto Password { get; set; }
-
 	}
 }

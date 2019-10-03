@@ -69,7 +69,7 @@ namespace PasswordServerApi.Controllers
 
 		[HttpPost("exportReport")]
 		public HttpResponseMessage ExportReport()
-		{ 
+		{
 			return _exportService.Export();
 		}
 

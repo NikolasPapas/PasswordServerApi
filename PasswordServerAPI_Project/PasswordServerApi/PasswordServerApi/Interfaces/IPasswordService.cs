@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.Interfaces
 {
-    public interface IPasswordService
+	public interface IPasswordService
 	{
 		Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request);
-
-		
-    }
+	}
 }

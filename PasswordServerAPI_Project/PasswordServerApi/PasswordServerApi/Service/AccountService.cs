@@ -70,11 +70,7 @@ namespace PasswordServerApi.Service
 		private Response<List<AccountDto>> ActionSeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 			requestedAccount.AccountId = savedAccount.AccountId;
-			return new Response<List<AccountDto>>()
-			{
-				Payload = new List<AccountDto>() { _baseService.UpdateAccount(requestedAccount, false) },
-				Warnnings = new List<string>()
-			};
+			return new Response<List<AccountDto>>() { Payload = new List<AccountDto>() { _baseService.UpdateAccount(requestedAccount, false) } };
 		}
 
 		private Response<List<AccountDto>> ActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
@@ -82,10 +78,7 @@ namespace PasswordServerApi.Service
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			savedAccount.Passwords = passwords;
-			return new Response<List<AccountDto>>()
-			{
-				Payload = new List<AccountDto>() { savedAccount }
-			};
+			return new Response<List<AccountDto>>() { Payload = new List<AccountDto>() { savedAccount } };
 		}
 
 		private Response<List<AccountDto>> ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
@@ -98,19 +91,13 @@ namespace PasswordServerApi.Service
 
 			_baseService.AddNewAccount(requestedAccount);
 
-			return new Response<List<AccountDto>>()
-			{
-				Payload = new List<AccountDto>() { requestedAccount }
-			};
+			return new Response<List<AccountDto>>() { Payload = new List<AccountDto>() { requestedAccount } };
 		}
 
 		private Response<List<AccountDto>> ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 
-			return new Response<List<AccountDto>>()
-			{
-				Payload = _baseService.GetAccounts(request).ToList()
-			};
+			return new Response<List<AccountDto>>() { Payload = _baseService.GetAccounts(request).ToList() };
 		}
 
 		private Response<List<AccountDto>> ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
@@ -123,10 +110,7 @@ namespace PasswordServerApi.Service
 			});
 			_baseService.RemoveAccount(accountToDelete);
 
-			return new Response<List<AccountDto>>()
-			{
-				Payload = new List<AccountDto> { accountToDelete }
-			};
+			return new Response<List<AccountDto>>() { Payload = new List<AccountDto> { accountToDelete } };
 		}
 		#endregion
 
