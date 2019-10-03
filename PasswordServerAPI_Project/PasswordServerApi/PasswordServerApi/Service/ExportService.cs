@@ -43,11 +43,11 @@ namespace PasswordServerApi.Service
 
 					});
 
-				package.SaveAs(new FileInfo("C:\\EXCELL_REPORTS\\exporPasswordServerApi.xlsx"));
 				var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
 				response.Headers.Clear();
 				response.Content = new ByteArrayContent(package.GetAsByteArray());
 				SetFileSettings("Report_"+DateTime.Now.Date.ToShortDateString(), response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				package.SaveAs(new FileInfo("C:\\exporPasswordServerApi.xlsx"));
 				return response;
 			}
 		}
