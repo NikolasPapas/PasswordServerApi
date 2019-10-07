@@ -23,13 +23,13 @@ namespace PasswordServerApi.Service
 
 		#region Dictionary ActionId To Function
 
-		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> _actionIdToFunction;
+		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> _actionIdToFunction = null;
 
 		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> ActionIdToFunction
 		{
 			get
 			{
-				return _actionIdToFunction ??
+				return _actionIdToFunction ?? (_actionIdToFunction =
 					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>>()
 					{
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
@@ -38,7 +38,7 @@ namespace PasswordServerApi.Service
 						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
 						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
 
-					};
+					});
 			}
 		}
 

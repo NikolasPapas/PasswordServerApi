@@ -13,8 +13,6 @@ namespace PasswordServerApi.Service
 {
 	public class ExportService : IExportService
 	{
-
-		private List<ExcelWorksheet> _worksheets;
 		private IBaseService _baseService;
 
 		public ExportService(IBaseService baseService)
@@ -25,7 +23,6 @@ namespace PasswordServerApi.Service
 		public HttpResponseMessage Export()
 		{
 			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }).ToList();
-			//accounts.ForEach(account => account.Passwords.ForEach(pass => pass = _baseService.GetPassword(pass.PasswordId)));
 
 			using (var package = new ExcelPackage())
 			{
