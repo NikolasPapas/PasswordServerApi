@@ -44,22 +44,42 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
+		#region Role And Actiond Dictionary
+
 		public static readonly Dictionary<string, List<ApplicationAction>> GetAcrionByRole = new Dictionary<string, List<ApplicationAction>>()
 		{
 			//Admin Actions
-			{ Role.Admin, new List<ApplicationAction>(){ ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, ActionRemoveAccount } },
+			{ Role.Admin, GetAcrionByAdminRole() },
 
 			//User Actions
-			{ Role.User, new List<ApplicationAction>(){ ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword } },
+			{ Role.User, GetAcrionByUserRole() },
 
 			//Viewer Actions
-			{ Role.Viewer, new List<ApplicationAction>(){ ActionGetAccounts, ActionGetPasswords } },
+			{ Role.Viewer, GetAcrionByViewerRole() },
 		};
 
 
-		#region Excell Report 
+		public static List<ApplicationAction> GetAcrionByAdminRole()
+		{
+			return new List<ApplicationAction>(){
+			ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, ActionRemoveAccount
+			};
+		}
 
+		public static List<ApplicationAction> GetAcrionByUserRole()
+		{
+			return new List<ApplicationAction>(){
+			 ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword
+			};
+		}
 
+		public static List<ApplicationAction> GetAcrionByViewerRole()
+		{
+			return new List<ApplicationAction>()
+			{
+				ActionGetAccounts, ActionGetPasswords
+			};
+		}
 
 		#endregion
 
