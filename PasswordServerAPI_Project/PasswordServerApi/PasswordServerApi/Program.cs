@@ -13,6 +13,7 @@ namespace PasswordServerApi
 
 		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
+			.UseUrls("http://*:53257;https://hostname:44390")
 				.UseStartup<Startup>();
 
 	}
