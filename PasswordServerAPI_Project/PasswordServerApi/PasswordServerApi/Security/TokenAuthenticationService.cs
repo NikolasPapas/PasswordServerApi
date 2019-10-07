@@ -8,6 +8,7 @@ using PasswordServerApi.DTO;
 using PasswordServerApi.Models;
 using System.Collections.Generic;
 using PasswordServerApi.Service;
+using PasswordServerApi.Interfaces;
 
 namespace PasswordServerApi.Security
 {
@@ -15,11 +16,13 @@ namespace PasswordServerApi.Security
 	{
 		private readonly IUserManagementService _userManagementService;
 		private readonly TokenManagement _tokenManagement;
+		private readonly ILoggingService _logger;
 
-		public TokenAuthenticationService(IUserManagementService service, Microsoft.Extensions.Options.IOptions<TokenManagement> tokenManagement)
+		public TokenAuthenticationService(IUserManagementService service, Microsoft.Extensions.Options.IOptions<TokenManagement> tokenManagement, ILoggingService logger)
 		{
 			_userManagementService = service;
 			_tokenManagement = tokenManagement.Value;
+			_logger = logger;
 		}
 
 		public List<ApplicationAction> IsAuthenticated(TokenRequest request, out string token)
@@ -27,7 +30,11 @@ namespace PasswordServerApi.Security
 			List<ApplicationAction> ActionList = new List<ApplicationAction>();
 			token = string.Empty;
 			AccountDto user = _userManagementService.FindValidUser(request.Username, request.Password);
-			if (user == null) return null;
+			if (user == null)
+			{
+				_logger.LogInfo($"UnAuthorized UserName: ${request.Username}");
+				return null;
+			}
 			var claim = new[]
 			{
 				new Claim(ClaimTypes.Name, user.AccountId.ToString()),
@@ -44,6 +51,8 @@ namespace PasswordServerApi.Security
 				signingCredentials: credentials
 			);
 			token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
+
+			_logger.LogInfo($"User ${user.UserName} is logged in");
 
 			_userManagementService.SaveNewToken(user.AccountId, token);
 			if (StaticConfiguration.GetAcrionByRole.ContainsKey(user.Role.ToString()))
