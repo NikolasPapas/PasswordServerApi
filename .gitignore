@@ -285,3 +285,5 @@ paket-files/
 __pycache__/
 *.pyc
 PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/Debug/netcoreapp2.2/PasswordServerApi.csproj.FileListAbsolute.txt
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/Controllers/AccountsController.cs
