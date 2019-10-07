@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -161,9 +161,6 @@ namespace PasswordServerApi
 			}
 		}
 
-
-
-
 		private PasswordModel GetDumyPassword(int i)
 		{
 			return new PasswordModel()
@@ -194,7 +191,6 @@ namespace PasswordServerApi
 				PasswordIds = new List<string>() { },
 			};
 		}
-
 
 		private Tuple<AccountModel, List<PasswordModel>> GetDumyfullAccount(int i)
 		{

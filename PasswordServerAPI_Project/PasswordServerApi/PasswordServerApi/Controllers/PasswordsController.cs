@@ -24,11 +24,11 @@ namespace PasswordServerApi.Controllers
 			_passwordService = passwordService;
 		}
 
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="request"></param>
-	/// <returns></returns>
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
 		[HttpPost("passwordAction")]
 		public Response<List<PasswordDto>> PasswordAction([FromBody] PasswordActionRequest request)
 		{
