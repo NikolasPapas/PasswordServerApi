@@ -14,11 +14,12 @@ namespace PasswordServerApi.Service
 {
 	public class AccountService : IAccountService
 	{
-		IBaseService _baseService;
-
-		public AccountService(IBaseService baseService)
+		private IBaseService _baseService;
+		private ILoggingService _logger;
+		public AccountService(IBaseService baseService, ILoggingService logger)
 		{
 			_baseService = baseService;
+			_logger = logger;
 		}
 
 		#region Dictionary ActionId To Function

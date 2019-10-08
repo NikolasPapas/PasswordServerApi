@@ -14,10 +14,12 @@ namespace PasswordServerApi.Service
 	public class ExportService : IExportService
 	{
 		private IBaseService _baseService;
+		private ILoggingService _logger;
 
-		public ExportService(IBaseService baseService)
+		public ExportService(IBaseService baseService, ILoggingService logger)
 		{
 			_baseService = baseService;
+			_logger = logger;
 		}
 
 		public HttpResponseMessage Export()

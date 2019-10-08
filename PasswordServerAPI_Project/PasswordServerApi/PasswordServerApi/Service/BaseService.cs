@@ -13,10 +13,14 @@ namespace PasswordServerApi.Service
 {
 	public class BaseService : IBaseService
 	{
-		ApplicationDbContext _dbContext;
-		public BaseService(ApplicationDbContext dbContext)
+		private ApplicationDbContext _dbContext;
+
+		private ILoggingService _logger;
+
+		public BaseService(ApplicationDbContext dbContext, ILoggingService logger)
 		{
 			_dbContext = dbContext;
+			_logger = logger;
 		}
 
 		#region Database Connections Account
@@ -92,7 +96,7 @@ namespace PasswordServerApi.Service
 
 		public AccountDto RemoveAccount(AccountDto request)
 		{
-			var accountToRemove =_dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
+			var accountToRemove = _dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
 			_dbContext.Accounts.Remove(accountToRemove);
 			_dbContext.SaveChanges();
 			return request;
@@ -187,7 +191,7 @@ namespace PasswordServerApi.Service
 
 		public PasswordDto RemovePassword(PasswordDto requestPassword)
 		{
-			var passToRemove =_dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
+			var passToRemove = _dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
 			requestPassword = GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(passToRemove.JsonData));
 			_dbContext.Passwords.Remove(passToRemove);
 			_dbContext.SaveChanges();

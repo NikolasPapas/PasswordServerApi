@@ -11,22 +11,27 @@ namespace PasswordServerApi.Service
 
 		public LoggingService(ILogger<LoggingService> logger)
 		{
-
 			_logger = logger;
 		}
 
 		public void LogInfo(string message)
 		{
-			_logger.LogWarning($"{LoggerMessage} {message}");
+			_logger.LogInformation($"Information -: {LoggerMessage} {message}");
 		}
 
 		public void LogWarning(string message)
 		{
-			_logger.LogError($"{LoggerMessage} {message}");
+			_logger.LogWarning($"Warning -: {LoggerMessage} {message}");
 		}
+
+		public void LogError(string message)
+		{
+			_logger.LogError($"Error -: {LoggerMessage} {message}");
+		}
+
 		public void LogCritical(string message)
 		{
-			_logger.LogCritical($"Critical {LoggerMessage} {message}");
+			_logger.LogCritical($"Critical -: {LoggerMessage} {message}");
 		}
 	}
 }
