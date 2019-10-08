@@ -23,11 +23,13 @@ namespace PasswordServerApi.Controllers
 	{
 		private readonly IAccountService _accountService;
 		private readonly IExportService _exportService;
+		private readonly ILoggingService _logger;
 
-		public AccountsController(IAccountService accountService, IExportService exportService)
+		public AccountsController(ILoggingService logger, IAccountService accountService, IExportService exportService)
 		{
 			_accountService = accountService;
 			_exportService = exportService;
+			_logger = logger;
 		}
 
 		/*
@@ -61,8 +63,16 @@ namespace PasswordServerApi.Controllers
 		[HttpPost("accountAction")]
 		public Response<List<AccountDto>> AccountAction([FromBody] AccountActionRequest request)
 		{
-			request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-			return _accountService.ExecuteAction(request);
+			try
+			{
+				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
+				return _accountService.ExecuteAction(request);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return new Response<List<AccountDto>>() { Error = "Error On Runn" };
 		}
 
 
@@ -70,7 +80,14 @@ namespace PasswordServerApi.Controllers
 		[HttpPost("exportReport")]
 		public HttpResponseMessage ExportReport()
 		{
-			return _exportService.Export();
+			try
+			{
+				return _exportService.Export();
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
 		}
 
 	}

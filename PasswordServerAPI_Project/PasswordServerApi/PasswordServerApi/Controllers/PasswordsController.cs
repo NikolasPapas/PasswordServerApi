@@ -18,10 +18,12 @@ namespace PasswordServerApi.Controllers
 	public class PasswordsController : ControllerBase
 	{
 		private readonly IPasswordService _passwordService;
+		private readonly ILoggingService _logger;
 
-		public PasswordsController(IPasswordService passwordService)
+		public PasswordsController(ILoggingService logger, IPasswordService passwordService)
 		{
 			_passwordService = passwordService;
+			_logger = logger;
 		}
 
 		/// <summary>
@@ -32,8 +34,16 @@ namespace PasswordServerApi.Controllers
 		[HttpPost("passwordAction")]
 		public Response<List<PasswordDto>> PasswordAction([FromBody] PasswordActionRequest request)
 		{
-			request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-			return _passwordService.PasswordAction(request);
+			try
+			{
+				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
+				return _passwordService.PasswordAction(request);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return new Response<List<PasswordDto>>() { Error = "Error On Runn" };
 		}
 	}
 }

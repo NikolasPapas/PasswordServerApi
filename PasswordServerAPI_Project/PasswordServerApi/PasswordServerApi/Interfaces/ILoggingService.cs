@@ -11,6 +11,8 @@ namespace PasswordServerApi.Interfaces
 
 		void LogWarning(string message);
 
+		void LogError(string message);
+
 		void LogCritical(string message);
 	}
 }
