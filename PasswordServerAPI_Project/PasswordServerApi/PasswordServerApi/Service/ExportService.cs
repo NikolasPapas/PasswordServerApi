@@ -192,7 +192,6 @@ namespace PasswordServerApi.Service
 
 		public StoreDocumentResponse Import(StoreDocumentRequest request)
 		{
-
 			List<AccountDto> parsed = null;
 			try
 			{

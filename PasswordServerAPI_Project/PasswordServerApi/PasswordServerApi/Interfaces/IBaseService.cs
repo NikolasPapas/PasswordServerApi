@@ -32,7 +32,6 @@ namespace PasswordServerApi.Interfaces
 
 		PasswordDto RemovePassword(PasswordDto requestPassword);
 
-
 		void FilldDatabase(List<AccountDto> accounts);
 	}
 }
