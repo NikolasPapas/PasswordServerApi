@@ -10,7 +10,7 @@ namespace PasswordServerApi.Interfaces
 	{
 		AccountDto GetSpesificAccount(AccountActionRequest request);
 
-		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request);
+		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request,bool full);
 
 		AccountDto UpdateAccount(AccountDto accountDto, bool full);
 
@@ -33,5 +33,6 @@ namespace PasswordServerApi.Interfaces
 		PasswordDto RemovePassword(PasswordDto requestPassword);
 
 
+		void FilldDatabase(List<AccountDto> accounts);
 	}
 }

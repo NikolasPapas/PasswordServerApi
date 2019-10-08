@@ -87,7 +87,7 @@ namespace PasswordServerApi.Service
 			requestedAccount.AccountId = Guid.NewGuid();
 			requestedAccount.Passwords = new List<PasswordDto>();
 
-			if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } }).ToList().Count > 0)
+			if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } },false).ToList().Count > 0)
 				throw new Exception("Rong Username");
 
 			_baseService.AddNewAccount(requestedAccount);
@@ -98,7 +98,7 @@ namespace PasswordServerApi.Service
 		private Response<List<AccountDto>> ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 
-			return new Response<List<AccountDto>>() { Payload = _baseService.GetAccounts(request).ToList() };
+			return new Response<List<AccountDto>>() { Payload = _baseService.GetAccounts(request,false).ToList() };
 		}
 
 		private Response<List<AccountDto>> ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)

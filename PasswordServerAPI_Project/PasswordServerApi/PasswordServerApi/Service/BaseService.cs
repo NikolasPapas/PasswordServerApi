@@ -4,7 +4,9 @@ using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
+using PasswordServerApi.Models.Enums;
 using PasswordServerApi.Models.Requests.Password;
+using PasswordServerApi.Security.SecurityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +35,7 @@ namespace PasswordServerApi.Service
 			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
 		}
 
-		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request)
+		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full)
 		{
 			List<AccountDto> accounts = new List<AccountDto>();
 			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
@@ -49,6 +51,8 @@ namespace PasswordServerApi.Service
 									(!string.IsNullOrWhiteSpace(request?.Account?.Role) ? x.Role == request?.Account?.Role : true);
 				return isCorrectAccount;
 			});
+			if (full)
+				return filtered;
 			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
 		}
 
@@ -227,6 +231,20 @@ namespace PasswordServerApi.Service
 				Sensitivity = dtoPassword.Sensitivity,
 				Strength = dtoPassword.Strength
 			};
+		}
+
+		#endregion
+
+
+		#region Fill Database
+
+		public void FilldDatabase(List<AccountDto> accounts)
+		{
+			foreach (AccountDto account in accounts)
+			{
+				_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = account.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(account)) });
+				_dbContext.Passwords.AddRange(account.Passwords.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId.ToString(), JsonData = JsonConvert.SerializeObject(x) }));
+			}
 		}
 
 		#endregion

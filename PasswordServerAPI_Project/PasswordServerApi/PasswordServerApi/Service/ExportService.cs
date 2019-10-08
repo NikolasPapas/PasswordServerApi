@@ -1,13 +1,17 @@
-﻿using OfficeOpenXml;
-using OfficeOpenXml.Style;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using OfficeOpenXml;
 using PasswordServerApi.DTO;
+using PasswordServerApi.Extensions;
 using PasswordServerApi.Interfaces;
+using PasswordServerApi.Models.Enums;
+using PasswordServerApi.Models.Requests.Account;
+using PasswordServerApi.Models.Responces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace PasswordServerApi.Service
 {
@@ -22,9 +26,11 @@ namespace PasswordServerApi.Service
 			_logger = logger;
 		}
 
+		#region Export 
+
 		public HttpResponseMessage Export()
 		{
-			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }).ToList();
+			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }, true).ToList();
 
 			using (var package = new ExcelPackage())
 			{
@@ -40,12 +46,11 @@ namespace PasswordServerApi.Service
 					ExcelWorksheet data = (package.Workbook.Worksheets.Add(account.UserName));
 					AddWorksheetData(data, account);
 				});
-
+				package.SaveAs(new FileInfo("C:\\PASSWORDSERVERAPI\\exporPasswordServerApi.xlsx"));
 				var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
 				response.Headers.Clear();
 				response.Content = new ByteArrayContent(package.GetAsByteArray());
 				SetFileSettings("Report_" + DateTime.Now.Date.ToShortDateString(), response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-				package.SaveAs(new FileInfo("C:\\exporPasswordServerApi.xlsx"));
 				return response;
 			}
 		}
@@ -180,5 +185,140 @@ namespace PasswordServerApi.Service
 			}
 			Worksheet.Cells[row, column].AutoFitColumns();
 		}
+
+		#endregion
+
+		#region Import 
+
+		public StoreDocumentResponse Import(StoreDocumentRequest request)
+		{
+
+			List<AccountDto> parsed = null;
+			try
+			{
+				parsed = ParseAdminSupplementaryDataFile(request);
+			}
+			catch (Exception) { throw new Exception("Αδύνατη η επεξεργασία του αρχείου."); }
+			_baseService.FilldDatabase(parsed);
+			return new StoreDocumentResponse() { WarningMessages = new List<string>() };
+		}
+
+
+		private List<AccountDto> ParseAdminSupplementaryDataFile(StoreDocumentRequest request)
+		{
+			List<AccountDto> result = new List<AccountDto>() { };
+			using (var stream = new MemoryStream(request.Data))
+			using (var doc = SpreadsheetDocument.Open(stream, false))
+			{
+				IEnumerable<Sheet> sheets = doc.WorkbookPart.Workbook.Descendants<Sheet>();
+				int accountIndex = ParseFirstSheetData(doc, GetSheetDataBySheetByIndex(doc, sheets, 0));
+				for (int i = 1; i <= accountIndex; i++)
+				{
+					result.Add(ParseAccountSheetData(doc, GetSheetDataBySheetByIndex(doc, sheets, i)));
+				}
+			}
+			return result;
+		}
+
+		#region Parcing
+
+		private int ParseFirstSheetData(SpreadsheetDocument doc, SheetData sheetData)
+		{
+			return ParseSupplementaryDataSheet(doc, sheetData, 2, (index, values) => index < 1 ? 0 : index).ToList().Last() - 1;
+		}
+
+		private AccountDto ParseAccountSheetData(SpreadsheetDocument doc, SheetData sheetData)
+		{
+			AccountDto account = new AccountDto() { Passwords = new List<PasswordDto>() { } };
+			int passwordIndex = 0;
+			string[][] passwords = null;
+			ParseSupplementaryDataSheet(doc, sheetData, 2, (index, values) =>
+			{
+				if (index > 0)
+				{
+					account.UserName = values[0];
+					account.FirstName = values[1];
+					account.LastName = values[2];
+					account.Email = values[3];
+					account.Sex = values[4] == "Male" ? Sex.Male : Sex.Famale;
+					account.LastLogIn = null;
+					account.Password = values[6];
+					account.Role = values[1];
+					account.AccountId = Guid.NewGuid();
+
+					if (passwordIndex == 0 && index == 4)
+					{
+						passwordIndex = values.FindLastIndex(x => !string.IsNullOrWhiteSpace(x));
+					}
+					if (index > 4)
+					{
+						passwords = new string[passwordIndex][];
+						for (int i = 1; i < values.Count(); ++i)
+						{
+							passwords[i][index] = values[i];
+						}
+					}
+				}
+				return true;
+			});
+
+			foreach (string[] password in passwords)
+			{
+				account.Passwords.Add(new PasswordDto()
+				{
+					UserName = password[0],
+					Name = password[1],
+					Password = password[2],
+					LogInLink = password[3],
+					Sensitivity = password[4].GetPasswordSensitivity(),
+					Strength = password[5].GetPasswordStrength(),
+					PasswordId = Guid.NewGuid(),
+				});
+			}
+			return account;
+		}
+
+		#endregion
+
+		#region Helpers
+
+		private SheetData GetSheetDataBySheetByIndex(SpreadsheetDocument doc, IEnumerable<Sheet> sheets, int sheetIndex)
+		{
+			Sheet sheet = sheets.ElementAtOrDefault(sheetIndex);
+			if (sheet == null)
+				throw new Exception($"Δεν βρέθηκε το φύλλο στη θέση {sheetIndex}.");
+			return ((WorksheetPart)doc.WorkbookPart.GetPartById(sheet.Id)).Worksheet.GetFirstChild<SheetData>();
+		}
+
+		private IEnumerable<T> ParseSupplementaryDataSheet<T>(SpreadsheetDocument doc, SheetData sheetData, int rowLength, Func<int, List<string>, T> transformerFunc)
+		{
+			List<T> result = new List<T>();
+			var rows = sheetData.Elements<Row>();
+			int rowIndex = 0;
+			foreach (var row in rows)
+			{
+				var cells = row.Elements<Cell>().ToList();
+				List<string> cellValues = new List<string>();
+				for (int i = 0; i < cells.Count; i++)
+					cellValues.Add(cells.GetCellValue(doc, ((char)('A' + i)).ToString() + row.RowIndex));
+
+				for (int i = cellValues.Count; i < rowLength; i++)
+					cellValues.Add("");
+
+
+				if (cellValues.All(x => string.IsNullOrEmpty(x)))
+					break;
+
+				T item = transformerFunc(rowIndex, cellValues);
+				if (item != null) result.Add(item);
+
+				rowIndex++;
+			}
+			return result;
+		}
+
+		#endregion
+
+		#endregion
 	}
 }

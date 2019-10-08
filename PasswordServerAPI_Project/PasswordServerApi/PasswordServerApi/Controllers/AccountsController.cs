@@ -10,6 +10,7 @@ using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
 using PasswordServerApi.Models.Requests;
+using PasswordServerApi.Models.Requests.Account;
 using PasswordServerApi.Models.Responces;
 using PasswordServerApi.Security.SecurityModels;
 
@@ -88,6 +89,21 @@ namespace PasswordServerApi.Controllers
 			{
 				_logger.LogError(ex.Message);
 			}
+			return null;
+		}
+
+		[HttpPost("importData")]
+		public StoreDocumentResponse ImportData([FromBody] StoreDocumentRequest request)
+		{
+			try
+			{
+				return _exportService.Import(request);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return null;
 		}
 
 	}
