@@ -76,7 +76,7 @@ namespace PasswordServerApi
 						return Task.CompletedTask;
 					}
 				};
-				x.RequireHttpsMetadata = false;
+				//x.RequireHttpsMetadata = false;
 				x.SaveToken = true;
 				x.TokenValidationParameters = new TokenValidationParameters
 				{
@@ -99,7 +99,7 @@ namespace PasswordServerApi
 					Version = "v1",
 					Title = "PasswordServerApi",
 					Description = "A simple PasswordServerApi ASP.NET Core2.2 Web API",
-					TermsOfService = new Uri("https://example.com/terms"),
+					TermsOfService = new Uri("http://example.com/terms"),
 					Contact = new OpenApiContact
 					{
 						Name = "Papazian Nikolaos",
@@ -152,7 +152,7 @@ namespace PasswordServerApi
 
 			app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 			app.UseAuthentication();
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection();
 			app.UseMvc();
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>

@@ -24,7 +24,8 @@
 			"launchBrowser": true,
 			//"launchUrl": "api/passwords",
 			"launchUrl": "api/authentication",
-			"applicationUrl": "https://localhost:44390;http://localhost:53257",
+			//"applicationUrl": "https://localhost:44390;http://localhost:53257",
+			"applicationUrl": "http://localhost:53257",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development"
 			}
