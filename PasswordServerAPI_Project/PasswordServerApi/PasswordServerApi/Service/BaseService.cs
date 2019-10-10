@@ -84,9 +84,12 @@ namespace PasswordServerApi.Service
 			return accountDto;
 		}
 
-		public AccountDto GetAccountById(Guid id)
+		public AccountDto GetAccountById(Guid id, bool full)
 		{
-			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
+			AccountDto results = GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
+			if (!full)
+				results.Password = "";
+			return results;
 		}
 
 		public AccountDto AddNewAccount(AccountDto request)

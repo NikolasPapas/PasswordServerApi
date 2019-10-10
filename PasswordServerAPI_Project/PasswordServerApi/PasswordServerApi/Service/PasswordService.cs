@@ -41,7 +41,7 @@ namespace PasswordServerApi.Service
 
 		public Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request)
 		{
-			AccountDto account = _baseService.GetAccountById(request.AccountId);
+			AccountDto account = _baseService.GetAccountById(request.AccountId,false);
 			PasswordDto savedPassword = _baseService.GetPasswords(request, account).FirstOrDefault();
 
 			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(account.Role))

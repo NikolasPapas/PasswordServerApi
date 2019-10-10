@@ -14,7 +14,7 @@ namespace PasswordServerApi.Interfaces
 
 		AccountDto UpdateAccount(AccountDto accountDto, bool full);
 
-		AccountDto GetAccountById(Guid id);
+		AccountDto GetAccountById(Guid id, bool full);
 
 		AccountDto AddNewAccount(AccountDto request);
 

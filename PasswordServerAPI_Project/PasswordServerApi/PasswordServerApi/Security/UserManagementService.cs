@@ -42,7 +42,7 @@ namespace PasswordServerApi.Security
 
 		public AccountDto FindValidUserID(Guid UserId)
 		{
-			return _baseService.GetAccountById(UserId);
+			return _baseService.GetAccountById(UserId,true);
 		}
 	}
 }
