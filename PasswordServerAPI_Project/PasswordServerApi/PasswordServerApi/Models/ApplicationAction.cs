@@ -13,6 +13,9 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "name")]
 		public string Name { get; set; }
 
+		[DataMember(Name = "controlerPath")]
+		public string ControllerPath { get; set; }
+
 		[DataMember(Name = "needsComment")]
 		public bool NeedsComment { get; set; }
 
