@@ -13,10 +13,14 @@ namespace PasswordServerApi.Service
 {
 	public class BaseService : IBaseService
 	{
-		ApplicationDbContext _dbContext;
-		public BaseService(ApplicationDbContext dbContext)
+		private ApplicationDbContext _dbContext;
+
+		private ILoggingService _logger;
+
+		public BaseService(ApplicationDbContext dbContext, ILoggingService logger)
 		{
 			_dbContext = dbContext;
+			_logger = logger;
 		}
 
 		#region Database Connections Account
@@ -29,7 +33,7 @@ namespace PasswordServerApi.Service
 			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
 		}
 
-		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request)
+		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full)
 		{
 			List<AccountDto> accounts = new List<AccountDto>();
 			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
@@ -45,6 +49,8 @@ namespace PasswordServerApi.Service
 									(!string.IsNullOrWhiteSpace(request?.Account?.Role) ? x.Role == request?.Account?.Role : true);
 				return isCorrectAccount;
 			});
+			if (full)
+				return filtered;
 			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
 		}
 
@@ -78,9 +84,12 @@ namespace PasswordServerApi.Service
 			return accountDto;
 		}
 
-		public AccountDto GetAccountById(Guid id)
+		public AccountDto GetAccountById(Guid id, bool full)
 		{
-			return GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
+			AccountDto results = GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
+			if (!full)
+				results.Password = "";
+			return results;
 		}
 
 		public AccountDto AddNewAccount(AccountDto request)
@@ -92,7 +101,7 @@ namespace PasswordServerApi.Service
 
 		public AccountDto RemoveAccount(AccountDto request)
 		{
-			var accountToRemove =_dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
+			var accountToRemove = _dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
 			_dbContext.Accounts.Remove(accountToRemove);
 			_dbContext.SaveChanges();
 			return request;
@@ -187,7 +196,7 @@ namespace PasswordServerApi.Service
 
 		public PasswordDto RemovePassword(PasswordDto requestPassword)
 		{
-			var passToRemove =_dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
+			var passToRemove = _dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
 			requestPassword = GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(passToRemove.JsonData));
 			_dbContext.Passwords.Remove(passToRemove);
 			_dbContext.SaveChanges();
@@ -223,6 +232,20 @@ namespace PasswordServerApi.Service
 				Sensitivity = dtoPassword.Sensitivity,
 				Strength = dtoPassword.Strength
 			};
+		}
+
+		#endregion
+
+
+		#region Fill Database
+
+		public void FilldDatabase(List<AccountDto> accounts)
+		{
+			foreach (AccountDto account in accounts)
+			{
+				_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = account.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(account)) });
+				_dbContext.Passwords.AddRange(account.Passwords.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId.ToString(), JsonData = JsonConvert.SerializeObject(x) }));
+			}
 		}
 
 		#endregion

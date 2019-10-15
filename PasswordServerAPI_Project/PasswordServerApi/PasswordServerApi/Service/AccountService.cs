@@ -14,22 +14,23 @@ namespace PasswordServerApi.Service
 {
 	public class AccountService : IAccountService
 	{
-		IBaseService _baseService;
-
-		public AccountService(IBaseService baseService)
+		private IBaseService _baseService;
+		private ILoggingService _logger;
+		public AccountService(IBaseService baseService, ILoggingService logger)
 		{
 			_baseService = baseService;
+			_logger = logger;
 		}
 
 		#region Dictionary ActionId To Function
 
-		private readonly Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> _actionIdToFunction;
+		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> _actionIdToFunction = null;
 
 		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>> ActionIdToFunction
 		{
 			get
 			{
-				return _actionIdToFunction ??
+				return _actionIdToFunction ?? (_actionIdToFunction =
 					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, Response<List<AccountDto>>>>()
 					{
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
@@ -38,7 +39,7 @@ namespace PasswordServerApi.Service
 						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
 						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
 
-					};
+					});
 			}
 		}
 
@@ -48,7 +49,11 @@ namespace PasswordServerApi.Service
 		{
 			if (request.AccountId == null)
 				throw new Exception("No AccountID");
-			AccountDto savedAccount = _baseService.GetAccountById(request.AccountId);
+			AccountDto savedAccount = _baseService.GetAccountById(request.AccountId,false);
+
+			if (request.Account == null)
+				request.Account = savedAccount;
+
 			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(savedAccount.Role))
 				throw new Exception("Invalid Profile");
 			else
@@ -77,8 +82,8 @@ namespace PasswordServerApi.Service
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
-			savedAccount.Passwords = passwords;
-			return new Response<List<AccountDto>>() { Payload = new List<AccountDto>() { savedAccount } };
+			requestedAccount.Passwords = passwords;
+			return new Response<List<AccountDto>>() { Payload = new List<AccountDto>() { requestedAccount } };
 		}
 
 		private Response<List<AccountDto>> ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
@@ -86,7 +91,7 @@ namespace PasswordServerApi.Service
 			requestedAccount.AccountId = Guid.NewGuid();
 			requestedAccount.Passwords = new List<PasswordDto>();
 
-			if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } }).ToList().Count > 0)
+			if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } },false).ToList().Count > 0)
 				throw new Exception("Rong Username");
 
 			_baseService.AddNewAccount(requestedAccount);
@@ -97,12 +102,12 @@ namespace PasswordServerApi.Service
 		private Response<List<AccountDto>> ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
 
-			return new Response<List<AccountDto>>() { Payload = _baseService.GetAccounts(request).ToList() };
+			return new Response<List<AccountDto>>() { Payload = _baseService.GetAccounts(request,false).ToList() };
 		}
 
 		private Response<List<AccountDto>> ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
 		{
-			AccountDto accountToDelete = _baseService.GetAccountById(requestedAccount.AccountId);
+			AccountDto accountToDelete = _baseService.GetAccountById(requestedAccount.AccountId,false);
 			accountToDelete.Passwords.ForEach(password =>
 			{
 				password = _baseService.GetPassword(password.PasswordId);

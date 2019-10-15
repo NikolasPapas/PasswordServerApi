@@ -11,27 +11,29 @@ namespace PasswordServerApi.Service
 {
 	public class PasswordService : IPasswordService
 	{
-		IBaseService _baseService;
-		public PasswordService(IBaseService baseService)
+		private IBaseService _baseService;
+		private ILoggingService _logger;
+		public PasswordService(IBaseService baseService, ILoggingService logger)
 		{
 			_baseService = baseService;
+			_logger = logger;
 		}
 
 		#region Dictionary ActionId To Function
 
-		private readonly Dictionary<Guid, Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, Response<List<PasswordDto>>>> _actionIdToFunction;
+		private Dictionary<Guid, Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, Response<List<PasswordDto>>>> _actionIdToFunction = null;
 
 		private Dictionary<Guid, Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, Response<List<PasswordDto>>>> ActionIdToFunction
 		{
 			get
 			{
-				return _actionIdToFunction ??
+				return _actionIdToFunction ?? (_actionIdToFunction =
 					new Dictionary<Guid, Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, Response<List<PasswordDto>>>>()
 					{
 						{ StaticConfiguration.ActionGetPasswordsId, GetPaswordsFunc },
 						{ StaticConfiguration.ActionUpdateOrAddPasswordId, UpdateOrAddPasswordFunc },
 						{ StaticConfiguration.ActionRemovePasswordId, RemovePasswordFunc },
-					};
+					});
 			}
 		}
 
@@ -39,7 +41,7 @@ namespace PasswordServerApi.Service
 
 		public Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request)
 		{
-			AccountDto account = _baseService.GetAccountById(request.AccountId);
+			AccountDto account = _baseService.GetAccountById(request.AccountId,false);
 			PasswordDto savedPassword = _baseService.GetPasswords(request, account).FirstOrDefault();
 
 			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(account.Role))

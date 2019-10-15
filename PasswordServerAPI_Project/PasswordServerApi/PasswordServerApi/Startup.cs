@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -22,12 +22,15 @@ using System.Collections.Generic;
 using PasswordServerApi.Models.Enums;
 using Newtonsoft.Json;
 using System.Linq;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace PasswordServerApi
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+
+		public Startup(IConfiguration configuration )
 		{
 			Configuration = configuration;
 		}
@@ -37,7 +40,8 @@ namespace PasswordServerApi
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
+			LogInfo("Starting add services");
+			services.AddTransient<ILoggingService, LoggingService>();
 			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
@@ -72,7 +76,7 @@ namespace PasswordServerApi
 						return Task.CompletedTask;
 					}
 				};
-				x.RequireHttpsMetadata = false;
+				//x.RequireHttpsMetadata = false;
 				x.SaveToken = true;
 				x.TokenValidationParameters = new TokenValidationParameters
 				{
@@ -95,7 +99,7 @@ namespace PasswordServerApi
 					Version = "v1",
 					Title = "PasswordServerApi",
 					Description = "A simple PasswordServerApi ASP.NET Core2.2 Web API",
-					TermsOfService = new Uri("https://example.com/terms"),
+					TermsOfService = new Uri("http://example.com/terms"),
 					Contact = new OpenApiContact
 					{
 						Name = "Papazian Nikolaos",
@@ -110,14 +114,18 @@ namespace PasswordServerApi
 				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 				c.IncludeXmlComments(xmlPath);
+				LogInfo("End addingg services");
 			});
 		}
 
 
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext, ILoggerFactory loggerFactory)
 		{
+			loggerFactory.AddSerilog();
+
+			LogInfo("Start SetUP Database and Init");
 			dbContext.Database.EnsureCreated();
 
 			List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
@@ -129,6 +137,8 @@ namespace PasswordServerApi
 			dbContext.SaveChanges();
 			FieldDatabae(dbContext);
 			dbContext.SaveChanges();
+			LogInfo("Stop SetUP Database and Init");
+
 
 			if (env.IsDevelopment())
 			{
@@ -142,7 +152,7 @@ namespace PasswordServerApi
 
 			app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 			app.UseAuthentication();
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection();
 			app.UseMvc();
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
@@ -160,9 +170,6 @@ namespace PasswordServerApi
 				dbContext.Passwords.AddRange(setData.Item2.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
 			}
 		}
-
-
-
 
 		private PasswordModel GetDumyPassword(int i)
 		{
@@ -195,7 +202,6 @@ namespace PasswordServerApi
 			};
 		}
 
-
 		private Tuple<AccountModel, List<PasswordModel>> GetDumyfullAccount(int i)
 		{
 			AccountModel account = GetDumyAccount(i);
@@ -209,6 +215,12 @@ namespace PasswordServerApi
 
 			return new Tuple<AccountModel, List<PasswordModel>>(account, passwords);
 		}
+
+		public void LogInfo(string message)
+		{
+			Log.Logger.Information($"StartUpLog: {message}");
+		}
+
 
 	}
 }

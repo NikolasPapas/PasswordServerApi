@@ -12,5 +12,7 @@ namespace PasswordServerApi.Models.Responces
 		public Guid SelectedAction { get; set; }
 
 		public List<string> Warnnings { get; set; }
+
+		public string Error { get; set; }
 	}
 }
