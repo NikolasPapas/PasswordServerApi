@@ -6,13 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ApplicationModule } from './ui/application.module';
 import { CoreServiceModule } from './core/services/core-service.module';
-import { CommonModule } from '@angular/common';  
 import { CommonUiModule } from './common/types/common-ui.module';
+import { CommonFormsModule } from './common/forms/common-forms.module';
 
 @NgModule({
   
   imports: [
     CommonUiModule,
+		CommonFormsModule,
     BrowserModule,
     AppRoutingModule,
     TranslateModule.forRoot(),
