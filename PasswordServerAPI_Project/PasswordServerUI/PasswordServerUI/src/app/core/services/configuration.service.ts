@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { HttpPostService } from './http-post.service';
 import { Profile } from '../models/configuration/profiles';
 import { ConfigurationResponse } from '../models/configuration/configuration_response';
 import { BaseService } from '../../common/base/base.service';
+import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class ConfigurationService extends BaseService {
@@ -29,7 +29,7 @@ export class ConfigurationService extends BaseService {
         return this.token;
     }
 
-    private setConfiguration(configuration: ConfigurationResponse): void {
+    public setLoginResponse(configuration: ConfigurationResponse): void {
         this.profiles.splice(0, this.profiles.length);
         for (let profile of configuration.profiles) {
             this.profiles.push(profile);
@@ -37,7 +37,8 @@ export class ConfigurationService extends BaseService {
         this.token = configuration.token;
     }
 
-    private getConfigurations(): Observable<ConfigurationResponse> {
-        return this.httpPostService.httpPost<ConfigurationResponse>("api/configuration/getConfiguration", {});
+    public login(form:FormGroup): Observable<ConfigurationResponse> {
+
+        return this.httpPostService.httpPost<ConfigurationResponse>("api/authentication/logIn", {});
     }
 }

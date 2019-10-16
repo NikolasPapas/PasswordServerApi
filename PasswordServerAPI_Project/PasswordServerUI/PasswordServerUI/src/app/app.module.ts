@@ -8,6 +8,7 @@ import { ApplicationModule } from './ui/application.module';
 import { CoreServiceModule } from './core/services/core-service.module';
 import { CommonUiModule } from './common/types/common-ui.module';
 import { CommonFormsModule } from './common/forms/common-forms.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   
@@ -15,6 +16,7 @@ import { CommonFormsModule } from './common/forms/common-forms.module';
     CommonUiModule,
 		CommonFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     TranslateModule.forRoot(),
     CoreServiceModule.forRoot(),

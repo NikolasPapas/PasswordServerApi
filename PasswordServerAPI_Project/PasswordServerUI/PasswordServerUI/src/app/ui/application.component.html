@@ -15,9 +15,12 @@
 
   
 </mat-card>-->
-<div *ngIf="mastDoLogIn">
-    <app-login ></app-login>
-</div>
-<div  *ngIf="!mastDoLogIn">
-    <h3  >Hey application component</h3>
-</div>
+
+<mat-card class="mainContainerCard">
+    <div *ngIf="mastDoLogIn">
+        <app-login></app-login>
+    </div>
+    <div *ngIf="!mastDoLogIn">
+        <h3>Hey application component</h3>
+    </div>
+</mat-card>

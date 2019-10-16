@@ -1,11 +1,16 @@
 export const Greek = {
 
+    TITLES:{
+        LOGIN:"Login Fill the boxes"
+    },
     COMMON:{
-
+        OK:"OK",
+        SUBMIT:"Submit",
+        CANCEL:"Cancel"
     },
     LOGIN:{
-        USERNAME:"user",
-        PASSWORD:"pass",
+        USERNAME:"Username",
+        PASSWORD:"Password",
     }
 
 };
