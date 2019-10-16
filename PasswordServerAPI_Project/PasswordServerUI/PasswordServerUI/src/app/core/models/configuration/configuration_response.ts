@@ -1,7 +1,8 @@
-import { Profile } from "./profiles";
+import { ApplicationAction } from "./ApplicationAction";
 
 export interface ConfigurationResponse {
-    profiles: Profile[];
+   // profiles: Profile[];
+    actions:ApplicationAction[];
     token: string;
 
 }

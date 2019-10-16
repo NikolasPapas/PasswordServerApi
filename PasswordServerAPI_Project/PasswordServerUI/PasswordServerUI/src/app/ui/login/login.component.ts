@@ -1,9 +1,7 @@
-import { ViewEncapsulation, Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../../common/base/base.component';
+import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LoginModel } from './login.model';
+import { BaseComponent } from '../../common/base/base.component';
 import { ConfigurationService } from '../../core/services/configuration.service';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-login',
@@ -13,23 +11,22 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
-
-    public formGroup: FormGroup;
+    @Input() formGroup: FormGroup;
+    @Output() LoginEvent = new EventEmitter();
 
     constructor(
-        private configurationService:ConfigurationService,
+        private configurationService: ConfigurationService,
         //private language: TranslateService,
     ) {
         super();
     }
 
     ngOnInit(): void {
-        this.formGroup = new LoginModel().fromModel().buildForm();
-    }
 
+    }
 
     login(){
-        this.configurationService.login(this.formGroup.getRawValue()).pipe(takeUntil(this._destroyed)).subscribe(
-            response => this.configurationService.setLoginResponse(response));
+        this.LoginEvent.emit();
     }
+
 }

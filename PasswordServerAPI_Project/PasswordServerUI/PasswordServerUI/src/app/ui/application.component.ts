@@ -2,6 +2,10 @@
 import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from 'src/app/common/base/base.component';
 import { ConfigurationService } from '../core/services/configuration.service';
+import { TokenRequest } from '../core/models/requests/token-request';
+import { takeUntil } from 'rxjs/operators';
+import { LoginModel } from './login/login.model';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -10,7 +14,7 @@ import { ConfigurationService } from '../core/services/configuration.service';
     styleUrls: ['./application.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class ApplicationComponent extends BaseComponent implements OnInit {
+export class ApplicationComponent extends BaseComponent implements OnInit  {
 
     // public selectedTabIndex: number;
     // private allConsoles: ConsoleData[] = [];
@@ -20,6 +24,7 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
     // private searchRequestPerProfile: Map<string, SearchRequest> = new Map<string, SearchRequest>();
 
     public mastDoLogIn:boolean = true;
+    loginForm:FormGroup;
     // public profileGroupEnum = ProfileGroup;
 
     constructor(
@@ -42,9 +47,8 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
     //     );
     // }
 
-    ngOnInit() {
-     //   this.mastDoLogIn= this.configurationService.getLogin();
-
+    ngOnInit() {    
+        this.loginForm = new LoginModel().fromModel().buildForm();
         // for (let consoleData of this.allConsoles) {
         //     for (let userProfile of this.configurationService.getProfiles()) {
         //         if (consoleData.profileGroup.toString() === userProfile.name) {
@@ -54,6 +58,17 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
         //     }
         // }
     }
+
+
+    login(){
+        let loginRequest : TokenRequest ={ username : this.loginForm.get('username').value , password : this.loginForm.get('password').value};
+        this.configurationService.login(loginRequest).pipe(takeUntil(this._destroyed)).subscribe(
+            response => {
+                this.configurationService.setLoginResponse(response)
+                this.mastDoLogIn= this.configurationService.needLogin();
+            });
+    }
+
 
     // tabChanged(event: MatTabChangeEvent) {
     // }

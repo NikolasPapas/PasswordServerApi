@@ -18,9 +18,10 @@
 
 <mat-card class="mainContainerCard">
     <div *ngIf="mastDoLogIn">
-        <app-login></app-login>
+        <app-login [formGroup]="loginForm" (LoginEvent)="login($event)" ></app-login>
     </div>
     <div *ngIf="!mastDoLogIn">
         <h3>Hey application component</h3>
+        <app-editor></app-editor>
     </div>
 </mat-card>

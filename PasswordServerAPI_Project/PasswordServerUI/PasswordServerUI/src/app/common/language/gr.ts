@@ -11,6 +11,11 @@ export const Greek = {
     LOGIN:{
         USERNAME:"Username",
         PASSWORD:"Password",
+    },
+    ACTIONS:{
+        TITLES:{
+            NAME:"Name"
+        }
     }
 
 };
