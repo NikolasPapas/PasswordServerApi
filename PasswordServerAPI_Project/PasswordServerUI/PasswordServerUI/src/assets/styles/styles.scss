@@ -48,6 +48,12 @@ body {
     background-color: map-get($colorPalette, "subCardBackground");
 }
 
+.subCardWite {
+    margin: map-get($distances, "small");
+    padding: map-get($distances, "small");
+    background-color: map-get($colorPalette, "subCardWiteBackground");
+}
+
 mat-form-field {
     // min-width: 100%;
     width: 100%

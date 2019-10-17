@@ -62,7 +62,7 @@ namespace PasswordServerApi.Controllers
 		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPost("accountAction")]
-		public Response<List<AccountDto>> AccountAction([FromBody] AccountActionRequest request)
+		public Response<AccountActionResponse> AccountAction([FromBody] AccountActionRequest request)
 		{
 			try
 			{
@@ -73,7 +73,7 @@ namespace PasswordServerApi.Controllers
 			{
 				_logger.LogError(ex.Message);
 			}
-			return new Response<List<AccountDto>>() { Error = "Error On Runn" };
+			return new Response<AccountActionResponse>() { Error = "Error On Runn" };
 		}
 
 

@@ -51,7 +51,7 @@ namespace PasswordServerApi.Service
 			});
 			if (full)
 				return filtered;
-			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
+			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurrentToken = ""; } return x; });
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
@@ -71,7 +71,7 @@ namespace PasswordServerApi.Service
 			{
 				dbAccountModel.LastLogIn = updateAccount.LastLogIn;
 				dbAccountModel.Role = updateAccount.Role;
-				dbAccountModel.CurentToken = updateAccount.CurentToken;
+				dbAccountModel.CurrentToken = updateAccount.CurrentToken;
 				dbAccountModel.Password = updateAccount.Password;
 				dbAccountModel.AccountId = updateAccount.AccountId;
 				dbAccountModel.PasswordIds = updateAccount.PasswordIds;
@@ -122,7 +122,7 @@ namespace PasswordServerApi.Service
 				Password = dbAccount.Password,
 				Sex = dbAccount.Sex,
 				LastLogIn = dbAccount.LastLogIn,
-				CurentToken = dbAccount.CurentToken,
+				CurrentToken = dbAccount.CurrentToken,
 				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
 			};
 		}
@@ -140,7 +140,7 @@ namespace PasswordServerApi.Service
 				Password = dtoAccount.Password,
 				Sex = dtoAccount.Sex,
 				LastLogIn = dtoAccount.LastLogIn,
-				CurentToken = dtoAccount.CurentToken,
+				CurrentToken = dtoAccount.CurrentToken,
 				PasswordIds = dtoAccount.Passwords.Select(x => x.PasswordId.ToString()).ToList(),
 			};
 		}

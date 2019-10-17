@@ -4,7 +4,7 @@ import { Guid } from "../../../common/types/guid";
 export interface ApplicationAction {
     id: Guid;
     name: string;
-    controlerPath: string;
+    controllerPath: string;
     needsComment: boolean;
     tooltip: string;
     sendApplicationData: boolean;

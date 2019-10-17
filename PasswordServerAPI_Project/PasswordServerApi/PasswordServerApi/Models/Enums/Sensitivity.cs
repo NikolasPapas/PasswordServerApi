@@ -9,7 +9,7 @@ namespace PasswordServerApi.Models.Enums
 	{
 		OnlyUser =0,
 		Family =1,
-		Frends=2,
+		Friends=2,
 		ForGroup = 3,
 		ForEveryone = 4,
 	}

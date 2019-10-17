@@ -13,7 +13,7 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "name")]
 		public string Name { get; set; }
 
-		[DataMember(Name = "controlerPath")]
+		[DataMember(Name = "controllerPath")]
 		public string ControllerPath { get; set; }
 
 		[DataMember(Name = "needsComment")]

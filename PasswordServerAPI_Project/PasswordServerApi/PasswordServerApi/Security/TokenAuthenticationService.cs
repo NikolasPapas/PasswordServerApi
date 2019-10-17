@@ -64,7 +64,7 @@ namespace PasswordServerApi.Security
 		public bool IsAuthorized(Guid id, string Token)
 		{
 			AccountDto account = _userManagementService.FindValidUserID(id);
-			if (account != null && account.CurentToken == Token)
+			if (account != null && account.CurrentToken == Token)
 				return true;
 			return false;
 		}

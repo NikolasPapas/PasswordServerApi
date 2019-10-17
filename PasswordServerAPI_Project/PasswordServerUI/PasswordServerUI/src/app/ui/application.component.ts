@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BaseComponent } from 'src/app/common/base/base.component';
 import { ConfigurationService } from '../core/services/configuration.service';
 import { TokenRequest } from '../core/models/requests/token-request';
 import { takeUntil } from 'rxjs/operators';
 import { LoginModel } from './login/login.model';
 import { FormGroup } from '@angular/forms';
+import { AccountService } from '../core/services/account-action.service';
+import { BaseComponent } from '../common/base/base.component';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class ApplicationComponent extends BaseComponent implements OnInit  {
 
     constructor(
         private language: TranslateService,
-        public configurationService: ConfigurationService
+        public configurationService: ConfigurationService,
+        private accountService :AccountService,
         //public dialog: MatDialog
     ) {
         super();
@@ -62,7 +64,7 @@ export class ApplicationComponent extends BaseComponent implements OnInit  {
 
     login(){
         let loginRequest : TokenRequest ={ username : this.loginForm.get('username').value , password : this.loginForm.get('password').value};
-        this.configurationService.login(loginRequest).pipe(takeUntil(this._destroyed)).subscribe(
+        this.accountService.login(loginRequest).pipe(takeUntil(this._destroyed)).subscribe(
             response => {
                 this.configurationService.setLoginResponse(response)
                 this.mastDoLogIn= this.configurationService.needLogin();

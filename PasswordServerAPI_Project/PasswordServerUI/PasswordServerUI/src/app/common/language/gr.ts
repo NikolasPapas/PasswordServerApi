@@ -1,7 +1,12 @@
 export const Greek = {
 
     TITLES:{
-        LOGIN:"Login Fill the boxes"
+        LOGIN:"Login Fill the boxes",
+        EDITOR:"Actions",
+        CARDS:{
+            ACCOUNT:"Account",
+            PASSWORD:"Password"
+        }
     },
     COMMON:{
         OK:"OK",
@@ -14,7 +19,36 @@ export const Greek = {
     },
     ACTIONS:{
         TITLES:{
-            NAME:"Name"
+            NAME:"Name",
+            TOOLTIP:"Info",
+            ICON:"Icon",
+        },
+        PANEL:{
+            NAME:"Name",
+            TOOLTIP:"Info",
+            ICON:"Icon",
+            CONTROLLER_PATH:"Path",
+            VALIDATION_MODE:"Validation",
+        },
+        REQUEST:{
+            ACCOUNT:{
+                FIRST_NAME:"First Name",
+                LAST_NAME:"Last Name",
+                USER_NAME:"User Name",
+                EMAIL:"Email",
+                GENDER:"Gender",
+                LAST_LOGIN:"Last Login",
+                PASSWORD:"Password",
+                ROLE:"Role",
+            },
+            PASSWORD:{
+                NAME:"Name",
+                USER_NAME:"User Name",
+                PASSWORD:"Password",
+                LOGIN_LINK:"Login Link",
+                SENSITIVITY:"Sensitivity",
+                STRENGTH:"Strength"
+            }
         }
     }
 

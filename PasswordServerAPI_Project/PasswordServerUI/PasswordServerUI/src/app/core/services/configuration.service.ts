@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpPostService } from './http-post.service';
 import { ApplicationAction } from '../models/configuration/ApplicationAction';
 import { ConfigurationResponse } from '../models/configuration/configuration_response';
 import { BaseService } from '../../common/base/base.service';
-import { FormGroup } from '@angular/forms';
-import { TokenRequest } from '../models/requests/token-request';
 
 @Injectable()
 export class ConfigurationService extends BaseService {
@@ -43,7 +40,4 @@ export class ConfigurationService extends BaseService {
         this.token = configuration.token;
     }
 
-    public login(request: TokenRequest): Observable<ConfigurationResponse> {
-        return this.httpPostService.httpPost<ConfigurationResponse>("api/authentication/logIn", request);
-    }
 }

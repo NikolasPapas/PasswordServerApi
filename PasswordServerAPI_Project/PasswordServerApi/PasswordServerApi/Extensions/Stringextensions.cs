@@ -68,8 +68,8 @@ namespace PasswordServerApi.Extensions
 				return Sensitivity.OnlyUser;
 			if (value == "Family")
 				return Sensitivity.Family;
-			if (value == "Frends")
-				return Sensitivity.Frends;
+			if (value == "Friends")
+				return Sensitivity.Friends;
 			if (value == "ForGroup")
 				return Sensitivity.ForGroup;
 			return Sensitivity.ForEveryone;

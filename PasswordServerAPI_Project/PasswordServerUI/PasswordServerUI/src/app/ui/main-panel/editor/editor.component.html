@@ -5,45 +5,27 @@
             <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                 <mat-expansion-panel-header class="headerListPanel">
                     <mat-grid-list class="headerListCard" rowHeight="48px" cols="14">
-                        <mat-grid-tile [colspan]="1">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
                         <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
-                        <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
-                        <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
-                        <mat-grid-tile [colspan]="1"></mat-grid-tile>
+                        <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.TOOLTIP' | translate}}</mat-grid-tile>
+                        <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.ICON' | translate}}</mat-grid-tile>
                     </mat-grid-list>
                 </mat-expansion-panel-header>
             </mat-expansion-panel>
             <div *ngFor="let action of actions ; let index = index;">
-                <mat-expansion-panel [id]="'disbursement-panel-'+ index" hideToggle="true" [expanded]="expandedindex === index" (opened)="open()" (closed)="close()">
+                <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open()" (closed)="close()">
                     <mat-expansion-panel-header>
                         <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
-                            <mat-grid-tile [colspan]="1">{{action.name}}</mat-grid-tile>
+                            <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="4">{{action.tooltip}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="4">{{action.icon}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="1">
-                                <mat-icon *ngIf="expandedindex === index">keyboard_arrow_down</mat-icon>
-                                <mat-icon *ngIf="expandedindex !== index">keyboard_arrow_up</mat-icon>
-                            </mat-grid-tile>
                         </mat-grid-list>
                     </mat-expansion-panel-header>
-                    <!-- <app-disbursement-editor *ngIf="isOpen" [profile]="profile" [isInAdminMode]="isInAdminMode" [form]="form" (onClose)="close()" [disbursementRequests]="disbursementRequests"></app-disbursement-editor> -->
+                    <app-editor-expansion-panel *ngIf="isOpen" (onClose)="close()" [action]="action" (onActionSelected)="onActionSelected($event)"></app-editor-expansion-panel>
                 </mat-expansion-panel>
             </div>
         </mat-accordion>
     </div>
-</mat-card>
-<!-- 
-<mat-card class="row subCard">
-    <h4>{{'TITLES.EDITOR' | translate}}</h4>
-    <div class="col-12">
-        <div class="col-4">
-            <div class="row" *ngFor="let action of actions">
-                <button mat-raised-button class="col-4" color="primary" (click)="actionOpen()">{{action.name}}</button>
-            </div>
-        </div>
-        <div class="col-6">
-
-        </div>
+    <div class="col-8">
+        <app-request-editor-panel [account]="accountModel"></app-request-editor-panel>
     </div>
-</mat-card> -->
+</mat-card>

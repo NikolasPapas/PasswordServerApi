@@ -34,7 +34,7 @@ namespace PasswordServerApi.Security
 		{
 			var account = FindValidUserID(id);
 			if (account == null) throw new Exception("No User");
-			account.CurentToken = Token;
+			account.CurrentToken = Token;
 			account.LastLogIn = DateTime.Now;
 
 			_baseService.UpdateAccount(account, true);
