@@ -10,6 +10,6 @@ namespace PasswordServerApi.Interfaces
 {
 	public interface IPasswordService
 	{
-		Response<List<PasswordDto>> PasswordAction(PasswordActionRequest request);
+		Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request);
 	}
 }

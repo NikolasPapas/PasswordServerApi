@@ -13,7 +13,7 @@ import { Guid } from "../../../../common/types/guid";
 export class EditorExpansionPanelComponent extends BaseComponent implements OnInit  {
     
     @Input() action: ApplicationAction;
-    @Output() onActionSelected = new EventEmitter<Guid>();
+    @Output() onActionSelected = new EventEmitter<ApplicationAction>();
 
     constructor(
         private configurationService: ConfigurationService,
@@ -32,7 +32,7 @@ export class EditorExpansionPanelComponent extends BaseComponent implements OnIn
     }
 
     actionSelected(){
-        this.onActionSelected.emit(this.action.id);
+        this.onActionSelected.emit(this.action);
     }
 
 }

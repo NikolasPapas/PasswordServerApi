@@ -5,6 +5,7 @@ export interface ApplicationAction {
     id: Guid;
     name: string;
     controllerPath: string;
+    ControllerSend:string;
     needsComment: boolean;
     tooltip: string;
     sendApplicationData: boolean;
