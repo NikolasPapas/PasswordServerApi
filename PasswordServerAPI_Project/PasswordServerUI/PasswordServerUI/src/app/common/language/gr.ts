@@ -2,7 +2,8 @@ export const Greek = {
 
     TITLES:{
         LOGIN:"Login Fill the boxes",
-        EDITOR:"Actions",
+        ACTIONS:"Actions",
+        EDITOR:"Editor",
         CARDS:{
             ACCOUNT:"Account",
             PASSWORD:"Password"
@@ -10,6 +11,7 @@ export const Greek = {
     },
     COMMON:{
         OK:"OK",
+        ADD:"Add New",
         SUBMIT:"Submit",
         CANCEL:"Cancel"
     },

@@ -1,27 +1,8 @@
-﻿<!-- <mat-card class="mainContainerCard">
-    <mat-tab-group (selectedTabChange)="tabChanged($event)" [(selectedIndex)]="selectedTabIndex">
-        <mat-tab *ngFor="let consoleData of consoleDataList; let i = index; trackBy: trackByFn" [label]="consoleData.label">
-            <div *ngIf="selectedTabIndex === i">
-                <mat-card class="subCard" *ngIf="!isOwnerOrAdmin(consoleData.profileGroup)">
-                    <app-application-filter [profile]="consoleData.profileGroup" (onFilterChange)="onFilterChange(consoleData.profileGroup, $event)" (onClearResults)="appcomp.clearResults($event)"></app-application-filter>
-                </mat-card>
-                <mat-card class="subCard">
-                    <app-application-listing *ngIf="!isOwnerOrAdmin(consoleData.profileGroup)" [profile]="consoleData.profileGroup" [searchRequest]="searchRequestPerProfile.get(consoleData.profileGroup)"></app-application-listing>
-                    <app-admin-owner-component *ngIf="isOwnerOrAdmin(consoleData.profileGroup) && selectedTabIndex == i" [profile]="consoleData.profileGroup"></app-admin-owner-component>
-                </mat-card>
-            </div>
-        </mat-tab>
-    </mat-tab-group> 
-
-  
-</mat-card>-->
-
-<mat-card class="mainContainerCard">
+﻿<mat-card class="mainContainerCard">
     <div *ngIf="mastDoLogIn">
-        <app-login [formGroup]="loginForm" (LoginEvent)="login($event)" ></app-login>
+        <app-login [formGroup]="loginForm" (LoginEvent)="login($event)"></app-login>
     </div>
     <div *ngIf="!mastDoLogIn">
-        <h3>Hey application component</h3>
         <app-editor></app-editor>
     </div>
 </mat-card>

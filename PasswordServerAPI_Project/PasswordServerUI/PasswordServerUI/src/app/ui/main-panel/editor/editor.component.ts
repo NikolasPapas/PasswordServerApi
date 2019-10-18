@@ -4,13 +4,12 @@ import { ConfigurationService } from "../../../core/services/configuration.servi
 import { ApplicationAction } from "../../../core/models/configuration/ApplicationAction";
 import { Account } from "../../../core/models/account-model";
 import { FormGroup, FormArray } from "@angular/forms";
-import { AccountForm } from "./request-editor/account-form.model";
-import { PasswordForm } from "./request-editor/password-form.model";
 import { Guid } from "../../../common/types/guid";
 import { AccountService } from "../../../core/services/account-action.service";
 import { takeUntil } from "rxjs/operators";
 import { AccountActionRequest } from "../../../core/models/requests/account-request/account-action-request";
 import { AccountActionResponse } from "../../../core/models/response/account-response/account-action-response";
+import { AccountForm } from "./request-editor/account-editor/account-form.model";
 
 
 @Component({
@@ -30,7 +29,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
     constructor(
         private configurationService: ConfigurationService,
         private accountService: AccountService,
-        //private language: TranslateService,
     ) {
         super();
     }
@@ -58,10 +56,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionSelected(id: Guid) {
-
-
         let request: AccountActionRequest = {
-            account: null,
+            account: this.accountModel.getRawValue(),
             actionId: id,
             accountId: Guid.createEmpty()           
         }

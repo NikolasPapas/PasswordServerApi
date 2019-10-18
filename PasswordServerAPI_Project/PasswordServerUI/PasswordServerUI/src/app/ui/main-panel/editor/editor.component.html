@@ -1,6 +1,6 @@
 <mat-card class="row subCard">
-    <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
     <div class="col-4">
+        <h4 class="col-12 inner-header">{{'TITLES.ACTIONS' | translate}}</h4>
         <mat-accordion>
             <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                 <mat-expansion-panel-header class="headerListPanel">
@@ -26,6 +26,7 @@
         </mat-accordion>
     </div>
     <div class="col-8">
+        <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
         <app-request-editor-panel [account]="accountModel"></app-request-editor-panel>
     </div>
 </mat-card>

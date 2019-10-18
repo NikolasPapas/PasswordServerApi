@@ -4,79 +4,40 @@
     </mat-card-header>
 
     <mat-card-content *ngIf="!collapsedAccount" class="col-12">
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.FIRST_NAME' | translate}}" [value]="account.get('firstName').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}" [value]="account.get('lastName').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}" [value]="account.get('userName').value" [disabled]="true">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [value]="account.get('email').value" [disabled]="true">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [value]="account.get('sex').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_LOGIN' | translate}}" [value]="account.get('lastLogIn').value" [disabled]="true">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [value]="account.get('password').value" [disabled]="true">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [value]="account.get('role').value" [disabled]="true">
-        </mat-form-field>
-
+        <app-account-editor-panel [account]="account"></app-account-editor-panel>
     </mat-card-content>
 
 </mat-card>
 
-<div *ngIf="account.get('passwords')['controls']?.length > 0"></div>
-
-
-
-
-<mat-card class="row subCardWite" *ngFor="let password of account.get('passwords')['controls']; let i = index">
+<mat-card class="row subCardWite">
     <mat-card-header class="col-12" (click)="collapsedPassword=!collapsedPassword">
         <mat-card-title>{{'TITLES.CARDS.PASSWORD' | translate}}</mat-card-title>
     </mat-card-header>
-
-    <mat-card-content  *ngIf="!collapsedPassword" class="col-12">
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.NAME' | translate}}" [value]="password.get('name').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.USER_NAME' | translate}}" [value]="password.get('userName').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.PASSWORD' | translate}}" [value]="password.get('password').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.LOGIN_LINK' | translate}}" [value]="password.get('logInLink').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.SENSITIVITY' | translate}}" [value]="password.get('sensitivity').value" [disabled]="false">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.REQUEST.PASSWORD.STRENGTH' | translate}}" [value]="password.get('strength').value" [disabled]="false">
-        </mat-form-field>
-
+    <mat-card-content *ngIf="!collapsedPassword" class="col-12">
+        <mat-accordion class="example-headers-align col-12">
+            <div *ngFor="let password of account.get('passwords')['controls']; let i = index">
+                <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4>{{i+1}}.   {{password.get('name').value}}</h4>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{password.get('logInLink').value}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <app-password-editor-panel [password]="password"></app-password-editor-panel>
+                    <mat-action-row>
+                        <button mat-button *ngIf="i > 0" color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button *ngIf="i < account.get('passwords')['controls'].length-1" color="primary" (click)="nextStep()">Next</button>
+                        <button mat-button *ngIf="i == account.get('passwords')['controls'].length-1" color="primary" (click)="nextStep()">End</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </div>
+        </mat-accordion>
     </mat-card-content>
+</mat-card>
 
+
+<mat-card class="row subCardWite">
+    <button mat-raised-button *ngIf="account!=null" class="col-auto" color="primary" (click)="addPassword()">{{'ADD' | translate}}</button>
 </mat-card>

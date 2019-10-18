@@ -1,0 +1,33 @@
+<div class="row">
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.FIRST_NAME' | translate}}" [value]="account.get('firstName').value" [disabled]="false">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}" [value]="account.get('lastName').value" [disabled]="false">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}" [value]="account.get('userName').value" [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [value]="account.get('email').value" [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [value]="account.get('sex').value" [disabled]="false">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_LOGIN' | translate}}" [value]="account.get('lastLogIn').value" [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [value]="account.get('password').value" [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [value]="account.get('role').value" [disabled]="true">
+    </mat-form-field>
+</div>

@@ -1,9 +1,9 @@
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { Account } from "../../../../core/models/account-model";
-import { Guid } from "../../../../common/types/guid";
-import { Sex } from "../../../../core/models/enums/sex-enum";
-import { Password } from "../../../../core/models/password-model";
-import { PasswordForm } from "./password-form.model";
+import { Account } from "../../../../../core/models/account-model";
+import { Guid } from "../../../../../common/types/guid";
+import { Sex } from "../../../../../core/models/enums/sex-enum";
+import { Password } from "../../../../../core/models/password-model";
+import { PasswordForm } from '../password-editor/password-form.model';
 
 export class AccountForm {
     accountId: Guid;

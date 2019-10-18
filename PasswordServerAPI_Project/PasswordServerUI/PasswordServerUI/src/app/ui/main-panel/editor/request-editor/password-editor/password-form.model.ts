@@ -1,9 +1,8 @@
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Guid } from "../../../../common/types/guid";
-import { Sex } from "../../../../core/models/enums/sex-enum";
-import { Password } from "../../../../core/models/password-model";
-import { Sensitivity } from "../../../../core/models/enums/sensitivity";
-import { Strength } from "../../../../core/models/enums/strength";
+import { Guid } from "../../../../../common/types/guid";
+import { Sensitivity } from "../../../../../core/models/enums/sensitivity";
+import { Strength } from "../../../../../core/models/enums/strength";
+import { Password } from "../../../../../core/models/password-model";
 
 export class PasswordForm {
     passwordId: Guid;

@@ -85,8 +85,8 @@ namespace PasswordServerApi.Service
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
-			requestedAccount.Passwords = passwords;
-			return new AccountActionResponse() { Accounts = new List<AccountDto>() { requestedAccount } };
+			savedAccount.Passwords = passwords;
+			return new AccountActionResponse() { Accounts = new List<AccountDto>() { savedAccount } };
 		}
 
 		private AccountActionResponse ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
