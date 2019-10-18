@@ -19,8 +19,8 @@
         <mat-form-field class="col-md-4">
             <input matInput placeholder="{{'ACTIONS.PANEL.VALIDATION_MODE' | translate}}" [value]="action.validationMode" [disabled]="true">
         </mat-form-field>
-
-        <button mat-raised-button class="col-4" color="primary" (click)="actionSelected()">{{action.name}}</button>
+        <div class="col-auto"></div>
+        <button mat-raised-button class="col-auto" color="primary" (click)="actionSelected()">{{action.name}}</button>
 
     </div>
 </mat-card>

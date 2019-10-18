@@ -11,7 +11,7 @@ export const Greek = {
     },
     COMMON:{
         OK:"OK",
-        ADD:"Add New",
+        ADD:"Add New Password",
         SUBMIT:"Submit",
         CANCEL:"Cancel"
     },

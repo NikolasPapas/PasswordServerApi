@@ -22,13 +22,12 @@ import { PasswordForm } from "./request-editor/password-editor/password-form.mod
 export class EditorComponent extends BaseComponent implements OnInit {
 
     actions: ApplicationAction[];
-    isOpen: boolean = false;
-    ACTION_INDICATOR_ACCOUNT_CONTROLLER: string ="Account";
-    ACTION_INDICATOR_PASSWORD_CONTROLLER: string ="Password";
+    ACTION_INDICATOR_ACCOUNT_CONTROLLER: string = "Account";
+    ACTION_INDICATOR_PASSWORD_CONTROLLER: string = "Password";
 
     expandedIndex: number = -1;
-    lastOpened: number;
-    accountModel: FormGroup;
+    accountModels: FormGroup[] = [];
+    selectedAccountIndex: number = -1;
 
     constructor(
         private configurationService: ConfigurationService,
@@ -39,19 +38,16 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
-        this.accountModel = new AccountForm().fromModel(null).buildForm();
+        this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
     open(index: number) {
-        this.isOpen = true;
         this.collapseAll();
         this.expandedIndex = index;
     }
 
     close(index: number) {
-        this.isOpen = false;
-        if (this.expandedIndex === index)
-            this.lastOpened = index;
+        this.expandedIndex = -1;
         this.collapseAll();
     }
 
@@ -59,10 +55,25 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.expandedIndex = -1;
     }
 
+    openAccount(index: number) {
+        this.collapseAllAccounts();
+        this.selectedAccountIndex = index;
+    }
+
+    closeAccount(index: number) {
+        this.selectedAccountIndex = -1;
+        this.collapseAllAccounts();
+    }
+
+    collapseAllAccounts() {
+        this.selectedAccountIndex = -1;
+    }
+
+
     onActionSelected(action: ApplicationAction) {
         if (action.controllerSend == this.ACTION_INDICATOR_ACCOUNT_CONTROLLER) {
             this.onActionAccountSelected(action);
-        } else if(action.controllerSend == this.ACTION_INDICATOR_PASSWORD_CONTROLLER){
+        } else if (action.controllerSend == this.ACTION_INDICATOR_PASSWORD_CONTROLLER) {
             this.onActionPasswordSelected(action);
         }
 
@@ -72,7 +83,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionAccountSelected(action: ApplicationAction) {
         let request: AccountActionRequest = {
-            account: this.accountModel.getRawValue(),
+            account: this.selectedAccountIndex == -1 ? new AccountForm().fromModel(null).buildForm().getRawValue() : this.accountModels[this.selectedAccountIndex].getRawValue(),
             actionId: action.id,
             accountId: Guid.createEmpty()
         }
@@ -85,9 +96,9 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionAccountSuccess(res: AccountActionResponse, request: AccountActionRequest) {
-        this.accountModel = null;
+        this.accountModels = [];
         res.accounts.forEach(account => {
-            this.accountModel = new AccountForm().fromModel(account).buildForm();
+            this.accountModels.push(new AccountForm().fromModel(account).buildForm());
         });
     }
 
@@ -100,7 +111,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionPasswordSelected(action: ApplicationAction) {
         let request: PasswordActionRequest = {
-            password: this.accountModel.getRawValue(),
+            password: this.accountModels[this.selectedAccountIndex].getRawValue(),
             actionId: action.id,
             accountId: Guid.createEmpty()
         }
@@ -113,9 +124,9 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionPasswordSuccess(res: PasswordActionResponse, request: PasswordActionRequest) {
-        (this.accountModel.get('passwords') as FormArray).clear();
+        (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
         res.passwords.forEach(pass => {
-            (this.accountModel.get('passwords') as FormArray).push(new PasswordForm().fromModel(pass).buildForm());
+            (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).push(new PasswordForm().fromModel(pass).buildForm());
         })
     }
 
