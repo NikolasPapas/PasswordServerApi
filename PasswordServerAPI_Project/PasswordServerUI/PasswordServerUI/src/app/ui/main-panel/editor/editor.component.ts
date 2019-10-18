@@ -58,7 +58,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionSelected(action: ApplicationAction) {
-        if (action.ControllerSend == "Action") {
+        if (action.controllerSend == "Account") {
             this.onActionAccountSelected(action);
         } else {
             this.onActionPasswordSelected(action);
