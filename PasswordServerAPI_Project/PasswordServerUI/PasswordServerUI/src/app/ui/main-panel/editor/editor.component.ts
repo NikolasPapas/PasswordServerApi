@@ -23,6 +23,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     actions: ApplicationAction[];
     isOpen: boolean = false;
+    ACTION_INDICATOR_ACCOUNT_CONTROLLER: string ="Account";
+    ACTION_INDICATOR_PASSWORD_CONTROLLER: string ="Password";
 
     expandedIndex: number = -1;
     lastOpened: number;
@@ -58,9 +60,9 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionSelected(action: ApplicationAction) {
-        if (action.controllerSend == "Account") {
+        if (action.controllerSend == this.ACTION_INDICATOR_ACCOUNT_CONTROLLER) {
             this.onActionAccountSelected(action);
-        } else {
+        } else if(action.controllerSend == this.ACTION_INDICATOR_PASSWORD_CONTROLLER){
             this.onActionPasswordSelected(action);
         }
 
