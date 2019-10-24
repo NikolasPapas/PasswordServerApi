@@ -12,6 +12,7 @@ import { AccountForm } from "./request-editor/account-editor/account-form.model"
 import { PasswordActionRequest } from "../../../core/models/requests/password-request/password-action-request";
 import { PasswordActionResponse } from "../../../core/models/response/password-response/password-action-response";
 import { PasswordForm } from "./request-editor/password-editor/password-form.model";
+import { Account } from "../../../core/models/account-model";
 
 
 @Component({
@@ -28,6 +29,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     expandedIndex: number = -1;
     accountModels: FormGroup[] = [];
     selectedAccountIndex: number = -1;
+    selectedPasswordIndex: number = -1;
 
     constructor(
         private configurationService: ConfigurationService,
@@ -38,7 +40,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
-        this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+        //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
     open(index: number) {
@@ -111,9 +113,9 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionPasswordSelected(action: ApplicationAction) {
         let request: PasswordActionRequest = {
-            password: this.accountModels[this.selectedAccountIndex].getRawValue(),
+            password:  this.selectedAccountIndex == -1 ? new PasswordForm().fromModel(null).buildForm().getRawValue() : this.selectedPasswordIndex != -1 ? (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray)[this.selectedPasswordIndex].getRawValue() : new PasswordForm().fromModel(null).buildForm(),
             actionId: action.id,
-            accountId: Guid.createEmpty()
+            accountId: this.selectedAccountIndex == -1?  Guid.createEmpty() : this.accountModels[this.selectedAccountIndex].get('accountId').value
         }
 
         this.accountService.passwordAction(request, action.controllerPath)
@@ -124,10 +126,16 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionPasswordSuccess(res: PasswordActionResponse, request: PasswordActionRequest) {
-        (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
-        res.passwords.forEach(pass => {
-            (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).push(new PasswordForm().fromModel(pass).buildForm());
-        })
+        if(this.selectedAccountIndex >= 0){
+            (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
+            res.passwords.forEach(pass => {
+                (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).push(new PasswordForm().fromModel(pass).buildForm());
+            })
+        }else{
+            let account: Account =new Account();
+            account.passwords = res.passwords;
+            this.accountModels.push(new AccountForm().fromModel(account).buildForm())
+        }
     }
 
     //#endregion

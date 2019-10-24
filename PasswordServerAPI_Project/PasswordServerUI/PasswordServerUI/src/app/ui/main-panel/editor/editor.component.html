@@ -13,7 +13,7 @@
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
                 <div *ngFor="let action of actions ; let index = index;">
-                    <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open()" (closed)="close()">
+                    <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open(index)" (closed)="close()">
                         <mat-expansion-panel-header>
                             <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
                                 <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
@@ -30,7 +30,10 @@
     <div class="col-8">
         <mat-card class="row subCard" *ngIf="accountModels != null && accountModels.length > 0">
             <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
-            <mat-accordion>
+
+            <app-request-editor-panel *ngIf="accountModels.length == 1" class="col-12" [account]="accountModels[0]"></app-request-editor-panel>
+
+            <mat-accordion *ngIf="accountModels.length > 1">
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
                         <mat-grid-list class="headerListCard" rowHeight="48px" cols="14">
@@ -41,7 +44,7 @@
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
                 <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
-                    <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount()" (closed)="closeAccount()">
+                    <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount()">
                         <mat-expansion-panel-header>
                             <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
                                 <mat-grid-tile [colspan]="4">{{accountModel?.get('userName')?.value}}</mat-grid-tile>
