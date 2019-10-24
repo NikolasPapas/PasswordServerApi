@@ -90,7 +90,7 @@ namespace PasswordServerApi.Service
 			if (index < 0 && index > account.Passwords.Count())
 				throw new Exception("invalid PasswordId");
 
-			account.Password.Remove(index);
+			account.Passwords.RemoveAt(index);
 			_baseService.UpdateAccount(account, true);
 			_baseService.RemovePassword(requesPass);
 
