@@ -11,6 +11,6 @@ namespace PasswordServerApi.Interfaces
 {
 	public interface IAccountService
 	{
-		Response<AccountActionResponse> ExecuteAction(AccountActionRequest request);
+		Response<AccountActionResponse> ExecuteAction(AccountActionRequest request, Guid userID);
 	}
 }

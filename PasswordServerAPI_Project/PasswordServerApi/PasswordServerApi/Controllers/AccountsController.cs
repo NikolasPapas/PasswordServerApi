@@ -66,8 +66,7 @@ namespace PasswordServerApi.Controllers
 		{
 			try
 			{
-				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-				return _accountService.ExecuteAction(request);
+				return _accountService.ExecuteAction(request, Guid.Parse(HttpContext.User.Identity.Name));
 			}
 			catch (Exception ex)
 			{

@@ -1,33 +1,33 @@
 <div class="row">
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.FIRST_NAME' | translate}}" [value]="account.get('firstName').value" [disabled]="false">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.FIRST_NAME' | translate}}" [formControl]="account.get('firstName')">
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}" [value]="account.get('lastName').value" [disabled]="false">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}" [formControl]="account.get('lastName')">
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}" [value]="account.get('userName').value" [disabled]="true">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}" [formControl]="account.get('userName')" >
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [value]="account.get('email').value" [disabled]="true">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [formControl]="account.get('email')" >
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [value]="account.get('sex').value" [disabled]="false">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [formControl]="account.get('sex')">
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_LOGIN' | translate}}" [value]="account.get('lastLogIn').value" [disabled]="true">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_LOGIN' | translate}}" [formControl]="account.get('lastLogIn')" >
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [value]="account.get('password').value" [disabled]="true">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [formControl]="account.get('password')" >
     </mat-form-field>
 
     <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [value]="account.get('role').value" [disabled]="true">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [formControl]="account.get('role')" >
     </mat-form-field>
 </div>

@@ -90,7 +90,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         let request: AccountActionRequest = {
             account: action.sendApplicationData ? this.selectedAccountIndex == -1 ? new AccountForm().fromModel(null).buildForm().getRawValue() : this.accountModels[this.selectedAccountIndex].getRawValue() : null,
             actionId: action.id,
-            accountId: Guid.createEmpty()
+            accountId: action.sendApplicationData && this.selectedAccountIndex != -1 ? this.accountModels[this.selectedAccountIndex].get('accountId').value : Guid.createEmpty()
         }
 
         this.accountService.accountAction(request, action.controllerPath)
@@ -101,10 +101,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionAccountSuccess(res: AccountActionResponse, action: ApplicationAction) {
-        if (action.refreshAfterAction) {
-            this.clearAll();
-            return;
-        }
+        this.clearAll();
         res.accounts.forEach(account => {
             this.accountModels.push(new AccountForm().fromModel(account).buildForm());
         });
