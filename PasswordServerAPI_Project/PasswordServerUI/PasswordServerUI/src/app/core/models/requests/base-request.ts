@@ -1,6 +1,6 @@
 import { Guid } from "../../../common/types/guid";
 
-export interface BaseRequest {
+export class BaseRequest {
     accountId : Guid;
     actionId : Guid;
 }

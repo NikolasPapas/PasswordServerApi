@@ -71,6 +71,9 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.selectedAccountIndex = -1;
     }
 
+    selectedPasswordIndexEvent(passwordIndex: number) {
+        this.selectedPasswordIndex = passwordIndex;
+    }
 
     onActionSelected(action: ApplicationAction) {
         if (action.controllerSend == this.ACTION_INDICATOR_ACCOUNT_CONTROLLER) {
@@ -85,20 +88,23 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionAccountSelected(action: ApplicationAction) {
         let request: AccountActionRequest = {
-            account: this.selectedAccountIndex == -1 ? new AccountForm().fromModel(null).buildForm().getRawValue() : this.accountModels[this.selectedAccountIndex].getRawValue(),
+            account: action.sendApplicationData ? this.selectedAccountIndex == -1 ? new AccountForm().fromModel(null).buildForm().getRawValue() : this.accountModels[this.selectedAccountIndex].getRawValue() : null,
             actionId: action.id,
             accountId: Guid.createEmpty()
         }
 
         this.accountService.accountAction(request, action.controllerPath)
             .pipe(takeUntil(this._destroyed)).subscribe(
-                res => this.onActionAccountSuccess(res, request)
+                res => this.onActionAccountSuccess(res, action)
                 , error => this.onActionError(error)
             );
     }
 
-    onActionAccountSuccess(res: AccountActionResponse, request: AccountActionRequest) {
-        this.accountModels = [];
+    onActionAccountSuccess(res: AccountActionResponse, action: ApplicationAction) {
+        if (action.refreshAfterAction) {
+            this.clearAll();
+            return;
+        }
         res.accounts.forEach(account => {
             this.accountModels.push(new AccountForm().fromModel(account).buildForm());
         });
@@ -113,29 +119,39 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionPasswordSelected(action: ApplicationAction) {
         let request: PasswordActionRequest = {
-            password:  this.selectedAccountIndex == -1 ? new PasswordForm().fromModel(null).buildForm().getRawValue() : this.selectedPasswordIndex != -1 ? (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray)[this.selectedPasswordIndex].getRawValue() : new PasswordForm().fromModel(null).buildForm(),
+            password: action.sendApplicationData ? this.selectedAccountIndex == -1 ? new PasswordForm().fromModel(null).buildForm().getRawValue() : this.selectedPasswordIndex != -1 ? ((this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).controls[this.selectedPasswordIndex] as FormGroup).getRawValue() : new PasswordForm().fromModel(null).buildForm() : null,
             actionId: action.id,
-            accountId: this.selectedAccountIndex == -1?  Guid.createEmpty() : this.accountModels[this.selectedAccountIndex].get('accountId').value
+            accountId: this.selectedAccountIndex == -1 ? Guid.createEmpty() : this.accountModels[this.selectedAccountIndex].get('accountId').value
         }
 
         this.accountService.passwordAction(request, action.controllerPath)
             .pipe(takeUntil(this._destroyed)).subscribe(
-                res => this.onActionPasswordSuccess(res, request)
+                res => this.onActionPasswordSuccess(res, action)
                 , error => this.onActionError(error)
             );
     }
 
-    onActionPasswordSuccess(res: PasswordActionResponse, request: PasswordActionRequest) {
-        if(this.selectedAccountIndex >= 0){
+    onActionPasswordSuccess(res: PasswordActionResponse, action: ApplicationAction) {
+        if (action.refreshAfterAction) {
+            this.clearAll();
+            return;
+        }
+        if (this.selectedAccountIndex >= 0 && this.accountModels[this.selectedAccountIndex] != null) {
             (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
             res.passwords.forEach(pass => {
                 (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).push(new PasswordForm().fromModel(pass).buildForm());
             })
-        }else{
-            let account: Account =new Account();
+        } else {
+            let account: Account = new Account();
             account.passwords = res.passwords;
             this.accountModels.push(new AccountForm().fromModel(account).buildForm())
         }
+    }
+
+    clearAll() {
+        this.accountModels = [];
+        this.selectedAccountIndex = -1;
+        this.selectedPasswordIndex = -1;
     }
 
     //#endregion

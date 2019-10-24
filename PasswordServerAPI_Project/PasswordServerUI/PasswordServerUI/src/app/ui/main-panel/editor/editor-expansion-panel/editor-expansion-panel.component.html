@@ -20,7 +20,6 @@
             <input matInput placeholder="{{'ACTIONS.PANEL.VALIDATION_MODE' | translate}}" [value]="action.validationMode" [disabled]="true">
         </mat-form-field>
         <div class="col-auto"></div>
-        <button mat-raised-button class="col-auto" color="primary" (click)="actionSelected()">{{action.name}}</button>
-
+        <button mat-raised-button class="col-auto" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()">{{action.name}}</button>
     </div>
 </mat-card>

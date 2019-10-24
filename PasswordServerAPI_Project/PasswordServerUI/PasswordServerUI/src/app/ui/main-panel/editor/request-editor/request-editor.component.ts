@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { BaseComponent } from "../../../../common/base/base.component";
 import { FormGroup, FormArray } from "@angular/forms";
 import { PasswordForm } from "./password-editor/password-form.model";
@@ -11,6 +11,10 @@ import { PasswordForm } from "./password-editor/password-form.model";
 export class RequestEditorComponent extends BaseComponent implements OnInit {
 
     @Input() account: FormGroup;
+    @Output() selectedPasswordIndexEvent = new EventEmitter<number>();
+
+    step = 0;
+
     constructor(
         //private configurationService: ConfigurationService,
         //private language: TranslateService,
@@ -22,14 +26,14 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
 
     }
 
-
     addPassword() {
         (this.account.get('passwords')as FormArray).push(new PasswordForm().fromModel(null).buildForm());
     }
 
-    step = 0;
+    
 
     setStep(index: number) {
+        this.selectedPasswordIndexEvent.emit(index);
         this.step = index;
     }
 

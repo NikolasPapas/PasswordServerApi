@@ -37,12 +37,12 @@ export class PasswordForm {
     buildForm(): FormGroup {
         return new FormBuilder().group({
             passwordId: [{ value: this.passwordId, disabled: true }, [Validators.required]],
-            name: [{ value: this.name, disabled: true }, [Validators.required]],
-            userName: [{ value: this.userName, disabled: true }, [Validators.required]],
-            password: [{ value: this.password, disabled: true }, [Validators.required]],
-            logInLink: [{ value: this.logInLink, disabled: true }, [Validators.required]],
-            sensitivity: [{ value: this.sensitivity, disabled: true }, [Validators.required]],
-            strength: [{ value: this.strength, disabled: true }, [Validators.required]],
+            name: [{ value: this.name, disabled: false }, [Validators.required]],
+            userName: [{ value: this.userName, disabled: false }, [Validators.required]],
+            password: [{ value: this.password, disabled: false }, [Validators.required]],
+            logInLink: [{ value: this.logInLink, disabled: false }, [Validators.required]],
+            sensitivity: [{ value: this.sensitivity, disabled: false }, [Validators.required]],
+            strength: [{ value: this.strength, disabled: false }, [Validators.required]],
         });
     }
 }
