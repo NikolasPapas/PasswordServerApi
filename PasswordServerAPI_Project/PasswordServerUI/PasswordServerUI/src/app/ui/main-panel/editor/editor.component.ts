@@ -84,6 +84,10 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     }
 
+    addAccount(){
+        this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+    }
+
     //#region Account Action
 
     onActionAccountSelected(action: ApplicationAction) {

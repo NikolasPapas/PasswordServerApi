@@ -13,7 +13,7 @@ namespace PasswordServerApi.Service
 		//Accoun
 		public static readonly Guid ActionGetAccountId = new Guid("C25B9787-8751-4FBD-BC6C-C63A48026D30");
 		public static readonly Guid ActionSaveAccountId = new Guid("1086495E-FD61-4397-B3A9-87B737ADEDDD");
-		public static readonly Guid ActionAddNewAccountId = new Guid("3CB81D8A-C477-440A-81CD-36745E6E79D8");
+		//public static readonly Guid ActionAddNewAccountId = new Guid("3CB81D8A-C477-440A-81CD-36745E6E79D8");
 		public static readonly Guid ActionRemoveAccountId = new Guid("FC1DCCAD-B915-422C-A23F-8DCE1A2C27F3");
 
 		//Comon
@@ -31,7 +31,7 @@ namespace PasswordServerApi.Service
 		//Account
 		public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionSaveAccount = new ApplicationAction { Id = ActionSaveAccountId, Name = "Αποθήκευση", ToolTipText = "Αποθήκευση λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
-		public static readonly ApplicationAction ActionAddNewAccount = new ApplicationAction { Id = ActionAddNewAccountId, Name = "Προσθήκη", ToolTipText = "Προσθήκη λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
+		//public static readonly ApplicationAction ActionAddNewAccount = new ApplicationAction { Id = ActionAddNewAccountId, Name = "Προσθήκη", ToolTipText = "Προσθήκη λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionRemoveAccount = new ApplicationAction { Id = ActionRemoveAccountId, Name = "Διαγραφή", ToolTipText = "Διαγραφή λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionGetAccountAndPassword = new ApplicationAction { Id = ActionGetAccountAndPasswordId, Name = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", ToolTipText = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 
@@ -60,7 +60,7 @@ namespace PasswordServerApi.Service
 		public static List<ApplicationAction> GetAcrionByAdminRole()
 		{
 			List<ApplicationAction> list = new List<ApplicationAction>(){
-			ActionGetAccounts, ActionSaveAccount, ActionAddNewAccount, ActionGetAccountAndPassword, ActionRemoveAccount
+			ActionGetAccounts, ActionSaveAccount/*, ActionAddNewAccount*/, ActionGetAccountAndPassword, ActionRemoveAccount
 			};
 			list.AddRange(GetAcrionByUserRole());
 			return list;

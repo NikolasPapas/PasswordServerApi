@@ -56,5 +56,6 @@
             <!-- <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4> -->
             <!-- <app-request-editor-panel  class="col-12" *ngFor="let accountModel of accountModels;  let i = index;" (opened)="selectedAccountIndex==i" [account]="accountModel"></app-request-editor-panel> -->
         </mat-card>
+        <button mat-raised-button class="col-auto" color="primary" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
     </div>
 </mat-card>

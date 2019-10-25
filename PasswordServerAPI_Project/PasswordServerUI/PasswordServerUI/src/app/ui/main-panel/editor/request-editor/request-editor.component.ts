@@ -30,8 +30,6 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
         (this.account.get('passwords')as FormArray).push(new PasswordForm().fromModel(null).buildForm());
     }
 
-    
-
     setStep(index: number) {
         this.selectedPasswordIndexEvent.emit(index);
         this.step = index;

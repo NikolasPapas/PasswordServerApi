@@ -11,7 +11,8 @@ export const Greek = {
     },
     COMMON:{
         OK:"OK",
-        ADD:"Add New Password",
+        ADD_PASSWORD:"Add New Password",
+        ADD_ACCOUNT:"Add New Account",
         SUBMIT:"Submit",
         CANCEL:"Cancel"
     },
