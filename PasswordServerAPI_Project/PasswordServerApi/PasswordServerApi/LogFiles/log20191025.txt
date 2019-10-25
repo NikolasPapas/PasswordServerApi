@@ -11374,4 +11374,1390 @@ PRAGMA foreign_keys=ON;
 SELECT "a"."EndityId", "a"."JsonData"
 FROM "Accounts" AS "a"
 2019-10-25 13:54:10.258 +03:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
-2019-10-25 13:54:10.258 +03:00 [INF] Route matched with {a
+2019-10-25 13:54:10.258 +03:00 [INF] Route matched with {a2019-10-25 13:59:21.464 +03:00 [INF] StartUpLog: Starting add services
+2019-10-25 13:59:21.897 +03:00 [INF] User profile is available. Using 'C:\Users\e81457\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 13:59:22.040 +03:00 [INF] StartUpLog: Start SetUP Database and Init
+2019-10-25 13:59:22.328 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 13:59:22.402 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.405 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.408 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-10-25 13:59:22.529 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.542 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."EndityId", "x"."JsonData"
+FROM "Accounts" AS "x"
+2019-10-25 13:59:22.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."EndityId", "x"."JsonData"
+FROM "Passwords" AS "x"
+2019-10-25 13:59:22.625 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.683 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.685 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.685 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.686 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.686 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.686 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.686 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.687 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.687 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.687 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.687 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.688 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.688 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.688 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.688 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.689 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.689 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.689 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.690 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.690 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.690 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.690 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.690 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.691 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.691 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.691 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.692 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.692 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.692 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.692 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.692 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.693 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.693 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.693 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.694 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.694 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.694 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.694 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.694 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.695 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.695 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.695 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.695 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.695 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.696 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.696 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.696 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.696 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.697 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.697 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.697 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.697 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.698 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.698 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.698 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.698 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.698 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.699 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.699 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.699 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.699 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.699 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.700 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.700 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.700 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 13:59:22.803 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 13:59:22.807 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 483)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.808 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.808 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.808 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.808 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.809 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.809 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.809 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.809 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.810 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 482)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.810 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.810 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.810 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.811 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.812 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.813 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.814 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.815 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.816 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.817 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.818 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.819 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.820 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.820 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 13:59:22.830 +03:00 [INF] StartUpLog: Stop SetUP Database and Init
+2019-10-25 13:59:23.048 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 13:59:23.051 +03:00 [INF] CORS policy execution successful.
+2019-10-25 13:59:23.063 +03:00 [INF] Request finished in 15.3182ms 204 
+2019-10-25 13:59:23.070 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 13:59:23.070 +03:00 [INF] CORS policy execution successful.
+2019-10-25 132019-10-25 14:02:52.326 +03:00 [INF] StartUpLog: Starting add services
+2019-10-25 14:02:52.787 +03:00 [INF] User profile is available. Using 'C:\Users\e81457\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 14:02:52.931 +03:00 [INF] StartUpLog: Start SetUP Database and Init
+2019-10-25 14:02:53.236 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:02:53.308 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.312 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.315 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-10-25 14:02:53.435 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.448 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."EndityId", "x"."JsonData"
+FROM "Accounts" AS "x"
+2019-10-25 14:02:53.502 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.502 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."EndityId", "x"."JsonData"
+FROM "Passwords" AS "x"
+2019-10-25 14:02:53.532 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.589 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.591 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.592 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.592 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.592 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.592 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.593 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.593 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.593 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.593 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.594 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Accounts"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.594 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.594 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.594 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.595 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.596 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.597 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.597 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.597 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.597 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.597 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.598 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.598 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.598 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.598 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.599 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.599 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.599 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.599 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.600 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.600 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.600 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.600 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.601 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.601 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.601 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.601 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.601 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.602 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.602 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.602 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.602 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.602 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.603 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.603 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.603 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.603 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.603 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.604 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.604 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.604 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.604 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.604 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.605 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.605 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.605 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.605 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.606 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.606 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.606 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.606 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.607 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.607 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.607 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.607 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.608 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.608 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.608 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.608 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Passwords"
+WHERE "EndityId" = @p0;
+SELECT changes();
+2019-10-25 14:02:53.696 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:53.700 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 483)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.701 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 482)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.702 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 484)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Accounts" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.703 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.704 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.705 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.706 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.707 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.708 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.709 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.710 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.711 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.712 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.712 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.712 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 195)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Passwords" ("EndityId", "JsonData")
+VALUES (@p0, @p1);
+2019-10-25 14:02:53.722 +03:00 [INF] StartUpLog: Stop SetUP Database and Init
+2019-10-25 14:02:53.929 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:02:53.932 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:02:53.944 +03:00 [INF] Request finished in 15.3267ms 204 
+2019-10-25 14:02:53.950 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:02:53.951 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:02:54.010 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:02:54.026 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:02:54.121 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:02:54.124 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:02:54.139 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:54.139 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:02:54.155 +03:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-10-25 14:02:54.156 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:54.157 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:02:54.160 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:54.161 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:02:54.162 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:02:54.165 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:02:54.178 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 55.9763ms.
+2019-10-25 14:02:54.184 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:02:54.201 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 173.15ms
+2019-10-25 14:02:54.202 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:02:54.203 +03:00 [INF] Request finished in 252.4763ms 200 application/json; charset=utf-8
+2019-10-25 14:06:35.799 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:06:35.800 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:06:35.808 +03:00 [INF] Request finished in 8.1794ms 204 
+2019-10-25 14:06:35.808 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:06:35.808 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:06:35.834 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:06:35.834 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:06:35.846 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:06:35.847 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:06:35.847 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:35.847 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:35.848 +03:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-10-25 14:06:35.849 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:35.849 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:35.849 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:35.850 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:35.850 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:35.851 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:06:35.868 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 21.265ms.
+2019-10-25 14:06:35.868 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:06:35.869 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 34.337ms
+2019-10-25 14:06:35.869 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:06:35.869 +03:00 [INF] Request finished in 60.992ms 200 application/json; charset=utf-8
+2019-10-25 14:06:47.451 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:06:47.451 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:06:47.451 +03:00 [INF] Request finished in 0.2777ms 204 
+2019-10-25 14:06:47.455 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:06:47.455 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:06:47.455 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:06:47.455 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:06:47.471 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:06:47.471 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:06:47.472 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:47.473 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:47.474 +03:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-10-25 14:06:47.475 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:47.475 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:47.476 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:47.476 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:06:47.477 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:06:47.482 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:06:47.491 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20.578200000000002ms.
+2019-10-25 14:06:47.492 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:06:47.492 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 36.5905ms
+2019-10-25 14:06:47.492 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:06:47.492 +03:00 [INF] Request finished in 36.8928ms 200 application/json; charset=utf-8
+2019-10-25 14:08:13.597 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:08:13.597 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:13.598 +03:00 [INF] Request finished in 0.3638ms 204 
+2019-10-25 14:08:13.604 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:08:13.604 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:13.604 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:13.604 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:08:13.616 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:08:13.616 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:08:13.622 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:13.622 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:13.623 +03:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-10-25 14:08:13.623 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:13.623 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:13.624 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:13.624 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:13.625 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:13.631 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:08:13.649 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.9561ms.
+2019-10-25 14:08:13.649 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:08:13.649 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 44.9857ms
+2019-10-25 14:08:13.649 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:13.649 +03:00 [INF] Request finished in 45.5271ms 200 application/json; charset=utf-8
+2019-10-25 14:08:23.285 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:08:23.285 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:23.285 +03:00 [INF] Request finished in 0.283ms 204 
+2019-10-25 14:08:23.294 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:08:23.294 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:23.294 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:23.294 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:08:23.306 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:08:23.306 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:08:23.306 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:23.307 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:23.307 +03:00 [INF] Information -: PasswordServerApiLog: User $username106 is logged in
+2019-10-25 14:08:23.307 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:23.307 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:23.308 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:23.308 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:23.309 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:23.313 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 898)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:08:23.321 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.860800000000001ms.
+2019-10-25 14:08:23.321 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:08:23.321 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 26.8946ms
+2019-10-25 14:08:23.321 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:23.321 +03:00 [INF] Request finished in 27.1274ms 200 application/json; charset=utf-8
+2019-10-25 14:08:36.542 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:08:36.542 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:36.542 +03:00 [INF] Request finished in 0.2978ms 204 
+2019-10-25 14:08:36.545 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:08:36.545 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:08:36.545 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:36.545 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:08:36.557 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:08:36.557 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:08:36.557 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:36.558 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:36.558 +03:00 [INF] Information -: PasswordServerApiLog: User $username106 is logged in
+2019-10-25 14:08:36.558 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:36.558 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:36.559 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:36.559 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:08:36.560 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:08:36.564 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 898)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:08:36.572 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.7505ms.
+2019-10-25 14:08:36.572 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:08:36.572 +03:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 26.8393ms
+2019-10-25 14:08:36.572 +03:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:08:36.572 +03:00 [INF] Request finished in 27.1285ms 200 application/json; charset=utf-8
+2019-10-25 14:09:08.310 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-10-25 14:09:08.310 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:09:08.310 +03:00 [INF] Request finished in 0.3284ms 204 
+2019-10-25 14:09:08.319 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-10-25 14:09:08.319 +03:00 [INF] CORS policy execution successful.
+2019-10-25 14:09:08.319 +03:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-10-25 14:09:08.319 +03:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-10-25 14:09:08.331 +03:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-10-25 14:09:08.331 +03:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 14:09:08.331 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:09:08.332 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:09:08.332 +03:00 [INF] Information -: PasswordServerApiLog: User $username106 is logged in
+2019-10-25 14:09:08.332 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:09:08.333 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:09:08.333 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:09:08.333 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-10-25 14:09:08.334 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-10-25 14:09:08.341 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 898)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-10-25 14:09:08.360 +03:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.817500000000003ms.
+2019-10-25 14:09:08.360 +03:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-10-25 14:09:08.360 +03:00 [INF] Executed action PasswordServerApi.S

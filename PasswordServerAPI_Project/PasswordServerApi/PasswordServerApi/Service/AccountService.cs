@@ -80,14 +80,24 @@ namespace PasswordServerApi.Service
 		{
 			AccountDto resultAccount = new AccountDto();
 			request.Account = resultAccount;
-			List<AccountDto> accountsList = _baseService.GetAccounts(request,false).ToList();
-			
+			List<AccountDto> accountsList = _baseService.GetAccounts(request, false).ToList();
+
 			//if exist then update
-			if (accountsList.Find(x => x.FirstName == requestedAccount.FirstName || x.UserName == requestedAccount.UserName || x.Email == requestedAccount.Email) != null)
+			if (accountsList.Find(x => x.UserName == requestedAccount.UserName || x.AccountId == requestedAccount.AccountId) != null)
+			{
+				requestedAccount.Passwords.ForEach(x =>
+				{
+					_baseService.UpdatePassword(x);
+				});
 				resultAccount = _baseService.UpdateAccount(requestedAccount, Role, false);
+			}
 			else
 			{
 				requestedAccount.AccountId = Guid.NewGuid();
+				requestedAccount.Passwords.ForEach(x =>
+				{
+					_baseService.AddNewPassword(x);
+				});
 				resultAccount = _baseService.AddNewAccount(requestedAccount);
 			}
 

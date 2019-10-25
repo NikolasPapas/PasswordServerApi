@@ -25,11 +25,13 @@ export class EditorComponent extends BaseComponent implements OnInit {
     actions: ApplicationAction[];
     ACTION_INDICATOR_ACCOUNT_CONTROLLER: string = "Account";
     ACTION_INDICATOR_PASSWORD_CONTROLLER: string = "Password";
+    ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
     expandedIndex: number = -1;
     accountModels: FormGroup[] = [];
     selectedAccountIndex: number = -1;
     selectedPasswordIndex: number = -1;
+    isActionAddAccountIsOn :boolean = false;
 
     constructor(
         private configurationService: ConfigurationService,
@@ -40,6 +42,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
+        if(this.actions.filter(x=>x.id.toString() == this.ACTION_INDICATOR_ADD_ACCOUNT.toString()).length>0)
+        this.isActionAddAccountIsOn=true;
         //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
