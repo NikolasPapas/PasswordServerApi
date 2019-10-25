@@ -10,6 +10,6 @@ namespace PasswordServerApi.Interfaces
 {
 	public interface IPasswordService
 	{
-		Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request);
+		Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request, Guid userID);
 	}
 }

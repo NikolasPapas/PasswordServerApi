@@ -30,7 +30,7 @@ namespace PasswordServerApi
 	public class Startup
 	{
 
-		public Startup(IConfiguration configuration )
+		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
 		}
@@ -171,15 +171,15 @@ namespace PasswordServerApi
 			}
 		}
 
-		private PasswordModel GetDumyPassword(int i)
+		private PasswordModel GetDumyPassword(int i, int accountIndex)
 		{
 			return new PasswordModel()
 			{
 				PasswordId = Guid.NewGuid().ToString(),
 				Name = "Google" + i * i,
-				UserName = $"nikolaspapazian{ i * i}@gmail.com",
+				UserName = $"nikolaspapazian{accountIndex}@gmail.com",
 				Password = $"123{ i * i}",
-				LogInLink = "google.com",
+				LogInLink = $"google{accountIndex}.com",
 				Sensitivity = Sensitivity.OnlyUser,
 				Strength = Strength.VeryWeak
 			};
@@ -208,7 +208,7 @@ namespace PasswordServerApi
 			List<PasswordModel> passwords = new List<PasswordModel>();
 			for (int dumyi = i; dumyi <= i + 5; dumyi++)
 			{
-				PasswordModel pass = GetDumyPassword(dumyi);
+				PasswordModel pass = GetDumyPassword(dumyi,i);
 				passwords.Add(pass);
 				account.PasswordIds.Add(pass.PasswordId);
 			}

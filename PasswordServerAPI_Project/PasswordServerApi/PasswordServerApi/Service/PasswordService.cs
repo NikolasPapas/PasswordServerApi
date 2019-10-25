@@ -39,16 +39,21 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
-		public Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request)
+		public Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request, Guid userID)
 		{
-			AccountDto account = _baseService.GetAccountById(request.AccountId,true);
+			AccountDto userAccount = _baseService.GetAccountById(userID, true);
+			Guid accountToScann = userID;
+			if (userAccount.Role == "Admin")
+				accountToScann = request.AccountId;
+
+			AccountDto account = _baseService.GetAccountById(accountToScann, true);
 			PasswordDto savedPassword = _baseService.GetPasswords(request, account).FirstOrDefault();
 
-			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(account.Role))
+			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(userAccount.Role))
 				throw new Exception("Invalid Profile");
 			else
 			{
-				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[account.Role].Find(x => x.Id == request.ActionId);
+				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[userAccount.Role].Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
 				Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, PasswordActionResponse> func;
@@ -76,11 +81,11 @@ namespace PasswordServerApi.Service
 				Guid newPassId = Guid.NewGuid();
 				requesPass.PasswordId = newPassId;
 				account.Passwords.Add(requesPass);
-				_baseService.UpdateAccount(account, true);
+				_baseService.UpdateAccount(account, account.Role, true);
 				_baseService.AddNewPassword(requesPass);
 			}
 
-			return new PasswordActionResponse() { Passwords = new List<PasswordDto>() { requesPass } };
+			return new PasswordActionResponse() { Passwords = account.Passwords };
 		}
 
 
@@ -91,10 +96,10 @@ namespace PasswordServerApi.Service
 				throw new Exception("invalid PasswordId");
 
 			account.Passwords.RemoveAt(index);
-			_baseService.UpdateAccount(account, true);
+			_baseService.UpdateAccount(account, account.Role, true);
 			_baseService.RemovePassword(requesPass);
 
-			return new PasswordActionResponse() { Passwords = new List<PasswordDto>() { requesPass } };
+			return new PasswordActionResponse() { Passwords = account.Passwords };
 		}
 
 

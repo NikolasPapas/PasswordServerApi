@@ -36,8 +36,7 @@ namespace PasswordServerApi.Controllers
 		{
 			try
 			{
-				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-				return _passwordService.PasswordAction(request);
+				return _passwordService.PasswordAction(request, Guid.Parse(HttpContext.User.Identity.Name));
 			}
 			catch (Exception ex)
 			{

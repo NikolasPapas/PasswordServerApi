@@ -24,14 +24,14 @@ namespace PasswordServerApi.Service
 
 		#region Dictionary ActionId To Function
 
-		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, AccountActionResponse>> _actionIdToFunction = null;
+		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse>> _actionIdToFunction = null;
 
-		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, AccountActionResponse>> ActionIdToFunction
+		private Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse>> ActionIdToFunction
 		{
 			get
 			{
 				return _actionIdToFunction ?? (_actionIdToFunction =
-					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, AccountActionResponse>>()
+					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse>>()
 					{
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
 						{ StaticConfiguration.ActionGetAccountId, ActionGetAccountFunc },
@@ -62,10 +62,10 @@ namespace PasswordServerApi.Service
 				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[userAccount.Role].Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
-				Func<AccountDto, AccountDto, AccountActionRequest, AccountActionResponse> func;
+				Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
 
-				AccountActionResponse results = func(savedAccount, request.Account, request);
+				AccountActionResponse results = func(savedAccount, request.Account, request, userAccount.Role);
 				return new Response<AccountActionResponse>()
 				{
 					Payload = results,
@@ -76,14 +76,14 @@ namespace PasswordServerApi.Service
 
 		#region Actions
 
-		private AccountActionResponse ActionSeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private AccountActionResponse ActionSeveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{
 			if (requestedAccount.AccountId == null)
 				requestedAccount.AccountId = savedAccount.AccountId;
-			return new AccountActionResponse() { Accounts = new List<AccountDto>() { _baseService.UpdateAccount(requestedAccount, false) } };
+			return new AccountActionResponse() { Accounts = new List<AccountDto>() { _baseService.UpdateAccount(requestedAccount,Role , false) } };
 		}
 
-		private AccountActionResponse ActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private AccountActionResponse ActionGetAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			savedAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
@@ -91,7 +91,7 @@ namespace PasswordServerApi.Service
 			return new AccountActionResponse() { Accounts = new List<AccountDto>() { savedAccount } };
 		}
 
-		private AccountActionResponse ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private AccountActionResponse ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{
 			requestedAccount.AccountId = Guid.NewGuid();
 			requestedAccount.Passwords = new List<PasswordDto>();
@@ -104,13 +104,13 @@ namespace PasswordServerApi.Service
 			return new AccountActionResponse() { Accounts = new List<AccountDto>() { requestedAccount } };
 		}
 
-		private AccountActionResponse ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private AccountActionResponse ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{
 
 			return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
 		}
 
-		private AccountActionResponse ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request)
+		private AccountActionResponse ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{
 			AccountDto accountToDelete = _baseService.GetAccountById(requestedAccount.AccountId, false);
 			accountToDelete.Passwords.ForEach(password =>
@@ -120,7 +120,7 @@ namespace PasswordServerApi.Service
 			});
 			_baseService.RemoveAccount(accountToDelete);
 
-			return new AccountActionResponse() { Accounts = new List<AccountDto> { accountToDelete } };
+			return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
 		}
 		#endregion
 

@@ -54,12 +54,12 @@ namespace PasswordServerApi.Service
 			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurrentToken = ""; } return x; });
 		}
 
-		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
+		public AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full = false)
 		{
 			AccountModel updateAccount = GetAccountModel(accountDto);
 			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
 			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
-			if (updateAccount.Password != dbAccountModel.Password)
+			if (Role != "Admin" && updateAccount.Password != dbAccountModel.Password)
 				throw new Exception("Invalid Password");
 
 			dbAccountModel.Email = updateAccount.Email;

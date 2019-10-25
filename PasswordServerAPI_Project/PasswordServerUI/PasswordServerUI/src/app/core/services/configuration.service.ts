@@ -33,7 +33,7 @@ export class ConfigurationService extends BaseService {
         // for (let profile of configuration.profiles) {
         //     this.profiles.push(profile);
         // }
-        this.actions.slice(0, this.actions.length);
+        this.actions= [];
         for (let action of configuration.actions) {
             this.actions.push(action);
         }

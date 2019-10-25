@@ -129,10 +129,10 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionPasswordSuccess(res: PasswordActionResponse, action: ApplicationAction) {
-        if (action.refreshAfterAction) {
-            this.clearAll();
-            return;
-        }
+        // if (action.refreshAfterAction) {
+        //     this.clearAll();
+        //     return;
+        // }
         if (this.selectedAccountIndex >= 0 && this.accountModels[this.selectedAccountIndex] != null) {
             (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
             res.passwords.forEach(pass => {

@@ -37,7 +37,7 @@ namespace PasswordServerApi.Security
 			account.CurrentToken = Token;
 			account.LastLogIn = DateTime.Now;
 
-			_baseService.UpdateAccount(account, true);
+			_baseService.UpdateAccount(account,account.Role, true);
 		}
 
 		public AccountDto FindValidUserID(Guid UserId)
