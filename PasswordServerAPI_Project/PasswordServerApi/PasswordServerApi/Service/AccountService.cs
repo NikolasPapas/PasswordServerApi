@@ -35,7 +35,6 @@ namespace PasswordServerApi.Service
 					{
 						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
 						{ StaticConfiguration.ActionGetAccountId, ActionGetAccountFunc },
-						//{ StaticConfiguration.ActionAddNewAccountId, ActionAddNewAccountFunc },
 						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
 						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
 
@@ -111,19 +110,6 @@ namespace PasswordServerApi.Service
 			savedAccount.Passwords = passwords;
 			return new AccountActionResponse() { Accounts = new List<AccountDto>() { savedAccount } };
 		}
-
-		//private AccountActionResponse ActionAddNewAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
-		//{
-		//	requestedAccount.AccountId = Guid.NewGuid();
-		//	requestedAccount.Passwords = new List<PasswordDto>();
-
-		//	if (_baseService.GetAccounts(new AccountActionRequest() { Account = new AccountDto() { UserName = requestedAccount?.UserName } }, false).ToList().Count > 0)
-		//		throw new Exception("Rong Username");
-
-		//	_baseService.AddNewAccount(requestedAccount);
-
-		//	return new AccountActionResponse() { Accounts = new List<AccountDto>() { requestedAccount } };
-		//}
 
 		private AccountActionResponse ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
 		{

@@ -46,11 +46,11 @@ export class HttpPostService {
         return res.pipe(map(this.resolve), catchError((error) => this.handleHttpError(error)));
     }
 
-    httpPostBlob(actionUrl: string, postData: any): Observable<HttpResponse<any>> {
+    httpPostBlob(actionUrl: string, postData: any, httpOptions): Observable<HttpResponse<any>> {
         let url = this.metaData.getContextPath(actionUrl);
         //let wrappedReq = this.metaData.wrap2Request(postData);
         //let res = this.http.post(url, wrappedReq, { observe: 'response', responseType: 'blob' });
-        let res = this.http.post(url, postData);
+        let res = this.http.post(url, postData,httpOptions);
         return res.pipe(map(this.resolveBlob), catchError((error) => this.handleBlobError(error)));
     }
 

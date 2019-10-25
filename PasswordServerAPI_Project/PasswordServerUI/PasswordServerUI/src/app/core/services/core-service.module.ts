@@ -3,6 +3,7 @@ import { ConfigurationService } from './configuration.service';
 import { HttpPostService } from './http-post.service';
 import { MetaData } from './urlBuilder';
 import { AccountService } from './account-action.service';
+import { FileSaveService } from './file-save.service';
 
 //
 //
@@ -28,6 +29,7 @@ export class CoreServiceModule {
 				//ApplicationService,
 				MetaData,
 				ConfigurationService,
+				FileSaveService,
 				AccountService,
 				//TepixPetitionsFileService,
 			],

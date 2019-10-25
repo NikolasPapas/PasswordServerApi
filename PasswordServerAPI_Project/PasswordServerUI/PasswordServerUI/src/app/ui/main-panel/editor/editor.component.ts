@@ -13,6 +13,8 @@ import { PasswordActionRequest } from "../../../core/models/requests/password-re
 import { PasswordActionResponse } from "../../../core/models/response/password-response/password-action-response";
 import { PasswordForm } from "./request-editor/password-editor/password-form.model";
 import { Account } from "../../../core/models/account-model";
+import { BaseRequest } from "../../../core/models/requests/base-request";
+import { FileSaveService } from "../../../core/services/file-save.service";
 
 
 @Component({
@@ -25,25 +27,27 @@ export class EditorComponent extends BaseComponent implements OnInit {
     actions: ApplicationAction[];
     ACTION_INDICATOR_ACCOUNT_CONTROLLER: string = "Account";
     ACTION_INDICATOR_PASSWORD_CONTROLLER: string = "Password";
+    ACTION_INDICATOR_REPORT: string = "Report";
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
     expandedIndex: number = -1;
     accountModels: FormGroup[] = [];
     selectedAccountIndex: number = -1;
     selectedPasswordIndex: number = -1;
-    isActionAddAccountIsOn :boolean = false;
+    isActionAddAccountIsOn: boolean = false;
 
     constructor(
         private configurationService: ConfigurationService,
         private accountService: AccountService,
+        private fileSaveService: FileSaveService,
     ) {
         super();
     }
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
-        if(this.actions.filter(x=>x.id.toString() == this.ACTION_INDICATOR_ADD_ACCOUNT.toString()).length>0)
-        this.isActionAddAccountIsOn=true;
+        if (this.actions.filter(x => x.id.toString() == this.ACTION_INDICATOR_ADD_ACCOUNT.toString()).length > 0)
+            this.isActionAddAccountIsOn = true;
         //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
@@ -84,11 +88,13 @@ export class EditorComponent extends BaseComponent implements OnInit {
             this.onActionAccountSelected(action);
         } else if (action.controllerSend == this.ACTION_INDICATOR_PASSWORD_CONTROLLER) {
             this.onActionPasswordSelected(action);
+        } else if (action.controllerSend == this.ACTION_INDICATOR_REPORT) {
+            this.onSentExportPDFApplication(action)
         }
 
     }
 
-    addAccount(){
+    addAccount() {
         this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
@@ -137,10 +143,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionPasswordSuccess(res: PasswordActionResponse, action: ApplicationAction) {
-        // if (action.refreshAfterAction) {
-        //     this.clearAll();
-        //     return;
-        // }
         if (this.selectedAccountIndex >= 0 && this.accountModels[this.selectedAccountIndex] != null) {
             (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
             res.passwords.forEach(pass => {
@@ -158,6 +160,35 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.selectedAccountIndex = -1;
         this.selectedPasswordIndex = -1;
     }
+
+    //#endregion
+
+
+    //#region Export 
+    private onSentExportPDFApplication(action: ApplicationAction) {
+        let request: BaseRequest = {
+            actionId: action.id,
+            accountId: action.id
+        };
+        this.accountService.getApplicationPdf(request, action.controllerPath)
+            .pipe(takeUntil(this._destroyed)).subscribe(
+                res => { this.onExportPDFSuccess(res) },
+                error => { this.onExportPDFError(error) }
+            );
+    }
+
+    private onExportPDFSuccess(res: any) {
+        this.fileSaveService.saveBlob(res);
+    }
+
+    private onExportPDFError(error: any) {
+        this.fileSaveService.handleError(error);
+    }
+
+
+    // this.applicationService.getApplicationListExcel(this.search)
+    // .pipe(takeUntil(this._destroyed)).subscribe(res => this.fileSaveService.saveBlob(res),
+    //     error => this.fileSaveService.handleError(error, this.uiNotificationService));
 
     //#endregion
 }
