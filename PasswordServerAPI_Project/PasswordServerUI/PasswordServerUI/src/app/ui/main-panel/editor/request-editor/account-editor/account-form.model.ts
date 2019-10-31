@@ -1,6 +1,6 @@
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { Account } from "../../../../../core/models/account-model";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Guid } from "../../../../../common/types/guid";
+import { Account } from "../../../../../core/models/account-model";
 import { Sex } from "../../../../../core/models/enums/sex-enum";
 import { Password } from "../../../../../core/models/password-model";
 import { PasswordForm } from '../password-editor/password-form.model';
@@ -26,11 +26,11 @@ export class AccountForm {
             if (account.lastName) this.lastName = account.lastName;
             if (account.userName) this.userName = account.userName;
             if (account.email) this.email = account.email;
-            if (account.sex) this.sex = account.sex;
+            this.sex = account.sex;
             if (account.lastLogIn) this.lastLogIn = account.lastLogIn;
             if (account.passwords) this.passwords = account.passwords;
             if (account.role) this.role = account.role;
-        } 
+        }
         // else {
         //     this.accountId = Guid.create();
         //     this.firstName = "";

@@ -276,7 +276,6 @@ namespace PasswordServerApi.Service
 					Password = password[2],
 					LogInLink = password[3],
 					Sensitivity = password[4].GetPasswordSensitivity(),
-					Strength = password[5].GetPasswordStrength(),
 					PasswordId = Guid.NewGuid(),
 				});
 			}

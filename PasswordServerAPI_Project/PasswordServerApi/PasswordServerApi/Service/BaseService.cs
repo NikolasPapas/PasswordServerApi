@@ -215,7 +215,6 @@ namespace PasswordServerApi.Service
 				Password = dbPassword.Password,
 				LogInLink = dbPassword.LogInLink,
 				Sensitivity = dbPassword.Sensitivity,
-				Strength = dbPassword.Strength
 			};
 
 		}

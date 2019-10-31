@@ -15,21 +15,13 @@ export class PasswordForm {
 
     public fromModel(password: Password): PasswordForm {
         if (password != null) {
-            if (password.passwordId) this.passwordId = password.passwordId;  
-            if (password.name) this.name = password.name; 
-            if (password.userName) this.userName = password.userName; 
-            if (password.password) this.password = password.password; 
-            if (password.logInLink) this.logInLink = password.logInLink; 
-            if (password.sensitivity) this.sensitivity = password.sensitivity; 
-            if (password.strength) this.strength = password.strength; 
-        }else{
-            this.passwordId = Guid.create();
-            this.name = "";
-            this.userName = "";
-            this.password = "";
-            this.logInLink = "";
-            this.sensitivity = Sensitivity.ForEveryone;
-            this.strength = Strength.VeryWeak;
+            if (password.passwordId) this.passwordId = password.passwordId;
+            if (password.name) this.name = password.name;
+            if (password.userName) this.userName = password.userName;
+            if (password.password) this.password = password.password;
+            if (password.logInLink) this.logInLink = password.logInLink;
+            this.sensitivity = password.sensitivity;
+            this.strength = password.strength;
         }
         return this;
     }
