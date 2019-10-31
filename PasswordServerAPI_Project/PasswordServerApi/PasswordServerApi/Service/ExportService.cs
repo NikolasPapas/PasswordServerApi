@@ -1,5 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using MigraDoc.Rendering;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Extensions;
@@ -7,6 +9,7 @@ using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Enums;
 using PasswordServerApi.Models.Requests.Account;
 using PasswordServerApi.Models.Responces;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,14 +49,17 @@ namespace PasswordServerApi.Service
 					ExcelWorksheet data = (package.Workbook.Worksheets.Add(account.UserName));
 					AddWorksheetData(data, account);
 				});
-				package.SaveAs(new FileInfo("C:\\PASSWORDSERVERAPI\\exporPasswordServerApi.xlsx"));
-				var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-				response.Headers.Clear();
-				response.Content = new ByteArrayContent(package.GetAsByteArray());
-				SetFileSettings("Report_" + DateTime.Now.Date.ToShortDateString(), response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				//package.SaveAs(new FileInfo("C:\\PASSWORDSERVERAPI\\exporPasswordServerApi.xlsx"));
+				var file = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+				file.Headers.Clear();
+				file.Content = new ByteArrayContent(package.GetAsByteArray());
+				SetFileSettings("Report_" + DateTime.Now.Date.ToShortDateString(), file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				string fileName = "Report_" + DateTime.Now.Date.ToShortDateString() + ".xlsx";
+				HttpResponseMessage response = file;
 				return response;
 			}
 		}
+
 
 		internal static void SetFileSettings(string fileName, HttpResponseMessage response, String contentType)
 		{
@@ -270,7 +276,6 @@ namespace PasswordServerApi.Service
 					Password = password[2],
 					LogInLink = password[3],
 					Sensitivity = password[4].GetPasswordSensitivity(),
-					Strength = password[5].GetPasswordStrength(),
 					PasswordId = Guid.NewGuid(),
 				});
 			}

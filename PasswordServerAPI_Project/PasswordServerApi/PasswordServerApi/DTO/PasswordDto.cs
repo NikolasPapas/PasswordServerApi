@@ -1,4 +1,5 @@
-﻿using PasswordServerApi.Models.Enums;
+﻿using PasswordServerApi.Extensions;
+using PasswordServerApi.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace PasswordServerApi.DTO
 		public Sensitivity Sensitivity { get; set; }
 
 		[DataMember(Name = "strength")]
-		public Strength Strength { get; set; }
+		public Strength Strength {
+			get
+			{
+				return Password.GetPasswordStrength();
+			}
+		}
 	}
 }

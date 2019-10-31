@@ -12,7 +12,7 @@ namespace PasswordServerApi.Interfaces
 
 		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request,bool full);
 
-		AccountDto UpdateAccount(AccountDto accountDto, bool full);
+		AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full);
 
 		AccountDto GetAccountById(Guid id, bool full);
 

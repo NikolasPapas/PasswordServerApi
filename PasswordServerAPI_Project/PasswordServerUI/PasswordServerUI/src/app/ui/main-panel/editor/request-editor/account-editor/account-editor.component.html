@@ -1,0 +1,52 @@
+<div class="row">
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.FIRST_NAME' | translate}}" [formControl]="account.get('firstName')">
+        <mat-error *ngIf="account.get('firstName').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}" [formControl]="account.get('lastName')">
+        <mat-error *ngIf="account.get('lastName').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}" [formControl]="account.get('userName')">
+        <mat-error *ngIf="account.get('userName').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [formControl]="account.get('email')">
+        <mat-error *ngIf="account.get('email').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <mat-select placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [formControl]="account.get('sex')">
+            <mat-option [value]="sex.Female">{{'ENUMS.SEX.FEMALE' | translate}}</mat-option>
+            <mat-option [value]="sex.Male">{{'ENUMS.SEX.MALE' | translate}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="account.get('sex').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <input matInput #dateFoundPickerInput [matDatepicker]="dateFoundPicker" (focus)="dateFoundPicker.open()" placeholder="{{'ACTIONS.REQUEST.ACCOUNT.LAST_LOGIN' | translate}}" [formControl]="account.get('lastLogIn')">
+        <mat-datepicker-toggle matSuffix [for]="dateFoundPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateFoundPicker (closed)="dateFoundPickerInput.blur()"></mat-datepicker>
+        <mat-error *ngIf="account.get('lastLogIn').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="col-md-4">
+        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [formControl]="account.get('password')">
+        <mat-error *ngIf="account.get('password').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4">
+        <mat-select placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [formControl]="account.get('role')">
+            <mat-option [value]="role.Admin">{{'ENUMS.ROLE.ADMIN' | translate}}</mat-option>
+            <mat-option [value]="role.User">{{'ENUMS.ROLE.USER' | translate}}</mat-option>
+            <mat-option [value]="role.Viewer">{{'ENUMS.ROLE.VIEWER' | translate}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="account.get('role').hasError('required')">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+    </mat-form-field>
+
+</div>

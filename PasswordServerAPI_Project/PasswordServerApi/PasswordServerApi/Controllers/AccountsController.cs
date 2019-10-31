@@ -33,53 +33,32 @@ namespace PasswordServerApi.Controllers
 			_logger = logger;
 		}
 
-		/*
-		 * https://localhost:44390/api/accounts/
-		 *	{
-		 *		"ActionId":"c25b9787-8751-4fbd-bc6c-c63a48026d30",
-		 *		"UserName":"npapazian105",
-		 *		//"Password":"123105",
-		 *		//"Email":"npapazian105@cite.gr",
-		 *	}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns>Return A List With All Accounts</returns>
-		[HttpPost]
-		public Response<IEnumerable<AccountDto>> Get([FromBody] SearchAccountsRequest request)
-		{
-			return new Response<IEnumerable<AccountDto>>()
-			{
-				Payload = _accountService.GetAccounts(request),
-				Warnnings = new List<string>()
-			};
-		}
-		*/
-
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPost("accountAction")]
-		public Response<List<AccountDto>> AccountAction([FromBody] AccountActionRequest request)
+		public Response<AccountActionResponse> AccountAction([FromBody] AccountActionRequest request)
 		{
 			try
 			{
-				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-				return _accountService.ExecuteAction(request);
+				return _accountService.ExecuteAction(request, Guid.Parse(HttpContext.User.Identity.Name));
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex.Message);
 			}
-			return new Response<List<AccountDto>>() { Error = "Error On Runn" };
+			return new Response<AccountActionResponse>() { Error = "Error On Runn" };
 		}
 
 
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		[HttpPost("exportReport")]
-		public HttpResponseMessage ExportReport()
+		public HttpResponseMessage ExportReport([FromBody] BaseRequest request)
 		{
 			try
 			{
@@ -92,6 +71,11 @@ namespace PasswordServerApi.Controllers
 			return null;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
 		[HttpPost("importData")]
 		public StoreDocumentResponse ImportData([FromBody] StoreDocumentRequest request)
 		{

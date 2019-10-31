@@ -51,15 +51,15 @@ namespace PasswordServerApi.Service
 			});
 			if (full)
 				return filtered;
-			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurentToken = ""; } return x; });
+			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurrentToken = ""; } return x; });
 		}
 
-		public AccountDto UpdateAccount(AccountDto accountDto, bool full = false)
+		public AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full = false)
 		{
 			AccountModel updateAccount = GetAccountModel(accountDto);
 			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
 			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
-			if (updateAccount.Password != dbAccountModel.Password)
+			if (Role != "Admin" && updateAccount.Password != dbAccountModel.Password)
 				throw new Exception("Invalid Password");
 
 			dbAccountModel.Email = updateAccount.Email;
@@ -71,7 +71,7 @@ namespace PasswordServerApi.Service
 			{
 				dbAccountModel.LastLogIn = updateAccount.LastLogIn;
 				dbAccountModel.Role = updateAccount.Role;
-				dbAccountModel.CurentToken = updateAccount.CurentToken;
+				dbAccountModel.CurrentToken = updateAccount.CurrentToken;
 				dbAccountModel.Password = updateAccount.Password;
 				dbAccountModel.AccountId = updateAccount.AccountId;
 				dbAccountModel.PasswordIds = updateAccount.PasswordIds;
@@ -122,7 +122,7 @@ namespace PasswordServerApi.Service
 				Password = dbAccount.Password,
 				Sex = dbAccount.Sex,
 				LastLogIn = dbAccount.LastLogIn,
-				CurentToken = dbAccount.CurentToken,
+				CurrentToken = dbAccount.CurrentToken,
 				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
 			};
 		}
@@ -140,7 +140,7 @@ namespace PasswordServerApi.Service
 				Password = dtoAccount.Password,
 				Sex = dtoAccount.Sex,
 				LastLogIn = dtoAccount.LastLogIn,
-				CurentToken = dtoAccount.CurentToken,
+				CurrentToken = dtoAccount.CurrentToken,
 				PasswordIds = dtoAccount.Passwords.Select(x => x.PasswordId.ToString()).ToList(),
 			};
 		}
@@ -215,7 +215,6 @@ namespace PasswordServerApi.Service
 				Password = dbPassword.Password,
 				LogInLink = dbPassword.LogInLink,
 				Sensitivity = dbPassword.Sensitivity,
-				Strength = dbPassword.Strength
 			};
 
 		}

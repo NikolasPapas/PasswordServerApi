@@ -32,18 +32,17 @@ namespace PasswordServerApi.Controllers
 		/// <param name="request"></param>
 		/// <returns></returns>
 		[HttpPost("passwordAction")]
-		public Response<List<PasswordDto>> PasswordAction([FromBody] PasswordActionRequest request)
+		public Response<PasswordActionResponse> PasswordAction([FromBody] PasswordActionRequest request)
 		{
 			try
 			{
-				request.AccountId = Guid.Parse(HttpContext.User.Identity.Name);
-				return _passwordService.PasswordAction(request);
+				return _passwordService.PasswordAction(request, Guid.Parse(HttpContext.User.Identity.Name));
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex.Message);
 			}
-			return new Response<List<PasswordDto>>() { Error = "Error On Runn" };
+			return new Response<PasswordActionResponse>() { Error = "Error On Runn" };
 		}
 	}
 }

@@ -13,8 +13,11 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "name")]
 		public string Name { get; set; }
 
-		[DataMember(Name = "controlerPath")]
+		[DataMember(Name = "controllerPath")]
 		public string ControllerPath { get; set; }
+
+		[DataMember(Name = "controllerSend")]
+		public string ControllerSend { get; set; }
 
 		[DataMember(Name = "needsComment")]
 		public bool NeedsComment { get; set; }
@@ -39,5 +42,7 @@ namespace PasswordServerApi.Models
 
 		[DataMember(Name = "needsConfirmation")]
 		public bool NeedsConfirmation { get; set; }
+
+		
 	}
 }

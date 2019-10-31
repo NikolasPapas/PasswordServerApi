@@ -2854,6 +2854,40 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "PDFsharp-MigraDoc-gdi/1.50.5147": {
+        "type": "package",
+        "compile": {
+          "lib/net20/MigraDoc.DocumentObjectModel-gdi.dll": {},
+          "lib/net20/MigraDoc.Rendering-gdi.dll": {},
+          "lib/net20/MigraDoc.RtfRendering-gdi.dll": {},
+          "lib/net20/PdfSharp-gdi.dll": {},
+          "lib/net20/PdfSharp.Charting-gdi.dll": {}
+        },
+        "runtime": {
+          "lib/net20/MigraDoc.DocumentObjectModel-gdi.dll": {},
+          "lib/net20/MigraDoc.Rendering-gdi.dll": {},
+          "lib/net20/MigraDoc.RtfRendering-gdi.dll": {},
+          "lib/net20/PdfSharp-gdi.dll": {},
+          "lib/net20/PdfSharp.Charting-gdi.dll": {}
+        },
+        "resource": {
+          "lib/net20/de/MigraDoc.DocumentObjectModel-gdi.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/MigraDoc.Rendering-gdi.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/MigraDoc.RtfRendering-gdi.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp-gdi.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.Charting-gdi.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -8122,6 +8156,32 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "PDFsharp-MigraDoc-gdi/1.50.5147": {
+      "sha512": "hrPNGJ95aW03D9x2TYuadoR8bPh+pi/z6lYWspYU81QSjNAExy8F6+1dV5KBILZXu4R2dtawmX7SjKtCP8sEHg==",
+      "type": "package",
+      "path": "pdfsharp-migradoc-gdi/1.50.5147",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/MigraDoc.DocumentObjectModel-gdi.dll",
+        "lib/net20/MigraDoc.DocumentObjectModel-gdi.xml",
+        "lib/net20/MigraDoc.Rendering-gdi.dll",
+        "lib/net20/MigraDoc.Rendering-gdi.xml",
+        "lib/net20/MigraDoc.RtfRendering-gdi.dll",
+        "lib/net20/MigraDoc.RtfRendering-gdi.xml",
+        "lib/net20/PdfSharp-gdi.dll",
+        "lib/net20/PdfSharp-gdi.xml",
+        "lib/net20/PdfSharp.Charting-gdi.dll",
+        "lib/net20/PdfSharp.Charting-gdi.xml",
+        "lib/net20/de/MigraDoc.DocumentObjectModel-gdi.resources.dll",
+        "lib/net20/de/MigraDoc.Rendering-gdi.resources.dll",
+        "lib/net20/de/MigraDoc.RtfRendering-gdi.resources.dll",
+        "lib/net20/de/PdfSharp-gdi.resources.dll",
+        "lib/net20/de/PdfSharp.Charting-gdi.resources.dll",
+        "pdfsharp-migradoc-gdi.1.50.5147.nupkg.sha512",
+        "pdfsharp-migradoc-gdi.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -13467,6 +13527,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.2.3",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.0.0",
+      "PDFsharp-MigraDoc-GDI >= 1.50.5147",
       "Serilog.AspNetCore >= 3.0.0",
       "Serilog.Extensions.Logging >= 3.0.1",
       "Serilog.Settings.Configuration >= 3.1.0",
@@ -13556,6 +13617,10 @@
             "target": "Package",
             "version": "[3.0.0, )"
           },
+          "PDFsharp-MigraDoc-GDI": {
+            "target": "Package",
+            "version": "[1.50.5147, )"
+          },
           "Serilog.AspNetCore": {
             "target": "Package",
             "version": "[3.0.0, )"
@@ -13592,5 +13657,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PDFsharp-MigraDoc-gdi 1.50.5147' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "PDFsharp-MigraDoc-gdi",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }
