@@ -39,7 +39,7 @@ export class AccountForm {
             accountId: [{ value: this.accountId, disabled: false }, [Validators.required]],
             firstName: [{ value: this.firstName, disabled: false }, [Validators.required]],
             lastName: [{ value: this.lastName, disabled: false }, [Validators.required]],
-            userName: [{ value: this.userName, disabled: true }, [Validators.required]],
+            userName: [{ value: this.userName, disabled: this.userName != null && this.userName != "" ? true : false  }, [Validators.required]],
             email: [{ value: this.email, disabled: false }, [Validators.required]],
             sex: [{ value: this.sex, disabled: false }, [Validators.required]],
             lastLogIn: [{ value: this.lastLogIn, disabled: true }, [Validators.required]],
