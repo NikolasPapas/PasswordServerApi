@@ -34,7 +34,7 @@ export class PasswordForm {
             password: [{ value: this.password, disabled: false }, [Validators.required]],
             logInLink: [{ value: this.logInLink, disabled: false }, [Validators.required]],
             sensitivity: [{ value: this.sensitivity, disabled: false }, [Validators.required]],
-            strength: [{ value: this.strength, disabled: false }, [Validators.required]],
+            strength: [{ value: this.strength, disabled: true }, [Validators.required]],
         });
     }
 }

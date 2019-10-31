@@ -16,6 +16,9 @@ export const Greek = {
         SUBMIT:"Submit",
         CANCEL:"Cancel"
     },
+    VALIDATION:{
+        REQUIRED: "Υποχρεωτικό Πεδίο",
+    },
     LOGIN:{
         USERNAME:"Username",
         PASSWORD:"Password",
