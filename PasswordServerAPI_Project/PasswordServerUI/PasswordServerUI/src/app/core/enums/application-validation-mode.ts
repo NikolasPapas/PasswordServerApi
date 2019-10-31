@@ -1,6 +1,6 @@
 export enum ApplicationValidationMode {
-    None = 'None',
-    Constraints = 'Constraints',
-    Full = 'Full'
+    None = 0,
+    Constraints = 1,
+    Full = 2
   }
   

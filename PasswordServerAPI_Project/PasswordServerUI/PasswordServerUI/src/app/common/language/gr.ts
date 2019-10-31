@@ -24,6 +24,11 @@ export const Greek = {
         PASSWORD:"Password",
     },
     ENUMS:{
+        VALIDATION_MODE:{
+            NONE:"None",
+            CONSTRAINTS:"Constraints",
+            FULL:"Full"
+        },
         SEX:{
             MALE:"Male",
             FEMALE:"Female"

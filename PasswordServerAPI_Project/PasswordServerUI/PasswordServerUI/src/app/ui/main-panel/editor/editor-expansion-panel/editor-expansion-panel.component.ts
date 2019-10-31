@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { BaseComponent } from "../../../../common/base/base.component";
 import { ConfigurationService } from "../../../../core/services/configuration.service";
 import { ApplicationAction } from "../../../../core/models/configuration/ApplicationAction";
-import { Guid } from "../../../../common/types/guid";
+import { ApplicationValidationMode } from "../../../../core/enums/application-validation-mode";
 
 
 @Component({
@@ -14,6 +14,7 @@ export class EditorExpansionPanelComponent extends BaseComponent implements OnIn
     
     @Input() action: ApplicationAction;
     @Output() onActionSelected = new EventEmitter<ApplicationAction>();
+    validationMode=ApplicationValidationMode;
 
     constructor(
         private configurationService: ConfigurationService,
