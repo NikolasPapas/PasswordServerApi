@@ -15,10 +15,6 @@
         <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.EMAIL' | translate}}" [formControl]="account.get('email')" >
     </mat-form-field>
 
-    <!-- <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [formControl]="account.get('sex')">
-    </mat-form-field> -->
-
     <mat-form-field class="col-md-4">
         <mat-select placeholder="{{'ACTIONS.REQUEST.ACCOUNT.GENDER' | translate}}" [formControl]="account.get('sex')">
             <mat-option [value]="sex.Female">{{'ENUMS.SEX.FEMALE' | translate}}</mat-option>
@@ -33,10 +29,6 @@
     <mat-form-field class="col-md-4">
         <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.PASSWORD' | translate}}" [formControl]="account.get('password')" >
     </mat-form-field>
-
-    <!-- <mat-form-field class="col-md-4">
-        <input matInput placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [formControl]="account.get('role')" >
-    </mat-form-field> -->
 
     <mat-form-field class="col-md-4">
         <mat-select placeholder="{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}" [formControl]="account.get('role')">

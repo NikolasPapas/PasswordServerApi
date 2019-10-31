@@ -174,7 +174,6 @@ namespace PasswordServerApi
 
 		private PasswordModel GetDumyPassword(int i, int accountIndex)
 		{
-			Strength strength = $"123{ i * i}".GetPasswordStrength();
 			return new PasswordModel()
 			{
 				PasswordId = Guid.NewGuid().ToString(),
@@ -183,7 +182,6 @@ namespace PasswordServerApi
 				Password = $"123{ i * i}",
 				LogInLink = $"google{accountIndex}.com",
 				Sensitivity = Sensitivity.OnlyUser,
-				Strength = strength
 			};
 		}
 

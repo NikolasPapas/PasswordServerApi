@@ -31,19 +31,6 @@ export class AccountForm {
             if (account.passwords) this.passwords = account.passwords;
             if (account.role) this.role = account.role;
         }
-        // else {
-        //     this.accountId = Guid.create();
-        //     this.firstName = "";
-        //     this.lastName = "";
-        //     this.userName = "";
-        //     this.email = "";
-        //     this.sex = Sex.Male
-        //     this.lastLogIn = "";
-        //     this.password = "";
-        //     this.role = "";
-        //     this.currentToken = "";
-        //     this.passwords = [];
-        // }
         return this;
     }
 
