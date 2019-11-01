@@ -14,4 +14,5 @@ export interface ApplicationAction {
     collapseApplication: boolean;
     icon: string;
     needsConfirmation: boolean;
+    color:string
 }

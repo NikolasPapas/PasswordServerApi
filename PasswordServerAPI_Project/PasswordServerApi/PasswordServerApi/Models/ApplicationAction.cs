@@ -43,6 +43,8 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "needsConfirmation")]
 		public bool NeedsConfirmation { get; set; }
 
-		
+		[DataMember(Name = "color")]
+		public string Color { get; set; }
+
 	}
 }

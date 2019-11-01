@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { FormArray, FormGroup } from "@angular/forms";
 import { BaseComponent } from "../../../../common/base/base.component";
-import { FormGroup, FormArray } from "@angular/forms";
+import { Strength } from "../../../../core/models/enums/strength";
 import { PasswordForm } from "./password-editor/password-form.model";
 
 @Component({
@@ -12,7 +13,6 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
 
     @Input() account: FormGroup;
     @Output() selectedPasswordIndexEvent = new EventEmitter<number>();
-
     step = 0;
 
     constructor(
@@ -26,8 +26,13 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
 
     }
 
+    getColor(passwordStrength: Strength) {
+        return passwordStrength == Strength.Danger ? 'red' : passwordStrength == Strength.VeryStrong ? 'green' : 'white';
+    }
+
     addPassword() {
-        (this.account.get('passwords')as FormArray).push(new PasswordForm().fromModel(null).buildForm());
+        (this.account.get('passwords') as FormArray).push(new PasswordForm().fromModel(null).buildForm());
+        this.setStep((this.account.get('passwords') as FormArray).length - 1);
     }
 
     setStep(index: number) {

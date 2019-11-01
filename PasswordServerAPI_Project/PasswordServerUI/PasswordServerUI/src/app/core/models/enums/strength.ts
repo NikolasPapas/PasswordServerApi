@@ -5,4 +5,5 @@ export enum Strength {
     Medium = 2,
     Weak = 3,
     VeryWeak = 4,
+    Danger= 5 
 }

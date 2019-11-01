@@ -17,7 +17,7 @@
             <mat-card-content *ngIf="!collapsedPassword" class="col-12">
                 <mat-accordion class="example-headers-align col-12">
                     <div *ngFor="let password of account.get('passwords')['controls']; let i = index">
-                        <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+                        <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle [style.background-color]="getColor(password.get('strength').value)">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <h4>{{i+1}}. {{password.get('name').value}}</h4>
@@ -37,6 +37,6 @@
                 </mat-accordion>
             </mat-card-content>
         </mat-card>
+        <button mat-raised-button class="col-auto" color="primary" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
     </div>
-    <button mat-raised-button class="col-auto" color="primary" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
 </div>

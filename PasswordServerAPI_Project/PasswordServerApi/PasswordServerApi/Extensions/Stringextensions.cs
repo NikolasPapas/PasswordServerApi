@@ -63,6 +63,9 @@ namespace PasswordServerApi.Extensions
 			if (points > 9)
 				return Strength.Weak;
 
+			if (points < 0)
+				return Strength.Danger;
+
 			return Strength.VeryWeak;
 		}
 

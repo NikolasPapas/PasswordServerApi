@@ -14,7 +14,7 @@
                 </mat-expansion-panel>
                 <div *ngFor="let action of actions ; let index = index;">
                     <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open(index)" (closed)="close()">
-                        <mat-expansion-panel-header>
+                        <mat-expansion-panel-header  [style.background-color]="action.color">
                             <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
                                 <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="6">{{action.tooltip}}</mat-grid-tile>

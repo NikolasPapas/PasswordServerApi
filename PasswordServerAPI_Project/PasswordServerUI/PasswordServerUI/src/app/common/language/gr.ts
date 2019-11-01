@@ -50,7 +50,8 @@ export const Greek = {
             STRONG:"Strong",
             MEDIUM:"Medium",
             WEAK:"Weak",
-            VERY_WEAK:"Very Weak"
+            VERY_WEAK:"Very Weak",
+            DANGER:"Danger"
         }
     },
     ACTIONS:{
