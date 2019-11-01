@@ -17,8 +17,8 @@
             <mat-card-content *ngIf="!collapsedPassword" class="col-12">
                 <mat-accordion class="example-headers-align col-12">
                     <div *ngFor="let password of account.get('passwords')['controls']; let i = index">
-                        <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle [style.background-color]="getColor(password.get('strength').value)">
-                            <mat-expansion-panel-header>
+                        <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle >
+                            <mat-expansion-panel-header [style.background-color]="getColor(password.get('strength').value)">
                                 <mat-panel-title>
                                     <h4>{{i+1}}. {{password.get('name').value}}</h4>
                                 </mat-panel-title>

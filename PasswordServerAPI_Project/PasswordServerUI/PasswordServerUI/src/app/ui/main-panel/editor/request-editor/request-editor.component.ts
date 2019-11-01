@@ -27,7 +27,7 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
     }
 
     getColor(passwordStrength: Strength) {
-        return passwordStrength == Strength.Danger ? 'red' : passwordStrength == Strength.VeryStrong ? 'green' : 'white';
+        return passwordStrength == Strength.Danger ? 'red' : passwordStrength == Strength.VeryStrong ? '#45b74596' : 'white';
     }
 
     addPassword() {

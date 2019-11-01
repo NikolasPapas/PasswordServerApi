@@ -58,26 +58,17 @@
   &.expansionPanelDisabled {
     background-color: map-get($colorPalette, lightGreyTextColor);
 
-    .mat-expansion-panel-header.mat-expanded:focus,
-    .mat-expansion-panel-header.mat-expanded:hover {
-      background: linear-gradient(white, map-get($colorPalette, lightGreyTextColor));
-    }
+   
   }
 
   &.expansionPanelLastOpened {
     background-color: map-get($colorPalette, lightBlueTextColor);
 
-    .mat-expansion-panel-header.mat-expanded:focus,
-    .mat-expansion-panel-header.mat-expanded:hover {
-      background: linear-gradient(white, map-get($colorPalette, lightBlueTextColor));
-    }
+   
   }
 
   &:not(.expansionPanelDisabled) {
-    .mat-expansion-panel-header.mat-expanded:focus,
-    .mat-expansion-panel-header.mat-expanded:hover {
-      background: linear-gradient(map-get($md-mypalette, 50), white);
-    }
+    
   }
 
   &.readonlyPanel {

@@ -11,18 +11,19 @@ namespace PasswordServerApi.Extensions
 	{
 		private static List<Tuple<int, string>> PointsToRegex = new List<Tuple<int, string>>()
 		{
-			new Tuple<int, string>( 1, @"[!]"),
+			new Tuple<int, string>( 2, @"[!]"),
 			new Tuple<int, string>( 1, @"[-]"),
-			new Tuple<int, string>( 1, @"[_]"),
+			new Tuple<int, string>( 2, @"[_]"),
 			new Tuple<int, string>( 2, @"[#]"),
 			new Tuple<int, string>( 2, @"[|]"),
 			new Tuple<int, string>( 2, @"[(]"),
-			new Tuple<int, string>( 1, @"[)]"),
+			new Tuple<int, string>( 2, @"[)]"),
 			new Tuple<int, string>( 3, @"[A-Z]$"),
-			new Tuple<int, string>( 2, @"[\\d]"),
-			new Tuple<int, string>( -5, @"[ ]$"),
+			new Tuple<int, string>( 2, @"[\d]"),
+			new Tuple<int, string>( -2, @"[(abc)]$"),
+			new Tuple<int, string>( -2, @"[(ABC)]$"),
 			new Tuple<int, string>( -1, @"[0]$"),
-			new Tuple<int, string>( -2, @"[123]$"),
+			new Tuple<int, string>( -2, @"[(123)*]$"),
 		};
 
 		public static Strength GetPasswordStrength(this string value)
@@ -46,7 +47,7 @@ namespace PasswordServerApi.Extensions
 						points += regexDiscription.Item1;
 				}
 			}
-			
+
 			//26 -20 VeryStrong
 			if (points > 19)
 				return Strength.VeryStrong;
@@ -63,10 +64,12 @@ namespace PasswordServerApi.Extensions
 			if (points > 9)
 				return Strength.Weak;
 
-			if (points < 0)
-				return Strength.Danger;
-
-			return Strength.VeryWeak;
+			//5 - 9 Medium
+			if (points > 4)
+				return Strength.VeryWeak;
+	
+			//-x - 4
+			return Strength.Danger;
 		}
 
 		public static Sensitivity GetPasswordSensitivity(this string value)
