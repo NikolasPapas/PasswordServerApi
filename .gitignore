@@ -301,3 +301,5 @@ PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/PasswordServer
 PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/project.assets.json
 
 PasswordServerAPI_Project/PasswordServerUI/PasswordServerUI/package-lock.json
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/PasswordServer.db
