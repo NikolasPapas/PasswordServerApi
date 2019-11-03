@@ -287,3 +287,17 @@ __pycache__/
 PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/Debug/netcoreapp2.2/PasswordServerApi.csproj.FileListAbsolute.txt
 
 PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/Controllers/AccountsController.cs
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/Debug/netcoreapp2.2/PasswordServerApi.assets.cache
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/PasswordServerApi.csproj.nuget.cache
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/PasswordServerApi.csproj.nuget.dgspec.json
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/PasswordServerApi.csproj.nuget.g.props
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/PasswordServerApi.csproj.nuget.g.targets
+
+PasswordServerAPI_Project/PasswordServerApi/PasswordServerApi/obj/project.assets.json
+
+PasswordServerAPI_Project/PasswordServerUI/PasswordServerUI/package-lock.json
