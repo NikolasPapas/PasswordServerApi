@@ -57,18 +57,13 @@
 
   &.expansionPanelDisabled {
     background-color: map-get($colorPalette, lightGreyTextColor);
-
-   
   }
 
   &.expansionPanelLastOpened {
     background-color: map-get($colorPalette, lightBlueTextColor);
-
-   
   }
 
   &:not(.expansionPanelDisabled) {
-    
   }
 
   &.readonlyPanel {

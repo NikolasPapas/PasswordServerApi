@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from "@angular/core";
 import { FormArray, FormGroup } from "@angular/forms";
 import { BaseComponent } from "../../../../common/base/base.component";
 import { Strength } from "../../../../core/models/enums/strength";
@@ -8,6 +8,7 @@ import { PasswordForm } from "./password-editor/password-form.model";
     selector: 'app-request-editor-panel',
     templateUrl: './request-editor.component.html',
     styleUrls: ['./request-editor.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class RequestEditorComponent extends BaseComponent implements OnInit {
 

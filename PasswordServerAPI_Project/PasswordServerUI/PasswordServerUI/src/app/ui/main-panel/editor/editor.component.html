@@ -5,7 +5,7 @@
             <mat-accordion>
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
-                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="14">
+                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
                             <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="6">{{'ACTIONS.TITLES.TOOLTIP' | translate}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="2">{{'ACTIONS.TITLES.ICON' | translate}}</mat-grid-tile>
@@ -14,8 +14,8 @@
                 </mat-expansion-panel>
                 <div *ngFor="let action of actions ; let index = index;">
                     <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open(index)" (closed)="close()">
-                        <mat-expansion-panel-header  [style.background-color]="action.color">
-                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
+                        <mat-expansion-panel-header>
+                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12" [style.color]="action.color">
                                 <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="6">{{action.tooltip}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="2">{{action.icon}}</mat-grid-tile>
@@ -33,7 +33,7 @@
             <mat-accordion>
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
-                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="14">
+                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
                             <mat-grid-tile [colspan]="4">{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="6">{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="2">{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}</mat-grid-tile>
@@ -43,7 +43,7 @@
                 <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
                     <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount()">
                         <mat-expansion-panel-header>
-                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="14">
+                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12">
                                 <mat-grid-tile [colspan]="4">{{accountModel?.get('userName')?.value}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="6">{{accountModel?.get('lastName')?.value}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="2">{{accountModel?.get('role')?.value}}</mat-grid-tile>
