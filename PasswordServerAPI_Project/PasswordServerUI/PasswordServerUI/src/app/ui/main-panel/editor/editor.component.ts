@@ -57,7 +57,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     close(index: number) {
-        this.expandedIndex = -1;
         this.collapseAll();
     }
 
@@ -71,7 +70,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     closeAccount(index: number) {
-        this.selectedAccountIndex = -1;
         this.collapseAllAccounts();
     }
 

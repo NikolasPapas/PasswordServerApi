@@ -33,15 +33,8 @@ export class AccountService {
                 observe: 'response',
                 responseType: 'blob'
             }
-        } else {
-            let httpOptions = {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.configurationService.getToken()
-                })
-            };
-            return httpOptions;
-        }
+        } 
+        return {headers: new HttpHeaders({})};
     }
 
     accountAction(request: AccountActionRequest, path: string): Observable<AccountActionResponse> {
