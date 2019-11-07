@@ -1,0 +1,75 @@
+﻿/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
+@import "~bootstrap/scss/bootstrap";
+//Material-Bootstrap configuration
+@import "./bootstrap-material";
+
+@import './palette';
+//@import '~material-design-icons/iconfont/material-icons.css';
+@import '~@angular/material/theming';
+
+$distances: ( 
+    "none" : 0px,
+    "minor" : 6px,
+    "small" : 10px, 
+    "medium" : 20px, 
+    "big" : 30px
+);
+
+$shadow: ( 
+    "small" : 0 1px 5px 0 rgba(0,0,0,.12),
+    "medium" : 0 5px 5px 0 rgba(0,0,0,.12)
+);
+
+$opacity: ( 
+    "invisible" : 0,
+    "transparent" : 0.88,
+    "visible" : 1,
+);
+
+
+@import './palette.scss';
+@import './theme.scss';
+
+
+* {
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: map-get($colorPalette, "backgroundColor");
+}
+
+.subCard {
+    margin: map-get($distances, "small");
+    padding: map-get($distances, "small");
+    background-color: map-get($colorPalette, "subCardBackground");
+}
+
+.subCardWite {
+    margin: map-get($distances, "small");
+    padding: map-get($distances, "small");
+    background-color: map-get($colorPalette, "subCardWiteBackground");
+}
+
+mat-form-field {
+    // min-width: 100%;
+    width: 100%
+}
+
+mat-icon, mat-grid-tile {
+    cursor: pointer;
+}
+
+.warnColor {
+    color: map-get($md-warningpalette, 900) !important;
+}
+
+custom-button {
+    .mat-raised-button.mat-primary {
+        min-width: 140px;
+        margin: map-get($distances, "small");
+    }
+}

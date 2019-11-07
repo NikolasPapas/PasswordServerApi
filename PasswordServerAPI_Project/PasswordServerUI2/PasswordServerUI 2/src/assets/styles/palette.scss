@@ -1,0 +1,80 @@
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mypalette: (
+    50 : #e0edec,
+    100 : #b3d3cf,
+    200 : #8097b5,
+    300 : #4d6197,
+    400 : #262c81,
+    500 : #001d6b,
+    600 : #001763,
+    700 : #001758,
+    800 : #00154e,
+    900 : #000b3c,
+    A100 : #7298ff,
+    A200 : #3f62ff,
+    A400 : #0c7dff,
+    A700 : #0038f1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-warningpalette: (
+    50 : #fdf8e6,
+    100 : #fbedc2,
+    200 : #f8e199,
+    300 : #f5d470,
+    400 : #f3cb51,
+    500 : #f1c232,
+    600 : #efbc2d,
+    700 : #edb426,
+    800 : #ebac1f,
+    900 : #e79f13,
+    A100 : #ffffff,
+    A200 : #fff4e2,
+    A400 : #ffe2af,
+    A700 : #ffd896,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-errorpalette: ( 50 : #f9e0e0, 100 : #f0b3b3, 200 : #e68080, 300 : #db4d4d, 400 : #d42626, 500 : #cc0000, 600 : #c70000, 700 : #c00000, 800 : #b90000, 900 : #ad0000, A100 : #ffd7d7, A200 : #ffa4a4, A400 : #ff7171, A700 : #ff5858, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #ffffff, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ) );
+
+$colorPalette: (
+    "backgroundColor": #E3E3E3,
+    "textColor": black,
+    "secondaryTextColor": white,
+    "greenTextColor": map-get($md-mypalette, 500),
+    "greyTextColor": #6d6d6d,
+    "lightGreyTextColor": #cac1c1,
+    "lightBlueTextColor": #c1c9ca,
+    "subCardBackground": #d6d6d6,
+    "subCardWiteBackground": #ffffff
+);

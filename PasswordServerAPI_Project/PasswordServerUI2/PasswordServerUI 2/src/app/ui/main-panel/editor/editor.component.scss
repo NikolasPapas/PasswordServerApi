@@ -1,0 +1,75 @@
+@import "src/assets/styles/palette.scss";
+
+.headerListPanel {
+  background-color: map-get($md-mypalette, 500);
+  cursor: default;
+
+  .headerListCard {
+    color: map-get($colorPalette, secondaryTextColor);
+    width: 100%;
+  }
+}
+
+.readonlyPanel {
+  margin-bottom: 0.5em !important;
+  .mat-expansion-panel-content {
+    visibility: hidden;
+    height: 0px;
+  }
+}
+
+.list-header {
+  width: 100%;
+  text-align: center;
+  color: map-get($md-mypalette, 500);
+}
+
+.actions-row {
+  margin-top: 1em;
+}
+
+.inner-header {
+  margin-top: 1em;
+}
+
+.warning-header{
+  padding: 1em;
+  font-weight: bold;
+  text-align: center;
+  color: map-get($md-errorpalette, 800 );
+}
+
+
+.secondaryHeaderListCard {
+  color: map-get($colorPalette, greenTextColor);
+  width: 100%;
+
+  .mat-grid-tile.justify-center {
+    .mat-figure {
+      justify-content: left;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  margin-bottom: 0.5em;
+  border-radius: 0px !important;
+
+  &.expansionPanelDisabled {
+    background-color: map-get($colorPalette, lightGreyTextColor);
+  }
+
+  &.expansionPanelLastOpened {
+    background-color: map-get($colorPalette, lightBlueTextColor);
+  }
+
+  &:not(.expansionPanelDisabled) {
+  }
+
+  &.readonlyPanel {
+    .mat-expansion-panel-content {
+      visibility: hidden;
+      height: 0px;
+    }
+  }
+}

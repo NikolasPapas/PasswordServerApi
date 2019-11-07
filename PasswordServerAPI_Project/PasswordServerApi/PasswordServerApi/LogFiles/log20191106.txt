@@ -3154,4 +3154,1378 @@ PRAGMA foreign_keys=ON;
 2019-11-06 16:34:41.403 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT "p"."EndityId", "p"."JsonData"
 FROM "Passwords" AS "p"
-2019-11-06 16:34:41.404 +02:00 [INF] Executed action method PasswordServerApi.Controllers.Passw
+2019-11-06 16:34:41.404 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.9383ms.
+2019-11-06 16:34:41.404 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:34:41.404 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 17.9065ms
+2019-11-06 16:34:41.404 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:34:41.404 +02:00 [INF] Request finished in 19.4764ms 200 application/json; charset=utf-8
+2019-11-06 16:34:46.853 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:34:46.853 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:34:46.853 +02:00 [INF] Request finished in 0.303ms 204 
+2019-11-06 16:34:46.894 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:34:46.894 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:34:46.894 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:34:46.894 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:34:46.895 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:34:46.895 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:34:46.895 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:34:46.895 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:34:46.895 +02:00 [INF] Authorization was successful.
+2019-11-06 16:34:46.908 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:34:46.908 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:34:46.908 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:34:46.909 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:34:46.909 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:34:46.910 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:34:46.910 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:34:46.911 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:34:46.911 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:34:46.912 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.7664ms.
+2019-11-06 16:34:46.912 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:34:46.912 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 16.6021ms
+2019-11-06 16:34:46.912 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:34:46.913 +02:00 [INF] Request finished in 18.6877ms 200 application/json; charset=utf-8
+2019-11-06 16:39:12.252 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-11-06 16:39:12.252 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:12.253 +02:00 [INF] Request finished in 0.467ms 204 
+2019-11-06 16:39:12.257 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-11-06 16:39:12.257 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:12.257 +02:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 16:39:12.257 +02:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-11-06 16:39:12.269 +02:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:12.269 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:12.270 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:12.270 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:12.271 +02:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-11-06 16:39:12.271 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:12.271 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:12.272 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:12.272 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:12.273 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:12.280 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-11-06 16:39:12.292 +02:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 23.4025ms.
+2019-11-06 16:39:12.292 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:12.293 +02:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 35.941ms
+2019-11-06 16:39:12.293 +02:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 16:39:12.294 +02:00 [INF] Request finished in 36.9247ms 200 application/json; charset=utf-8
+2019-11-06 16:39:15.393 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/accountAction  
+2019-11-06 16:39:15.393 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:15.394 +02:00 [INF] Request finished in 0.4178ms 204 
+2019-11-06 16:39:15.398 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/accountAction application/json 129
+2019-11-06 16:39:15.398 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:15.398 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:15.398 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:15.399 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:15.399 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:15.399 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 16:39:15.399 +02:00 [INF] Route matched with {action = "AccountAction", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)
+2019-11-06 16:39:15.399 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:15.411 +02:00 [INF] Executing action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Account.Requests.AccountActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:15.411 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:15.412 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:15.412 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:15.412 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:15.413 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:15.413 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:15.414 +02:00 [INF] Executed action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.4265000000000003ms.
+2019-11-06 16:39:15.414 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.AccountActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:15.414 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) in 14.7223ms
+2019-11-06 16:39:15.414 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 16:39:15.414 +02:00 [INF] Request finished in 16.2405ms 200 application/json; charset=utf-8
+2019-11-06 16:39:21.512 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:39:21.512 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:21.513 +02:00 [INF] Request finished in 0.4386ms 204 
+2019-11-06 16:39:21.567 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:39:21.567 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:21.567 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:21.567 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:21.568 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:21.568 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:21.569 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:21.569 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:39:21.569 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:21.581 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:21.582 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:21.582 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:21.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:21.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:21.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:21.584 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:39:21.585 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:21.585 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:39:21.585 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.9917000000000002ms.
+2019-11-06 16:39:21.585 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:21.586 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 17.181900000000002ms
+2019-11-06 16:39:21.586 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:21.586 +02:00 [INF] Request finished in 19.5129ms 200 application/json; charset=utf-8
+2019-11-06 16:39:23.636 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:39:23.636 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:23.636 +02:00 [INF] Request finished in 0.3266ms 204 
+2019-11-06 16:39:23.675 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:39:23.675 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:23.675 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:23.676 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:23.676 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:23.676 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:23.677 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:23.677 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:39:23.677 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:23.689 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:23.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:23.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:23.691 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:23.691 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:23.722 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:39:23.722 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.481500000000004ms.
+2019-11-06 16:39:23.722 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:23.722 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 45.6819ms
+2019-11-06 16:39:23.722 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:23.723 +02:00 [INF] Request finished in 47.5737ms 200 application/json; charset=utf-8
+2019-11-06 16:39:27.231 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:39:27.231 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:27.231 +02:00 [INF] Request finished in 0.3695ms 204 
+2019-11-06 16:39:27.271 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:39:27.271 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:27.272 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:27.272 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:27.272 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:27.272 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:27.273 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:27.273 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:39:27.273 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:27.286 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:27.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:27.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:27.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:27.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:27.324 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:39:27.324 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 37.609500000000004ms.
+2019-11-06 16:39:27.324 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:27.324 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 51.061ms
+2019-11-06 16:39:27.324 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:27.324 +02:00 [INF] Request finished in 52.8428ms 200 application/json; charset=utf-8
+2019-11-06 16:39:29.235 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:39:29.235 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:29.236 +02:00 [INF] Request finished in 0.3564ms 204 
+2019-11-06 16:39:29.273 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:39:29.273 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:29.274 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:29.274 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:29.274 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:29.275 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:29.275 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:29.275 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:39:29.275 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:29.287 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:29.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:29.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:29.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:29.289 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:29.316 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:39:29.316 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.5564ms.
+2019-11-06 16:39:29.316 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:29.316 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 41.087ms
+2019-11-06 16:39:29.316 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:29.316 +02:00 [INF] Request finished in 42.9443ms 200 application/json; charset=utf-8
+2019-11-06 16:39:39.006 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:39:39.006 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:39.007 +02:00 [INF] Request finished in 0.3657ms 204 
+2019-11-06 16:39:39.042 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:39:39.042 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:39:39.043 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:39:39.043 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:39:39.044 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:39.044 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:39.044 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:39.044 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:39:39.044 +02:00 [INF] Authorization was successful.
+2019-11-06 16:39:39.057 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:39:39.058 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:39.058 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:39.058 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:39:39.059 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:39:39.085 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:39:39.085 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.1777ms.
+2019-11-06 16:39:39.086 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:39:39.086 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 41.6147ms
+2019-11-06 16:39:39.086 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:39:39.086 +02:00 [INF] Request finished in 43.9114ms 200 application/json; charset=utf-8
+2019-11-06 16:40:02.554 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:40:02.554 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:40:02.554 +02:00 [INF] Request finished in 0.392ms 204 
+2019-11-06 16:40:02.597 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:40:02.597 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:40:02.597 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:40:02.597 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:40:02.598 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:02.598 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:02.598 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:40:02.598 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:40:02.598 +02:00 [INF] Authorization was successful.
+2019-11-06 16:40:02.613 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:40:02.614 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:02.614 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:02.615 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:02.615 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:02.616 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:02.616 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:40:02.617 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:02.617 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:40:02.617 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.9872ms.
+2019-11-06 16:40:02.617 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:40:02.618 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 19.4402ms
+2019-11-06 16:40:02.618 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:40:02.618 +02:00 [INF] Request finished in 20.9232ms 200 application/json; charset=utf-8
+2019-11-06 16:40:08.345 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:40:08.345 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:40:08.345 +02:00 [INF] Request finished in 0.2631ms 204 
+2019-11-06 16:40:08.400 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:40:08.400 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:40:08.400 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:40:08.400 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:40:08.401 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:08.401 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:08.402 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:40:08.402 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:40:08.402 +02:00 [INF] Authorization was successful.
+2019-11-06 16:40:08.424 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:40:08.424 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:08.424 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:08.425 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:40:08.425 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:40:08.457 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:40:08.457 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 33.144800000000004ms.
+2019-11-06 16:40:08.457 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:40:08.457 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 55.007000000000005ms
+2019-11-06 16:40:08.457 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:40:08.457 +02:00 [INF] Request finished in 57.753ms 200 application/json; charset=utf-8
+2019-11-06 16:46:50.982 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:46:50.982 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:46:50.983 +02:00 [INF] Request finished in 1.0832ms 204 
+2019-11-06 16:46:51.058 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:46:51.058 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:46:51.058 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:46:51.058 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:46:51.059 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:51.059 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:51.059 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:46:51.060 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:46:51.060 +02:00 [INF] Authorization was successful.
+2019-11-06 16:46:51.072 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:46:51.073 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:51.073 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:51.074 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:51.074 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:51.103 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:46:51.103 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.078100000000003ms.
+2019-11-06 16:46:51.103 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:46:51.103 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 43.644000000000005ms
+2019-11-06 16:46:51.103 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:46:51.103 +02:00 [INF] Request finished in 45.6491ms 200 application/json; charset=utf-8
+2019-11-06 16:46:54.227 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:46:54.227 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:46:54.227 +02:00 [INF] Request finished in 0.2616ms 204 
+2019-11-06 16:46:54.271 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:46:54.271 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:46:54.271 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:46:54.271 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:46:54.271 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:54.272 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:54.272 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:46:54.272 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:46:54.272 +02:00 [INF] Authorization was successful.
+2019-11-06 16:46:54.284 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:46:54.285 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:54.285 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:54.285 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:54.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:46:54.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:54.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:46:54.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:46:54.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:46:54.288 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.8432000000000004ms.
+2019-11-06 16:46:54.288 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:46:54.288 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 16.300800000000002ms
+2019-11-06 16:46:54.288 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:46:54.289 +02:00 [INF] Request finished in 18.0283ms 200 application/json; charset=utf-8
+2019-11-06 16:47:07.550 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:07.550 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:07.550 +02:00 [INF] Request finished in 0.3398ms 204 
+2019-11-06 16:47:07.599 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:07.599 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:07.599 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:07.599 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:07.600 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:07.600 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:07.600 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:07.600 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:07.600 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:07.616 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:07.616 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:07.617 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:07.618 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:07.618 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:07.619 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:07.619 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:07.620 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:07.620 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:07.620 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.4418000000000006ms.
+2019-11-06 16:47:07.620 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:07.621 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 20.1888ms
+2019-11-06 16:47:07.621 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:07.621 +02:00 [INF] Request finished in 21.9402ms 200 application/json; charset=utf-8
+2019-11-06 16:47:10.311 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:10.311 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:10.311 +02:00 [INF] Request finished in 0.3105ms 204 
+2019-11-06 16:47:10.352 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:10.352 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:10.352 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:10.353 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:10.353 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:10.353 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:10.354 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:10.354 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:10.354 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:10.366 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:10.366 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:10.366 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:10.367 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:10.367 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:10.368 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:10.368 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:10.369 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:10.369 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:10.369 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.3928000000000003ms.
+2019-11-06 16:47:10.369 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:10.370 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 15.959100000000001ms
+2019-11-06 16:47:10.370 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:10.370 +02:00 [INF] Request finished in 17.7315ms 200 application/json; charset=utf-8
+2019-11-06 16:47:13.504 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:13.504 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:13.504 +02:00 [INF] Request finished in 0.2634ms 204 
+2019-11-06 16:47:13.543 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:13.543 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:13.543 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:13.543 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:13.543 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:13.544 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:13.544 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:13.544 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:13.544 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:13.556 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:13.556 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:13.557 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:13.557 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:13.557 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:13.558 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:13.558 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:13.559 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:13.560 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:13.560 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.1224ms.
+2019-11-06 16:47:13.560 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:13.560 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 16.1717ms
+2019-11-06 16:47:13.560 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:13.560 +02:00 [INF] Request finished in 17.6521ms 200 application/json; charset=utf-8
+2019-11-06 16:47:18.143 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:18.143 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:18.143 +02:00 [INF] Request finished in 0.275ms 204 
+2019-11-06 16:47:18.182 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:18.182 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:18.182 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:18.182 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:18.183 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:18.183 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:18.183 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:18.183 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:18.183 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:18.198 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:18.198 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:18.199 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:18.199 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:18.200 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:18.200 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:18.200 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:18.201 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:18.202 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:18.202 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.0189ms.
+2019-11-06 16:47:18.202 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:18.202 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 19.047900000000002ms
+2019-11-06 16:47:18.202 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:18.202 +02:00 [INF] Request finished in 20.5853ms 200 application/json; charset=utf-8
+2019-11-06 16:47:23.321 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:23.321 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:23.321 +02:00 [INF] Request finished in 0.2961ms 204 
+2019-11-06 16:47:23.364 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:23.364 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:23.364 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:23.364 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:23.365 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:23.365 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:23.366 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:23.366 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:23.366 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:23.379 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:23.380 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:23.381 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:23.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:23.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:23.383 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:23.383 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:23.384 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:23.385 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:23.385 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6.3897ms.
+2019-11-06 16:47:23.386 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:23.386 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 20.033900000000003ms
+2019-11-06 16:47:23.386 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:23.386 +02:00 [INF] Request finished in 22.2732ms 200 application/json; charset=utf-8
+2019-11-06 16:47:34.447 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:34.447 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:34.447 +02:00 [INF] Request finished in 0.2915ms 204 
+2019-11-06 16:47:34.498 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:34.498 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:34.498 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:34.498 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:34.499 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:34.499 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:34.500 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:34.500 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:34.500 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:34.516 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:34.517 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:34.517 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:34.518 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:34.518 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:34.549 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:47:34.549 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.3964ms.
+2019-11-06 16:47:34.549 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:34.549 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 49.0777ms
+2019-11-06 16:47:34.549 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:34.549 +02:00 [INF] Request finished in 51.3168ms 200 application/json; charset=utf-8
+2019-11-06 16:47:36.755 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:36.755 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:36.755 +02:00 [INF] Request finished in 0.4272ms 204 
+2019-11-06 16:47:36.796 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:36.796 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:36.796 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:36.796 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:36.797 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:36.797 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:36.798 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:36.798 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:36.798 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:36.810 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:36.810 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:36.810 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:36.811 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:36.811 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:36.838 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:47:36.838 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.0153ms.
+2019-11-06 16:47:36.838 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:36.838 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 40.3492ms
+2019-11-06 16:47:36.838 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:36.838 +02:00 [INF] Request finished in 42.0264ms 200 application/json; charset=utf-8
+2019-11-06 16:47:43.229 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:43.229 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:43.229 +02:00 [INF] Request finished in 0.3531ms 204 
+2019-11-06 16:47:43.269 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:43.269 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:43.269 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:43.269 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:43.269 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:43.270 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:43.270 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:43.270 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:43.270 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:43.286 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:43.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:43.287 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:43.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:43.288 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:43.289 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:43.289 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:43.290 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:43.291 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:43.291 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.9348ms.
+2019-11-06 16:47:43.291 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:43.292 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 21.564ms
+2019-11-06 16:47:43.292 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:43.292 +02:00 [INF] Request finished in 23.2072ms 200 application/json; charset=utf-8
+2019-11-06 16:47:46.265 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:46.265 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:46.265 +02:00 [INF] Request finished in 0.3851ms 204 
+2019-11-06 16:47:46.305 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:46.305 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:46.305 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:46.306 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:46.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:46.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:46.307 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:46.307 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:46.307 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:46.320 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:46.320 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:46.320 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:46.321 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:46.321 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:46.350 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:47:46.350 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 30.472ms.
+2019-11-06 16:47:46.350 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:46.351 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 43.6477ms
+2019-11-06 16:47:46.351 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:46.351 +02:00 [INF] Request finished in 45.7083ms 200 application/json; charset=utf-8
+2019-11-06 16:47:48.097 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:48.097 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:48.097 +02:00 [INF] Request finished in 0.2605ms 204 
+2019-11-06 16:47:48.129 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:48.129 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:48.129 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:48.129 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:48.129 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:48.130 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:48.130 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:48.130 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:48.130 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:48.141 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:48.142 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:48.142 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:48.143 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:48.143 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:48.170 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:47:48.170 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.8553ms.
+2019-11-06 16:47:48.170 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:48.171 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 40.583200000000005ms
+2019-11-06 16:47:48.171 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:48.171 +02:00 [INF] Request finished in 42.3421ms 200 application/json; charset=utf-8
+2019-11-06 16:47:51.145 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:51.145 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:51.145 +02:00 [INF] Request finished in 0.3199ms 204 
+2019-11-06 16:47:51.179 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:51.179 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:51.180 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:51.180 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:51.180 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:51.180 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:51.181 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:51.181 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:51.181 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:51.194 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:51.194 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:51.195 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:51.195 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:51.195 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:51.196 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:51.196 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:51.197 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:51.197 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:51.198 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.6908000000000003ms.
+2019-11-06 16:47:51.198 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:51.198 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 16.8594ms
+2019-11-06 16:47:51.198 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:51.198 +02:00 [INF] Request finished in 18.4208ms 200 application/json; charset=utf-8
+2019-11-06 16:47:58.940 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:47:58.940 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:58.941 +02:00 [INF] Request finished in 0.4331ms 204 
+2019-11-06 16:47:58.983 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:47:58.983 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:47:58.983 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:47:58.983 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:47:58.984 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:58.984 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:58.985 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:58.985 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:47:58.985 +02:00 [INF] Authorization was successful.
+2019-11-06 16:47:58.998 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:47:58.998 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:58.999 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:58.999 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:58.999 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:47:59.000 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:59.000 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:59.001 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:47:59.001 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 16:47:59.002 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.556ms.
+2019-11-06 16:47:59.002 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:47:59.002 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 16.9482ms
+2019-11-06 16:47:59.002 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:47:59.002 +02:00 [INF] Request finished in 19.0774ms 200 application/json; charset=utf-8
+2019-11-06 16:48:04.714 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:48:04.714 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:04.715 +02:00 [INF] Request finished in 0.4513ms 204 
+2019-11-06 16:48:04.755 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:48:04.755 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:04.755 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:48:04.755 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:48:04.756 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:04.756 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:04.756 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:04.757 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:48:04.757 +02:00 [INF] Authorization was successful.
+2019-11-06 16:48:04.769 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:48:04.769 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:04.770 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:04.770 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:04.771 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:04.801 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:48:04.801 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.4101ms.
+2019-11-06 16:48:04.801 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:48:04.802 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 45.1252ms
+2019-11-06 16:48:04.802 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:04.802 +02:00 [INF] Request finished in 47.0368ms 200 application/json; charset=utf-8
+2019-11-06 16:48:07.270 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:48:07.271 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:07.271 +02:00 [INF] Request finished in 0.3275ms 204 
+2019-11-06 16:48:07.330 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:48:07.330 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:07.330 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:48:07.330 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:48:07.331 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.331 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.332 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:07.332 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:48:07.332 +02:00 [INF] Authorization was successful.
+2019-11-06 16:48:07.359 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:48:07.359 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.360 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.381 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.411 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:48:07.411 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 52.066900000000004ms.
+2019-11-06 16:48:07.411 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:48:07.411 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 79.2146ms
+2019-11-06 16:48:07.411 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:07.411 +02:00 [INF] Request finished in 81.4033ms 200 application/json; charset=utf-8
+2019-11-06 16:48:07.800 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:48:07.801 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:07.801 +02:00 [INF] Request finished in 0.375ms 204 
+2019-11-06 16:48:07.831 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:48:07.831 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:07.831 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:48:07.831 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:48:07.831 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.832 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.832 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:07.832 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:48:07.832 +02:00 [INF] Authorization was successful.
+2019-11-06 16:48:07.844 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:48:07.845 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.845 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.846 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:07.846 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:07.874 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:48:07.874 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 29.401300000000003ms.
+2019-11-06 16:48:07.874 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:48:07.874 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 41.917ms
+2019-11-06 16:48:07.874 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:07.874 +02:00 [INF] Request finished in 43.7007ms 200 application/json; charset=utf-8
+2019-11-06 16:48:08.006 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:48:08.006 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:08.006 +02:00 [INF] Request finished in 0.3687ms 204 
+2019-11-06 16:48:08.037 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:48:08.037 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:08.037 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:48:08.037 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:48:08.037 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.038 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.038 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:08.038 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:48:08.038 +02:00 [INF] Authorization was successful.
+2019-11-06 16:48:08.055 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:48:08.055 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.056 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.056 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.057 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.084 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:48:08.084 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.9983ms.
+2019-11-06 16:48:08.084 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:48:08.084 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 46.036100000000005ms
+2019-11-06 16:48:08.084 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:08.084 +02:00 [INF] Request finished in 47.6855ms 200 application/json; charset=utf-8
+2019-11-06 16:48:08.357 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/passwords/passwordAction  
+2019-11-06 16:48:08.357 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:08.357 +02:00 [INF] Request finished in 0.3659ms 204 
+2019-11-06 16:48:08.381 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/passwords/passwordAction application/json 118
+2019-11-06 16:48:08.381 +02:00 [INF] CORS policy execution successful.
+2019-11-06 16:48:08.381 +02:00 [INF] Successfully validated the token.
+2019-11-06 16:48:08.381 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 16:48:08.381 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.382 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:08.382 +02:00 [INF] Route matched with {action = "PasswordAction", controller = "Passwords"}. Executing action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)
+2019-11-06 16:48:08.382 +02:00 [INF] Authorization was successful.
+2019-11-06 16:48:08.394 +02:00 [INF] Executing action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Requests.Password.PasswordActionRequest"]) - Validation state: "Valid"
+2019-11-06 16:48:08.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.395 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.395 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 16:48:08.395 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 16:48:08.424 +02:00 [ERR] Error -: PasswordServerApiLog: Value cannot be null.
+Parameter name: value
+2019-11-06 16:48:08.424 +02:00 [INF] Executed action method PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 30.315800000000003ms.
+2019-11-06 16:48:08.424 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.PasswordActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 16:48:08.424 +02:00 [INF] Executed action PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi) in 42.3731ms
+2019-11-06 16:48:08.424 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.PasswordsController.PasswordAction (PasswordServerApi)'
+2019-11-06 16:48:08.425 +02:00 [INF] Request finished in 43.9831ms 200 application/json; charset=utf-8
+2019-11-06 17:03:37.320 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-11-06 17:03:37.320 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:03:37.321 +02:00 [INF] Request finished in 0.9878ms 204 
+2019-11-06 17:03:37.327 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-11-06 17:03:37.327 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:03:37.327 +02:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:03:37.327 +02:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-11-06 17:03:37.342 +02:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-11-06 17:03:37.342 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:03:37.349 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:37.350 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:37.350 +02:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-11-06 17:03:37.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:37.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:37.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:37.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:37.352 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:37.359 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-11-06 17:03:37.374 +02:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.855600000000003ms.
+2019-11-06 17:03:37.374 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:03:37.374 +02:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 46.9994ms
+2019-11-06 17:03:37.374 +02:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:03:37.375 +02:00 [INF] Request finished in 47.6578ms 200 application/json; charset=utf-8
+2019-11-06 17:03:44.557 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/accountAction  
+2019-11-06 17:03:44.557 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:03:44.557 +02:00 [INF] Request finished in 0.266ms 204 
+2019-11-06 17:03:44.565 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/accountAction application/json 117
+2019-11-06 17:03:44.565 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:03:44.565 +02:00 [INF] Successfully validated the token.
+2019-11-06 17:03:44.565 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:03:44.565 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.566 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:44.566 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:03:44.566 +02:00 [INF] Route matched with {action = "AccountAction", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)
+2019-11-06 17:03:44.566 +02:00 [INF] Authorization was successful.
+2019-11-06 17:03:44.579 +02:00 [INF] Executing action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Account.Requests.AccountActionRequest"]) - Validation state: "Valid"
+2019-11-06 17:03:44.580 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.580 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:44.580 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.581 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:03:44.581 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.581 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.582 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.583 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.584 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.584 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.585 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.585 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.585 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:03:44.586 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:03:44.586 +02:00 [INF] Executed action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6.7496ms.
+2019-11-06 17:03:44.586 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.AccountActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:03:44.586 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) in 20.124000000000002ms
+2019-11-06 17:03:44.586 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:03:44.586 +02:00 [INF] Request finished in 21.6705ms 200 application/json; charset=utf-8
+2019-11-06 17:04:03.083 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/accountAction  
+2019-11-06 17:04:03.083 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:04:03.083 +02:00 [INF] Request finished in 0.3394ms 204 
+2019-11-06 17:04:03.094 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/accountAction application/json 1530
+2019-11-06 17:04:03.094 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:04:03.094 +02:00 [INF] Successfully validated the token.
+2019-11-06 17:04:03.094 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:04:03.095 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:03.095 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:03.096 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:04:03.096 +02:00 [INF] Route matched with {action = "AccountAction", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)
+2019-11-06 17:04:03.096 +02:00 [INF] Authorization was successful.
+2019-11-06 17:04:03.108 +02:00 [INF] Executing action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Account.Requests.AccountActionRequest"]) - Validation state: "Valid"
+2019-11-06 17:04:03.109 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:03.109 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:03.111 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:03.111 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:03.112 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:03.112 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:03.113 +02:00 [INF] Executed action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.4695ms.
+2019-11-06 17:04:03.113 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.AccountActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:04:03.113 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) in 17.181ms
+2019-11-06 17:04:03.113 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:04:03.113 +02:00 [INF] Request finished in 19.2599ms 200 application/json; charset=utf-8
+2019-11-06 17:04:04.503 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/accountAction  
+2019-11-06 17:04:04.503 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:04:04.503 +02:00 [INF] Request finished in 0.2847ms 204 
+2019-11-06 17:04:04.507 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/accountAction application/json 129
+2019-11-06 17:04:04.507 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:04:04.507 +02:00 [INF] Successfully validated the token.
+2019-11-06 17:04:04.507 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:04:04.507 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:04.508 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:04.508 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:04:04.508 +02:00 [INF] Route matched with {action = "AccountAction", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)
+2019-11-06 17:04:04.508 +02:00 [INF] Authorization was successful.
+2019-11-06 17:04:04.520 +02:00 [INF] Executing action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Account.Requests.AccountActionRequest"]) - Validation state: "Valid"
+2019-11-06 17:04:04.521 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:04.521 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:04.521 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:04.521 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:04.522 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:04:04.522 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:04:04.522 +02:00 [INF] Executed action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.1808ms.
+2019-11-06 17:04:04.522 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.AccountActionResponse, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:04:04.523 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) in 14.2841ms
+2019-11-06 17:04:04.523 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:04:04.523 +02:00 [INF] Request finished in 16.2007ms 200 application/json; charset=utf-8
+2019-11-06 17:05:07.514 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-11-06 17:05:07.514 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:07.514 +02:00 [INF] Request finished in 0.9212ms 204 
+2019-11-06 17:05:07.520 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-11-06 17:05:07.520 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:07.520 +02:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:05:07.520 +02:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-11-06 17:05:07.532 +02:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-11-06 17:05:07.532 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:05:07.537 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:05:07.537 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:05:07.538 +02:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-11-06 17:05:07.538 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:05:07.538 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:05:07.539 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:05:07.539 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:05:07.540 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:05:07.547 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-11-06 17:05:07.557 +02:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 25.5984ms.
+2019-11-06 17:05:07.557 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:05:07.558 +02:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 38.0308ms
+2019-11-06 17:05:07.558 +02:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:05:07.559 +02:00 [INF] Request finished in 39.2413ms 200 application/json; charset=utf-8
+2019-11-06 17:05:09.782 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/exportReport  
+2019-11-06 17:05:09.783 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:09.796 +02:00 [INF] Request finished in 14.0958ms 204 
+2019-11-06 17:05:09.810 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/exportReport application/json 102
+2019-11-06 17:05:09.810 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:09.814 +02:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmRmMmJiMGEtNjcxYS00NDc4LWIyNDEtNDJlZTY1MmY4YjhhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1NzMwNTMzMDcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.7l9r_tXJxP76Tj0vswgy-7sgpuDwVpHOhVSh2CaBqjI,Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmRmMmJiMGEtNjcxYS00NDc4LWIyNDEtNDJlZTY1MmY4YjhhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1NzMwNTMzMDcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.7l9r_tXJxP76Tj0vswgy-7sgpuDwVpHOhVSh2CaBqjI
+2019-11-06 17:05:09.814 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)'
+2019-11-06 17:05:09.815 +02:00 [INF] Route matched with {action = "ExportReport", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)
+2019-11-06 17:05:09.816 +02:00 [INF] Authorization failed.
+2019-11-06 17:05:09.818 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2019-11-06 17:05:09.825 +02:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2019-11-06 17:05:09.833 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2019-11-06 17:05:09.833 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi) in 17.6441ms
+2019-11-06 17:05:09.833 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)'
+2019-11-06 17:05:09.839 +02:00 [INF] Request finished in 28.9372ms 401 
+2019-11-06 17:05:17.336 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/exportReport  
+2019-11-06 17:05:17.336 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:17.336 +02:00 [INF] Request finished in 0.3438ms 204 
+2019-11-06 17:05:17.340 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/exportReport application/json 102
+2019-11-06 17:05:17.340 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:05:17.340 +02:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmRmMmJiMGEtNjcxYS00NDc4LWIyNDEtNDJlZTY1MmY4YjhhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1NzMwNTMzMDcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.7l9r_tXJxP76Tj0vswgy-7sgpuDwVpHOhVSh2CaBqjI,Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZmRmMmJiMGEtNjcxYS00NDc4LWIyNDEtNDJlZTY1MmY4YjhhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1NzMwNTMzMDcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNhbXBsZUF1ZGllbmNlIn0.7l9r_tXJxP76Tj0vswgy-7sgpuDwVpHOhVSh2CaBqjI
+2019-11-06 17:05:17.340 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)'
+2019-11-06 17:05:17.340 +02:00 [INF] Route matched with {action = "ExportReport", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)
+2019-11-06 17:05:17.341 +02:00 [INF] Authorization failed.
+2019-11-06 17:05:17.341 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2019-11-06 17:05:17.341 +02:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2019-11-06 17:05:17.341 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2019-11-06 17:05:17.341 +02:00 [INF] Executed action PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi) in 0.2722ms
+2019-11-06 17:05:17.341 +02:00 [INF] Executed endpoint 'PasswordServerApi.Controllers.AccountsController.ExportReport (PasswordServerApi)'
+2019-11-06 17:05:17.341 +02:00 [INF] Request finished in 0.8134ms 401 
+2019-11-06 17:06:56.129 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/authentication/logIn  
+2019-11-06 17:06:56.129 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:06:56.136 +02:00 [INF] Request finished in 6.3232ms 204 
+2019-11-06 17:06:56.136 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/authentication/logIn application/json 43
+2019-11-06 17:06:56.136 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:06:56.136 +02:00 [INF] Executing endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:06:56.136 +02:00 [INF] Route matched with {action = "RequestToken", controller = "Authentication"}. Executing action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)
+2019-11-06 17:06:56.151 +02:00 [INF] Executing action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) with arguments (["PasswordServerApi.Security.SecurityModels.TokenRequest"]) - Validation state: "Valid"
+2019-11-06 17:06:56.151 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:06:56.158 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:56.158 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:56.159 +02:00 [INF] Information -: PasswordServerApiLog: User $username105 is logged in
+2019-11-06 17:06:56.160 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:56.160 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:56.162 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:56.162 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:56.163 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:56.170 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (Size = 36), @p0='?' (Size = 900)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Accounts" SET "JsonData" = @p0
+WHERE "EndityId" = @p1;
+SELECT changes();
+2019-11-06 17:06:56.191 +02:00 [INF] Executed action method PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 39.4991ms.
+2019-11-06 17:06:56.191 +02:00 [INF] Executing ObjectResult, writing value of type 'PasswordServerApi.Models.Responces.Response`1[[PasswordServerApi.Models.Responces.ResponceTokenRequest, PasswordServerApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-11-06 17:06:56.191 +02:00 [INF] Executed action PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi) in 55.147400000000005ms
+2019-11-06 17:06:56.191 +02:00 [INF] Executed endpoint 'PasswordServerApi.Security.AuthenticationController.RequestToken (PasswordServerApi)'
+2019-11-06 17:06:56.192 +02:00 [INF] Request finished in 56.6352ms 200 application/json; charset=utf-8
+2019-11-06 17:06:58.414 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:53257/api/accounts/accountAction  
+2019-11-06 17:06:58.414 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:06:58.414 +02:00 [INF] Request finished in 0.2769ms 204 
+2019-11-06 17:06:58.420 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:53257/api/accounts/accountAction application/json 117
+2019-11-06 17:06:58.420 +02:00 [INF] CORS policy execution successful.
+2019-11-06 17:06:58.420 +02:00 [INF] Successfully validated the token.
+2019-11-06 17:06:58.420 +02:00 [INF] Entity Framework Core 2.2.3-servicing-35854 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-11-06 17:06:58.421 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.421 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:58.422 +02:00 [INF] Executing endpoint 'PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)'
+2019-11-06 17:06:58.422 +02:00 [INF] Route matched with {action = "AccountAction", controller = "Accounts"}. Executing action PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi)
+2019-11-06 17:06:58.422 +02:00 [INF] Authorization was successful.
+2019-11-06 17:06:58.435 +02:00 [INF] Executing action method PasswordServerApi.Controllers.AccountsController.AccountAction (PasswordServerApi) with arguments (["PasswordServerApi.Models.Account.Requests.AccountActionRequest"]) - Validation state: "Valid"
+2019-11-06 17:06:58.436 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.436 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:58.436 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.437 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."EndityId", "a"."JsonData"
+FROM "Accounts" AS "a"
+2019-11-06 17:06:58.437 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.437 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:06:58.438 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.438 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonData"
+FROM "Passwords" AS "p"
+2019-11-06 17:06:58.439 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-11-06 17:06:58.439 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."EndityId", "p"."JsonD
