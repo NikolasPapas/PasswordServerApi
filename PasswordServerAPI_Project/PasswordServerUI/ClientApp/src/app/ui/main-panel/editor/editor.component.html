@@ -41,7 +41,7 @@
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
                 <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
-                    <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount()">
+                    <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount(indexAcc)">
                         <mat-expansion-panel-header>
                             <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12">
                                 <mat-grid-tile [colspan]="4">{{accountModel?.get('userName')?.value}}</mat-grid-tile>

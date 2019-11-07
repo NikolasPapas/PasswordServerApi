@@ -12,6 +12,8 @@ import { PasswordActionRequest } from "../models/requests/password-request/passw
 import { StoreReportRequest } from "../models/requests/store-report-request";
 import { StoreReportResponse } from "../models/response/store-report-response";
 import { BaseRequest } from "../models/requests/base-request";
+import { UiNotificationService } from "./ui-notification.service";
+import { NotificationLevel } from '../models/enums/notification-level';
 
 @Injectable()
 export class AccountService {
@@ -19,6 +21,7 @@ export class AccountService {
     constructor(
         private httpPostService: HttpPostService,
         private configurationService: ConfigurationService,
+        public uiNotificationService: UiNotificationService
         // private postNewWindowService: PostNewWindowService
     ) {
     }

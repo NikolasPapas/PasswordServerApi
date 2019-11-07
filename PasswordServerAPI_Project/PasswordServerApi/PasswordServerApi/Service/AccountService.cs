@@ -44,7 +44,7 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
-		public Response<AccountActionResponse> ExecuteAction(AccountActionRequest request, Guid userID)
+		public AccountActionResponse ExecuteAction(AccountActionRequest request, Guid userID)
 		{
 			AccountDto userAccount = _baseService.GetAccountById(userID, false);
 			if (request.AccountId == null || request.AccountId == Guid.Empty)
@@ -64,12 +64,7 @@ namespace PasswordServerApi.Service
 				Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
 
-				AccountActionResponse results = func(savedAccount, request.Account, request, userAccount.Role);
-				return new Response<AccountActionResponse>()
-				{
-					Payload = results,
-					SelectedAction = request.ActionId,
-				};
+				return func(savedAccount, request.Account, request, userAccount.Role);
 			}
 		}
 

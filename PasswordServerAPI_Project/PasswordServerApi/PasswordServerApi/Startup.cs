@@ -48,6 +48,7 @@ namespace PasswordServerApi
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
 			services.AddTransient<IExportService, ExportService>();
+			services.AddTransient<IExceptionHandler, ExceptionHandler>();
 
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
 			services.AddScoped<IUserManagementService, UserManagementService>();

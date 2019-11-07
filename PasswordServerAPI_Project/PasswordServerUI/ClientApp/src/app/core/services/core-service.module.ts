@@ -4,6 +4,7 @@ import { HttpPostService } from './http-post.service';
 import { MetaData } from './urlBuilder';
 import { AccountService } from './account-action.service';
 import { FileSaveService } from './file-save.service';
+import { UiNotificationService } from './ui-notification.service';
 
 //
 //
@@ -24,6 +25,7 @@ export class CoreServiceModule {
 		return {
 			ngModule: CoreServiceModule,
 			providers: [
+				UiNotificationService,
 				HttpPostService,
 				//FileSaveService,
 				//ApplicationService,

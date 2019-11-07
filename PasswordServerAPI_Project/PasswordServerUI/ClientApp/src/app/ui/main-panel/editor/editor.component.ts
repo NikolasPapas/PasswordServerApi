@@ -70,7 +70,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     closeAccount(index: number) {
-        this.collapseAllAccounts();
+        if (this.selectedAccountIndex == index)
+            this.collapseAllAccounts();
     }
 
     collapseAllAccounts() {
@@ -120,7 +121,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionError(error: any) {
-
+        //Notification For Error
     }
     //#endregion
 
@@ -148,7 +149,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
             })
         } else {
             let account: Account = new Account();
-            account.passwords = res.passwords;
+            if (res.passwords != null)
+                account.passwords = res.passwords;
             this.accountModels.push(new AccountForm().fromModel(account).buildForm())
         }
     }

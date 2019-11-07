@@ -1,9 +1,11 @@
 ﻿import { HttpClient, HttpErrorResponse, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ConfigurationService } from './configuration.service';
 import { MetaData } from './urlBuilder';
+import { UiNotificationService } from './ui-notification.service';
+import { NotificationLevel } from '../models/enums/notification-level';
 
 
 @Injectable()
@@ -11,19 +13,19 @@ export class HttpPostService {
     constructor(
         private http: HttpClient,
         private metaData: MetaData,
-        //private uiNotificationService: UiNotificationService
+        private uiNotificationService: UiNotificationService
     ) { }
 
     private handleHttpError(error: any): Observable<any> {
         if (error instanceof HttpErrorResponse) {
-            // this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
+             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
             throw of(error);
         }
         if (error.value && error.value.desc) {
-            //this.uiNotificationService.handleMessage(NotificationLevel.Error, error.value.desc);
+            this.uiNotificationService.handleMessage(NotificationLevel.Error, error.value.desc);
             throw of(error);
         }
-        //this.uiNotificationService.handleMessage(NotificationLevel.Error, error);
+        this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
         throw of(error);
     }
 
@@ -55,9 +57,10 @@ export class HttpPostService {
     }
 
     private resolve<T>(response: any): any {
-        if (response.exception) {
-            let error = response.exception;
-            throw of(error);
+        if (response.error) {
+            let error = response.error;
+            throw of( new Error(error));
+            //throw of(response);
         }
         else {
             return response.payload as T;

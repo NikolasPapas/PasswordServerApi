@@ -39,7 +39,7 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
-		public Response<PasswordActionResponse> PasswordAction(PasswordActionRequest request, Guid userID)
+		public PasswordActionResponse PasswordAction(PasswordActionRequest request, Guid userID)
 		{
 			AccountDto userAccount = _baseService.GetAccountById(userID, true);
 			Guid accountToScann = userID;
@@ -58,8 +58,7 @@ namespace PasswordServerApi.Service
 					throw new Exception("Invalid Action");
 				Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, PasswordActionResponse> func;
 				if (!this.ActionIdToFunction.TryGetValue(request.ActionId, out func)) throw new Exception("Δεν βρέθηκε ενέργεια για το Id: " + request.ActionId);
-				PasswordActionResponse response = func(savedPassword, request.Password, account, request);
-				return new Response<PasswordActionResponse>() {Payload= response, SelectedAction = request.AccountId };
+				return func(savedPassword, request.Password, account, request);
 			}
 
 		}

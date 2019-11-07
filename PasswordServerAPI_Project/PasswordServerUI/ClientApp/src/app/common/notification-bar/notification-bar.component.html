@@ -1,0 +1,18 @@
+<div class="messageBar d-flex flex-column">
+    <div class="d-flex justify-content-center" *ngFor="let message of notifications; let i = index;">
+        <mat-card class="subCard message" [class.error]="message.level === notificationLevelEnum.Error" [class.info]="message.level === notificationLevelEnum.Info" [class.warning]="message.level === notificationLevelEnum.Warning" [class.success]="message.level === notificationLevelEnum.Success" [ngClass]="{'removed-item': !message.active}">
+            <div class="d-flex headerListCard">
+                <div class="flex-grow-1 align-self-center">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <span *ngFor="let msg of message.messages" class="message-text">{{msg}}</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button mat-button (click)="close(i)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
