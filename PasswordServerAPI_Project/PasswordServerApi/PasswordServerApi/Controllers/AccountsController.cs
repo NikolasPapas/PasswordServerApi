@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -27,7 +28,6 @@ namespace PasswordServerApi.Controllers
 		private readonly IExportService _exportService;
 		private readonly ILoggingService _logger;
 		private readonly IExceptionHandler _exceptionHandler;
-
 
 		public AccountsController(ILoggingService logger, IAccountService accountService, IExportService exportService, IExceptionHandler exceptionHandler)
 		{

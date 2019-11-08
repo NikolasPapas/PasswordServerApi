@@ -1,20 +1,18 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
-using MigraDoc.Rendering;
-using Newtonsoft.Json;
-using OfficeOpenXml;
+﻿using Microsoft.AspNetCore.Mvc;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Extensions;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Enums;
 using PasswordServerApi.Models.Requests.Account;
 using PasswordServerApi.Models.Responces;
-using PdfSharp.Pdf;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
+using System.Linq;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Threading.Tasks;
 
 namespace PasswordServerApi.Service
 {
@@ -34,8 +32,8 @@ namespace PasswordServerApi.Service
 		public HttpResponseMessage Export()
 		{
 			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }, true).ToList();
-
-			using (var package = new ExcelPackage())
+			var stream = new System.IO.MemoryStream();
+			using (var package = new ExcelPackage(stream))
 			{
 				ExcelWorksheet FirstFirstWorksheet = package.Workbook.Worksheets.Add("Λίστα λογαριασμόν");
 				FirstFirstWorksheet.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -49,6 +47,8 @@ namespace PasswordServerApi.Service
 					ExcelWorksheet data = (package.Workbook.Worksheets.Add(account.UserName));
 					AddWorksheetData(data, account);
 				});
+				//SetFileSettings("Report_" + DateTime.Now.Date.ToShortDateString(), file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+				//package.Save();
 				//package.SaveAs(new FileInfo("C:\\PASSWORDSERVERAPI\\exporPasswordServerApi.xlsx"));
 				var file = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
 				file.Headers.Clear();
@@ -59,7 +59,6 @@ namespace PasswordServerApi.Service
 				return response;
 			}
 		}
-
 
 		internal static void SetFileSettings(string fileName, HttpResponseMessage response, String contentType)
 		{
@@ -212,7 +211,7 @@ namespace PasswordServerApi.Service
 		private List<AccountDto> ParseAdminSupplementaryDataFile(StoreDocumentRequest request)
 		{
 			List<AccountDto> result = new List<AccountDto>() { };
-			using (var stream = new MemoryStream(request.Data))
+			using (var stream = new System.IO.MemoryStream(request.Data))
 			using (var doc = SpreadsheetDocument.Open(stream, false))
 			{
 				IEnumerable<Sheet> sheets = doc.WorkbookPart.Workbook.Descendants<Sheet>();
