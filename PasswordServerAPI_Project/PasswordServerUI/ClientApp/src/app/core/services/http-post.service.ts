@@ -18,7 +18,7 @@ export class HttpPostService {
 
     private handleHttpError(error: any): Observable<any> {
         if (error instanceof HttpErrorResponse) {
-             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
+            this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
             throw of(error);
         }
         if (error.value && error.value.desc) {
@@ -33,33 +33,33 @@ export class HttpPostService {
         throw of(response.value);
     }
 
-    httpPost<T>(actionUrl: string, postData: any, httpOptions:any ): Observable<T> {
+    httpPost<T>(actionUrl: string, postData: any, httpOptions: any): Observable<T> {
         let url = this.metaData.getContextPath(actionUrl);
-       
+
         //let wrappedReq = this.metaData.wrap2Request(postData);
         //let res = this.http.post(url, wrappedReq);
-        let res :any;
-        if(httpOptions!=null){
+        let res: any;
+        if (httpOptions != null) {
             res = this.http.post(url, postData, httpOptions);
         }
-        else{
+        else {
             res = this.http.post(url, postData);
         }
         return res.pipe(map(this.resolve), catchError((error) => this.handleHttpError(error)));
     }
 
-    httpPostBlob(actionUrl: string, postData: any, httpOptions): Observable<HttpResponse<any>> {
+    httpPostBlob(actionUrl: string, postData: any, httpOptions: any): Observable<HttpResponse<any>> {
         let url = this.metaData.getContextPath(actionUrl);
         //let wrappedReq = this.metaData.wrap2Request(postData);
         //let res = this.http.post(url, wrappedReq, { observe: 'response', responseType: 'blob' });
-        let res = this.http.post(url, postData,httpOptions);
+        let res = this.http.post(url, postData, httpOptions);
         return res.pipe(map(this.resolveBlob), catchError((error) => this.handleBlobError(error)));
     }
 
     private resolve<T>(response: any): any {
         if (response.error) {
             let error = response.error;
-            throw of( new Error(error));
+            throw of(new Error(error));
             //throw of(response);
         }
         else {
@@ -68,10 +68,10 @@ export class HttpPostService {
     }
 
     private resolveBlob(response: any): any {
-        if (response.body.type === 'text/plain') {
-            throw of(response);
-        } else {
+        // if (response.body.type === 'text/plain') {
+        //     throw of(response);
+        // } else {
             return response;
-        }
+       // }
     }
 }

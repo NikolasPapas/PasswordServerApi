@@ -27,16 +27,16 @@ export class AccountService {
     }
 
     getHttpOption(blob: boolean): any {
-        if (blob) {
-            return {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.configurationService.getToken()
-                }),
-                observe: 'response',
-                responseType: 'blob'
-            }
-        } 
+        // if (blob) {
+        //     return {
+        //         headers: new HttpHeaders({
+        //             'Content-Type': 'application/json',
+        //             'Authorization': 'Bearer ' + this.configurationService.getToken()
+        //         }),
+        //         observe: 'response',
+        //         responseType: 'blob'
+        //     }
+        // } 
         return {headers: new HttpHeaders({})};
     }
 
