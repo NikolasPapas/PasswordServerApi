@@ -26,6 +26,7 @@ export class AccountForm {
             if (account.lastName) this.lastName = account.lastName;
             if (account.userName) this.userName = account.userName;
             if (account.email) this.email = account.email;
+            if (account.password) this.password = account.password;
             this.sex = account.sex;
             if (account.lastLogIn) this.lastLogIn = account.lastLogIn;
             if (account.passwords) this.passwords = account.passwords;
@@ -39,7 +40,7 @@ export class AccountForm {
             accountId: [{ value: this.accountId, disabled: false }, [Validators.required]],
             firstName: [{ value: this.firstName, disabled: false }, [Validators.required]],
             lastName: [{ value: this.lastName, disabled: false }, [Validators.required]],
-            userName: [{ value: this.userName, disabled: this.userName != null && this.userName != "" ? true : false  }, [Validators.required]],
+            userName: [{ value: this.userName, disabled: this.userName != null && this.userName != "" ? true : false }, [Validators.required]],
             email: [{ value: this.email, disabled: false }, [Validators.required]],
             sex: [{ value: this.sex, disabled: false }, [Validators.required]],
             lastLogIn: [{ value: this.lastLogIn, disabled: true }, [Validators.required]],

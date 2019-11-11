@@ -19,7 +19,7 @@ using PasswordServerApi.Security.SecurityModels;
 namespace PasswordServerApi.Controllers
 {
 	//api/accounts
-	[Authorize(Roles = Role.Admin)]
+
 	[Route("api/[controller]")]
 	[ApiController]
 	public class AccountsController : ControllerBase
@@ -37,11 +37,21 @@ namespace PasswordServerApi.Controllers
 			_exceptionHandler = exceptionHandler;
 		}
 
+		[HttpPost("getMyAccount")]
+		public Response<AccountActionResponse> GetMyAccount([FromBody] BaseRequest request)
+		{
+
+			return _exceptionHandler.HandleException(() => _accountService.GetMyAccount(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
+		}
+
+
+
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
+		[Authorize(Roles = Role.Admin)]
 		[HttpPost("accountAction")]
 		public Response<AccountActionResponse> AccountAction([FromBody] AccountActionRequest request)
 		{
@@ -63,6 +73,7 @@ namespace PasswordServerApi.Controllers
 		/// 
 		/// </summary>
 		/// <returns></returns>
+		[Authorize(Roles = Role.Admin)]
 		[HttpPost("exportReport")]
 		public HttpResponseMessage ExportReport([FromBody] BaseRequest request)
 		{
@@ -82,6 +93,7 @@ namespace PasswordServerApi.Controllers
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
+		[Authorize(Roles = Role.Admin)]
 		[HttpPost("importData")]
 		public StoreDocumentResponse ImportData([FromBody] StoreDocumentRequest request)
 		{

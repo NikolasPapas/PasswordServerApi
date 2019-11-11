@@ -1,7 +1,7 @@
 export const Greek = {
 
     TITLES:{
-        LOGIN:"Login Fill the boxes",
+        LOGIN:"Login",
         ACTIONS:"Actions",
         EDITOR:"Editor",
         CARDS:{

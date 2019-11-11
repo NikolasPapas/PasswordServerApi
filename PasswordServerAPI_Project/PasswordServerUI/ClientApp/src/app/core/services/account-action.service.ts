@@ -13,7 +13,6 @@ import { StoreReportRequest } from "../models/requests/store-report-request";
 import { StoreReportResponse } from "../models/response/store-report-response";
 import { BaseRequest } from "../models/requests/base-request";
 import { UiNotificationService } from "./ui-notification.service";
-import { NotificationLevel } from '../models/enums/notification-level';
 
 @Injectable()
 export class AccountService {

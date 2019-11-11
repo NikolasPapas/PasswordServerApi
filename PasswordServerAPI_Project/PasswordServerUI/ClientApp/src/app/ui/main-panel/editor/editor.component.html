@@ -2,7 +2,7 @@
     <div class="col-4">
         <mat-card class="row subCard">
             <h4 class="col-12 inner-header">{{'TITLES.ACTIONS' | translate}}</h4>
-            <mat-accordion>
+            <mat-accordion class="col-12"> 
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
                         <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
@@ -30,7 +30,7 @@
     <div class="col-8">
         <mat-card class="row subCard" *ngIf="accountModels != null && accountModels.length > 0">
             <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
-            <mat-accordion>
+            <mat-accordion class="col-12">
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
                         <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">

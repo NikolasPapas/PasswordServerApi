@@ -44,6 +44,17 @@ namespace PasswordServerApi.Service
 
 		#endregion
 
+		public AccountActionResponse GetMyAccount(BaseRequest request, Guid userID)
+		{
+			AccountDto userAccount = _baseService.GetAccountById(userID, true);
+			List<PasswordDto> passwords = new List<PasswordDto>();
+			userAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
+			userAccount.Passwords = passwords;
+			return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
+		}
+
+
+
 		public AccountActionResponse ExecuteAction(AccountActionRequest request, Guid userID)
 		{
 			AccountDto userAccount = _baseService.GetAccountById(userID, false);

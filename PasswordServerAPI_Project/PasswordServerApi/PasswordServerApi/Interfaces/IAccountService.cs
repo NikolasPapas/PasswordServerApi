@@ -12,5 +12,7 @@ namespace PasswordServerApi.Interfaces
 	public interface IAccountService
 	{
 		AccountActionResponse ExecuteAction(AccountActionRequest request, Guid userID);
+		AccountActionResponse GetMyAccount(BaseRequest request, Guid userID);
+
 	}
 }

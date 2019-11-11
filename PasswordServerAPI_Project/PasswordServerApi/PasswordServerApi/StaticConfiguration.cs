@@ -16,6 +16,9 @@ namespace PasswordServerApi.Service
 		public static readonly Guid ActionRemoveAccountId = new Guid("FC1DCCAD-B915-422C-A23F-8DCE1A2C27F3");
 		public static readonly Guid ActionGetAccountAndPasswordId = new Guid("AF897163-6642-4C27-8084-DB99788E77E9");
 
+		//Common
+		public static readonly Guid ActionGetMyAccountId = new Guid("34AB7592-1016-42A1-A115-77F77CCEC8F7");
+
 		//Password
 		public static readonly Guid ActionGetPasswordsId = new Guid("3CF704FB-6D37-4661-A543-7C7A1BAC3284");
 		public static readonly Guid ActionUpdateOrAddPasswordId = new Guid("887B5253-A8F5-462E-8200-330C3D60D62A");
@@ -31,10 +34,13 @@ namespace PasswordServerApi.Service
 		private static string GREEN = "#00ff00";
 		private static string PURPLE = "#ff0000";
 		//Account
-		public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Λογαριασμός", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού μου", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction", Color = GREEN };
+		public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Λογαριασμός", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction", Color = GREEN };
 		public static readonly ApplicationAction ActionSaveAccount = new ApplicationAction { Id = ActionSaveAccountId, Name = "Αποθήκευση ή Προσθήκη", ToolTipText = "Αποθήκευση ή Προσθήκη λογαριασμού και κωδικών του", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionRemoveAccount = new ApplicationAction { Id = ActionRemoveAccountId, Name = "Διαγραφή", ToolTipText = "Διαγραφή λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction", Color = PURPLE };
 		public static readonly ApplicationAction ActionGetAccountAndPassword = new ApplicationAction { Id = ActionGetAccountAndPasswordId, Name = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", ToolTipText = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
+
+		//Common
+		public static readonly ApplicationAction ActionGetMyAccount = new ApplicationAction { Id = ActionGetMyAccountId, Name = "Ο Λογαριασμός μου", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού μου", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/getMyAccount", Color = GREEN };
 
 		//Password
 		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση κωδικόν", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = GREEN };
@@ -65,7 +71,7 @@ namespace PasswordServerApi.Service
 		public static List<ApplicationAction> GetAcrionByAdminRole()
 		{
 			List<ApplicationAction> list = new List<ApplicationAction>(){
-			ActionGetAccounts, ActionSaveAccount, ActionGetAccountAndPassword, ActionRemoveAccount, ActionReport
+				ActionGetMyAccount,ActionGetAccounts, ActionSaveAccount, ActionGetAccountAndPassword, ActionRemoveAccount, ActionReport
 			};
 			list.AddRange(GetAcrionByUserRole());
 			return list;
@@ -74,7 +80,7 @@ namespace PasswordServerApi.Service
 		public static List<ApplicationAction> GetAcrionByUserRole()
 		{
 			return new List<ApplicationAction>(){
-			 ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword
+				ActionGetMyAccount,ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword
 			};
 		}
 
