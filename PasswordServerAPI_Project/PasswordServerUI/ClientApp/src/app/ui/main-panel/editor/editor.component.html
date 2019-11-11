@@ -6,9 +6,8 @@
                 <mat-expansion-panel [disabled]="true" class="readonlyPanel">
                     <mat-expansion-panel-header class="headerListPanel">
                         <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
-                            <mat-grid-tile [colspan]="4">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
+                            <mat-grid-tile [colspan]="6">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
                             <mat-grid-tile [colspan]="6">{{'ACTIONS.TITLES.TOOLTIP' | translate}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="2">{{'ACTIONS.TITLES.ICON' | translate}}</mat-grid-tile>
                         </mat-grid-list>
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
@@ -16,9 +15,8 @@
                     <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open(index)" (closed)="close()">
                         <mat-expansion-panel-header>
                             <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12" [style.color]="action.color">
-                                <mat-grid-tile [colspan]="4">{{action.name}}</mat-grid-tile>
+                                <mat-grid-tile [colspan]="6">{{action.name}}</mat-grid-tile>
                                 <mat-grid-tile [colspan]="6">{{action.tooltip}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="2">{{action.icon}}</mat-grid-tile>
                             </mat-grid-list>
                         </mat-expansion-panel-header>
                         <app-editor-expansion-panel [action]="action" (onActionSelected)="onActionSelected($event)"></app-editor-expansion-panel>

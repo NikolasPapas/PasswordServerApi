@@ -7,8 +7,9 @@
 @import "./bootstrap-material";
 
 @import './palette';
-//@import '~material-design-icons/iconfont/material-icons.css';
+// @import '~material-design-icons/iconfont/material-icons.css';
 @import '~@angular/material/theming';
+
 
 $distances: ( 
     "none" : 0px,
@@ -63,12 +64,18 @@ mat-icon, mat-grid-tile {
     cursor: pointer;
 }
 
+.mat-icon {
+    width: auto !important;
+    height: auto !important;
+}
+
 .warnColor {
     color: map-get($md-warningpalette, 900) !important;
 }
 
 custom-button {
     .mat-raised-button.mat-primary {
+        text-overflow: ellipsis;
         min-width: 140px;
         margin: map-get($distances, "small");
     }

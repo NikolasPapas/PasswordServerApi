@@ -24,7 +24,6 @@
             </mat-select>
         </mat-form-field>
 
-        <div class="col-auto"></div>
-        <button mat-raised-button class="col-auto" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()">{{action.name}}</button>
+        <button mat-raised-button class="col-12" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()" matTooltip="{{action.tooltip}}" matTooltipPosition="above"> {{action.name}} </button>
     </div>
 </mat-card>
