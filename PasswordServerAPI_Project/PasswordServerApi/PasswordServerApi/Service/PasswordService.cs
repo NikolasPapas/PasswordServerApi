@@ -49,11 +49,11 @@ namespace PasswordServerApi.Service
 			AccountDto account = _baseService.GetAccountById(accountToScann, true);
 			PasswordDto savedPassword = _baseService.GetPasswords(request, account).FirstOrDefault();
 
-			if (!StaticConfiguration.GetAcrionByRole.ContainsKey(userAccount.Role))
+			if (StaticConfiguration.GetAcrionByProfile(userAccount.Role) == null)
 				throw new Exception("Invalid Profile");
 			else
 			{
-				ApplicationAction actions = StaticConfiguration.GetAcrionByRole[userAccount.Role].Find(x => x.Id == request.ActionId);
+				ApplicationAction actions = StaticConfiguration.GetAcrionByProfile(userAccount.Role).Find(x => x.Id == request.ActionId);
 				if (actions == null)
 					throw new Exception("Invalid Action");
 				Func<PasswordDto, PasswordDto, AccountDto, PasswordActionRequest, PasswordActionResponse> func;

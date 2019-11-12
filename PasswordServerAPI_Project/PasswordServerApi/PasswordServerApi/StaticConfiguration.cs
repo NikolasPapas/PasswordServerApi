@@ -66,35 +66,8 @@ namespace PasswordServerApi.Service
 			new Tuple<ApplicationAction, List<string>>(ActionGetPasswords, new List<string>(){  Role.Admin, Role.User } ),
 			new Tuple<ApplicationAction, List<string>>(ActionRemovePassword, new List<string>(){  Role.Admin, Role.User } )
 		};
-
-		public static readonly Dictionary<string, List<ApplicationAction>> GetAcrionByRole = new Dictionary<string, List<ApplicationAction>>()
-		{
-			//Admin Actions
-			{ Role.Admin, GetAcrionByAdminRole() },
-
-			//User Actions
-			{ Role.User, GetAcrionByUserRole() },
-
-			//Viewer Actions
-			{ Role.Viewer, GetAcrionByViewerRole() },
-		};
-
-		public static List<ApplicationAction> GetAcrionByAdminRole()
-		{
-			return GetAcrionByProfile(Role.Admin);
-		}
-
-		public static List<ApplicationAction> GetAcrionByUserRole()
-		{
-			return GetAcrionByProfile(Role.User);
-		}
-
-		public static List<ApplicationAction> GetAcrionByViewerRole()
-		{
-			return GetAcrionByProfile(Role.Viewer);
-		}
-
-		private static List<ApplicationAction> GetAcrionByProfile(string role)
+		
+		public static List<ApplicationAction> GetAcrionByProfile(string role)
 		{
 			List<ApplicationAction> list = new List<ApplicationAction>();
 			GetRoleByAction.ForEach(x => { if (x.Item2.Exists(y => y == role)) list.Add(x.Item1); });

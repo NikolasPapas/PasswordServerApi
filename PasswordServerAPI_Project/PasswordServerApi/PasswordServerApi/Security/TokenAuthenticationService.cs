@@ -55,9 +55,7 @@ namespace PasswordServerApi.Security
 			_logger.LogInfo($"User ${user.UserName} is logged in");
 
 			_userManagementService.SaveNewToken(user.AccountId, token);
-			if (StaticConfiguration.GetAcrionByRole.ContainsKey(user.Role.ToString()))
-				ActionList = StaticConfiguration.GetAcrionByRole[user.Role.ToString()];
-			return ActionList;
+			return StaticConfiguration.GetAcrionByProfile(user.Role.ToString());
 
 		}
 
