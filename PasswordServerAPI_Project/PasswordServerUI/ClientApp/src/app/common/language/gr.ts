@@ -2,12 +2,16 @@ export const Greek = {
 
     TITLES:{
         LOGIN:"Login",
-        ACTIONS:"Actions",
+        ACTION:"Action:",
         EDITOR:"Editor",
         CARDS:{
             ACCOUNT:"Account",
             PASSWORD:"Password"
         }
+    },
+    MENU:{
+        HEADER:"Menu",
+        FOOTER:"Created By Nikolaos Papazian"
     },
     COMMON:{
         OK:"OK",

@@ -1,4 +1,4 @@
-<mat-card class="row subCard">
+<mat-card class="row">
     <div class="col-12">
         <mat-form-field class="col-md-4">
             <input matInput placeholder="{{'ACTIONS.PANEL.NAME' | translate}}" [value]="action.name" [disabled]="true">
@@ -6,10 +6,6 @@
 
         <mat-form-field class="col-md-4">
             <input matInput placeholder="{{'ACTIONS.PANEL.TOOLTIP' | translate}}" [value]="action.tooltip" [disabled]="true">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-4">
-            <input matInput placeholder="{{'ACTIONS.PANEL.ICON' | translate}}" [value]="action.icon" [disabled]="true">
         </mat-form-field>
 
         <mat-form-field class="col-md-4">
@@ -24,6 +20,6 @@
             </mat-select>
         </mat-form-field>
 
-        <button mat-raised-button class="col-12" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()" matTooltip="{{action.tooltip}}" matTooltipPosition="above"> {{action.name}} </button>
+        <button mat-raised-button class="col-12" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()" matTooltip="{{action.tooltip}}" matTooltipPosition="above"> {{action.name}} <mat-icon>{{action.icon}}</mat-icon></button>
     </div>
 </mat-card>

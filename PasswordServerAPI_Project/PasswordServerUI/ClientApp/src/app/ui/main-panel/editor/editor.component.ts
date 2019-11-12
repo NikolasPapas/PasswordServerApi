@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { BaseComponent } from "../../../common/base/base.component";
 import { ConfigurationService } from "../../../core/services/configuration.service";
 import { ApplicationAction } from "../../../core/models/configuration/ApplicationAction";
@@ -30,11 +30,16 @@ export class EditorComponent extends BaseComponent implements OnInit {
     ACTION_INDICATOR_REPORT: string = "Report";
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
+    @Input() selectedAction: number;
+    @Input() accountModels: FormGroup[] = [];
+
+    @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();
+
     expandedIndex: number = -1;
-    accountModels: FormGroup[] = [];
     selectedAccountIndex: number = -1;
     selectedPasswordIndex: number = -1;
     isActionAddAccountIsOn: boolean = false;
+
 
     constructor(
         private configurationService: ConfigurationService,
@@ -46,8 +51,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
-        if (this.actions.filter(x => x.id.toString() == this.ACTION_INDICATOR_ADD_ACCOUNT.toString()).length > 0)
-            this.isActionAddAccountIsOn = true;
         //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
@@ -67,6 +70,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     openAccount(index: number) {
         this.collapseAllAccounts();
         this.selectedAccountIndex = index;
+        this.IsActionAddPasswordIsOnEvent.emit(this.selectedAccountIndex);
     }
 
     closeAccount(index: number) {
@@ -76,6 +80,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     collapseAllAccounts() {
         this.selectedAccountIndex = -1;
+        this.IsActionAddPasswordIsOnEvent.emit(this.selectedAccountIndex);
     }
 
     selectedPasswordIndexEvent(passwordIndex: number) {
@@ -95,6 +100,13 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     addAccount() {
         this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+    }
+
+    addPassword() {
+        if (this.accountModels[this.selectedAccountIndex] != null && this.accountModels[this.selectedAccountIndex].get('passwords') != null) {
+            (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).push(new PasswordForm().fromModel(null).buildForm());
+            this.selectedPasswordIndex = (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).length - 1;
+        }
     }
 
     //#region Account Action

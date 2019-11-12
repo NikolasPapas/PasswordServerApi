@@ -1,59 +1,57 @@
+<!-- <mat-toolbar class="col-12 row subCard">
+    <button class="col-auto" mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let action of actions ; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
+    </mat-menu>
+    <button class="col-auto" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
+    <button class="col-auto" mat-button *ngIf="isActionAddPasswordIsOn" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
+    <div class="col"></div>
+</mat-toolbar> -->
+
 <mat-card class="row">
-    <div class="col-4">
-        <mat-card class="row subCard">
-            <h4 class="col-12 inner-header">{{'TITLES.ACTIONS' | translate}}</h4>
-            <mat-accordion class="col-12"> 
-                <mat-expansion-panel [disabled]="true" class="readonlyPanel">
-                    <mat-expansion-panel-header class="headerListPanel">
-                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
-                            <mat-grid-tile [colspan]="6">{{'ACTIONS.TITLES.NAME' | translate}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="6">{{'ACTIONS.TITLES.TOOLTIP' | translate}}</mat-grid-tile>
+    <!-- ActionViewer -->
+    <div class="col-12 row">
+        <mat-accordion class="col-12 subCard" *ngIf="selectedAction != -1">
+            <mat-expansion-panel [id]="selectedAction" hideToggle="true" [expanded]="selectedAction" (opened)="open(selectedAction)" (closed)="close()">
+                <mat-expansion-panel-header>
+                    <mat-grid-list class="secondaryHeaderListCard" rowHeight="25px" cols="12">
+                        <mat-grid-tile [colspan]="2">{{'TITLES.ACTION' | translate}}</mat-grid-tile>
+                        <mat-grid-tile [colspan]="8">{{actions[selectedAction].tooltip}}</mat-grid-tile>
+                        <mat-grid-tile [colspan]="2">
+                            <mat-icon aria-hidden="false" aria-label="Menu">{{actions[selectedAction].icon}}</mat-icon>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-expansion-panel-header>
+                <app-editor-expansion-panel [action]="actions[selectedAction]" (onActionSelected)="onActionSelected($event)"></app-editor-expansion-panel>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <!-- AccountEditor -->
+    <mat-card class="col-12 row subCard" *ngIf="accountModels != null && accountModels.length > 0">
+        <!-- <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4> -->
+        <mat-accordion class="col-12">
+            <mat-expansion-panel [disabled]="true" class="readonlyPanel">
+                <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
+                <mat-expansion-panel-header class="headerListPanel">
+                    <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
+                        <mat-grid-tile [colspan]="4">{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}</mat-grid-tile>
+                        <mat-grid-tile [colspan]="6">{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}</mat-grid-tile>
+                        <mat-grid-tile [colspan]="2">{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}</mat-grid-tile>
+                    </mat-grid-list>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
+                <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount(indexAcc)">
+                    <mat-expansion-panel-header>
+                        <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12">
+                            <mat-grid-tile [colspan]="4">{{accountModel?.get('userName')?.value}}</mat-grid-tile>
+                            <mat-grid-tile [colspan]="6">{{accountModel?.get('lastName')?.value}}</mat-grid-tile>
+                            <mat-grid-tile [colspan]="2">{{accountModel?.get('role')?.value}}</mat-grid-tile>
                         </mat-grid-list>
                     </mat-expansion-panel-header>
+                    <app-request-editor-panel class="col-12" [account]="accountModel" (selectedPasswordIndexEvent)="selectedPasswordIndexEvent($event)"></app-request-editor-panel>
                 </mat-expansion-panel>
-                <div *ngFor="let action of actions ; let index = index;">
-                    <mat-expansion-panel [id]="'editor-panel-'+ index" hideToggle="true" [expanded]="expandedIndex === index" (opened)="open(index)" (closed)="close()">
-                        <mat-expansion-panel-header>
-                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12" [style.color]="action.color">
-                                <mat-grid-tile [colspan]="6">{{action.name}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="6">{{action.tooltip}}</mat-grid-tile>
-                            </mat-grid-list>
-                        </mat-expansion-panel-header>
-                        <app-editor-expansion-panel [action]="action" (onActionSelected)="onActionSelected($event)"></app-editor-expansion-panel>
-                    </mat-expansion-panel>
-                </div>
-            </mat-accordion>
-        </mat-card>
-    </div>
-    <div class="col-8">
-        <mat-card class="row subCard" *ngIf="accountModels != null && accountModels.length > 0">
-            <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4>
-            <mat-accordion class="col-12">
-                <mat-expansion-panel [disabled]="true" class="readonlyPanel">
-                    <mat-expansion-panel-header class="headerListPanel">
-                        <mat-grid-list class="headerListCard" rowHeight="48px" cols="12">
-                            <mat-grid-tile [colspan]="4">{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="6">{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}</mat-grid-tile>
-                            <mat-grid-tile [colspan]="2">{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}</mat-grid-tile>
-                        </mat-grid-list>
-                    </mat-expansion-panel-header>
-                </mat-expansion-panel>
-                <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
-                    <mat-expansion-panel [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="selectedAccountIndex === indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount(indexAcc)">
-                        <mat-expansion-panel-header>
-                            <mat-grid-list class="secondaryHeaderListCard" rowHeight="40px" cols="12">
-                                <mat-grid-tile [colspan]="4">{{accountModel?.get('userName')?.value}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="6">{{accountModel?.get('lastName')?.value}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="2">{{accountModel?.get('role')?.value}}</mat-grid-tile>
-                            </mat-grid-list>
-                        </mat-expansion-panel-header>
-                        <app-request-editor-panel class="col-12" [account]="accountModel" (selectedPasswordIndexEvent)="selectedPasswordIndexEvent($event)"></app-request-editor-panel>
-                    </mat-expansion-panel>
-                </div>
-            </mat-accordion>
-            <!-- <h4 class="col-12 inner-header">{{'TITLES.EDITOR' | translate}}</h4> -->
-            <!-- <app-request-editor-panel  class="col-12" *ngFor="let accountModel of accountModels;  let i = index;" (opened)="selectedAccountIndex==i" [account]="accountModel"></app-request-editor-panel> -->
-        </mat-card>
-        <button mat-raised-button *ngIf="isActionAddAccountIsOn" class="col-auto" color="primary" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-    </div>
+            </div>
+        </mat-accordion>
+    </mat-card>
 </mat-card>

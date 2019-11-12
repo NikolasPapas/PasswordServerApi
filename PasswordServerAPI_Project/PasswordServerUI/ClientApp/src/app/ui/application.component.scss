@@ -1,79 +1,95 @@
-@import 'src/assets/styles/commonStyles.scss';
+@import "src/assets/styles/commonStyles.scss";
 
-$shadow: ( 
-    "small" : 0 1px 5px 0 rgba(0,0,0,.12),
-    "medium" : 0 5px 5px 0 rgba(0,0,0,.12)
+$shadow: (
+  "small": 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+  "medium": 0 5px 5px 0 rgba(0, 0, 0, 0.12)
 );
 
 .mainContainerCard {
-    margin-top: map-get($distances, "small");
-    padding: map-get($distances, "none") !important;
-    height: calc(92vh);
-    overflow: hidden;
-    overflow-y: scroll;
+  margin-top: map-get($distances, "small");
+  padding: map-get($distances, "none") !important;
+  height: calc(98vh);
+  overflow: hidden;
+  overflow-y: scroll;
 
-    mat-tab-group.mat-primary {
-        height: 100%;
+  mat-tab-group.mat-primary {
+    height: 100%;
 
-        .mat-tab-header {
-            box-shadow: map-get($shadow, "medium");
+    .mat-tab-header {
+      box-shadow: map-get($shadow, "medium");
 
-            .mat-ink-bar {
-                height: map-get($distances, "minor");
-            }
+      .mat-ink-bar {
+        height: map-get($distances, "minor");
+      }
 
-            .mat-tab-label {
-                .mat-tab-label-active {
-                    background-color: map-get($md-mypalette, 100);
-                }
-            
-                .mat-tab-label-content {
-                    color: map-get($colorPalette, "textColor");
-                }
-            }
+      .mat-tab-label {
+        .mat-tab-label-active {
+          background-color: map-get($md-mypalette, 100);
         }
 
-        .mat-tab-label {
-            width: 100%;
-            &:not(.mat-tab-disabled) {
-
-                &:hover {
-                    background-color: map-get($md-mypalette, 100);
-
-                    .mat-tab-label-content {
-                        color: map-get($colorPalette, textColor);
-                    }
-                }
-
-                &.mat-tab-label-active {
-                    &, &:active, &:focus, &:not(:focus), &:not(:active) {
-                        background-color: map-get($md-mypalette, 500);
-                        opacity: 1;
-
-                        .mat-tab-label-content {
-                            color: map-get($colorPalette, secondaryTextColor);
-                        }
-                    }
-                }
-            }
+        .mat-tab-label-content {
+          color: map-get($colorPalette, "textColor");
         }
-
-        .mat-tab-body-wrapper {
-            height: 100%;
-
-            .mat-tab-body-content {
-                display: flex;
-                flex-direction: column;
-                overflow-y: scroll;
-                overflow-x: hidden;
-            }
-        }
+      }
     }
-} 
-  
 
-    // .mat-form-field-infix {
-    //     min-width: 110px;
-    //     width: 100%;
-    // }
+    .mat-tab-label {
+      width: 100%;
+      &:not(.mat-tab-disabled) {
+        &:hover {
+          background-color: map-get($md-mypalette, 100);
 
+          .mat-tab-label-content {
+            color: map-get($colorPalette, textColor);
+          }
+        }
+
+        &.mat-tab-label-active {
+          &,
+          &:active,
+          &:focus,
+          &:not(:focus),
+          &:not(:active) {
+            background-color: map-get($md-mypalette, 500);
+            opacity: 1;
+
+            .mat-tab-label-content {
+              color: map-get($colorPalette, secondaryTextColor);
+            }
+          }
+        }
+      }
+    }
+
+    .mat-tab-body-wrapper {
+      height: 100%;
+
+      .mat-tab-body-content {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+    }
+  }
+
+  .floatingMenuButton {
+    display: flex;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.mat-sidenav {
+  width: 30%;
+}
+
+.bottomHeader {
+  bottom: 0;
+  color: map-get($colorPalette, lightGreyTextColor);
+}
+
+// .mat-form-field-infix {
+//     min-width: 110px;
+//     width: 100%;
+// }

@@ -8,11 +8,13 @@ import { EditorExpansionPanelComponent } from './main-panel/editor/editor-expans
 import { RequestEditorComponent } from './main-panel/editor/request-editor/request-editor.component';
 import { PasswordEditorComponent } from './main-panel/editor/request-editor/password-editor/password-editor.component';
 import { AccountEditorComponent } from './main-panel/editor/request-editor/account-editor/account-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	imports: [
         CommonUiModule,
         CommonFormsModule,
+        BrowserAnimationsModule,
     ],
     declarations: [
         ApplicationComponent,

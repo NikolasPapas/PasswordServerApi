@@ -8,8 +8,6 @@ import { ConfigurationService } from './core/services/configuration.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  
-  title = 'Password Server Web App';
 
   constructor(
     private translate: TranslateService,
@@ -23,7 +21,7 @@ export class AppComponent {
     this.translate.setDefaultLang('gr');
     this.translate.use('gr');
     this.translate.setTranslation('gr', Greek);
-
     //this.configurationService.init();
   }
+
 }
