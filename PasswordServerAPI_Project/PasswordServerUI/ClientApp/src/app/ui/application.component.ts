@@ -64,9 +64,14 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
         this.selectedAction = index;
     }
 
+    executeAction(index: number) {
+        this.selectedAction = index;
+    }
+
     IsActionAddPasswordIsOnEvent(index: number) {
         this.isActionAddPasswordIsOn = index;
     }
+   
 
     addAccount() {
         this.accountModels.push(new AccountForm().fromModel(null).buildForm());

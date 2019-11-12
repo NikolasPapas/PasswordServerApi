@@ -1,14 +1,28 @@
 ﻿<mat-sidenav-container class="col-12 row slideContainer">
-    <mat-sidenav #sidenav class="row" mode="over" [(opened)]="opened">
-        <button class="col" disabled="true" mat-button>
-            <h4>{{'MENU.HEADER' | translate}}</h4>
-        </button>
-        <button class="col" mat-button *ngFor="let action of actions; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
-        <button class="col" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-        <button class="col" mat-button *ngIf="isActionAddPasswordIsOn != -1" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
-        <button class="col" disabled="true" mat-button>
-            <h6>{{'MENU.FOOTER' | translate}}</h6>
-        </button>
+
+    <mat-sidenav #sidenav mode="over" [(opened)]="opened">
+        <div class="row">
+            <button class="col-12" disabled="true" mat-button>
+                <h4>{{'MENU.HEADER' | translate}}</h4>
+            </button>
+
+            <div class="col-12 row" *ngFor="let action of actions; let index = index;">
+                <mat-form-field class="col-12">
+                    <input matInput placeholder="{{'ACTIONS.TITLES.NAME' | translate}}" [value]="action.name" disabled="true">
+                </mat-form-field>
+                <button class="col-auto" mat-button (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
+                <button class="col-2" mat-button (click)="executeAction(index)" [style.color]="action.color">
+                    <mat-icon>{{action.icon}}</mat-icon>
+                </button>
+                <hr>
+            </div>
+            <!-- <button class="col" mat-button *ngFor="let action of actions; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button> -->
+            <button class="col-12" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
+            <button class="col-12" mat-button *ngIf="isActionAddPasswordIsOn != -1" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
+            <button class="col-12" disabled="true" mat-button>
+                <h6>{{'MENU.FOOTER' | translate}}</h6>
+            </button>
+        </div>
     </mat-sidenav>
 
     <mat-sidenav-content class="col-12 slideContent">
