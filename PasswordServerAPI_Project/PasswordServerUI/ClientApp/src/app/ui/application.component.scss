@@ -5,15 +5,34 @@ $shadow: (
   "medium": 0 5px 5px 0 rgba(0, 0, 0, 0.12)
 );
 
-.mainContainerCard {
+.slideContainer {
   margin-top: map-get($distances, "small");
   padding: map-get($distances, "none") !important;
-  height: calc(98vh);
-  overflow: hidden;
+  height: 100%;
+  background-color: map-get($colorPalette, "subCardBackground");
+
+  .slideContent {
+    height: 100%;
+  }
+
+  .floatingMenuButton {
+    display: flex;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.mat-sidenav {
+  width: 30%;
+  height: 100%;
+}
+
+.mainContainerCard {
   overflow-y: scroll;
+  max-height: calc(95vh);
 
   mat-tab-group.mat-primary {
-    height: 100%;
+    overflow: hidden;
 
     .mat-tab-header {
       box-shadow: map-get($shadow, "medium");
@@ -72,20 +91,4 @@ $shadow: (
       }
     }
   }
-
-  .floatingMenuButton {
-    display: flex;
-    top: 0px;
-    left: 0px;
-  }
 }
-
-.mat-sidenav {
-  width: 30%;
-}
-
-
-// .mat-form-field-infix {
-//     min-width: 110px;
-//     width: 100%;
-// }
