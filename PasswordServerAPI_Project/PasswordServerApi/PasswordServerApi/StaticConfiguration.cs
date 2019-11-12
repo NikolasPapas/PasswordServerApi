@@ -43,17 +43,29 @@ namespace PasswordServerApi.Service
 		public static readonly ApplicationAction ActionGetMyAccount = new ApplicationAction { Id = ActionGetMyAccountId, Name = "Ο Λογαριασμός μου", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού μου", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/getMyAccount", Color = GREEN };
 
 		//Password
-		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση", ToolTipText = "Αναζήτηση κωδικόν", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = GREEN };
-		public static readonly ApplicationAction ActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση ή Προσθήκη", ToolTipText = "Αποθήκευση κωδικου ή Προσθήκη", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction" };
-		public static readonly ApplicationAction ActionRemovePassword = new ApplicationAction { Id = ActionRemovePasswordId, Name = "Διαγραφή", ToolTipText = "Διαγραφή κωδικου", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = PURPLE };
+		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση κωδικόν", ToolTipText = "Αναζήτηση κωδικόν", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = GREEN };
+		public static readonly ApplicationAction ActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση ή Προσθήκη κωδικόν", ToolTipText = "Αποθήκευση κωδικου ή Προσθήκη", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction" };
+		public static readonly ApplicationAction ActionRemovePassword = new ApplicationAction { Id = ActionRemovePasswordId, Name = "Διαγραφή κωδικόν", ToolTipText = "Διαγραφή κωδικου", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = PURPLE };
 
 		//REPORT
 		public static readonly ApplicationAction ActionReport = new ApplicationAction { Id = ActionReportId, Name = "Report", ToolTipText = "Report PDF", NeedsComment = false, RefreshAfterAction = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Report", ControllerPath = "/api/accounts/exportReport" };
 
-
 		#endregion
 
 		#region Role And Actiond Dictionary
+
+		private static List<Tuple<ApplicationAction, List<string>>> GetRoleByAction = new List<Tuple<ApplicationAction, List<string>>>()
+		{
+			new Tuple<ApplicationAction, List<string>>(ActionGetMyAccount, new List<string>(){  Role.Admin, Role.User, Role.Viewer } ),
+			new Tuple<ApplicationAction, List<string>>(ActionGetAccounts, new List<string>(){  Role.Admin } ),
+			new Tuple<ApplicationAction, List<string>>(ActionSaveAccount, new List<string>(){  Role.Admin } ),
+			new Tuple<ApplicationAction, List<string>>(ActionGetAccountAndPassword, new List<string>(){  Role.Admin } ),
+			new Tuple<ApplicationAction, List<string>>(ActionRemoveAccount, new List<string>(){  Role.Admin } ),
+			new Tuple<ApplicationAction, List<string>>(ActionReport, new List<string>(){  Role.Admin } ),
+			new Tuple<ApplicationAction, List<string>>(ActionUpdateOrAddPassword, new List<string>(){  Role.Admin, Role.User } ),
+			new Tuple<ApplicationAction, List<string>>(ActionGetPasswords, new List<string>(){  Role.Admin, Role.User } ),
+			new Tuple<ApplicationAction, List<string>>(ActionRemovePassword, new List<string>(){  Role.Admin, Role.User } )
+		};
 
 		public static readonly Dictionary<string, List<ApplicationAction>> GetAcrionByRole = new Dictionary<string, List<ApplicationAction>>()
 		{
@@ -67,31 +79,27 @@ namespace PasswordServerApi.Service
 			{ Role.Viewer, GetAcrionByViewerRole() },
 		};
 
-
 		public static List<ApplicationAction> GetAcrionByAdminRole()
 		{
-			List<ApplicationAction> list = new List<ApplicationAction>(){
-				ActionGetMyAccount,ActionGetAccounts, ActionSaveAccount, ActionGetAccountAndPassword, ActionRemoveAccount, ActionReport
-			};
-			list.AddRange(GetAcrionByUserRole());
-			return list;
+			return GetAcrionByProfile(Role.Admin);
 		}
 
 		public static List<ApplicationAction> GetAcrionByUserRole()
 		{
-			return new List<ApplicationAction>(){
-				ActionGetMyAccount,ActionUpdateOrAddPassword, ActionGetPasswords, ActionRemovePassword
-			};
+			return GetAcrionByProfile(Role.User);
 		}
 
 		public static List<ApplicationAction> GetAcrionByViewerRole()
 		{
-			return new List<ApplicationAction>()
-			{
-				ActionGetAccounts, ActionGetPasswords
-			};
+			return GetAcrionByProfile(Role.Viewer);
 		}
 
+		private static List<ApplicationAction> GetAcrionByProfile(string role)
+		{
+			List<ApplicationAction> list = new List<ApplicationAction>();
+			GetRoleByAction.ForEach(x => { if (x.Item2.Exists(y => y == role)) list.Add(x.Item1); });
+			return list;
+		}
 		#endregion
 
 	}

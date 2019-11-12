@@ -30,7 +30,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     ACTION_INDICATOR_REPORT: string = "Report";
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
-    @Input() selectedAction: number;
+    @Input() selectedAction: number = -1;
     @Input() accountModels: FormGroup[] = [];
 
     @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();

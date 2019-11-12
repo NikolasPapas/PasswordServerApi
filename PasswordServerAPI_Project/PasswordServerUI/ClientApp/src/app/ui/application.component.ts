@@ -52,6 +52,8 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
             response => {
                 this.configurationService.setLoginResponse(response)
                 this.actions = this.configurationService.getActions();
+                if (this.actions.length > 0)
+                    this.selectedAction = 1;
                 if (this.actions.filter(x => x.id.toString() == this.ACTION_INDICATOR_ADD_ACCOUNT.toString()).length > 0)
                     this.isActionAddAccountIsOn = true;
                 this.mastDoLogIn = this.configurationService.needLogin();
