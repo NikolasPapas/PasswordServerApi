@@ -5,6 +5,7 @@ using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
 using PasswordServerApi.Models.Requests.Password;
+using PasswordServerApi.StorageLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,13 @@ namespace PasswordServerApi.Service
 {
 	public class BaseService : IBaseService
 	{
-		private ApplicationDbContext _dbContext;
+		private IStorageService _storageService;
 
 		private ILoggingService _logger;
 
-		public BaseService(ApplicationDbContext dbContext, ILoggingService logger)
+		public BaseService(IStorageService storageService, ILoggingService logger)
 		{
-			_dbContext = dbContext;
+			_storageService = storageService;
 			_logger = logger;
 		}
 
@@ -27,16 +28,14 @@ namespace PasswordServerApi.Service
 
 		public AccountDto GetSpesificAccount(AccountActionRequest request)
 		{
-			List<AccountDto> accounts = new List<AccountDto>();
-			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
+			List<AccountDto> accounts = _storageService.GetAccountsDto();
 
 			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
 		}
 
 		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full)
 		{
-			List<AccountDto> accounts = new List<AccountDto>();
-			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
+			List<AccountDto> accounts = _storageService.GetAccountsDto();
 			List<AccountDto> filteredAccounts = new List<AccountDto>();
 
 			var filtered = accounts.FindAll(x =>
@@ -56,37 +55,33 @@ namespace PasswordServerApi.Service
 
 		public AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full = false)
 		{
-			AccountModel updateAccount = GetAccountModel(accountDto);
-			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
-			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
-			if (Role != "Admin" && updateAccount.Password != dbAccountModel.Password)
+			AccountDto accountToApdate = _storageService.GetAccountsDto().Find(x => x.AccountId == accountDto.AccountId);
+
+			if (Role != "Admin" && accountDto.Password != accountToApdate.Password)
 				throw new Exception("Invalid Password");
 
-			dbAccountModel.Email = updateAccount.Email;
-			dbAccountModel.FirstName = updateAccount.FirstName;
-			dbAccountModel.LastName = updateAccount.LastName;
-			dbAccountModel.Sex = updateAccount.Sex;
+			accountToApdate.Email = accountDto.Email;
+			accountToApdate.FirstName = accountDto.FirstName;
+			accountToApdate.LastName = accountDto.LastName;
+			accountToApdate.Sex = accountDto.Sex;
 
 			if (full)
 			{
-				dbAccountModel.LastLogIn = updateAccount.LastLogIn;
-				dbAccountModel.Role = updateAccount.Role;
-				dbAccountModel.CurrentToken = updateAccount.CurrentToken;
-				dbAccountModel.Password = updateAccount.Password;
-				dbAccountModel.AccountId = updateAccount.AccountId;
-				dbAccountModel.PasswordIds = updateAccount.PasswordIds;
+				accountToApdate.LastLogIn = accountDto.LastLogIn;
+				accountToApdate.Role = accountDto.Role;
+				accountToApdate.CurrentToken = accountDto.CurrentToken;
+				accountToApdate.Password = accountDto.Password;
+				accountToApdate.Passwords = accountDto.Passwords;
 			}
 
-			AccountModelData.JsonData = JsonConvert.SerializeObject(dbAccountModel);
-			_dbContext.Accounts.Update(AccountModelData);
-			_dbContext.SaveChanges();
+			_storageService.SetAccountsDto(accountToApdate);
 
 			return accountDto;
 		}
 
 		public AccountDto GetAccountById(Guid id, bool full)
 		{
-			AccountDto results = GetAccountDto(JsonConvert.DeserializeObject<AccountModel>((_dbContext.Accounts?.ToList()?.Find(x => Guid.Parse(x.EndityId) == id))?.JsonData));
+			AccountDto results = _storageService.GetAccountsDto().Find(x => x.AccountId == id);
 			if (!full)
 				results.Password = "";
 			return results;
@@ -94,58 +89,15 @@ namespace PasswordServerApi.Service
 
 		public AccountDto AddNewAccount(AccountDto request)
 		{
-			_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
-			_dbContext.SaveChanges();
-			return request;
+			return _storageService.SetAccountsDto(request);
 		}
 
 		public AccountDto RemoveAccount(AccountDto request)
 		{
-			var accountToRemove = _dbContext.Accounts.ToList().Find(x => x.EndityId == request.AccountId.ToString());
-			_dbContext.Accounts.Remove(accountToRemove);
-			_dbContext.SaveChanges();
-			return request;
+			var accountToRemove = _storageService.GetAccountsDto().Find(x => x.AccountId == request.AccountId);
+			_storageService.DeleteAccountsDto(accountToRemove);
+			return accountToRemove;
 		}
-
-		#region Account Converter
-
-		private AccountDto GetAccountDto(AccountModel dbAccount)
-		{
-			return new AccountDto()
-			{
-				AccountId = Guid.Parse(dbAccount.AccountId),
-				FirstName = dbAccount.FirstName,
-				LastName = dbAccount.LastName,
-				UserName = dbAccount.UserName,
-				Email = dbAccount.Email,
-				Role = dbAccount.Role,
-				Password = dbAccount.Password,
-				Sex = dbAccount.Sex,
-				LastLogIn = dbAccount.LastLogIn,
-				CurrentToken = dbAccount.CurrentToken,
-				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
-			};
-		}
-
-		private AccountModel GetAccountModel(AccountDto dtoAccount)
-		{
-			return new AccountModel()
-			{
-				AccountId = dtoAccount.AccountId.ToString(),
-				FirstName = dtoAccount.FirstName,
-				LastName = dtoAccount.LastName,
-				UserName = dtoAccount.UserName,
-				Email = dtoAccount.Email,
-				Role = dtoAccount.Role,
-				Password = dtoAccount.Password,
-				Sex = dtoAccount.Sex,
-				LastLogIn = dtoAccount.LastLogIn,
-				CurrentToken = dtoAccount.CurrentToken,
-				PasswordIds = dtoAccount.Passwords.Select(x => x.PasswordId.ToString()).ToList(),
-			};
-		}
-
-		#endregion
 
 		#endregion
 
@@ -154,87 +106,41 @@ namespace PasswordServerApi.Service
 		public IEnumerable<PasswordDto> GetPasswords(PasswordActionRequest request, AccountDto account)
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
-			_dbContext.Passwords.ToList().ForEach(x =>
+
+			_storageService.GetPasswordsDto().ForEach(x =>
 			{
-				if (account.Passwords.Find(accountPass => accountPass.PasswordId.ToString() == x.EndityId) == null)
+				if (account.Passwords.Find(accountPass => accountPass.PasswordId == x.PasswordId) == null)
 					return;
-				var passwordModel = JsonConvert.DeserializeObject<PasswordModel>(x.JsonData);
 				bool haseCorrectValues = false;
-				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Password?.Name) ? request?.Password?.Name == passwordModel?.Name : true) && (!string.IsNullOrWhiteSpace(request?.Password?.LogInLink) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true) && (!string.IsNullOrWhiteSpace(request?.Password?.UserName) ? request?.Password?.LogInLink == passwordModel?.LogInLink : true);
+				haseCorrectValues = (!string.IsNullOrWhiteSpace(request?.Password?.Name) ? request?.Password?.Name == x?.Name : true) && (!string.IsNullOrWhiteSpace(request?.Password?.LogInLink) ? request?.Password?.LogInLink == x?.LogInLink : true) && (!string.IsNullOrWhiteSpace(request?.Password?.UserName) ? request?.Password?.LogInLink == x?.LogInLink : true);
 				if (haseCorrectValues)
-					passwords.Add(GetPasswordDto(passwordModel));
+					passwords.Add(x);
 			});
 			return passwords;
 		}
 
 		public PasswordDto GetPassword(Guid id)
 		{
-			return GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>((_dbContext.Passwords.ToList().Find(x => Guid.Parse(x.EndityId) == id)).JsonData));
+			return _storageService.GetPasswordsDto().Find(x => x.PasswordId == id);
 		}
 
 		public PasswordDto UpdatePassword(PasswordDto passwordDto)
 		{
-			var updatePassword = GetPasswordModel(passwordDto);
-			var passwordModelData = _dbContext.Passwords.ToList().Find(x => x.EndityId == updatePassword.PasswordId);
-			passwordModelData.JsonData = JsonConvert.SerializeObject(updatePassword);
-			_dbContext.Passwords.Update(passwordModelData);
-			_dbContext.SaveChanges();
-			return passwordDto;
+			var passwordModelData = _storageService.GetPasswordsDto().Find(x => x.PasswordId == passwordDto.PasswordId);
+			return _storageService.SetPasswordsDto(passwordDto);
 		}
 
 		public PasswordDto AddNewPassword(PasswordDto requestPassword)
 		{
-			var newPassword = GetPasswordModel(requestPassword);
-			_dbContext.Passwords.Add(new EndityAbstractModelPassword()
-			{
-				EndityId = requestPassword.PasswordId.ToString(),
-				JsonData = JsonConvert.SerializeObject(newPassword)
-			});
-			_dbContext.SaveChanges();
+			_storageService.SetPasswordsDto(requestPassword);
 			return requestPassword;
 		}
 
 		public PasswordDto RemovePassword(PasswordDto requestPassword)
 		{
-			var passToRemove = _dbContext.Passwords.ToList().Find(x => x.EndityId == requestPassword.PasswordId.ToString());
-			requestPassword = GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(passToRemove.JsonData));
-			_dbContext.Passwords.Remove(passToRemove);
-			_dbContext.SaveChanges();
+			_storageService.DeletePasswordsDto(requestPassword);
 			return requestPassword;
 		}
-
-		#region Converters Password
-
-		private PasswordDto GetPasswordDto(PasswordModel dbPassword)
-		{
-			return new PasswordDto()
-			{
-				PasswordId = Guid.Parse(dbPassword.PasswordId),
-				Name = dbPassword.Name,
-				UserName = dbPassword.UserName,
-				Password = dbPassword.Password,
-				LogInLink = dbPassword.LogInLink,
-				Sensitivity = dbPassword.Sensitivity,
-			};
-
-		}
-
-		private PasswordModel GetPasswordModel(PasswordDto dtoPassword)
-		{
-			return new PasswordModel()
-			{
-				PasswordId = dtoPassword.PasswordId.ToString(),
-				Name = dtoPassword.Name,
-				UserName = dtoPassword.UserName,
-				Password = dtoPassword.Password,
-				LogInLink = dtoPassword.LogInLink,
-				Sensitivity = dtoPassword.Sensitivity,
-				Strength = dtoPassword.Strength
-			};
-		}
-
-		#endregion
-
 
 		#region Fill Database
 
@@ -242,8 +148,8 @@ namespace PasswordServerApi.Service
 		{
 			foreach (AccountDto account in accounts)
 			{
-				_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = account.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(account)) });
-				_dbContext.Passwords.AddRange(account.Passwords.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId.ToString(), JsonData = JsonConvert.SerializeObject(x) }));
+				_storageService.SetAccountsDto(account);
+				account.Passwords.ForEach(pass => _storageService.SetPasswordsDto(pass));
 			}
 		}
 

@@ -25,6 +25,8 @@ using System.Linq;
 using Serilog;
 using Microsoft.Extensions.Logging;
 using PasswordServerApi.Extensions;
+using PasswordServerApi.DataFileDb;
+using PasswordServerApi.StorageLayer;
 
 namespace PasswordServerApi
 {
@@ -43,7 +45,19 @@ namespace PasswordServerApi
 		{
 			LogInfo("Starting add services");
 			services.AddTransient<ILoggingService, LoggingService>();
+
+			//services.AddTransient<IReadFileDb>(s => new ReadFileDb("C:\\PASSWORDSERVERAPI", "Accounts.txt", "Paswords.txt"));
+			//var provider = services.BuildServiceProvider();
+			//var reader = provider.GetService<IReadFileDb>();
+
+
+
 			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
+			var provider = services.BuildServiceProvider();
+			services.AddTransient<IStorageService,StorageServiceDb>();
+
+
+
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
