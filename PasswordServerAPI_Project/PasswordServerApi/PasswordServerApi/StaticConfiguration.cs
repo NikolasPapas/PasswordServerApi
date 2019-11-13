@@ -31,21 +31,21 @@ namespace PasswordServerApi.Service
 
 		#region AcrionConfiguration
 
-		private static string GREEN = "#00ff00";
-		private static string PURPLE = "#ff0000";
+		//private static string GREEN = "#00ff00";
+		//private static string PURPLE = "#ff0000";
 		//Account
-		public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Λογαριασμός", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction", Color = GREEN };
+		public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Λογαριασμός", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionSaveAccount = new ApplicationAction { Id = ActionSaveAccountId, Name = "Αποθήκευση ή Προσθήκη", ToolTipText = "Αποθήκευση ή Προσθήκη λογαριασμού και κωδικών του", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
-		public static readonly ApplicationAction ActionRemoveAccount = new ApplicationAction { Id = ActionRemoveAccountId, Name = "Διαγραφή", ToolTipText = "Διαγραφή λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction", Color = PURPLE };
+		public static readonly ApplicationAction ActionRemoveAccount = new ApplicationAction { Id = ActionRemoveAccountId, Name = "Διαγραφή", ToolTipText = "Διαγραφή λογαριασμού", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 		public static readonly ApplicationAction ActionGetAccountAndPassword = new ApplicationAction { Id = ActionGetAccountAndPasswordId, Name = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", ToolTipText = "Αναζήτηση όλων τον λογαριασμών και κωδικών τους", NeedsComment = false, SendApplicationData = true, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/accountAction" };
 
 		//Common
-		public static readonly ApplicationAction ActionGetMyAccount = new ApplicationAction { Id = ActionGetMyAccountId, Name = "Ο Λογαριασμός μου", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού μου", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/getMyAccount", Color = GREEN };
+		public static readonly ApplicationAction ActionGetMyAccount = new ApplicationAction { Id = ActionGetMyAccountId, Name = "Ο Λογαριασμός μου", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού μου", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "/api/accounts/getMyAccount" };
 
 		//Password
-		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση κωδικόν", ToolTipText = "Αναζήτηση κωδικόν", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = GREEN };
+		public static readonly ApplicationAction ActionGetPasswords = new ApplicationAction { Id = ActionGetPasswordsId, Name = "Αναζήτηση κωδικόν", ToolTipText = "Αναζήτηση κωδικόν", NeedsComment = false, SendApplicationData = false, Icon = "refresh", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction" };
 		public static readonly ApplicationAction ActionUpdateOrAddPassword = new ApplicationAction { Id = ActionUpdateOrAddPasswordId, Name = "Αποθήκευση ή Προσθήκη κωδικόν", ToolTipText = "Αποθήκευση κωδικου ή Προσθήκη", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction" };
-		public static readonly ApplicationAction ActionRemovePassword = new ApplicationAction { Id = ActionRemovePasswordId, Name = "Διαγραφή κωδικόν", ToolTipText = "Διαγραφή κωδικου", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction", Color = PURPLE };
+		public static readonly ApplicationAction ActionRemovePassword = new ApplicationAction { Id = ActionRemovePasswordId, Name = "Διαγραφή κωδικόν", ToolTipText = "Διαγραφή κωδικου", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Password", ControllerPath = "/api/passwords/passwordAction" };
 
 		//REPORT
 		public static readonly ApplicationAction ActionReport = new ApplicationAction { Id = ActionReportId, Name = "Report", ToolTipText = "Report PDF", NeedsComment = false, RefreshAfterAction = false, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Report", ControllerPath = "/api/accounts/exportReport" };
@@ -66,7 +66,7 @@ namespace PasswordServerApi.Service
 			new Tuple<ApplicationAction, List<string>>(ActionGetPasswords, new List<string>(){  Role.Admin, Role.User } ),
 			new Tuple<ApplicationAction, List<string>>(ActionRemovePassword, new List<string>(){  Role.Admin, Role.User } )
 		};
-		
+
 		public static List<ApplicationAction> GetAcrionByProfile(string role)
 		{
 			List<ApplicationAction> list = new List<ApplicationAction>();

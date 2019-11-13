@@ -11,6 +11,12 @@ $shadow: (
   height: 100%;
   background-color: map-get($colorPalette, "subCardBackground");
 
+
+  .sideNavDiv{
+    padding-left: 2em;
+  }
+
+
   .slideContent {
     height: 100%;
   }

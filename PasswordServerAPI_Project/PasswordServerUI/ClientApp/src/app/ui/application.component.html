@@ -1,20 +1,19 @@
 ﻿<mat-sidenav-container class="col-12 row slideContainer">
 
     <mat-sidenav #sidenav mode="over" [(opened)]="opened">
-        <div class="row">
+        <div class="row sideNavDiv">
             <button class="col-12" disabled="true" mat-button>
                 <h4>{{'MENU.HEADER' | translate}}</h4>
             </button>
-
             <div class="col-12 row" *ngFor="let action of actions; let index = index;">
-                <mat-form-field class="col-12">
+                <!-- <mat-form-field class="col-4">
                     <input matInput placeholder="{{'ACTIONS.TITLES.NAME' | translate}}" [value]="action.name" disabled="true">
-                </mat-form-field>
+                </mat-form-field> -->
                 <button class="col-auto" mat-button (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
                 <button class="col-2" mat-button (click)="executeAction(index)" [style.color]="action.color">
                     <mat-icon>{{action.icon}}</mat-icon>
                 </button>
-                <hr>
+                <hr class="col-12">
             </div>
             <!-- <button class="col" mat-button *ngFor="let action of actions; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button> -->
             <button class="col-12" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
@@ -34,7 +33,7 @@
                 <app-login [formGroup]="loginForm" (LoginEvent)="login($event)"></app-login>
             </div>
             <div *ngIf="!mastDoLogIn">
-                <app-editor [selectedAction]="selectedAction" [accountModels]="accountModels" (IsActionAddPasswordIsOnEvent)="IsActionAddPasswordIsOnEvent($event)"></app-editor>
+                <app-editor [selectedAction]="selectedAction" [accountModels]="accountModels" (IsActionAddPasswordIsOnEvent)="IsActionAddPasswordIsOnEvent($event)" [ActionEvent]="ActionEvent"></app-editor>
             </div>
         </mat-card>
 

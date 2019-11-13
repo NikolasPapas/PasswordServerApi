@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from "@angular/core";
 import { BaseComponent } from "../../../common/base/base.component";
 import { ConfigurationService } from "../../../core/services/configuration.service";
 import { ApplicationAction } from "../../../core/models/configuration/ApplicationAction";
@@ -32,7 +32,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     @Input() selectedAction: number = -1;
     @Input() accountModels: FormGroup[] = [];
-
+    @Input() ActionEvent: ApplicationAction;
     @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();
 
     expandedIndex: number = -1;
@@ -52,6 +52,14 @@ export class EditorComponent extends BaseComponent implements OnInit {
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
         //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        for (let propName in changes) {
+            if (propName === 'ActionEvent' && this.ActionEvent) {
+                this.onActionSelected(this.ActionEvent);
+            }
+        }
     }
 
     open(index: number) {

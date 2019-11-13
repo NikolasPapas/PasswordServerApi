@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, OnInit, ViewEncapsulation, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigurationService } from '../core/services/configuration.service';
 import { TokenRequest } from '../core/models/requests/token-request';
@@ -21,6 +21,8 @@ import { PasswordForm } from './main-panel/editor/request-editor/password-editor
 export class ApplicationComponent extends BaseComponent implements OnInit {
 
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
+
+    @Output() ActionEvent: ApplicationAction=null;
 
     opened: boolean;
     actions: ApplicationAction[];
@@ -65,13 +67,14 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
     }
 
     executeAction(index: number) {
-        this.selectedAction = index;
+        this.ActionEvent = null;
+        this.ActionEvent = this.actions[index];
     }
 
     IsActionAddPasswordIsOnEvent(index: number) {
         this.isActionAddPasswordIsOn = index;
     }
-   
+
 
     addAccount() {
         this.accountModels.push(new AccountForm().fromModel(null).buildForm());
