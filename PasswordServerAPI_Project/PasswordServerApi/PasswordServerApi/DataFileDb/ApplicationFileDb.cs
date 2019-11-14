@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PasswordServerApi.DataFileDb
 {
-	public class ApplicationFileDb
+	public class ApplicationFileDb : IApplicationFileDb
 	{
 		public IReadFileDb _fileReader;
 
@@ -16,51 +16,85 @@ namespace PasswordServerApi.DataFileDb
 			_fileReader = fileReader;
 		}
 
-		public IEnumerable<EndityAbstractModelAccount> Accounts
-		{
-			get
-			{
-				return ReadDbAccountFile();
-			}
-			set
-			{
-				//(data) => SaveToAccountFile(data);
-			}
-		}
+
+		#region Account
+		private IEnumerable<EndityAbstractModelAccount> Accounts { get; set; }
 
 
-		private IEnumerable<EndityAbstractModelAccount> ReadDbAccountFile()
+		public IEnumerable<EndityAbstractModelAccount> ReadDbAccountFile()
 		{
 			return _fileReader.ReadAccountFile();
 
 		}
 
-		private void SaveToAccountFile(IEnumerable<EndityAbstractModelAccount> data)
+		public IEnumerable<EndityAbstractModelAccount> SaveToAccountFile(EndityAbstractModelAccount data)
 		{
+			List<EndityAbstractModelAccount> accountsModels = ReadDbAccountFile()?.ToList();
+			EndityAbstractModelAccount accountModel = accountsModels?.Find(x => x.EndityId == data.EndityId);
+			if (accountModel != null)
+			{
+				int index = accountsModels.FindIndex(x => x.EndityId == data.EndityId);
+				accountsModels.RemoveAt(index);
+				
+			}
+			accountsModels.Add(data);
 
+			return _fileReader.WriteAccountFile(accountsModels);
 		}
 
 
-		public IEnumerable<EndityAbstractModelPassword> Passwords
+		public IEnumerable<EndityAbstractModelAccount> DeleteToAccountFile(EndityAbstractModelAccount data)
 		{
-			get
+			List<EndityAbstractModelAccount> accountsModels = ReadDbAccountFile()?.ToList();
+			EndityAbstractModelAccount accountModel = accountsModels?.Find(x => x.EndityId == data.EndityId);
+			if (accountModel != null)
 			{
-				return ReadDbPasswordFile();
+				int index = accountsModels.FindIndex(x => x.EndityId == data.EndityId);
+				accountsModels.RemoveAt(index);
 			}
-			set
-			{
-			}
+
+			return _fileReader.WriteAccountFile(accountsModels);
 		}
 
-		private IEnumerable<EndityAbstractModelPassword> ReadDbPasswordFile()
+
+
+		#endregion
+
+		#region Password 
+
+		public IEnumerable<EndityAbstractModelPassword> Passwords { get; set; }
+
+		public IEnumerable<EndityAbstractModelPassword> ReadDbPasswordFile()
 		{
 			return _fileReader.ReadPasswordFile();
 		}
 
-		private void SaveToPasswordFile(IEnumerable<EndityAbstractModelPassword> data)
+		public IEnumerable<EndityAbstractModelPassword> SaveToPasswordFile(EndityAbstractModelPassword data)
 		{
-
+			List<EndityAbstractModelPassword> passwordsModels = ReadDbPasswordFile()?.ToList();
+			EndityAbstractModelPassword passwordModel = passwordsModels?.Find(x => x.EndityId == data.EndityId);
+			if (passwordModel != null)
+			{
+				int index = passwordsModels.FindIndex(x => x.EndityId == data.EndityId);
+				passwordsModels.RemoveAt(index);
+			}
+			passwordsModels.Add(data);
+			return _fileReader.WritePasswordFile(passwordsModels);
 		}
+
+		public IEnumerable<EndityAbstractModelPassword> DeleteToPasswordFile(EndityAbstractModelPassword data)
+		{
+			List<EndityAbstractModelPassword> passwordsModels = ReadDbPasswordFile()?.ToList();
+			EndityAbstractModelPassword passwordModel = passwordsModels?.Find(x => x.EndityId == data.EndityId);
+			if (passwordModel != null)
+			{
+				int index = passwordsModels.FindIndex(x => x.EndityId == data.EndityId);
+				passwordsModels.RemoveAt(index);
+			}
+			return _fileReader.WritePasswordFile(passwordsModels);
+		}
+
+		#endregion
 
 	}
 }

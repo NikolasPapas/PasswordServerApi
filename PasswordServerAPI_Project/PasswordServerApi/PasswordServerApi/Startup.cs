@@ -27,6 +27,7 @@ using Microsoft.Extensions.Logging;
 using PasswordServerApi.Extensions;
 using PasswordServerApi.DataFileDb;
 using PasswordServerApi.StorageLayer;
+using PasswordServerApi.DTO;
 
 namespace PasswordServerApi
 {
@@ -46,15 +47,14 @@ namespace PasswordServerApi
 			LogInfo("Starting add services");
 			services.AddTransient<ILoggingService, LoggingService>();
 
-			//services.AddTransient<IReadFileDb>(s => new ReadFileDb("C:\\PASSWORDSERVERAPI", "Accounts.txt", "Paswords.txt"));
+			services.AddTransient<IReadFileDb>(s => new ReadFileDb("C:\\PASSWORDSERVERAPI", "Accounts.txt", "Paswords.txt"));
+			services.AddTransient<IApplicationFileDb, ApplicationFileDb>();
+			services.AddTransient<IStorageService, StorageServiceFile>();
+
+
+			//services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
 			//var provider = services.BuildServiceProvider();
-			//var reader = provider.GetService<IReadFileDb>();
-
-
-
-			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
-			var provider = services.BuildServiceProvider();
-			services.AddTransient<IStorageService,StorageServiceDb>();
+			//services.AddTransient<IStorageService, StorageServiceDb>();
 
 
 
@@ -137,22 +137,20 @@ namespace PasswordServerApi
 
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext, ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
 		{
 			loggerFactory.AddSerilog();
 
 			LogInfo("Start SetUP Database and Init");
-			dbContext.Database.EnsureCreated();
+			//storageService.Database.EnsureCreated();
 
-			List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
-			List<EndityAbstractModelPassword> oldPasswords = dbContext.Passwords.Select(x => x).ToList();
-			if (oldAccounds != null)
-				dbContext.Accounts.RemoveRange(oldAccounds);
-			if (oldPasswords != null)
-				dbContext.Passwords.RemoveRange(oldPasswords);
-			dbContext.SaveChanges();
-			FieldDatabae(dbContext);
-			dbContext.SaveChanges();
+			List<AccountDto> oldAccounds = storageService.GetAccountsDto().ToList();
+			List<PasswordDto> oldPasswords = storageService.GetPasswordsDto().ToList();
+			if (oldAccounds != null || oldAccounds.Count>0)
+				oldAccounds.ForEach(accont => storageService.DeleteAccountsDto(accont));
+			if (oldPasswords != null || oldPasswords.Count > 0)
+				oldPasswords.ForEach(pass => storageService.DeletePasswordsDto(pass));
+			FieldDatabae(storageService);
 			LogInfo("Stop SetUP Database and Init");
 
 
@@ -177,21 +175,21 @@ namespace PasswordServerApi
 			});
 		}
 
-		private void FieldDatabae(ApplicationDbContext dbContext)
+		private void FieldDatabae(IStorageService storageService)
 		{
 			for (int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = setData.Item1.AccountId, JsonData = JsonConvert.SerializeObject(setData.Item1) });
-				dbContext.Passwords.AddRange(setData.Item2.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
+				storageService.SetAccountsDto(setData.Item1);
+				setData.Item2.ForEach(pass => storageService.SetPasswordsDto(pass));
 			}
 		}
 
-		private PasswordModel GetDumyPassword(int i, int accountIndex)
+		private PasswordDto GetDumyPassword(int i, int accountIndex)
 		{
-			return new PasswordModel()
+			return new PasswordDto()
 			{
-				PasswordId = Guid.NewGuid().ToString(),
+				PasswordId = Guid.NewGuid(),
 				Name = "Google" + i * i,
 				UserName = $"nikolaspapazian{accountIndex}@gmail.com",
 				Password = $"123{ i * i}",
@@ -200,11 +198,11 @@ namespace PasswordServerApi
 			};
 		}
 
-		private AccountModel GetDumyAccount(int i)
+		private AccountDto GetDumyAccount(int i)
 		{
-			return new AccountModel()
+			return new AccountDto()
 			{
-				AccountId = Guid.NewGuid().ToString(),
+				AccountId = Guid.NewGuid(),
 				FirstName = $"FirstName{i}",
 				LastName = $"LastName{i}",
 				UserName = $"username{i}",
@@ -213,22 +211,22 @@ namespace PasswordServerApi
 				Password = $"{i}",
 				Sex = Sex.Male,
 				LastLogIn = null,
-				PasswordIds = new List<string>() { },
+				Passwords = new List<PasswordDto>(),
 			};
 		}
 
-		private Tuple<AccountModel, List<PasswordModel>> GetDumyfullAccount(int i)
+		private Tuple<AccountDto, List<PasswordDto>> GetDumyfullAccount(int i)
 		{
-			AccountModel account = GetDumyAccount(i);
-			List<PasswordModel> passwords = new List<PasswordModel>();
+			AccountDto account = GetDumyAccount(i);
+			List<PasswordDto> passwords = new List<PasswordDto>();
 			for (int dumyi = i; dumyi <= i + 5; dumyi++)
 			{
-				PasswordModel pass = GetDumyPassword(dumyi,i);
+				PasswordDto pass = GetDumyPassword(dumyi, i);
 				passwords.Add(pass);
-				account.PasswordIds.Add(pass.PasswordId);
+				account.Passwords = passwords;
 			}
 
-			return new Tuple<AccountModel, List<PasswordModel>>(account, passwords);
+			return new Tuple<AccountDto, List<PasswordDto>>(account, passwords);
 		}
 
 		public void LogInfo(string message)

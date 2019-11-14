@@ -23,7 +23,7 @@ namespace PasswordServerApi.DataFileDb
 
 		}
 
-		private IEnumerable<string> FindFile(string path,string name)
+		private IEnumerable<string> FindFile(string path, string name)
 		{
 			string[] files = Directory.GetFiles(path, name);
 			if (files != null && files.Length > 0)
@@ -31,13 +31,18 @@ namespace PasswordServerApi.DataFileDb
 			return null;
 		}
 
+		#region Read
+
 		public IEnumerable<EndityAbstractModelAccount> ReadAccountFile()
 		{
 			List<EndityAbstractModelAccount> accounts = new List<EndityAbstractModelAccount>();
 			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_ACCOUNT).First();
 			List<string[]> fileRows = ReadDocument(filename);
 			if (fileRows == null || fileRows.Count < 1)
+			{
+				return new List<EndityAbstractModelAccount>();
 				throw new Exception($"Error on File parse. Name: {filename} , Lines: {fileRows.Count}.");
+			}
 
 			for (int line = 0; line < fileRows.Count; line++)
 				accounts.Add(GetAccountFromFile(fileRows[line]));
@@ -50,7 +55,10 @@ namespace PasswordServerApi.DataFileDb
 			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_PASSWORD).First();
 			List<string[]> fileRows = ReadDocument(filename);
 			if (fileRows == null || fileRows.Count < 1)
+			{
+				return new List<EndityAbstractModelPassword>();
 				throw new Exception($"Error on File parse. Name: {filename} , Lines: {fileRows.Count}.");
+			}
 
 			for (int line = 0; line < fileRows.Count; line++)
 				passwords.Add(GetPasswordFromFile(fileRows[line]));
@@ -67,6 +75,49 @@ namespace PasswordServerApi.DataFileDb
 			}
 			return fileRows;
 		}
+
+		#endregion
+
+		#region Write
+
+		public IEnumerable<EndityAbstractModelAccount> WriteAccountFile(List<EndityAbstractModelAccount> accountModel)
+		{
+			List<string> fileRowsTowrite = new List<string>();
+			accountModel.ForEach(x => fileRowsTowrite.Add(SetAccountFromModel(x)));
+			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_ACCOUNT).First();
+			WriteDocument(filename, fileRowsTowrite);
+			return ReadAccountFile();
+		}
+
+
+		public IEnumerable<EndityAbstractModelPassword> WritePasswordFile(List<EndityAbstractModelPassword> passwordModel)
+		{
+
+			List<string> fileRowsTowrite = new List<string>();
+			passwordModel.ForEach(x => fileRowsTowrite.Add(SetPasswordFromModel(x)));
+			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_PASSWORD).First();
+			WriteDocument(filename, fileRowsTowrite);
+			return ReadPasswordFile();
+		}
+
+
+		private void WriteDocument(string path, List<string> fileRows)
+		{
+			string[] lines = new string[fileRows.Count()];
+
+			for (int i = 0; i < fileRows.Count(); i++)
+			{
+				string line = fileRows.ElementAt(i);
+				lines[i] = line;
+			}
+			if (!File.Exists(path))
+				throw new Exception("file Not Exist");
+			File.WriteAllLines(path, lines);
+		}
+
+		#endregion
+
+		#region Helpers 
 
 		private EndityAbstractModelAccount GetAccountFromFile(string[] row)
 		{
@@ -85,6 +136,22 @@ namespace PasswordServerApi.DataFileDb
 				JsonData = row[1],
 			};
 		}
+
+		private string SetAccountFromModel(EndityAbstractModelAccount account)
+		{
+			if (account != null)
+				return account.EndityId + FieldDelimiter[0] + account.JsonData;
+			return "";
+		}
+
+		private string SetPasswordFromModel(EndityAbstractModelPassword password)
+		{
+			if (password != null)
+				return password.EndityId + FieldDelimiter[0] + password.JsonData;
+			return "";
+		}
+
+		#endregion
 
 	}
 

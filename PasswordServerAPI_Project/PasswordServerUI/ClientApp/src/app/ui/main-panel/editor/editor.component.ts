@@ -31,9 +31,13 @@ export class EditorComponent extends BaseComponent implements OnInit {
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
     @Input() selectedAction: number = -1;
-    @Input() accountModels: FormGroup[] = [];
-    @Input() ActionEvent: ApplicationAction;
+    @Input() ActionEvent:ApplicationAction; 
+    @Input() AddAccountEvent: number;
+    @Input() AddPasswordEvent: number;
+
     @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();
+    
+    accountModels: FormGroup[]=[];
 
     expandedIndex: number = -1;
     selectedAccountIndex: number = -1;
@@ -58,6 +62,12 @@ export class EditorComponent extends BaseComponent implements OnInit {
         for (let propName in changes) {
             if (propName === 'ActionEvent' && this.ActionEvent) {
                 this.onActionSelected(this.ActionEvent);
+            }
+            if (propName === 'AddAccountEvent' && this.AddAccountEvent!=null) {
+                this.addAccount();
+            }
+            if (propName === 'AddPasswordEvent' && this.AddPasswordEvent!=null) {
+                this.addPassword();
             }
         }
     }
