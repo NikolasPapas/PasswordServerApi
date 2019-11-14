@@ -3,34 +3,31 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PasswordServerApi.Interfaces;
-using PasswordServerApi.Service;
 using System;
-using System.Reflection;
-using System.IO;
-using PasswordServerApi.Security;
 using PasswordServerApi.Security.SecurityModels;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using PasswordServerApi.DataSqliteDB;
-using Microsoft.EntityFrameworkCore;
-using PasswordServerApi.DataSqliteDB.DataModels;
 using System.Collections.Generic;
 using PasswordServerApi.Models.Enums;
-using Newtonsoft.Json;
 using System.Linq;
 using Serilog;
 using Microsoft.Extensions.Logging;
-using PasswordServerApi.Extensions;
+using PasswordServerApi.StorageLayer;
+using PasswordServerApi.DTO;
+using PasswordServerApi.Utilitys;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using PasswordServerApi.Interfaces;
+using PasswordServerApi.Security;
+using PasswordServerApi.Service;
+using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace PasswordServerApi
 {
 	public class Startup
 	{
-
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -38,22 +35,43 @@ namespace PasswordServerApi
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			LogInfo("Starting add services");
+			InstallService(services, Configuration, "File");
+			//services.InstallService(services,Configuration,"SQlLite");
+			InstallSecurity(services, Configuration);
+			InstallSwagger(services, Configuration);
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			LogInfo("End addingg services");
+		}
+
+		#region Register Service
+
+		public void InstallService(IServiceCollection services, IConfiguration configuration, string database)
+		{
 			services.AddTransient<ILoggingService, LoggingService>();
-			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=PasswordServer.db"));
+
+			if (database == "File")
+			{
+				services.AddFilleDB(configuration);
+			}
+			else if (database == "SQlLite")
+			{
+				services.AddSQLLiteDb(configuration);
+			}
+
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
 			services.AddTransient<IExportService, ExportService>();
 			services.AddTransient<IExceptionHandler, ExceptionHandler>();
-
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
 			services.AddScoped<IUserManagementService, UserManagementService>();
+		}
 
-
+		public void InstallSecurity(IServiceCollection services, IConfiguration Configuration)
+		{
 			services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
 			var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
 			var secret = System.Text.Encoding.ASCII.GetBytes(token.Secret);
@@ -91,9 +109,10 @@ namespace PasswordServerApi
 				};
 
 			});
+		}
 
-
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+		public void InstallSwagger(IServiceCollection services, IConfiguration Configuration)
+		{
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo
@@ -116,31 +135,18 @@ namespace PasswordServerApi
 				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 				c.IncludeXmlComments(xmlPath);
-				LogInfo("End addingg services");
+
 			});
+
 		}
 
+		#endregion
 
-
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext, ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
 		{
 			loggerFactory.AddSerilog();
 
-			LogInfo("Start SetUP Database and Init");
-			dbContext.Database.EnsureCreated();
-
-			List<EndityAbstractModelAccount> oldAccounds = dbContext.Accounts.Select(x => x).ToList();
-			List<EndityAbstractModelPassword> oldPasswords = dbContext.Passwords.Select(x => x).ToList();
-			if (oldAccounds != null)
-				dbContext.Accounts.RemoveRange(oldAccounds);
-			if (oldPasswords != null)
-				dbContext.Passwords.RemoveRange(oldPasswords);
-			dbContext.SaveChanges();
-			FieldDatabae(dbContext);
-			dbContext.SaveChanges();
-			LogInfo("Stop SetUP Database and Init");
-
+			SetStartUpData(storageService);
 
 			if (env.IsDevelopment())
 			{
@@ -163,21 +169,37 @@ namespace PasswordServerApi
 			});
 		}
 
-		private void FieldDatabae(ApplicationDbContext dbContext)
+		#region   SetStartUpData
+
+		private void SetStartUpData(IStorageService storageService)
+		{
+			LogInfo("Start SetUP Database and Init");
+			List<AccountDto> oldAccounds = storageService.GetAccountsDto().ToList();
+			List<PasswordDto> oldPasswords = storageService.GetPasswordsDto().ToList();
+			if (oldAccounds != null || oldAccounds.Count > 0)
+				oldAccounds.ForEach(accont => storageService.DeleteAccountsDto(accont));
+			if (oldPasswords != null || oldPasswords.Count > 0)
+				oldPasswords.ForEach(pass => storageService.DeletePasswordsDto(pass));
+			FieldDatabae(storageService);
+			LogInfo("Stop SetUP Database and Init");
+		}
+
+
+		private void FieldDatabae(IStorageService storageService)
 		{
 			for (int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = setData.Item1.AccountId, JsonData = JsonConvert.SerializeObject(setData.Item1) });
-				dbContext.Passwords.AddRange(setData.Item2.Select(x => new EndityAbstractModelPassword() { EndityId = x.PasswordId, JsonData = JsonConvert.SerializeObject(x) }));
+				storageService.SetAccountsDto(setData.Item1);
+				setData.Item2.ForEach(pass => storageService.SetPasswordsDto(pass));
 			}
 		}
 
-		private PasswordModel GetDumyPassword(int i, int accountIndex)
+		private PasswordDto GetDumyPassword(int i, int accountIndex)
 		{
-			return new PasswordModel()
+			return new PasswordDto()
 			{
-				PasswordId = Guid.NewGuid().ToString(),
+				PasswordId = Guid.NewGuid(),
 				Name = "Google" + i * i,
 				UserName = $"nikolaspapazian{accountIndex}@gmail.com",
 				Password = $"123{ i * i}",
@@ -186,11 +208,11 @@ namespace PasswordServerApi
 			};
 		}
 
-		private AccountModel GetDumyAccount(int i)
+		private AccountDto GetDumyAccount(int i)
 		{
-			return new AccountModel()
+			return new AccountDto()
 			{
-				AccountId = Guid.NewGuid().ToString(),
+				AccountId = Guid.NewGuid(),
 				FirstName = $"FirstName{i}",
 				LastName = $"LastName{i}",
 				UserName = $"username{i}",
@@ -199,29 +221,34 @@ namespace PasswordServerApi
 				Password = $"{i}",
 				Sex = Sex.Male,
 				LastLogIn = null,
-				PasswordIds = new List<string>() { },
+				Passwords = new List<PasswordDto>(),
 			};
 		}
 
-		private Tuple<AccountModel, List<PasswordModel>> GetDumyfullAccount(int i)
+		private Tuple<AccountDto, List<PasswordDto>> GetDumyfullAccount(int i)
 		{
-			AccountModel account = GetDumyAccount(i);
-			List<PasswordModel> passwords = new List<PasswordModel>();
+			AccountDto account = GetDumyAccount(i);
+			List<PasswordDto> passwords = new List<PasswordDto>();
 			for (int dumyi = i; dumyi <= i + 5; dumyi++)
 			{
-				PasswordModel pass = GetDumyPassword(dumyi,i);
+				PasswordDto pass = GetDumyPassword(dumyi, i);
 				passwords.Add(pass);
-				account.PasswordIds.Add(pass.PasswordId);
+				account.Passwords = passwords;
 			}
 
-			return new Tuple<AccountModel, List<PasswordModel>>(account, passwords);
+			return new Tuple<AccountDto, List<PasswordDto>>(account, passwords);
 		}
+
+		#endregion
+
+		#region helpers 
 
 		public void LogInfo(string message)
 		{
 			Log.Logger.Information($"StartUpLog: {message}");
 		}
 
+		#endregion
 
 	}
 }

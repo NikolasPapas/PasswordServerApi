@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewEncapsulation, Output } from '@angular/core';
+﻿import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigurationService } from '../core/services/configuration.service';
 import { TokenRequest } from '../core/models/requests/token-request';
@@ -22,11 +22,14 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
 
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
-    @Output() ActionEvent: ApplicationAction=null;
+    @Output() ActionEvent: ApplicationAction = null;
+    @Output() AddAccountEvent: number = null;
+    @Output() AddPasswordEvent: number = null;
 
     opened: boolean;
     actions: ApplicationAction[];
-    accountModels: FormGroup[] = [];
+
+
 
     isActionAddAccountIsOn: boolean = false;
     isActionAddPasswordIsOn: number = -1;
@@ -77,11 +80,15 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
 
 
     addAccount() {
-        this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+        this.AddAccountEvent =null;
+        this.AddAccountEvent = 1;
+        //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
     addPassword() {
-        if (this.accountModels[this.isActionAddPasswordIsOn] != null && this.accountModels[this.isActionAddPasswordIsOn].get('passwords') != null)
-            (this.accountModels[this.isActionAddPasswordIsOn].get('passwords') as FormArray).push(new PasswordForm().fromModel(null).buildForm());
+        this.AddPasswordEvent=null;
+        this.AddPasswordEvent=this.isActionAddPasswordIsOn;
+        // if (this.accountModels[this.isActionAddPasswordIsOn] != null && this.accountModels[this.isActionAddPasswordIsOn].get('passwords') != null)
+        //     (this.accountModels[this.isActionAddPasswordIsOn].get('passwords') as FormArray).push(new PasswordForm().fromModel(null).buildForm());
     }
 }

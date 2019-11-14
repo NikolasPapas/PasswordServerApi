@@ -33,7 +33,7 @@
                 <app-login [formGroup]="loginForm" (LoginEvent)="login($event)"></app-login>
             </div>
             <div *ngIf="!mastDoLogIn">
-                <app-editor [selectedAction]="selectedAction" [accountModels]="accountModels" (IsActionAddPasswordIsOnEvent)="IsActionAddPasswordIsOnEvent($event)" [ActionEvent]="ActionEvent"></app-editor>
+                <app-editor [selectedAction]="selectedAction" (IsActionAddPasswordIsOnEvent)="IsActionAddPasswordIsOnEvent($event)" [ActionEvent]="ActionEvent" [AddAccountEvent]="AddAccountEvent" [AddPasswordEvent]="AddPasswordEvent"></app-editor>
             </div>
         </mat-card>
 
