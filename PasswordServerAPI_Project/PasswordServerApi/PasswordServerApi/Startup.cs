@@ -23,6 +23,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.Diagnostics;
 
 namespace PasswordServerApi
 {
@@ -144,8 +146,25 @@ namespace PasswordServerApi
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
 		{
-			loggerFactory.AddSerilog();
+			app.Use(async (context, next) =>
+			{
+				Stopwatch timeCounter = new Stopwatch();
+				timeCounter.Start();
+				//DateTime request = DateTime.Now;
+				//Log.Logger.Information($"MyMidlware: Now:{DateTime.Now} Request start: {request}");
 
+				context.Response.OnStarting(() =>
+				{
+					timeCounter.Stop();
+					context.Response.Headers.Add("TimeResponce", $"{timeCounter.Elapsed.TotalMilliseconds}");
+					return Task.FromResult(0);
+				});
+
+				await next.Invoke();
+				//Log.Logger.Information($"MyMidlware: Now :{DateTime.Now} Request start: {request}");
+			});
+
+			loggerFactory.AddSerilog();
 			SetStartUpData(storageService);
 
 			if (env.IsDevelopment())
