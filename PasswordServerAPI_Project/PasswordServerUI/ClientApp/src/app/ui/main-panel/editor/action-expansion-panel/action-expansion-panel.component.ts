@@ -6,11 +6,11 @@ import { ApplicationValidationMode } from "../../../../core/enums/application-va
 
 
 @Component({
-    selector: 'app-editor-expansion-panel',
-    templateUrl: './editor-expansion-panel.component.html',
-    styleUrls: ['./editor-expansion-panel.component.scss'],
+    selector: 'app-action-expansion-panel',
+    templateUrl: './action-expansion-panel.component.html',
+    styleUrls: ['./action-expansion-panel.component.scss'],
 })
-export class EditorExpansionPanelComponent extends BaseComponent implements OnInit  {
+export class ActionExpansionPanelComponent extends BaseComponent implements OnInit  {
     
     @Input() action: ApplicationAction;
     @Output() onActionSelected = new EventEmitter<ApplicationAction>();
