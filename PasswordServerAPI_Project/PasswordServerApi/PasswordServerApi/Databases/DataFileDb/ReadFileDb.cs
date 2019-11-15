@@ -1,4 +1,5 @@
-﻿using PasswordServerApi.DataSqliteDB;
+﻿using PasswordServerApi.Databases.DataModels;
+using PasswordServerApi.DataSqliteDB;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,14 +13,17 @@ namespace PasswordServerApi.DataFileDb
 		private string IMPORT_PATH = "";
 		private string IMPORT_FILENAME_ACCOUNT = "";
 		private string IMPORT_FILENAME_PASSWORD = "";
-		private readonly char[] FieldDelimiter = new char[] { ';' };
+		private string IMPORT_FILENAME_LOGIN_TOKENS = "";
+		private readonly char[] AccountFieldDelimiter = new char[] { ';' };
 		private readonly char[] PasswordIdsDelimiter = new char[] { ';' };
+		private readonly char[] LoginTokenFieldDelimiter = new char[] { '=' };
 
-		public ReadFileDb(string import_FilePath, string import_FileName_account, string import_FileName_password)
+		public ReadFileDb(string import_FilePath, string import_FileName_account, string import_FileName_password, string import_FileName_login_tokens)
 		{
 			IMPORT_PATH = import_FilePath;
 			IMPORT_FILENAME_ACCOUNT = import_FileName_account;
 			IMPORT_FILENAME_PASSWORD = import_FileName_password;
+			IMPORT_FILENAME_LOGIN_TOKENS = import_FileName_login_tokens;
 
 		}
 
@@ -36,42 +40,69 @@ namespace PasswordServerApi.DataFileDb
 		public IEnumerable<EndityAbstractModelAccount> ReadAccountFile()
 		{
 			List<EndityAbstractModelAccount> accounts = new List<EndityAbstractModelAccount>();
-			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_ACCOUNT).First();
-			List<string[]> fileRows = ReadDocument(filename);
-			if (fileRows == null || fileRows.Count < 1)
+			try
+			{
+				List<string[]> fileRows = ReadFromFile(IMPORT_FILENAME_ACCOUNT,AccountFieldDelimiter);
+				for (int line = 0; line < fileRows.Count; line++)
+					accounts.Add(GetAccountFromFile(fileRows[line]));
+				return accounts;
+			}
+			catch (Exception ex)
 			{
 				return new List<EndityAbstractModelAccount>();
-				throw new Exception($"Error on File parse. Name: {filename} , Lines: {fileRows.Count}.");
 			}
-
-			for (int line = 0; line < fileRows.Count; line++)
-				accounts.Add(GetAccountFromFile(fileRows[line]));
-			return accounts;
 		}
 
 		public IEnumerable<EndityAbstractModelPassword> ReadPasswordFile()
 		{
 			List<EndityAbstractModelPassword> passwords = new List<EndityAbstractModelPassword>();
-			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_PASSWORD).First();
-			List<string[]> fileRows = ReadDocument(filename);
-			if (fileRows == null || fileRows.Count < 1)
+			try
+			{
+				List<string[]> fileRows = ReadFromFile(IMPORT_FILENAME_PASSWORD,PasswordIdsDelimiter);
+				for (int line = 0; line < fileRows.Count; line++)
+					passwords.Add(GetPasswordFromFile(fileRows[line]));
+				return passwords;
+			}
+			catch (Exception ex)
 			{
 				return new List<EndityAbstractModelPassword>();
-				throw new Exception($"Error on File parse. Name: {filename} , Lines: {fileRows.Count}.");
 			}
-
-			for (int line = 0; line < fileRows.Count; line++)
-				passwords.Add(GetPasswordFromFile(fileRows[line]));
-			return passwords;
 		}
 
-		private List<string[]> ReadDocument(string path)
+		public IEnumerable<LoginTokenModel> ReadFileTokenToken()
+		{
+			List<LoginTokenModel> LoginTokens = new List<LoginTokenModel>();
+			try
+			{
+				List<string[]> fileRows = ReadFromFile(IMPORT_FILENAME_LOGIN_TOKENS,LoginTokenFieldDelimiter);
+				for (int line = 0; line < fileRows.Count; line++)
+					LoginTokens.Add(GetLoginTokenFromFile(fileRows[line]));
+				return LoginTokens;
+			}
+			catch (Exception ex)
+			{
+				return new List<LoginTokenModel>();
+			}
+		}
+
+		private List<string[]> ReadFromFile(string filePath, char[] fileDelimiter)
+		{
+			string filename = FindFile(IMPORT_PATH, filePath).First();
+			List<string[]> fileRows = ReadDocument(filename , fileDelimiter);
+			if (fileRows == null || fileRows.Count < 1)
+			{
+				throw new Exception($"Error on File parse. Name: {filename} , Lines: {fileRows.Count}.");
+			}
+			return fileRows;
+		}
+
+		private List<string[]> ReadDocument(string path, char[] fileDelimiter)
 		{
 			string[] lines = File.ReadAllLines(path);
 			List<string[]> fileRows = new List<string[]>();
 			foreach (string line in lines)
 			{
-				fileRows.Add(line.Split(FieldDelimiter, StringSplitOptions.RemoveEmptyEntries));
+				fileRows.Add(line.Split(fileDelimiter, StringSplitOptions.RemoveEmptyEntries));
 			}
 			return fileRows;
 		}
@@ -89,10 +120,8 @@ namespace PasswordServerApi.DataFileDb
 			return ReadAccountFile();
 		}
 
-
 		public IEnumerable<EndityAbstractModelPassword> WritePasswordFile(List<EndityAbstractModelPassword> passwordModel)
 		{
-
 			List<string> fileRowsTowrite = new List<string>();
 			passwordModel.ForEach(x => fileRowsTowrite.Add(SetPasswordFromModel(x)));
 			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_PASSWORD).First();
@@ -100,6 +129,14 @@ namespace PasswordServerApi.DataFileDb
 			return ReadPasswordFile();
 		}
 
+		public IEnumerable<LoginTokenModel> WriteFileToken(List<LoginTokenModel> loginTokens)
+		{
+			List<string> fileRowsTowrite = new List<string>();
+			loginTokens.ForEach(x => fileRowsTowrite.Add(SetLoginTokensFromModel(x)));
+			string filename = FindFile(IMPORT_PATH, IMPORT_FILENAME_LOGIN_TOKENS).First();
+			WriteDocument(filename, fileRowsTowrite);
+			return ReadFileTokenToken();
+		}
 
 		private void WriteDocument(string path, List<string> fileRows)
 		{
@@ -137,17 +174,36 @@ namespace PasswordServerApi.DataFileDb
 			};
 		}
 
+		private LoginTokenModel GetLoginTokenFromFile(string[] row)
+		{
+			return new LoginTokenModel
+			{
+				LoginTokenId = row[0],
+				UserId = row[1],
+				Token = row[2],
+				UserAgend = row[3],
+				LastLogIn = DateTime.Parse(row[4]),
+			};
+		}
+
 		private string SetAccountFromModel(EndityAbstractModelAccount account)
 		{
 			if (account != null)
-				return account.EndityId + FieldDelimiter[0] + account.JsonData;
+				return account.EndityId + AccountFieldDelimiter[0] + account.JsonData;
 			return "";
 		}
 
 		private string SetPasswordFromModel(EndityAbstractModelPassword password)
 		{
 			if (password != null)
-				return password.EndityId + FieldDelimiter[0] + password.JsonData;
+				return password.EndityId + PasswordIdsDelimiter[0] + password.JsonData;
+			return "";
+		}
+
+		private string SetLoginTokensFromModel(LoginTokenModel LoginToken)
+		{
+			if (LoginToken != null)
+				return LoginToken.LoginTokenId + LoginTokenFieldDelimiter[0] + LoginToken.UserId + LoginTokenFieldDelimiter[0] + LoginToken.Token + LoginTokenFieldDelimiter[0] + LoginToken.UserAgend + LoginTokenFieldDelimiter[0] + LoginToken.LastLogIn.ToString();
 			return "";
 		}
 

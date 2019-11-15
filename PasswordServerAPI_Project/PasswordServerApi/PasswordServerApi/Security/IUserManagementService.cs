@@ -10,8 +10,9 @@ namespace PasswordServerApi.Security
 	{
 		AccountDto FindValidUserID(Guid UserId);
 
-		void SaveNewToken(Guid id, string Token);
+		void SaveNewToken(Guid id, string userAgent, string Token);
 
 		AccountDto FindValidUser(string userName, string password);
+
 	}
 }

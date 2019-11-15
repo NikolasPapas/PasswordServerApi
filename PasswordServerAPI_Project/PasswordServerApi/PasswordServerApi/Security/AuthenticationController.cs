@@ -27,11 +27,12 @@ namespace PasswordServerApi.Security
 		{
 			if (!ModelState.IsValid)
 			{
-				return null;// BadRequest(ModelState);
+				return null;
 			}
 
 			string token;
-			List<ApplicationAction> actionsForUser = _authService.IsAuthenticated(request, out token);
+			string userAgent = Request.Headers["User-Agent"].ToString();
+			List<ApplicationAction> actionsForUser = _authService.IsAuthenticated(request, userAgent, out token);
 			if (actionsForUser != null)
 			{
 				return new Response<ResponceTokenRequest>()
@@ -39,9 +40,8 @@ namespace PasswordServerApi.Security
 					Payload = new ResponceTokenRequest() { Token = token, Actions = actionsForUser },
 					Warnnings = new List<string>()
 				};
-				//return  Ok(token, actionsForUser);
 			}
-			return null; //BadRequest("Invalid Request");
+			return null;
 		}
 	}
 }

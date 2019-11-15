@@ -46,9 +46,9 @@ namespace PasswordServerApi.DataSqliteDB
 		[DataMember(Name = "role")]
 		public string Role { get; set; }
 
-		[Required]
-		[DataMember(Name = "currentToken")]
-		public string CurrentToken { get; set; }
+		//[Required]
+		//[DataMember(Name = "currentToken")]
+		//public string CurrentToken { get; set; }
 
 
 		[DataMember(Name = "passwordIds")]

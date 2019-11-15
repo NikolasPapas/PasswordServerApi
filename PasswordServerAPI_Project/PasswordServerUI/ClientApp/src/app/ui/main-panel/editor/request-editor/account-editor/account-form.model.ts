@@ -16,7 +16,7 @@ export class AccountForm {
 
     password: string;
     role: string;
-    currentToken: string;
+    //currentToken: string;
     passwords: Password[]
 
     public fromModel(account: Account): AccountForm {
@@ -46,7 +46,7 @@ export class AccountForm {
             lastLogIn: [{ value: this.lastLogIn, disabled: true }, [Validators.required]],
             password: [{ value: this.password, disabled: false }, [Validators.required]],
             role: [{ value: this.role, disabled: false }, [Validators.required]],
-            currentToken: [{ value: this.currentToken, disabled: false }, [Validators.required]],
+            //currentToken: [{ value: this.currentToken, disabled: false }, [Validators.required]],
         });
 
         let formArray: FormArray = new FormArray([]);

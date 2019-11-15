@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using PasswordServerApi.Databases.DataModels;
 using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.DTO;
+using PasswordServerApi.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +22,16 @@ namespace PasswordServerApi.StorageLayer
 
 		#region Account
 
-		public List<AccountDto> GetAccountsDto()
+		public List<AccountDto> GetAccounts()
 		{
 			List<AccountDto> accounts = new List<AccountDto>();
 			_dbContext.Accounts.ToList().ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData))));
 			return accounts;
 		}
 
-		public AccountDto SetAccountsDto(AccountDto addAccount)
+		public AccountDto SetAccount(AccountDto addAccount)
 		{
-			List<AccountDto> accounts = GetAccountsDto();
+			List<AccountDto> accounts = GetAccounts();
 			if (accounts.Find(x => x.AccountId == addAccount.AccountId) != null)
 				return UpdateAccount(addAccount);
 			else
@@ -61,7 +63,7 @@ namespace PasswordServerApi.StorageLayer
 		#endregion
 
 
-		public void DeleteAccountsDto(AccountDto addAccount)
+		public void DeleteAccount(AccountDto addAccount)
 		{
 			var accountToRemove = _dbContext.Accounts.ToList().Find(x => x.EndityId == addAccount.AccountId.ToString());
 			_dbContext.Accounts.Remove(accountToRemove);
@@ -85,7 +87,7 @@ namespace PasswordServerApi.StorageLayer
 				Password = dbAccount.Password,
 				Sex = dbAccount.Sex,
 				LastLogIn = dbAccount.LastLogIn,
-				CurrentToken = dbAccount.CurrentToken,
+				//CurrentToken = dbAccount.CurrentToken,
 				Passwords = dbAccount.PasswordIds.Select(x => { return new PasswordDto() { PasswordId = Guid.Parse(x) }; }).ToList(),
 			};
 		}
@@ -103,7 +105,7 @@ namespace PasswordServerApi.StorageLayer
 				Password = dtoAccount.Password,
 				Sex = dtoAccount.Sex,
 				LastLogIn = dtoAccount.LastLogIn,
-				CurrentToken = dtoAccount.CurrentToken,
+				//CurrentToken = dtoAccount.CurrentToken,
 				PasswordIds = dtoAccount.Passwords.Select(x => x.PasswordId.ToString()).ToList(),
 			};
 		}
@@ -114,16 +116,16 @@ namespace PasswordServerApi.StorageLayer
 
 		#region Password
 
-		public List<PasswordDto> GetPasswordsDto()
+		public List<PasswordDto> GetPasswords()
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			_dbContext.Passwords.ToList().ForEach(x => passwords.Add(GetPasswordDto(JsonConvert.DeserializeObject<PasswordModel>(x.JsonData))));
 			return passwords;
 		}
 
-		public PasswordDto SetPasswordsDto(PasswordDto addPassword)
+		public PasswordDto SetPassword(PasswordDto addPassword)
 		{
-			List<PasswordDto> passwords = GetPasswordsDto();
+			List<PasswordDto> passwords = GetPasswords();
 			if (passwords.Find(x => x.PasswordId == addPassword.PasswordId) != null)
 				return UpdatePassword(addPassword);
 			else
@@ -156,7 +158,7 @@ namespace PasswordServerApi.StorageLayer
 
 		#endregion
 
-		public void DeletePasswordsDto(PasswordDto addPassword)
+		public void DeletePassword(PasswordDto addPassword)
 		{
 			var passToRemove = _dbContext.Passwords.ToList().Find(x => x.EndityId == addPassword.PasswordId.ToString());
 			_dbContext.Passwords.Remove(passToRemove);
@@ -196,5 +198,69 @@ namespace PasswordServerApi.StorageLayer
 		#endregion
 
 		#endregion
+
+		#region Tokens
+
+		public List<LoginTokenDto> GetTokens()
+		{
+			List<LoginTokenDto> tokens = new List<LoginTokenDto>();
+			_dbContext.LoginTokens.ToList().ForEach(x => tokens.Add(GetLoginTokenDtoFromModel(x)));
+			return new List<LoginTokenDto>();
+		}
+
+		public List<LoginTokenDto> SetToken(LoginTokenDto loginToken)
+		{
+			List<LoginTokenDto> Tokens = GetTokens();
+			if (Tokens.Find(x => x.LoginTokenId == loginToken.LoginTokenId) != null)
+				DeleteToken(loginToken);
+			return AddNewToken(loginToken);
+		}
+
+		public List<LoginTokenDto> AddNewToken(LoginTokenDto loginToken)
+		{
+			var newToken = GetLoginTokenModelFromDto(loginToken);
+			_dbContext.LoginTokens.Add(newToken);
+			_dbContext.SaveChanges();
+			return GetTokens();
+		}
+
+		public void DeleteToken(LoginTokenDto loginToken)
+		{
+			var tokenToRemove = _dbContext.LoginTokens.ToList().Find(x => x.LoginTokenId == loginToken.LoginTokenId.ToString());
+			_dbContext.LoginTokens.Remove(tokenToRemove);
+			_dbContext.SaveChanges();
+		}
+
+		#region Helpers
+
+		private LoginTokenDto GetLoginTokenDtoFromModel(LoginTokenModel model)
+		{
+			return new LoginTokenDto
+			{
+				LoginTokenId = Guid.Parse(model.LoginTokenId),
+				UserId = Guid.Parse(model.UserId),
+				Token = model.Token,
+				UserAgend = model.UserAgend,
+				LastLogIn = model.LastLogIn
+			};
+		}
+
+
+		private LoginTokenModel GetLoginTokenModelFromDto(LoginTokenDto model)
+		{
+			return new LoginTokenModel
+			{
+				LoginTokenId = model.LoginTokenId.ToString(),
+				UserId = model.UserId.ToString(),
+				Token = model.Token,
+				UserAgend = model.UserAgend,
+				LastLogIn = model.LastLogIn
+			};
+		}
+
+		#endregion
+
+		#endregion
+
 	}
 }

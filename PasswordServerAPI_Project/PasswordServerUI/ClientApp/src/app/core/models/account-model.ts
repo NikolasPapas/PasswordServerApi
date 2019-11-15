@@ -14,6 +14,6 @@ export class Account{
 
     password:string;
     role:string;
-    currentToken:string;
+    //currentToken:string;
     passwords:Password[]
 }

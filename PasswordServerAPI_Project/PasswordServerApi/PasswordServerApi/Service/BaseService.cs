@@ -4,6 +4,7 @@ using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
+using PasswordServerApi.Models.DTO;
 using PasswordServerApi.Models.Requests.Password;
 using PasswordServerApi.StorageLayer;
 using System;
@@ -28,14 +29,14 @@ namespace PasswordServerApi.Service
 
 		public AccountDto GetSpesificAccount(AccountActionRequest request)
 		{
-			List<AccountDto> accounts = _storageService.GetAccountsDto();
+			List<AccountDto> accounts = _storageService.GetAccounts();
 
 			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
 		}
 
 		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full)
 		{
-			List<AccountDto> accounts = _storageService.GetAccountsDto();
+			List<AccountDto> accounts = _storageService.GetAccounts();
 			List<AccountDto> filteredAccounts = new List<AccountDto>();
 
 			var filtered = accounts.FindAll(x =>
@@ -50,12 +51,12 @@ namespace PasswordServerApi.Service
 			});
 			if (full)
 				return filtered;
-			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; x.CurrentToken = ""; } return x; });
+			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; /*x.CurrentToken = "";*/ } return x; });
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full = false)
 		{
-			AccountDto accountToApdate = _storageService.GetAccountsDto().Find(x => x.AccountId == accountDto.AccountId);
+			AccountDto accountToApdate = _storageService.GetAccounts().Find(x => x.AccountId == accountDto.AccountId);
 
 			if (Role != "Admin" && accountDto.Password != accountToApdate.Password)
 				throw new Exception("Invalid Password");
@@ -69,19 +70,19 @@ namespace PasswordServerApi.Service
 			{
 				accountToApdate.LastLogIn = accountDto.LastLogIn;
 				accountToApdate.Role = accountDto.Role;
-				accountToApdate.CurrentToken = accountDto.CurrentToken;
+				//accountToApdate.CurrentToken = accountDto.CurrentToken;
 				accountToApdate.Password = accountDto.Password;
 				accountToApdate.Passwords = accountDto.Passwords;
 			}
 
-			_storageService.SetAccountsDto(accountToApdate);
+			_storageService.SetAccount(accountToApdate);
 
 			return accountDto;
 		}
 
 		public AccountDto GetAccountById(Guid id, bool full)
 		{
-			AccountDto results = _storageService.GetAccountsDto().Find(x => x.AccountId == id);
+			AccountDto results = _storageService.GetAccounts().Find(x => x.AccountId == id);
 			if (!full)
 				results.Password = "";
 			return results;
@@ -89,13 +90,13 @@ namespace PasswordServerApi.Service
 
 		public AccountDto AddNewAccount(AccountDto request)
 		{
-			return _storageService.SetAccountsDto(request);
+			return _storageService.SetAccount(request);
 		}
 
 		public AccountDto RemoveAccount(AccountDto request)
 		{
-			var accountToRemove = _storageService.GetAccountsDto().Find(x => x.AccountId == request.AccountId);
-			_storageService.DeleteAccountsDto(accountToRemove);
+			var accountToRemove = _storageService.GetAccounts().Find(x => x.AccountId == request.AccountId);
+			_storageService.DeleteAccount(accountToRemove);
 			return accountToRemove;
 		}
 
@@ -107,7 +108,7 @@ namespace PasswordServerApi.Service
 		{
 			List<PasswordDto> passwords = new List<PasswordDto>();
 
-			_storageService.GetPasswordsDto().ForEach(x =>
+			_storageService.GetPasswords().ForEach(x =>
 			{
 				if (account.Passwords.Find(accountPass => accountPass.PasswordId == x.PasswordId) == null)
 					return;
@@ -121,24 +122,24 @@ namespace PasswordServerApi.Service
 
 		public PasswordDto GetPassword(Guid id)
 		{
-			return _storageService.GetPasswordsDto().Find(x => x.PasswordId == id);
+			return _storageService.GetPasswords().Find(x => x.PasswordId == id);
 		}
 
 		public PasswordDto UpdatePassword(PasswordDto passwordDto)
 		{
-			var passwordModelData = _storageService.GetPasswordsDto().Find(x => x.PasswordId == passwordDto.PasswordId);
-			return _storageService.SetPasswordsDto(passwordDto);
+			var passwordModelData = _storageService.GetPasswords().Find(x => x.PasswordId == passwordDto.PasswordId);
+			return _storageService.SetPassword(passwordDto);
 		}
 
 		public PasswordDto AddNewPassword(PasswordDto requestPassword)
 		{
-			_storageService.SetPasswordsDto(requestPassword);
+			_storageService.SetPassword(requestPassword);
 			return requestPassword;
 		}
 
 		public PasswordDto RemovePassword(PasswordDto requestPassword)
 		{
-			_storageService.DeletePasswordsDto(requestPassword);
+			_storageService.DeletePassword(requestPassword);
 			return requestPassword;
 		}
 
@@ -148,12 +149,43 @@ namespace PasswordServerApi.Service
 		{
 			foreach (AccountDto account in accounts)
 			{
-				_storageService.SetAccountsDto(account);
-				account.Passwords.ForEach(pass => _storageService.SetPasswordsDto(pass));
+				_storageService.SetAccount(account);
+				account.Passwords.ForEach(pass => _storageService.SetPassword(pass));
 			}
 		}
 
 		#endregion
+
+		#endregion
+
+		#region Database Connections Tokens
+
+		public List<LoginTokenDto> FindUserTokens(Guid id)
+		{
+			return _storageService.GetTokens().FindAll(x => x.UserId == id);
+		}
+
+		public LoginTokenDto FindToken(Guid id, string Token)
+		{
+			return _storageService.GetTokens().Find(x => x.Token == Token && x.UserId == id);
+		}
+
+		public LoginTokenDto SaveToken(Guid id, string userAgent, string Token)
+		{
+			_storageService.SetToken(new LoginTokenDto() { LoginTokenId = Guid.NewGuid(), UserId = id, UserAgend = userAgent, Token = Token });
+
+			return FindToken(id, Token);
+		}
+
+		public void DeleteToken(Guid id, string Token, string userAgend)
+		{
+			List<LoginTokenDto> tokensToDelete = _storageService.GetTokens().FindAll(x => x.UserId == id && (x.Token == Token || x.UserAgend == userAgend));
+
+			tokensToDelete.ForEach(token =>
+			{
+				_storageService.DeleteToken(token);
+			});
+		}
 
 		#endregion
 

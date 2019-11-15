@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PasswordServerApi.Databases.DataModels;
 
 namespace PasswordServerApi.DataSqliteDB
 {
@@ -13,5 +14,7 @@ namespace PasswordServerApi.DataSqliteDB
 
 		public DbSet<EndityAbstractModelPassword> Passwords { get; set; }
 
-    }
+		public DbSet<LoginTokenModel> LoginTokens { get; set; }
+
+	}
 }

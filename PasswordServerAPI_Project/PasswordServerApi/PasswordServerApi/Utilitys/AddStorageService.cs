@@ -12,8 +12,7 @@ namespace PasswordServerApi.Utilitys
 
 		public static void AddFilleDB(this IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddTransient<IReadFileDb>(s => new ReadFileDb("C:\\PASSWORDSERVERAPI", "Accounts.txt", "Paswords.txt"));
-			services.AddTransient<IApplicationFileDb, ApplicationFileDb>();
+			services.AddTransient<IReadFileDb>(s => new ReadFileDb("C:\\PASSWORDSERVERAPI", "Accounts.txt", "Paswords.txt","LoginTokens.txt"));
 			services.AddTransient<IStorageService, StorageServiceFile>();
 		}
 

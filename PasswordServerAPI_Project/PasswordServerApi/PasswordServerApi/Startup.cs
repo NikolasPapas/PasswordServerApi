@@ -193,12 +193,12 @@ namespace PasswordServerApi
 		private void SetStartUpData(IStorageService storageService)
 		{
 			LogInfo("Start SetUP Database and Init");
-			List<AccountDto> oldAccounds = storageService.GetAccountsDto().ToList();
-			List<PasswordDto> oldPasswords = storageService.GetPasswordsDto().ToList();
+			List<AccountDto> oldAccounds = storageService.GetAccounts().ToList();
+			List<PasswordDto> oldPasswords = storageService.GetPasswords().ToList();
 			if (oldAccounds != null || oldAccounds.Count > 0)
-				oldAccounds.ForEach(accont => storageService.DeleteAccountsDto(accont));
+				oldAccounds.ForEach(accont => storageService.DeleteAccount(accont));
 			if (oldPasswords != null || oldPasswords.Count > 0)
-				oldPasswords.ForEach(pass => storageService.DeletePasswordsDto(pass));
+				oldPasswords.ForEach(pass => storageService.DeletePassword(pass));
 			FieldDatabae(storageService);
 			LogInfo("Stop SetUP Database and Init");
 		}
@@ -209,8 +209,8 @@ namespace PasswordServerApi
 			for (int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				storageService.SetAccountsDto(setData.Item1);
-				setData.Item2.ForEach(pass => storageService.SetPasswordsDto(pass));
+				storageService.SetAccount(setData.Item1);
+				setData.Item2.ForEach(pass => storageService.SetPassword(pass));
 			}
 		}
 

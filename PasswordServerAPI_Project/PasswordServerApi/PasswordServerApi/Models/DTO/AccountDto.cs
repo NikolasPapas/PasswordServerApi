@@ -39,8 +39,8 @@ namespace PasswordServerApi.DTO
 		[DataMember(Name = "role")]
 		public string Role { get; set; }
 
-		[DataMember(Name = "currentToken")]
-		public string CurrentToken { get; set; }
+		//[DataMember(Name = "currentToken")]
+		//public string CurrentToken { get; set; }
 
 		[DataMember(Name = "passwords")]
 		public List<PasswordDto> Passwords { get; set; }

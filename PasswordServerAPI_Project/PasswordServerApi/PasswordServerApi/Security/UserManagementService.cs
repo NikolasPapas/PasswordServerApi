@@ -30,19 +30,20 @@ namespace PasswordServerApi.Security
 			});
 		}
 
-		public void SaveNewToken(Guid id, string Token)
+		public void SaveNewToken(Guid id, string userAgent, string Token)
 		{
 			var account = FindValidUserID(id);
 			if (account == null) throw new Exception("No User");
-			account.CurrentToken = Token;
-			account.LastLogIn = DateTime.Now;
-
-			_baseService.UpdateAccount(account,account.Role, true);
+			//account.CurrentToken = Token;
+			//account.LastLogIn = DateTime.Now;
+			//_baseService.UpdateAccount(account, account.Role, true);
+			_baseService.SaveToken(id, userAgent, Token);
 		}
 
 		public AccountDto FindValidUserID(Guid UserId)
 		{
-			return _baseService.GetAccountById(UserId,true);
+			return _baseService.GetAccountById(UserId, true);
 		}
+		
 	}
 }
