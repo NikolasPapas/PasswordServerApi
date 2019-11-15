@@ -11,8 +11,10 @@ using Newtonsoft.Json;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
+using PasswordServerApi.Models.DTO;
 using PasswordServerApi.Models.Requests;
 using PasswordServerApi.Models.Requests.Account;
+using PasswordServerApi.Models.Requests.Password;
 using PasswordServerApi.Models.Responces;
 using PasswordServerApi.Security.SecurityModels;
 
@@ -25,18 +27,21 @@ namespace PasswordServerApi.Controllers
 	public class AccountsController : ControllerBase
 	{
 		private readonly IAccountService _accountService;
+		private readonly IPasswordService _passwordService;
 		private readonly IExportService _exportService;
 		private readonly ILoggingService _logger;
 		private readonly IExceptionHandler _exceptionHandler;
 
-		public AccountsController(ILoggingService logger, IAccountService accountService, IExportService exportService, IExceptionHandler exceptionHandler)
+		public AccountsController(IAccountService accountService, IPasswordService passwordService, ILoggingService logger,  IExportService exportService, IExceptionHandler exceptionHandler)
 		{
 			_accountService = accountService;
+			_passwordService = passwordService;
 			_exportService = exportService;
 			_logger = logger;
 			_exceptionHandler = exceptionHandler;
 		}
 
+		[Authorize]
 		[HttpPost("getMyAccount")]
 		public Response<AccountActionResponse> GetMyAccount([FromBody] BaseRequest request)
 		{
@@ -44,35 +49,29 @@ namespace PasswordServerApi.Controllers
 			return _exceptionHandler.HandleException(() => _accountService.GetMyAccount(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
 		}
 
+		[Authorize]
+		[HttpPost("tokenActions")]
+		public Response<List<LoginTokenDto>> TokenActions([FromBody] TokenActionRequest request)
+		{
+			return _exceptionHandler.HandleException(() => _accountService.TokenActions(request, Guid.Parse(HttpContext.User.Identity.Name)), Guid.Parse(HttpContext.User.Identity.Name));
+		}
 
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="request"></param>
-		/// <returns></returns>
 		[Authorize(Roles = Role.Admin)]
 		[HttpPost("accountAction")]
 		public Response<AccountActionResponse> AccountAction([FromBody] AccountActionRequest request)
 		{
 
 			return _exceptionHandler.HandleException(() => _accountService.ExecuteAction(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
-			//	try
-			//	{
-			//		return new HttpResponseMessage() { Content = new StringContent(JsonConvert.SerializeObject(_accountService.ExecuteAction(request, Guid.Parse(HttpContext.User.Identity.Name)))) };
-			//	}
-			//	catch (Exception ex)
-			//	{
-			//		_logger.LogError(ex.Message);
-			//	}
-			//	return new HttpResponseMessage() { Content = new StringContent(JsonConvert.SerializeObject(new Response() { Error = "Error On Runn" }))};
 		}
 
+		[Authorize(Roles = Role.User + " , " + Role.Admin)]
+		[HttpPost("passwordAction")]
+		public Response<PasswordActionResponse> PasswordAction([FromBody] PasswordActionRequest request)
+		{
+			return _exceptionHandler.HandleException(() => _passwordService.PasswordAction(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
+		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		[Authorize(Roles = Role.Admin)]
 		[HttpPost("exportReport")]
 		public HttpResponseMessage ExportReport([FromBody] BaseRequest request)
@@ -88,11 +87,6 @@ namespace PasswordServerApi.Controllers
 			return null;
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="request"></param>
-		/// <returns></returns>
 		[Authorize(Roles = Role.Admin)]
 		[HttpPost("importData")]
 		public StoreDocumentResponse ImportData([FromBody] StoreDocumentRequest request)

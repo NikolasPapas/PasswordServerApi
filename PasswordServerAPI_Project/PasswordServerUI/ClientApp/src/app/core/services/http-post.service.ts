@@ -13,10 +13,19 @@ export class HttpPostService {
     constructor(
         private http: HttpClient,
         private metaData: MetaData,
-        private uiNotificationService: UiNotificationService
+        private uiNotificationService: UiNotificationService,
+        private configurationService: ConfigurationService,
     ) { }
 
     private handleHttpError(error: any): Observable<any> {
+        if (error.status = 401) {
+            this.configurationService.setToken(null);
+            this.uiNotificationService.handleMessage(NotificationLevel.Error, error.status + " " + error.statusText);
+            return;
+        }
+        // else{
+        //     this.configurationService.setToken(error);
+        // }
         if (error instanceof HttpErrorResponse) {
             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
             throw of(error);
@@ -71,7 +80,7 @@ export class HttpPostService {
         // if (response.body.type === 'text/plain') {
         //     throw of(response);
         // } else {
-            return response;
-       // }
+        return response;
+        // }
     }
 }

@@ -23,8 +23,8 @@ namespace PasswordServerApi.Databases.DataModels
 		public string Token { get; set; }
 
 		[Required]
-		[DataMember(Name = "userAgend")]
-		public string UserAgend { get; set; }
+		[DataMember(Name = "userAgent")]
+		public string UserAgent { get; set; }
 
 		[Required]
 		[DataMember(Name = "lastLogIn")]

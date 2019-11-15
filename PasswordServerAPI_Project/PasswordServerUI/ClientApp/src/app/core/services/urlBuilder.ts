@@ -30,7 +30,7 @@ export class MetaData {
     }
 
     getContextPath = (path: string) => {
-        return "http://localhost:53257/"+ this.removeSlash(path);// this.get("contextPath") + this.removeSlash(path);
+        return "http://localhost:53257/api/"+ this.removeSlash(path);// this.get("contextPath") + this.removeSlash(path);
     }
 
 

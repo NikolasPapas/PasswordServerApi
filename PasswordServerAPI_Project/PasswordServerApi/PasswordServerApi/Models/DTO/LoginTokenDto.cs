@@ -9,7 +9,7 @@ namespace PasswordServerApi.Models.DTO
 	[DataContract]
 	public class LoginTokenDto
 	{
-		[DataMember(Name = "LoginTokenId")]
+		[DataMember(Name = "loginTokenId")]
 		public Guid LoginTokenId { get; set; }
 
 		[DataMember(Name = "userId")]
@@ -18,8 +18,8 @@ namespace PasswordServerApi.Models.DTO
 		[DataMember(Name = "token")]
 		public string Token { get; set; }
 
-		[DataMember(Name = "userAgend")]
-		public string UserAgend { get; set; }
+		[DataMember(Name = "userAgent")]
+		public string UserAgent { get; set; }
 
 		[DataMember(Name = "lastLogIn")]
 		public DateTime? LastLogIn { get; set; }

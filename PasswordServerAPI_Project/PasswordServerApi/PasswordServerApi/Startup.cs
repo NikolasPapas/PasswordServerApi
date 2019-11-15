@@ -160,7 +160,7 @@ namespace PasswordServerApi
 					return Task.FromResult(0);
 				});
 
-				await next.Invoke();
+				await next();
 				//Log.Logger.Information($"MyMidlware: Now :{DateTime.Now} Request start: {request}");
 			});
 

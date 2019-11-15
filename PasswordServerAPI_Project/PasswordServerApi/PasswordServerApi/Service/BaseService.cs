@@ -172,14 +172,14 @@ namespace PasswordServerApi.Service
 
 		public LoginTokenDto SaveToken(Guid id, string userAgent, string Token)
 		{
-			_storageService.SetToken(new LoginTokenDto() { LoginTokenId = Guid.NewGuid(), UserId = id, UserAgend = userAgent, Token = Token });
+			_storageService.SetToken(new LoginTokenDto() { LoginTokenId = Guid.NewGuid(), UserId = id, UserAgent = userAgent, Token = Token });
 
 			return FindToken(id, Token);
 		}
 
-		public void DeleteToken(Guid id, string Token, string userAgend)
+		public void DeleteToken(Guid id, string userAgent, string Token)
 		{
-			List<LoginTokenDto> tokensToDelete = _storageService.GetTokens().FindAll(x => x.UserId == id && (x.Token == Token || x.UserAgend == userAgend));
+			List<LoginTokenDto> tokensToDelete = _storageService.GetTokens().FindAll(x => x.UserId == id && (x.Token == Token || x.UserAgent == userAgent));
 
 			tokensToDelete.ForEach(token =>
 			{

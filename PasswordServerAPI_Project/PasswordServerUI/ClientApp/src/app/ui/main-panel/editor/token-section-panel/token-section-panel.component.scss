@@ -1,0 +1,4 @@
+@import "src/assets/styles/palette.scss";
+.tokenRow{
+    background-color: map-get($md-mypalette, 300);
+}

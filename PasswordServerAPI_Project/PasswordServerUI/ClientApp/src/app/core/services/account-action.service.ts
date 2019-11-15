@@ -13,6 +13,8 @@ import { StoreReportRequest } from "../models/requests/store-report-request";
 import { StoreReportResponse } from "../models/response/store-report-response";
 import { BaseRequest } from "../models/requests/base-request";
 import { UiNotificationService } from "./ui-notification.service";
+import { LoginToken } from "../models/LoginToken";
+import { TokenActionRequest } from "../models/requests/token-action-request";
 
 @Injectable()
 export class AccountService {
@@ -47,16 +49,16 @@ export class AccountService {
         return this.httpPostService.httpPost<PasswordActionResponse>(path, request, this.getHttpOption(false));
     }
 
+    getTokensAction(request: TokenActionRequest, path: string): Observable<LoginToken> {
+        return this.httpPostService.httpPost<LoginToken>(path, request, this.getHttpOption(false));
+    }
+
     getApplicationPdf(request: BaseRequest, path: string) {
         return this.httpPostService.httpPostBlob(path, request, this.getHttpOption(true));
     }
 
-    storeApplication(request: StoreReportRequest): Observable<StoreReportResponse> {
-        return this.httpPostService.httpPost<StoreReportResponse>("api/application/storeApplication", request, this.getHttpOption(false));
-    }
-
     public login(request: TokenRequest): Observable<ConfigurationResponse> {
-        return this.httpPostService.httpPost<ConfigurationResponse>("api/authentication/logIn", request, null);
+        return this.httpPostService.httpPost<ConfigurationResponse>("authentication/logIn", request, null);
     }
 
 }

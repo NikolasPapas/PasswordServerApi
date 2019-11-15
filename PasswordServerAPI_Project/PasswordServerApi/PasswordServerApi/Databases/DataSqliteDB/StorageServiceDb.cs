@@ -240,7 +240,7 @@ namespace PasswordServerApi.StorageLayer
 				LoginTokenId = Guid.Parse(model.LoginTokenId),
 				UserId = Guid.Parse(model.UserId),
 				Token = model.Token,
-				UserAgend = model.UserAgend,
+				UserAgent = model.UserAgent,
 				LastLogIn = model.LastLogIn
 			};
 		}
@@ -253,7 +253,7 @@ namespace PasswordServerApi.StorageLayer
 				LoginTokenId = model.LoginTokenId.ToString(),
 				UserId = model.UserId.ToString(),
 				Token = model.Token,
-				UserAgend = model.UserAgend,
+				UserAgent = model.UserAgent,
 				LastLogIn = model.LastLogIn
 			};
 		}

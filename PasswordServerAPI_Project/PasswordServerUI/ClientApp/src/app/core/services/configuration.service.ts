@@ -3,12 +3,12 @@ import { HttpPostService } from './http-post.service';
 import { ApplicationAction } from '../models/configuration/ApplicationAction';
 import { ConfigurationResponse } from '../models/configuration/configuration_response';
 import { BaseService } from '../../common/base/base.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ConfigurationService extends BaseService {
 
     constructor(
-        private httpPostService: HttpPostService,
     ) { super(); }
 
     private actions: ApplicationAction[] = [];
@@ -20,12 +20,15 @@ export class ConfigurationService extends BaseService {
         return this.actions;
     }
 
-    public needLogin(): boolean {
+    public needLogin(): any {
         return this._isLogin;
     }
 
     public getToken() {
         return this.token;
+    }
+    public setToken(token: string) {
+        this.token = token;
     }
 
     public setLoginResponse(configuration: ConfigurationResponse): void {
@@ -33,7 +36,7 @@ export class ConfigurationService extends BaseService {
         // for (let profile of configuration.profiles) {
         //     this.profiles.push(profile);
         // }
-        this.actions= [];
+        this.actions = [];
         for (let action of configuration.actions) {
             this.actions.push(action);
         }

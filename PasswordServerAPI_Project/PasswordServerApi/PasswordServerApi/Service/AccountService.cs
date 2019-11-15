@@ -9,6 +9,8 @@ using PasswordServerApi.Models.Requests;
 using PasswordServerApi.Models.Account.Requests;
 using PasswordServerApi.Models;
 using PasswordServerApi.Models.Responces;
+using PasswordServerApi.Models.DTO;
+using PasswordServerApi.Models.Enums;
 
 namespace PasswordServerApi.Service
 {
@@ -135,6 +137,55 @@ namespace PasswordServerApi.Service
 
 			return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
 		}
+		#endregion
+
+
+		#region Tokens
+		private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> _TokenActionToFunction = null;
+
+		private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> TokenActionToFunction
+		{
+			get
+			{
+				return _TokenActionToFunction ?? (_TokenActionToFunction =
+					new Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>>()
+					{
+						{ TokenRequestActionEnum.Get , GetLoginTokenDto},
+						{ TokenRequestActionEnum.Add , AddLoginTokenDto},
+						{ TokenRequestActionEnum.Change , ChangeLoginTokenDto},
+						{ TokenRequestActionEnum.Delete, DeleteLoginTokenDto},
+					});
+			}
+		}
+
+		public List<LoginTokenDto> TokenActions(TokenActionRequest tokenActionRequest, Guid userID)
+		{
+			if (TokenActionToFunction.ContainsKey(tokenActionRequest.Action))
+				return TokenActionToFunction[tokenActionRequest.Action](tokenActionRequest.Token, userID);
+			return new List<LoginTokenDto>();
+		}
+
+		private List<LoginTokenDto> GetLoginTokenDto(LoginTokenDto token, Guid userID)
+		{
+			return _baseService.FindUserTokens(userID);
+		}
+
+		private List<LoginTokenDto> AddLoginTokenDto(LoginTokenDto token, Guid userID)
+		{
+			return new List<LoginTokenDto>() { _baseService.SaveToken(userID, token.UserAgent, token.Token) };
+		}
+
+		private List<LoginTokenDto> ChangeLoginTokenDto(LoginTokenDto token, Guid userID)
+		{
+			return AddLoginTokenDto(token, userID);
+		}
+
+		private List<LoginTokenDto> DeleteLoginTokenDto(LoginTokenDto token, Guid userID)
+		{
+			_baseService.DeleteToken(userID, token.UserAgent, token.Token);
+			return new List<LoginTokenDto>();
+		}
+
 		#endregion
 
 	}

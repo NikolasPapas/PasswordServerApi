@@ -181,7 +181,7 @@ namespace PasswordServerApi.DataFileDb
 				LoginTokenId = row[0],
 				UserId = row[1],
 				Token = row[2],
-				UserAgend = row[3],
+				UserAgent = row[3],
 				LastLogIn = DateTime.Parse(row[4]),
 			};
 		}
@@ -203,7 +203,7 @@ namespace PasswordServerApi.DataFileDb
 		private string SetLoginTokensFromModel(LoginTokenModel LoginToken)
 		{
 			if (LoginToken != null)
-				return LoginToken.LoginTokenId + LoginTokenFieldDelimiter[0] + LoginToken.UserId + LoginTokenFieldDelimiter[0] + LoginToken.Token + LoginTokenFieldDelimiter[0] + LoginToken.UserAgend + LoginTokenFieldDelimiter[0] + LoginToken.LastLogIn.ToString();
+				return LoginToken.LoginTokenId + LoginTokenFieldDelimiter[0] + LoginToken.UserId + LoginTokenFieldDelimiter[0] + LoginToken.Token + LoginTokenFieldDelimiter[0] + LoginToken.UserAgent + LoginTokenFieldDelimiter[0] + LoginToken.LastLogIn.ToString();
 			return "";
 		}
 

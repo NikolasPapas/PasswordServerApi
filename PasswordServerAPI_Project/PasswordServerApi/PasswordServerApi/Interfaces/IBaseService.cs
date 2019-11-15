@@ -48,7 +48,7 @@ namespace PasswordServerApi.Interfaces
 
 		LoginTokenDto SaveToken(Guid id, string userAgent, string Token);
 
-		void DeleteToken(Guid id, string Token, string userAgend);
+		void DeleteToken(Guid id, string userAgent, string Token);
 
 		#endregion
 

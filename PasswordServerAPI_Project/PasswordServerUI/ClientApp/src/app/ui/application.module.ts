@@ -9,6 +9,7 @@ import { RequestEditorComponent } from './main-panel/editor/request-editor/reque
 import { PasswordEditorComponent } from './main-panel/editor/request-editor/password-editor/password-editor.component';
 import { AccountEditorComponent } from './main-panel/editor/request-editor/account-editor/account-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token-section-panel.component';
 
 @NgModule({
 	imports: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         EditorComponent,
         ActionExpansionPanelComponent,
         RequestEditorComponent,
+        TokenSectionPanel,
         AccountEditorComponent,
         PasswordEditorComponent,
 

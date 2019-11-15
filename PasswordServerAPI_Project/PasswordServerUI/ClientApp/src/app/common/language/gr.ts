@@ -27,6 +27,13 @@ export const Greek = {
         USERNAME:"Username",
         PASSWORD:"Password",
     },
+    TOKENS:{
+        PANEL:{
+            USER_ID:"User Id",
+            USER_AGENT:"User Agent",
+            LAST_LOGIN:"Last Login",
+        },
+    },
     ENUMS:{
         VALIDATION_MODE:{
             NONE:"None",
@@ -70,6 +77,10 @@ export const Greek = {
             ICON:"Icon",
             CONTROLLER_PATH:"Path",
             VALIDATION_MODE:"Validation",
+        },
+        TOKENS:{
+            REFRESH:"Refresh",
+            DELETE:"Delete"
         },
         REQUEST:{
             ACCOUNT:{
