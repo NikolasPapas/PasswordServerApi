@@ -21,7 +21,7 @@ export class HttpPostService {
         if (error.status = 401) {
             this.configurationService.setToken(null);
             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.status + " " + error.statusText);
-            return;
+            throw of(error);
         }
         // else{
         //     this.configurationService.setToken(error);

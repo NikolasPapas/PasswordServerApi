@@ -45,10 +45,13 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
         private accountService: AccountService,
     ) {
         super();
+        this.mastDoLogIn = this.configurationService.needLogin();
     }
 
     ngOnInit() {
         this.loginForm = new LoginModel().fromModel().buildForm();
+
+        this.configurationService.isLoginIn.subscribe(value => {this.mastDoLogIn =value});
     }
 
     login() {

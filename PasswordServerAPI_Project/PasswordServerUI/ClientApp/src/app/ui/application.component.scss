@@ -34,7 +34,9 @@ $shadow: (
 }
 
 .mainContainerCard {
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+  //overflow-y: scroll;
   max-height: calc(95vh);
 
   mat-tab-group.mat-primary {

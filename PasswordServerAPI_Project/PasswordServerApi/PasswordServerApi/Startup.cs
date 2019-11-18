@@ -25,6 +25,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
+using PasswordServerApi.Models.DTO;
 
 namespace PasswordServerApi
 {
@@ -195,10 +196,13 @@ namespace PasswordServerApi
 			LogInfo("Start SetUP Database and Init");
 			List<AccountDto> oldAccounds = storageService.GetAccounts().ToList();
 			List<PasswordDto> oldPasswords = storageService.GetPasswords().ToList();
+			List<LoginTokenDto> oldTokens = storageService.GetTokens();
 			if (oldAccounds != null || oldAccounds.Count > 0)
 				oldAccounds.ForEach(accont => storageService.DeleteAccount(accont));
 			if (oldPasswords != null || oldPasswords.Count > 0)
 				oldPasswords.ForEach(pass => storageService.DeletePassword(pass));
+			if (oldTokens != null || oldTokens.Count > 0)
+				oldTokens.ForEach(pass => storageService.DeleteToken(pass));
 			FieldDatabae(storageService);
 			LogInfo("Stop SetUP Database and Init");
 		}

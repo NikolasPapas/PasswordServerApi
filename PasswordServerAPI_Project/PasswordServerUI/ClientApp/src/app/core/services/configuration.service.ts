@@ -3,32 +3,43 @@ import { HttpPostService } from './http-post.service';
 import { ApplicationAction } from '../models/configuration/ApplicationAction';
 import { ConfigurationResponse } from '../models/configuration/configuration_response';
 import { BaseService } from '../../common/base/base.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class ConfigurationService extends BaseService {
-
-    constructor(
-    ) { super(); }
-
+   
     private actions: ApplicationAction[] = [];
     private token: string;
-    private _isLogin: boolean = this.token != null && this.token != undefined;
+    needLoginBool:boolean =false;
+    isLoginIn: Subject<boolean> = new Subject<boolean>();  
+
+    constructor() { 
+        super(); 
+        this.isLoginIn.subscribe((value) => {
+            this.needLoginBool = value
+        });
+    }
 
 
     public getActions(): ApplicationAction[] {
+        this.needLogin();
         return this.actions;
     }
 
     public needLogin(): any {
-        return this._isLogin;
+        this.needLoginBool = this.token != null && this.token != undefined;
+        this.isLoginIn.next(!this.needLoginBool);
+        return this.needLoginBool;
     }
 
     public getToken() {
+        this.needLogin();
         return this.token;
     }
     public setToken(token: string) {
         this.token = token;
+        this.needLogin();
+       
     }
 
     public setLoginResponse(configuration: ConfigurationResponse): void {
