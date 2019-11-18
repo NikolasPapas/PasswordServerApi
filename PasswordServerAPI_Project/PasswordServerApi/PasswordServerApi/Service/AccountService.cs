@@ -18,10 +18,12 @@ namespace PasswordServerApi.Service
 	{
 		private IBaseService _baseService;
 		private ILoggingService _logger;
-		public AccountService(IBaseService baseService, ILoggingService logger)
+		private IPassswordHackScanner _hackScanner;
+		public AccountService(IBaseService baseService, ILoggingService logger, IPassswordHackScanner hackScanner)
 		{
 			_baseService = baseService;
 			_logger = logger;
+			_hackScanner = hackScanner;
 		}
 
 		#region Dictionary ActionId To Function
@@ -52,6 +54,12 @@ namespace PasswordServerApi.Service
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			userAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			userAccount.Passwords = passwords;
+			var responce = (_hackScanner.IsThisEmailHacked(userAccount.Email)).GetAwaiter().GetResult();
+			if (responce != null && responce.IsHacked)
+			{
+				var results = (_hackScanner.EmailHackedInfo(userAccount.Email)).GetAwaiter().GetResult();
+				return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount }, WarningMessages = new List<string>() { "Accound is Hack You mast Change Password", JsonConvert.SerializeObject(results) } };
+			}
 			return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
 		}
 

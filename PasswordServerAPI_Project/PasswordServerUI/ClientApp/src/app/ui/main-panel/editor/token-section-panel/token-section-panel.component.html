@@ -2,15 +2,15 @@
     <mat-list class="col-12 row">
         <mat-list-item class="col-12 row" *ngFor="let token of loginTokens; let index = index;">
 
-            <mat-form-field class="col-md-3">
+            <mat-form-field class="col-auto">
                 <input matInput placeholder="{{'TOKENS.PANEL.USER_ID' | translate}}" [value]="token.userId" [disabled]="true">
             </mat-form-field>
 
-            <mat-form-field class="col-md-4">
+            <mat-form-field class="col">
                 <input matInput placeholder="{{'TOKENS.PANEL.USER_AGENT' | translate}}" [value]="token.userAgent" [disabled]="true">
             </mat-form-field>
 
-            <mat-form-field class="col-md-4">
+            <mat-form-field class="col-auto">
                 <input matInput placeholder="{{'TOKENS.PANEL.LAST_LOGIN' | translate}}" [value]="token.lastLogIn" [disabled]="true">
             </mat-form-field>
 

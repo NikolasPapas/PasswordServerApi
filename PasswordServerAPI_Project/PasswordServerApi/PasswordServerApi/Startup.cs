@@ -26,6 +26,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using PasswordServerApi.Models.DTO;
+using System.Net.Http;
+using PasswordServerApi.Utilitys.Configuration;
 
 namespace PasswordServerApi
 {
@@ -38,10 +40,11 @@ namespace PasswordServerApi
 
 		public IConfiguration Configuration { get; }
 
+
 		public void ConfigureServices(IServiceCollection services)
 		{
 			LogInfo("Starting add services");
-			InstallService(services, Configuration, "File");
+			InstallService(services, Configuration);
 			//services.InstallService(services,Configuration,"SQlLite");
 			InstallSecurity(services, Configuration);
 			InstallSwagger(services, Configuration);
@@ -51,17 +54,19 @@ namespace PasswordServerApi
 
 		#region Register Service
 
-		public void InstallService(IServiceCollection services, IConfiguration configuration, string database)
+		public void InstallService(IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddTransient<ILoggingService, LoggingService>();
+			services.AddScoped<IConfigurationManager>(s=>new ConfigurationManager(configuration));
+			var configurationManager = services.BuildServiceProvider().GetService<IConfigurationManager>();
 
-			if (database == "File")
+			if (configurationManager.GetString(null, "Db") == "File")
 			{
-				services.AddFilleDB(configuration);
+				services.AddFilleDB(configurationManager);
 			}
-			else if (database == "SQlLite")
+			else if (configurationManager.GetString(null, "Db") == "SQlLite")
 			{
-				services.AddSQLLiteDb(configuration);
+				services.AddSQLLiteDb(configurationManager);
 			}
 
 			services.AddTransient<IAccountService, AccountService>();
@@ -71,6 +76,14 @@ namespace PasswordServerApi
 			services.AddTransient<IExceptionHandler, ExceptionHandler>();
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
 			services.AddScoped<IUserManagementService, UserManagementService>();
+			//services.AddSingleton<HttpClient, HttpClient>();
+			//var serviceProvider = services.BuildServiceProvider();
+			//var httpClientservice = serviceProvider.GetService<HttpClient>();
+			//string[] controllers = new string[2];
+			//controllers[0] = "isHacked";
+			//controllers[1] = "getHackTimes";
+			services.AddHttpClient<IPassswordHackScanner, PassswordHackScannerAPI>();
+			//services.AddScoped<IPassswordHackScanner>(s => new PassswordHackScannerAPI(httpClientservice,"http://localhost:51360/api/hackScanner/", controllers));
 		}
 
 		public void InstallSecurity(IServiceCollection services, IConfiguration Configuration)

@@ -15,6 +15,8 @@ import { PasswordForm } from "./request-editor/password-editor/password-form.mod
 import { Account } from "../../../core/models/account-model";
 import { BaseRequest } from "../../../core/models/requests/base-request";
 import { FileSaveService } from "../../../core/services/file-save.service";
+import { UiNotificationService } from "../../../core/services/ui-notification.service";
+import { NotificationLevel } from "../../../core/models/enums/notification-level";
 
 
 @Component({
@@ -31,13 +33,13 @@ export class EditorComponent extends BaseComponent implements OnInit {
     ACTION_INDICATOR_ADD_ACCOUNT: string = "1086495e-fd61-4397-b3a9-87b737adeddd";
 
     @Input() selectedAction: number = -1;
-    @Input() ActionEvent:ApplicationAction; 
+    @Input() ActionEvent: ApplicationAction;
     @Input() AddAccountEvent: number;
     @Input() AddPasswordEvent: number;
 
     @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();
-    
-    accountModels: FormGroup[]=[];
+
+    accountModels: FormGroup[] = [];
 
     expandedIndex: number = -1;
     selectedAccountIndex: number = -1;
@@ -49,6 +51,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         private configurationService: ConfigurationService,
         private accountService: AccountService,
         private fileSaveService: FileSaveService,
+        public uiNotificationService: UiNotificationService
     ) {
         super();
     }
@@ -63,10 +66,10 @@ export class EditorComponent extends BaseComponent implements OnInit {
             if (propName === 'ActionEvent' && this.ActionEvent) {
                 this.onActionSelected(this.ActionEvent);
             }
-            if (propName === 'AddAccountEvent' && this.AddAccountEvent!=null) {
+            if (propName === 'AddAccountEvent' && this.AddAccountEvent != null) {
                 this.addAccount();
             }
-            if (propName === 'AddPasswordEvent' && this.AddPasswordEvent!=null) {
+            if (propName === 'AddPasswordEvent' && this.AddPasswordEvent != null) {
                 this.addPassword();
             }
         }
@@ -145,12 +148,16 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     onActionAccountSuccess(res: AccountActionResponse, action: ApplicationAction) {
         this.clearAll();
+        if (res.warningMessages)
+            this.uiNotificationService.handleMessages(NotificationLevel.Warning, res.warningMessages);
         res.accounts.forEach(account => {
             this.accountModels.push(new AccountForm().fromModel(account).buildForm());
         });
     }
 
     onActionError(error: any) {
+        if (error.warningMessages)
+            this.uiNotificationService.handleMessages(NotificationLevel.Warning, error.warningMessages);
         //Notification For Error
     }
     //#endregion
@@ -172,6 +179,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     onActionPasswordSuccess(res: PasswordActionResponse, action: ApplicationAction) {
+        if (res.warningMessages)
+            this.uiNotificationService.handleMessages(NotificationLevel.Warning, res.warningMessages);
         if (this.selectedAccountIndex >= 0 && this.accountModels[this.selectedAccountIndex] != null) {
             (this.accountModels[this.selectedAccountIndex].get('passwords') as FormArray).clear();
             res.passwords.forEach(pass => {
@@ -208,10 +217,14 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
     private onExportPDFSuccess(res: any) {
+        if (res.warningMessages)
+            this.uiNotificationService.handleMessages(NotificationLevel.Warning, res.warningMessages);
         this.fileSaveService.saveBlob(res);
     }
 
     private onExportPDFError(error: any) {
+        if (error.warningMessages)
+            this.uiNotificationService.handleMessages(NotificationLevel.Warning, error.warningMessages);
         this.fileSaveService.handleError(error);
     }
 
