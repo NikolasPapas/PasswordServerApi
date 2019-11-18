@@ -52,7 +52,7 @@ namespace PasswordServerApi.Security
 				_tokenManagement.Issuer,
 				_tokenManagement.Audience,
 				claim,
-				expires: DateTime.Now.AddMinutes(10),
+				expires: DateTime.Now.AddMinutes(5),
 				signingCredentials: credentials
 			);
 			token = new JwtSecurityTokenHandler().WriteToken(jwtToken);

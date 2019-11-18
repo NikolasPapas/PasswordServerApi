@@ -179,7 +179,7 @@ namespace PasswordServerApi.Service
 
 		public void DeleteToken(Guid id, string userAgent, string Token)
 		{
-			List<LoginTokenDto> tokensToDelete = _storageService.GetTokens().FindAll(x => x.UserId == id && (x.Token == Token || x.UserAgent == userAgent));
+			List<LoginTokenDto> tokensToDelete = _storageService.GetTokens().FindAll(x => x.UserId == id && x.Token == Token);
 
 			tokensToDelete.ForEach(token =>
 			{

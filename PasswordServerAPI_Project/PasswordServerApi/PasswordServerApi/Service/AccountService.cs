@@ -183,7 +183,7 @@ namespace PasswordServerApi.Service
 		private List<LoginTokenDto> DeleteLoginTokenDto(LoginTokenDto token, Guid userID)
 		{
 			_baseService.DeleteToken(userID, token.UserAgent, token.Token);
-			return new List<LoginTokenDto>();
+			return _baseService.FindUserTokens(userID);
 		}
 
 		#endregion
