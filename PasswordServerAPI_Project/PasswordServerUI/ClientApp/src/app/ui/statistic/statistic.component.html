@@ -1,0 +1,18 @@
+<mat-card class="row subCard">
+    <h4>{{'TITLES.STATISTIC' | translate}}</h4>
+
+    <div class="col-12">
+        <mat-grid-list cols="{{statisticTable.get('yValues').value.length}}" rowHeight="3px">
+            <mat-grid-tile *ngFor="let x of statisticTable.get('xValues').value; let xIndex = index" [colspan]="1" [rowspan]="9" [style.background]="getColor(xIndex)">
+                {{x}}
+            </mat-grid-tile>
+            <mat-grid-tile  *ngFor="let x of statisticTable.get('xValues').value; let xIndex = index" [colspan]="1" [rowspan]="GetColSpan(xIndex)" [style.background]="getColor(xIndex)">
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div class="col-12" *ngFor="let x of statisticTable.get('xValues').value; let xIndex = index">
+        {{x}} <mat-progress-bar mode="determinate" value="{{GetColSpan(xIndex)}}"></mat-progress-bar>
+    </div>
+    
+</mat-card>

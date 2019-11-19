@@ -10,6 +10,7 @@ import { PasswordEditorComponent } from './main-panel/editor/request-editor/pass
 import { AccountEditorComponent } from './main-panel/editor/request-editor/account-editor/account-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token-section-panel.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 @NgModule({
 	imports: [
@@ -26,6 +27,7 @@ import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token
         TokenSectionPanel,
         AccountEditorComponent,
         PasswordEditorComponent,
+        StatisticComponent,
 
     ],
     exports: [

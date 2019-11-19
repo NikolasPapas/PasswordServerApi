@@ -10,6 +10,7 @@ import { BaseComponent } from '../common/base/base.component';
 import { ApplicationAction } from '../core/models/configuration/ApplicationAction';
 import { AccountForm } from './main-panel/editor/request-editor/account-editor/account-form.model';
 import { PasswordForm } from './main-panel/editor/request-editor/password-editor/password-form.model';
+import { StatisticModel } from './statistic/statistic.model';
 
 
 @Component({
@@ -29,12 +30,9 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
     opened: boolean;
     actions: ApplicationAction[];
 
-
-
     isActionAddAccountIsOn: boolean = false;
     isActionAddPasswordIsOn: number = -1;
     selectedAction: number = -1;
-
 
     public mastDoLogIn: boolean = true;
     loginForm: FormGroup;
@@ -49,9 +47,10 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+
         this.loginForm = new LoginModel().fromModel().buildForm();
 
-        this.configurationService.isLoginIn.subscribe(value => {this.mastDoLogIn =value});
+        this.configurationService.isLoginIn.subscribe(value => { this.mastDoLogIn = value });
     }
 
     login() {
@@ -83,15 +82,18 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
 
 
     addAccount() {
-        this.AddAccountEvent =null;
+        this.AddAccountEvent = null;
         this.AddAccountEvent = 1;
         //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
     }
 
     addPassword() {
-        this.AddPasswordEvent=null;
-        this.AddPasswordEvent=this.isActionAddPasswordIsOn;
+        this.AddPasswordEvent = null;
+        this.AddPasswordEvent = this.isActionAddPasswordIsOn;
         // if (this.accountModels[this.isActionAddPasswordIsOn] != null && this.accountModels[this.isActionAddPasswordIsOn].get('passwords') != null)
         //     (this.accountModels[this.isActionAddPasswordIsOn].get('passwords') as FormArray).push(new PasswordForm().fromModel(null).buildForm());
     }
+
+
+
 }
