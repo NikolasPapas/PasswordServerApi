@@ -2,3 +2,11 @@
 .tokenRow{
     background-color: map-get($md-mypalette, 300);
 }
+
+
+
+.footerConnections{
+    max-height: 15em;
+    //overflow: hidden;
+    overflow-y:auto !important;
+  }

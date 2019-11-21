@@ -7,10 +7,9 @@ $shadow: (
 
 .slideContainer {
   margin-top: map-get($distances, "small");
-  padding: map-get($distances, "none") !important;
+  //padding: map-get($distances, "none") !important;
   height: 100%;
   background-color: map-get($colorPalette, "subCardBackground");
-
 
   .sideNavDiv{
     padding-left: 2em;

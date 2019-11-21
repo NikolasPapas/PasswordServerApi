@@ -1,18 +1,8 @@
-<!-- <mat-toolbar class="col-12 row subCard">
-    <button class="col-auto" mat-button [matMenuTriggerFor]="menu">Menu</button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let action of actions ; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
-    </mat-menu>
-    <button class="col-auto" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-    <button class="col-auto" mat-button *ngIf="isActionAddPasswordIsOn" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
-    <div class="col"></div>
-</mat-toolbar> -->
-
 <mat-card class="row">
     <!-- ActionViewer -->
     <div class="col-12 row">
         <mat-accordion class="col-12 subCard" *ngIf="selectedAction != -1">
-            <mat-expansion-panel [id]="selectedAction" hideToggle="true" [expanded]="selectedAction" (opened)="open(selectedAction)" (closed)="close()">
+            <mat-expansion-panel [id]="selectedAction" hideToggle="true" (opened)="open(selectedAction)" (closed)="close()">
                 <mat-expansion-panel-header>
                     <mat-grid-list class="secondaryHeaderListCard" rowHeight="25px" cols="12">
                         <mat-grid-tile [colspan]="2">{{'TITLES.ACTION' | translate}}</mat-grid-tile>
