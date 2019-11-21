@@ -1,33 +1,32 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using PasswordServerApi.Security.SecurityModels;
-using System.Collections.Generic;
 using PasswordServerApi.Models.Enums;
-using System.Linq;
-using Serilog;
-using Microsoft.Extensions.Logging;
 using PasswordServerApi.StorageLayer;
 using PasswordServerApi.DTO;
 using PasswordServerApi.Utilitys;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Security;
 using PasswordServerApi.Service;
-using System.IdentityModel.Tokens.Jwt;
-using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using System.Diagnostics;
 using PasswordServerApi.Models.DTO;
-using System.Net.Http;
 using PasswordServerApi.Utilitys.Configuration;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System;
+using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using Serilog;
+using System.IO;
+using Microsoft.Extensions.Hosting;
 
 namespace PasswordServerApi
 {
@@ -48,8 +47,10 @@ namespace PasswordServerApi
 			//services.InstallService(services,Configuration,"SQlLite");
 			InstallSecurity(services, Configuration);
 			InstallSwagger(services, Configuration);
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-			LogInfo("End addingg services");
+			services.AddRazorPages();
+            services.AddCors();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            LogInfo("End addingg services");
 		}
 
 		#region Register Service
@@ -57,7 +58,7 @@ namespace PasswordServerApi
 		public void InstallService(IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddTransient<ILoggingService, LoggingService>();
-			services.AddScoped<IConfigurationManager>(s=>new ConfigurationManager(configuration));
+			services.AddScoped<IConfigurationManager>(s => new ConfigurationManager(configuration));
 			var configurationManager = services.BuildServiceProvider().GetService<IConfigurationManager>();
 
 			if (configurationManager.GetString(null, "Db") == "File")
@@ -127,38 +128,38 @@ namespace PasswordServerApi
 			});
 		}
 
-		public void InstallSwagger(IServiceCollection services, IConfiguration Configuration)
-		{
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo
-				{
-					Version = "v1",
-					Title = "PasswordServerApi",
-					Description = "A simple PasswordServerApi ASP.NET Core2.2 Web API",
-					TermsOfService = new Uri("http://example.com/terms"),
-					Contact = new OpenApiContact
-					{
-						Name = "Papazian Nikolaos",
-						Email = "nikolaspapazian@gmail.com",
-					},
-					License = new OpenApiLicense
-					{
-						Name = "Use under LICX",
-					}
-				});
+        public void InstallSwagger(IServiceCollection services, IConfiguration Configuration)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "PasswordServerApi",
+                    Description = "A simple PasswordServerApi ASP.NET Core2.2 Web API",
+                    TermsOfService = new Uri("http://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Papazian Nikolaos",
+                        Email = "nikolaspapazian@gmail.com",
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                    }
+                });
 
-				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-				c.IncludeXmlComments(xmlPath);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
 
-			});
+            });
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
 		{
 			app.Use(async (context, next) =>
 			{
@@ -193,14 +194,20 @@ namespace PasswordServerApi
 
 			app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 			app.UseAuthentication();
-			//app.UseHttpsRedirection();
-			app.UseMvc();
-			app.UseSwagger();
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "PasswordServerApi");
-			});
-		}
+            //app.UseHttpsRedirection();
+            //app.UseMvc();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PasswordServerApi");
+            });
+        }
 
 		#region   SetStartUpData
 

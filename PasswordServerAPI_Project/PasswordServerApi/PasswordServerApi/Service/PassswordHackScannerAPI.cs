@@ -3,10 +3,7 @@ using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.API;
 using System.Text;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
-using Microsoft.IdentityModel.Protocols;
 using PasswordServerApi.Utilitys.Configuration;
 
 namespace PasswordServerApi.Service

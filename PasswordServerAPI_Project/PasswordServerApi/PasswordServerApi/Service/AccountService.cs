@@ -54,13 +54,13 @@ namespace PasswordServerApi.Service
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			userAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			userAccount.Passwords = passwords;
-			var responce = (_hackScanner.IsThisEmailHacked(userAccount.Email)).GetAwaiter().GetResult();
-			if (responce != null && responce.IsHacked)
-			{
-				var results = (_hackScanner.EmailHackedInfo(userAccount.Email)).GetAwaiter().GetResult();
-				return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount }, WarningMessages = new List<string>() { "Accound is Hack You mast Change Password", JsonConvert.SerializeObject(results) } };
-			}
-			return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
+            //var responce = (_hackScanner.IsThisEmailHacked(userAccount.Email)).GetAwaiter().GetResult();
+            //if (responce != null && responce.IsHacked)
+            //{
+            //    var results = (_hackScanner.EmailHackedInfo(userAccount.Email)).GetAwaiter().GetResult();
+            //    return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount }, WarningMessages = new List<string>() { "Accound is Hack You mast Change Password", JsonConvert.SerializeObject(results) } };
+            //}
+            return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
 		}
 
 

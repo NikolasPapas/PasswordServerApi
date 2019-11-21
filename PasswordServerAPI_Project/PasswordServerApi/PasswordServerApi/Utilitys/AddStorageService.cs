@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Protocols;
 using PasswordServerApi.DataFileDb;
 using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.StorageLayer;
@@ -25,7 +23,7 @@ namespace PasswordServerApi.Utilitys
 
 		public static void AddSQLLiteDb(this IServiceCollection services, IConfigurationManager configurationManager)
 		{
-			services.AddEntityFrameworkInMemoryDatabase().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite($"Data Source={configurationManager.GetString("sqliteDB", "MainPath")}"));
+			services.AddEntityFrameworkSqlServer().AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>(options => options.UseSqlite($"Data Source={configurationManager.GetString("sqliteDB", "MainPath")}"));
 			services.AddTransient<IStorageService, StorageServiceDb>();
 		}
 	}
