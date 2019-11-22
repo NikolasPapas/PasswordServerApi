@@ -1,16 +1,13 @@
-﻿import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+﻿import { Component, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfigurationService } from '../core/services/configuration.service';
-import { TokenRequest } from '../core/models/requests/token-request';
 import { takeUntil } from 'rxjs/operators';
-import { LoginModel } from './login/login.model';
-import { FormGroup, FormArray } from '@angular/forms';
-import { AccountService } from '../core/services/account-action.service';
 import { BaseComponent } from '../common/base/base.component';
 import { ApplicationAction } from '../core/models/configuration/ApplicationAction';
-import { AccountForm } from './main-panel/editor/request-editor/account-editor/account-form.model';
-import { PasswordForm } from './main-panel/editor/request-editor/password-editor/password-form.model';
-import { StatisticModel } from './statistic/statistic.model';
+import { TokenRequest } from '../core/models/requests/token-request';
+import { AccountService } from '../core/services/account-action.service';
+import { ConfigurationService } from '../core/services/configuration.service';
+import { LoginModel } from './login/login.model';
 
 
 @Component({

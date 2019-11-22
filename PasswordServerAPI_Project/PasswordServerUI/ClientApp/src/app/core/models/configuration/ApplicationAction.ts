@@ -7,7 +7,7 @@ export interface ApplicationAction {
     controllerPath: string;
     controllerSend:string;
     needsComment: boolean;
-    tooltip: string;
+    toolTipText: string;
     sendApplicationData: boolean;
     validationMode: ApplicationValidationMode;
     refreshAfterAction: boolean;

@@ -22,7 +22,7 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "needsComment")]
 		public bool NeedsComment { get; set; }
 
-		[DataMember(Name = "tooltip")]
+		[DataMember(Name = "toolTipText")]
 		public string ToolTipText { get; set; }
 
 		[DataMember(Name = "sendApplicationData")]

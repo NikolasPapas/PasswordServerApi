@@ -2,22 +2,27 @@
 
     <mat-sidenav #sidenav mode="over" [(opened)]="opened">
         <div class="row sideNavDiv">
+            <!-- Header -->
             <button class="col-12" disabled="true" mat-button>
                 <h4>{{'MENU.HEADER' | translate}}</h4>
             </button>
+
+            <!-- Content -->
             <div class="col-12 row" *ngFor="let action of actions; let index = index;">
-                <!-- <mat-form-field class="col-4">
-                    <input matInput placeholder="{{'ACTIONS.TITLES.NAME' | translate}}" [value]="action.name" disabled="true">
-                </mat-form-field> -->
-                <button class="col-auto" mat-button (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button>
-                <button class="col-2" mat-button (click)="executeAction(index)" [style.color]="action.color">
-                    <mat-icon>{{action.icon}}</mat-icon>
-                </button>
+                <button class="col-auto" mat-button [matMenuTriggerFor]="actionMenu" [style.color]="action.color">{{action.name}}</button>
+                <mat-menu #actionMenu="matMenu">
+                    <button mat-menu-item [disabled]="true">{{'ACTIONS.PANEL.TOOLTIP' | translate}}</button>
+                    <button mat-menu-item [disabled]="true">{{action.controllerSend}}</button>
+                    <button mat-menu-item [disabled]="true">{{action.toolTipText}}</button>
+                    <button mat-menu-item (click)="selectMenuAction(index);executeAction(index);"><mat-icon>{{action.icon}}</mat-icon></button>
+                </mat-menu>
+                <button class="col-2" mat-button (click)="executeAction(index)" [style.color]="action.color"><mat-icon>send</mat-icon></button>
                 <hr class="col-12">
             </div>
-            <!-- <button class="col" mat-button *ngFor="let action of actions; let index = index;" (click)="selectMenuAction(index)" [style.color]="action.color">{{action.name}}</button> -->
             <button class="col-12" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
             <button class="col-12" mat-button *ngIf="isActionAddPasswordIsOn != -1" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
+
+            <!-- Footer -->
             <button class="col-12" disabled="true" mat-button>
                 <h6>{{'MENU.FOOTER' | translate}}</h6>
             </button>

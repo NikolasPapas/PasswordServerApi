@@ -7,17 +7,18 @@ $shadow: (
 
 .slideContainer {
   margin-top: map-get($distances, "small");
-  //padding: map-get($distances, "none") !important;
   height: 100%;
   background-color: map-get($colorPalette, "subCardBackground");
 
-  .sideNavDiv{
-    padding-left: 2em;
+  .sideNavDiv {
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
-
 
   .slideContent {
     height: 100%;
+    overflow: hidden;
   }
 
   .floatingMenuButton {
@@ -25,17 +26,19 @@ $shadow: (
     top: 0px;
     left: 0px;
   }
-}
 
-.mat-sidenav {
-  max-width: 30%;
-  height: 100%;
+  .mat-sidenav {
+    padding-left: 1.5em;
+    max-width: 30%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 .mainContainerCard {
   overflow-x: hidden;
   overflow-y: auto;
-  //overflow-y: scroll;
   max-height: calc(95vh);
 
   mat-tab-group.mat-primary {
