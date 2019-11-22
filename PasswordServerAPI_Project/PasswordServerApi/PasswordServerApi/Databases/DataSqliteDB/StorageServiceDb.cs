@@ -55,7 +55,7 @@ namespace PasswordServerApi.StorageLayer
 
 		public AccountDto AddNewAccount(AccountDto request)
 		{
-			_dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
+            _dbContext.Accounts.Add(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
 			_dbContext.SaveChanges();
 			return request;
 		}
@@ -146,7 +146,7 @@ namespace PasswordServerApi.StorageLayer
 
 		private PasswordDto AddNewPassword(PasswordDto requestPassword)
 		{
-			var newPassword = GetPasswordModel(requestPassword);
+            var newPassword = GetPasswordModel(requestPassword);
 			_dbContext.Passwords.Add(new EndityAbstractModelPassword()
 			{
 				EndityId = requestPassword.PasswordId.ToString(),

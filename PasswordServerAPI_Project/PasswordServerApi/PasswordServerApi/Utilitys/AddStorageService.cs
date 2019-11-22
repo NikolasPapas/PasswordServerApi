@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using PasswordServerApi.DataFileDb;
 using PasswordServerApi.DataSqliteDB;
+using PasswordServerApi.Interfaces;
 using PasswordServerApi.StorageLayer;
 using PasswordServerApi.Utilitys.Configuration;
 
@@ -12,9 +13,10 @@ namespace PasswordServerApi.Utilitys
 
 		public static void AddFilleDB(this IServiceCollection services, IConfigurationManager configurationManager )
 		{
-			
-			services.AddTransient<IReadFileDb>(s => new ReadFileDb(
-				configurationManager.GetString("FileDB", "MainPath"),
+            var loggingService = services.BuildServiceProvider().GetService<ILoggingService>();
+            services.AddTransient<IReadFileDb>(s => new ReadFileDb(
+                loggingService,
+                configurationManager.GetString("FileDB", "MainPath"),
 				configurationManager.GetString("FileDB", "AccountsPath"),
 				configurationManager.GetString("FileDB", "PasswordPath"),
 				configurationManager.GetString("FileDB", "LoginTokensPath")));

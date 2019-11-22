@@ -25,6 +25,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
     }
 
+    keyDownFunction(event) {
+        if(event.keyCode == 13) {
+          this.LoginEvent.emit();
+        }
+      }
+
     login(){
         this.LoginEvent.emit();
     }

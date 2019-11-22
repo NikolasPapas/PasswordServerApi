@@ -53,7 +53,7 @@ namespace PasswordServerApi.StorageLayer
 
 		private AccountDto AddNewAccount(AccountDto request)
 		{
-			return SaveFileAccount(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
+            return SaveFileAccount(new EndityAbstractModelAccount() { EndityId = request.AccountId.ToString(), JsonData = JsonConvert.SerializeObject(GetAccountModel(request)) });
 		}
 
 		private AccountDto SaveFileAccount(EndityAbstractModelAccount data)
@@ -159,7 +159,7 @@ namespace PasswordServerApi.StorageLayer
 
 		private PasswordDto AddNewPassword(PasswordDto request)
 		{
-			return SaveFilePass(new EndityAbstractModelPassword() { EndityId = request.PasswordId.ToString(), JsonData = JsonConvert.SerializeObject(GetPasswordModel(request)) });
+            return SaveFilePass(new EndityAbstractModelPassword() { EndityId = request.PasswordId.ToString(), JsonData = JsonConvert.SerializeObject(GetPasswordModel(request)) });
 		}
 
 		private PasswordDto SaveFilePass(EndityAbstractModelPassword data)

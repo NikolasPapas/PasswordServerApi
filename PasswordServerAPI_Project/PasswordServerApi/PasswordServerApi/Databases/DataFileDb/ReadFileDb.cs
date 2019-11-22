@@ -1,5 +1,6 @@
 ﻿using PasswordServerApi.Databases.DataModels;
 using PasswordServerApi.DataSqliteDB;
+using PasswordServerApi.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,15 +18,17 @@ namespace PasswordServerApi.DataFileDb
 		private readonly char[] AccountFieldDelimiter = new char[] { ';' };
 		private readonly char[] PasswordIdsDelimiter = new char[] { ';' };
 		private readonly char[] LoginTokenFieldDelimiter = new char[] { '=' };
+        private readonly ILoggingService _logger;
 
-		public ReadFileDb(string import_FilePath, string import_FileName_account, string import_FileName_password, string import_FileName_login_tokens)
+        public ReadFileDb(ILoggingService logger,string import_FilePath, string import_FileName_account, string import_FileName_password, string import_FileName_login_tokens)
 		{
 			IMPORT_PATH = import_FilePath;
 			IMPORT_FILENAME_ACCOUNT = import_FileName_account;
 			IMPORT_FILENAME_PASSWORD = import_FileName_password;
 			IMPORT_FILENAME_LOGIN_TOKENS = import_FileName_login_tokens;
+            _logger = logger;
 
-		}
+        }
 
 		private IEnumerable<string> FindFile(string path, string name)
 		{
@@ -49,7 +52,8 @@ namespace PasswordServerApi.DataFileDb
 			}
 			catch (Exception ex)
 			{
-				return new List<EndityAbstractModelAccount>();
+                _logger.LogError(ex.Message);
+                return new List<EndityAbstractModelAccount>();
 			}
 		}
 
@@ -65,7 +69,8 @@ namespace PasswordServerApi.DataFileDb
 			}
 			catch (Exception ex)
 			{
-				return new List<EndityAbstractModelPassword>();
+                _logger.LogError(ex.Message);
+                return new List<EndityAbstractModelPassword>();
 			}
 		}
 
@@ -81,7 +86,8 @@ namespace PasswordServerApi.DataFileDb
 			}
 			catch (Exception ex)
 			{
-				return new List<LoginTokenModel>();
+                _logger.LogError(ex.Message);
+                return new List<LoginTokenModel>();
 			}
 		}
 

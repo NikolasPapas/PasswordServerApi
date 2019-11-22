@@ -65,12 +65,15 @@ export class EditorComponent extends BaseComponent implements OnInit {
         for (let propName in changes) {
             if (propName === 'ActionEvent' && this.ActionEvent) {
                 this.onActionSelected(this.ActionEvent);
+                this.ActionEvent = null;
             }
             if (propName === 'AddAccountEvent' && this.AddAccountEvent != null) {
                 this.addAccount();
+                this.AddAccountEvent = null;
             }
             if (propName === 'AddPasswordEvent' && this.AddPasswordEvent != null) {
                 this.addPassword();
+                this.AddPasswordEvent = null;
             }
         }
     }

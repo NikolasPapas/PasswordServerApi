@@ -49,7 +49,7 @@ namespace PasswordServerApi.Controllers
 			return _exceptionHandler.HandleException(() => _accountService.GetMyAccount(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
 		}
 
-		[Authorize]
+        [Authorize]
 		[HttpPost("tokenActions")]
 		public Response<List<LoginTokenDto>> TokenActions([FromBody] TokenActionRequest request)
 		{
@@ -57,7 +57,7 @@ namespace PasswordServerApi.Controllers
 		}
 
 
-		[Authorize(Roles = Role.Admin)]
+		[Authorize(Roles = Role.User + " , " + Role.Admin)]
 		[HttpPost("accountAction")]
 		public Response<AccountActionResponse> AccountAction([FromBody] AccountActionRequest request)
 		{

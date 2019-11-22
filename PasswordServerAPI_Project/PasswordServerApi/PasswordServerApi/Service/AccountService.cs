@@ -18,13 +18,15 @@ namespace PasswordServerApi.Service
 	{
 		private IBaseService _baseService;
 		private ILoggingService _logger;
-		private IPassswordHackScanner _hackScanner;
-		public AccountService(IBaseService baseService, ILoggingService logger, IPassswordHackScanner hackScanner)
+        private readonly IPassswordHackScanner _hackScanner;
+
+        public AccountService(IBaseService baseService, ILoggingService logger, IPassswordHackScanner hackScanner)
 		{
 			_baseService = baseService;
 			_logger = logger;
-			_hackScanner = hackScanner;
-		}
+            _hackScanner = hackScanner;
+
+        }
 
 		#region Dictionary ActionId To Function
 
@@ -36,8 +38,9 @@ namespace PasswordServerApi.Service
 			{
 				return _actionIdToFunction ?? (_actionIdToFunction =
 					new Dictionary<Guid, Func<AccountDto, AccountDto, AccountActionRequest, string, AccountActionResponse>>()
-					{
-						{ StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
+                    {
+                        { StaticConfiguration.ActionGetIfHackedId, GetIfHackedFunc },
+                        { StaticConfiguration.ActionSaveAccountId, ActionSeveAccountFunc },
 						{ StaticConfiguration.ActionGetAccountId, ActionGetAccountFunc },
 						{ StaticConfiguration.ActionGetAccountAndPasswordId, ActionGetAccountAndPasswordFunc },
 						{ StaticConfiguration.ActionRemoveAccountId, ActionRemoveAccountFunc },
@@ -54,12 +57,6 @@ namespace PasswordServerApi.Service
 			List<PasswordDto> passwords = new List<PasswordDto>();
 			userAccount.Passwords.ForEach(x => passwords.Add(_baseService.GetPassword(x.PasswordId)));
 			userAccount.Passwords = passwords;
-            //var responce = (_hackScanner.IsThisEmailHacked(userAccount.Email)).GetAwaiter().GetResult();
-            //if (responce != null && responce.IsHacked)
-            //{
-            //    var results = (_hackScanner.EmailHackedInfo(userAccount.Email)).GetAwaiter().GetResult();
-            //    return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount }, WarningMessages = new List<string>() { "Accound is Hack You mast Change Password", JsonConvert.SerializeObject(results) } };
-            //}
             return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
 		}
 
@@ -145,11 +142,30 @@ namespace PasswordServerApi.Service
 
 			return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
 		}
-		#endregion
+
+        private AccountActionResponse GetIfHackedFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
+        {
+            string isHacked = "";
+            try
+            {
+                var responce = (_hackScanner.IsThisEmailHacked(requestedAccount?.Email)).GetAwaiter().GetResult();
+                if (responce != null && responce.IsHacked)
+                    isHacked = JsonConvert.SerializeObject(_hackScanner.EmailHackedInfo(requestedAccount.Email).GetAwaiter().GetResult());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return new AccountActionResponse() { Accounts = new List<AccountDto>() { requestedAccount }, WarningMessages = new List<string>() { "Service Not Avalable Now" } };
+            }
+            return new AccountActionResponse() { Accounts = new List<AccountDto>() { requestedAccount }, WarningMessages = string.IsNullOrWhiteSpace(isHacked) ? new List<string>() { "Accound is Safe" } : new List<string>() { "Accound is Hack You mast Change Password", JsonConvert.SerializeObject(isHacked) } };
+        }
 
 
-		#region Tokens
-		private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> _TokenActionToFunction = null;
+        #endregion
+
+
+        #region Tokens
+        private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> _TokenActionToFunction = null;
 
 		private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> TokenActionToFunction
 		{
