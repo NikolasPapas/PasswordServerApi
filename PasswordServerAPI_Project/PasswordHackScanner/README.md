@@ -1,3 +1,4 @@
+
 # Password Hack Scanner
 
 ## Description
@@ -18,5 +19,5 @@ Editing & Using :
 -	 Browser
 
 ### Postman Requests
-On:  "PasswordServerApi/PasswordServerAPI_Project/Postman_Request_Collection.json"
+On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/blob/master/PasswordServerAPI_Project/PasswordHackScanner/PasswordHackScanner.postman_collection.json) 
 
