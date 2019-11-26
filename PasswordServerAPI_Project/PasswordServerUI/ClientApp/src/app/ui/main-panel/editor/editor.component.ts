@@ -63,9 +63,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     ngOnChanges(changes: SimpleChanges) {
         for (let propName in changes) {
-            if (propName === 'ActionEvent' && this.ActionEvent) {
+            if (propName === 'ActionEvent' && this.ActionEvent !=null) {
                 this.onActionSelected(this.ActionEvent);
-                this.ActionEvent = null;
             }
             if (propName === 'AddAccountEvent' && this.AddAccountEvent != null) {
                 this.addAccount();
