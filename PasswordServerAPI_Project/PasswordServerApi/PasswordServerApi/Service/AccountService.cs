@@ -150,7 +150,7 @@ namespace PasswordServerApi.Service
             {
                 var responce = (_hackScanner.IsThisEmailHacked(requestedAccount?.Email)).GetAwaiter().GetResult();
                 if (responce != null && responce.IsHacked)
-                    _hackScanner.EmailHackedInfo(requestedAccount.Email).GetAwaiter().GetResult()?.FromSites?.ForEach(x => isHacked = isHacked + "//n" + x.Site + "" + x.LastDate.ToString());
+                    _hackScanner.EmailHackedInfo(requestedAccount.Email).GetAwaiter().GetResult()?.FromSites?.ForEach(x => isHacked = isHacked +"List: "+ x.Site + " When: " + x.LastDate.ToString()+". ");
             }
             catch (Exception ex)
             {
