@@ -31,6 +31,13 @@ Editing & Using :
 -	 Browser
 
 ## Extra Paths
+### API Paths
+- PasswordServerApi: http://.............:53257/api
+- PasswordHackScanner:  http://.............:51360/api
+- PasswordServerUI: http://.............:53258/api
+- Angular: http://.............:4200
+
+
 ### Postman Requests
 - Password Server Api  On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/blob/master/PasswordServerAPI_Project/PasswordServerApi/Postman_Request_Collection.json),
 - Password Hack Scanner On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/blob/master/PasswordServerAPI_Project/PasswordHackScanner/PasswordHackScanner.postman_collection.json),
