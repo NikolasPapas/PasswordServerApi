@@ -27,12 +27,12 @@ Editing & Using :
 -	 Browser
 
 ### Api AspNetCore 3.0
-On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerApi"
+On: "https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerApi"
 ### Api AspNetCore 3.0
-On: "PasswordServerApi/PasswordServerAPI_Project/PassswordHackScanner"
+On: "https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordHackScanner"
 ### Ui AspNetCore 2.2
-On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerUI"
+On: "https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI"
 ### Ui Anular 8.3.9
-On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerUI/ClientApp"
+On: "https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI/ClientApp"
 ### Postman Requests
-On:  "PasswordServerApi/PasswordServerAPI_Project/Postman_Request_Collection.json"
+On:  "https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project"
