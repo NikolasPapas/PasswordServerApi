@@ -14,7 +14,7 @@ UI :
 -	 Angular 8.3.9 
 
 Editing & Using :
--	 Visual Studio Code IDE Code editor
+-	 Visual Studio 2017 Code IDE Code editor
 -	 Browser
 
 
