@@ -20,7 +20,7 @@ API :
 -	AspNetCore 3.0. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordHackScanner) 
 
 UI :
--	 AspNetCore 2.2.On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI) 
+-	 AspNetCore 2.2. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI) 
 -	 Angular 8.3.9. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI/ClientApp) 
 
 
