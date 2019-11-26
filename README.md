@@ -6,7 +6,7 @@ Info :
 
 Applications :
 -	AspNetCore 3.0 Rest Api: For management passwords and accounts.
--	AspNetCore 2.2 Rest Api: For Dumy Email takeover shearcer.
+-	AspNetCore 3.0 Rest Api: For Dumy Email takeover shearcer.
 - 	 Angular 8 + AspNetCore 2.2 Application:  For connection and use Api.
 
 
@@ -15,7 +15,7 @@ API  :
 -	AspNetCore 3.0 .
 
 API :
--	AspNetCore 2.2 .
+-	AspNetCore 3.0 .
 
 UI :
 -	 Angular 8.3.9 ,
@@ -28,7 +28,7 @@ Editing & Using :
 
 ### Api AspNetCore 3.0
 On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerApi"
-### Api AspNetCore 2.2
+### Api AspNetCore 3.0
 On: "PasswordServerApi/PasswordServerAPI_Project/PassswordHackScanner"
 ### Ui AspNetCore 2.2
 On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerUI"
