@@ -26,7 +26,7 @@ Editing & Using :
 -	Visual Studio IDE Code editor
 -	 Postman Collaboration Platform for API
 -	 Browser
-
+## Paths
 ### Api AspNetCore 3.0
 On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerApi) 
 ### Api AspNetCore 3.0
