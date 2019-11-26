@@ -1,3 +1,4 @@
+
 # Password Server UI
 
 ## Description
@@ -21,6 +22,6 @@ Editing & Using :
 -	 Browser
 
 ### Ui AspNetCore 2.2
-On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerUI"
+On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI)
 ### Ui Anular 8.3.9
-On: "PasswordServerApi/PasswordServerAPI_Project/PasswordServerUI/ClientApp"
+On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI/ClientApp)
