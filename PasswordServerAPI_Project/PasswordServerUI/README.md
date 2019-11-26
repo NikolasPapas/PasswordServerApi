@@ -16,7 +16,7 @@ UI :
 -	 Angular 8.3.9 
 
 Editing & Using :
--	Visual Studio 2019 IDE Code editor
+-	Visual Studio 2017 IDE Code editor
 -	Visual Studio Code IDE Code editor
 -	 Browser
 
