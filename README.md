@@ -13,13 +13,13 @@ Applications :
 
 
 ## Tech
-API  :
+API PasswordServerApi :
 -	AspNetCore 3.0. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerApi) 
 
-API :
+API PasswordHackScanner :
 -	AspNetCore 3.0. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordHackScanner) 
 
-UI :
+UI PasswordServerUI :
 -	 AspNetCore 2.2. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI) 
 -	 Angular 8.3.9. On: [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project/PasswordServerUI/ClientApp) 
 
