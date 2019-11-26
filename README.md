@@ -1,4 +1,5 @@
 
+
 # Password Server Api
 
 ## Description
@@ -31,4 +32,5 @@ Editing & Using :
 
 ## Extra Paths
 ### Postman Requests
-On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/tree/master/PasswordServerAPI_Project) 
+- Password Server Api  On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/blob/master/PasswordServerAPI_Project/PasswordServerApi/Postman_Request_Collection.json),
+- Password Hack Scanner On:  [Path](https://github.com/NikolasPapas/PasswordServerApi/blob/master/PasswordServerAPI_Project/PasswordHackScanner/PasswordHackScanner.postman_collection.json),
