@@ -22,15 +22,5 @@ namespace PasswordServerApi
                webBuilder.UseStartup<Startup>();
            });
 
-
-
-        //     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //WebHost.CreateDefaultBuilder(args)
-        ////.UseUrls("http://*:53257;https://hostname:44390")
-        //.UseUrls("http://*:53257")
-        //	.UseStartup<Startup>()
-        //	.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-        //		.ReadFrom.Configuration(hostingContext.Configuration));
-
     }
 }
