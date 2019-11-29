@@ -40,6 +40,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     @Input() ActionEvent: ApplicationAction;
     @Input() AddAccountEvent: number;
     @Input() AddPasswordEvent: number;
+    @Input() isActionAddAccountIsOn: boolean = false;
 
     @Output() IsActionAddPasswordIsOnEvent = new EventEmitter<number>();
 
@@ -48,7 +49,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
     expandedIndex: number = -1;
     public selectedAccountIndex: number = -1;
     selectedPasswordIndex: number = -1;
-    isActionAddAccountIsOn: boolean = false;
+
 
 
     constructor(

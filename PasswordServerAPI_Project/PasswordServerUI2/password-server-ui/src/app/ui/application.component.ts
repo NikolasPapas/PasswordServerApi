@@ -48,6 +48,12 @@ export class ApplicationComponent extends BaseComponent implements OnInit {
         this.configurationService.isLoginIn.subscribe(value => { this.mastDoLogIn = value });
     }
 
+    LogOut(){
+        this.configurationService.setToken(null);
+    }
+
+
+
     login() {
         let loginRequest: TokenRequest = { username: this.loginForm.get('username').value, password: this.loginForm.get('password').value };
         this.accountService.login(loginRequest).pipe(takeUntil(this._destroyed)).subscribe(

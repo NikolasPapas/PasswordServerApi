@@ -27,6 +27,7 @@ export const Greek = {
     LOGIN:{
         USERNAME:"Username",
         PASSWORD:"Password",
+        LOGOUT:"LogOut"
     },
     TOKENS:{
         PANEL:{

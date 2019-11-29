@@ -25,6 +25,7 @@
                     <app-request-editor-panel [account]="accountModel" (selectedPasswordIndexEvent)="selectedPasswordIndexEvent($event)"></app-request-editor-panel>
                 </mat-expansion-panel>
             </div>
+            <button mat-raised-button color="primary" *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
             <!-- </mat-expansion-panel>
                 </mat-accordion> -->
         </mat-tab>

@@ -10,9 +10,9 @@ import { PasswordEditorComponent } from './main-panel/editor/request-editor/pass
 import { AccountEditorComponent } from './main-panel/editor/request-editor/account-editor/account-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token-section-panel.component';
-import { GoogleMap } from './main-panel/google-map/google-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { BottomSheet } from './common/bottom-sheet/bottom-sheet.component';
+import { GoogleMap } from './common/google-map/google-map.component';
 
 
 
