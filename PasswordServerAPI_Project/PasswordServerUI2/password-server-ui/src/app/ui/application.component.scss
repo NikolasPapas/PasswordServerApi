@@ -17,9 +17,15 @@
   }
 
   .floatingMenuButton {
-    display: flex;
-    top: 0px;
-    left: 0px;
+    display: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+  }
+
+  .floatingLogOutButton {
+    display: fixed !important;
+    top: 0px !important;
+    right: 0px !important;
   }
 
   .mat-sidenav {

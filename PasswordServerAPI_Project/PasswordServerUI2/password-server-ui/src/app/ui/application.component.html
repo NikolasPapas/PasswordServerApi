@@ -34,9 +34,13 @@
         </div>
     </mat-sidenav>
 
+
     <mat-sidenav-content class="col-12">
-        <button mat-flat-button class="floatingMenuButton" (click)="sidenav.toggle()">
+        <button class="floatingMenuButton" mat-flat-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
+        </button>
+        <button class="floatingLogOutButton" mat-flat-button *ngIf="!mastDoLogIn" (click)="LogOut()">
+            <mat-icon>lock</mat-icon>
         </button>
 
         <div *ngIf="mastDoLogIn">
