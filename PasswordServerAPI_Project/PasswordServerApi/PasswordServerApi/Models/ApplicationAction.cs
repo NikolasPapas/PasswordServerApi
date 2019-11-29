@@ -28,7 +28,10 @@ namespace PasswordServerApi.Models
 		[DataMember(Name = "sendApplicationData")]
 		public bool SendApplicationData { get; set; }
 
-		[DataMember(Name = "validationMode")]
+        [DataMember(Name = "dataNeeded")]
+        public DataNeeded DataNeeded { get; set; }
+
+        [DataMember(Name = "validationMode")]
 		public ApplicationValidationMode ValidationMode { get; set; }
 
 		[DataMember(Name = "refreshAfterAction")]

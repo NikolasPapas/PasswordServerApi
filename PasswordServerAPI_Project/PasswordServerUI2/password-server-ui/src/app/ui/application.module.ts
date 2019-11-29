@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token-section-panel.component';
 import { GoogleMap } from './main-panel/google-map/google-map.component';
 import { AgmCoreModule } from '@agm/core';
+import { BottomSheet } from './common/bottom-sheet/bottom-sheet.component';
+
 
 
 @NgModule({
@@ -30,13 +32,15 @@ import { AgmCoreModule } from '@agm/core';
         RequestEditorComponent,
         TokenSectionPanel,
         AccountEditorComponent,
-        PasswordEditorComponent
+        PasswordEditorComponent,
+        BottomSheet,
     ],
     exports: [
         ApplicationComponent,
         GoogleMap,
     ],
     entryComponents: [
+        BottomSheet,
     ],
 })
 export class ApplicationModule { }

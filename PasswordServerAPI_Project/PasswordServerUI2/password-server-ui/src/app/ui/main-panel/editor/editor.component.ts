@@ -17,6 +17,9 @@ import { PasswordActionRequest } from 'src/app/models/requests-responses/request
 import { PasswordActionResponse } from 'src/app/models/requests-responses/responses/password-action-response';
 import { Account } from 'src/app/models/account-model';
 import { BaseRequest } from 'src/app/models/requests-responses/requests/base-request';
+import { MatBottomSheet } from '@angular/material';
+import { BottomSheet } from '../../common/bottom-sheet/bottom-sheet.component';
+import { DataNeeded } from 'src/app/models/enums/data-needed';
 
 @Component({
     selector: 'app-editor',
@@ -26,6 +29,7 @@ import { BaseRequest } from 'src/app/models/requests-responses/requests/base-req
 })
 export class EditorComponent extends BaseComponent implements OnInit {
 
+    activeActions: ApplicationAction[];
     actions: ApplicationAction[];
     ACTION_INDICATOR_ACCOUNT_CONTROLLER: string = "Account";
     ACTION_INDICATOR_PASSWORD_CONTROLLER: string = "Password";
@@ -51,19 +55,20 @@ export class EditorComponent extends BaseComponent implements OnInit {
         private configurationService: ConfigurationService,
         private accountService: AccountService,
         private fileSaveService: FileSaveService,
-        public uiNotificationService: UiNotificationService
+        public uiNotificationService: UiNotificationService,
+        public dialog: MatBottomSheet,
     ) {
         super();
     }
 
     ngOnInit(): void {
         this.actions = this.configurationService.getActions();
-        //this.accountModels.push(new AccountForm().fromModel(null).buildForm());
+        this.activeActions = this.actions.filter(x => x.sendApplicationData == false);
     }
 
     ngOnChanges(changes: SimpleChanges) {
         for (let propName in changes) {
-            if (propName === 'ActionEvent' && this.ActionEvent !=null) {
+            if (propName === 'ActionEvent' && this.ActionEvent != null) {
                 this.onActionSelected(this.ActionEvent);
             }
             if (propName === 'AddAccountEvent' && this.AddAccountEvent != null) {
@@ -94,6 +99,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.collapseAllAccounts();
         this.selectedAccountIndex = index;
         this.IsActionAddPasswordIsOnEvent.emit(this.selectedAccountIndex);
+        this.FieldActiveActions();
     }
 
     closeAccount(index: number) {
@@ -103,11 +109,14 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
     collapseAllAccounts() {
         this.selectedAccountIndex = -1;
+        this.selectedPasswordIndex = -1;
         this.IsActionAddPasswordIsOnEvent.emit(this.selectedAccountIndex);
+        this.FieldActiveActions();
     }
 
     selectedPasswordIndexEvent(passwordIndex: number) {
         this.selectedPasswordIndex = passwordIndex;
+        this.FieldActiveActions();
     }
 
     onActionSelected(action: ApplicationAction) {
@@ -200,6 +209,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.accountModels = [];
         this.selectedAccountIndex = -1;
         this.selectedPasswordIndex = -1;
+        this.FieldActiveActions();
     }
 
     //#endregion
@@ -231,9 +241,29 @@ export class EditorComponent extends BaseComponent implements OnInit {
     }
 
 
-    // this.applicationService.getApplicationListExcel(this.search)
-    // .pipe(takeUntil(this._destroyed)).subscribe(res => this.fileSaveService.saveBlob(res),
-    //     error => this.fileSaveService.handleError(error, this.uiNotificationService));
+    FieldActiveActions() {
+        this.activeActions = [];
+        this.activeActions.push(... this.actions.filter(x => x.sendApplicationData == false));
+        this.activeActions.push(... this.actions.filter(x => this.selectedAccountIndex != null && this.selectedAccountIndex >= 0 && x.dataNeeded == DataNeeded.Account));
+        this.activeActions.push(... this.actions.filter(x => this.selectedPasswordIndex != null && this.selectedPasswordIndex >= 0 && x.dataNeeded == DataNeeded.Password));
+        this.activeActions.push(... this.actions.filter(x => this.selectedAccountIndex != null && this.selectedAccountIndex >= 0 && this.selectedPasswordIndex != null && this.selectedPasswordIndex > 0 && x.dataNeeded == DataNeeded.All));
+    }
 
+
+    openBottomSheet(): void {
+        this.FieldActiveActions();
+        const dialogRef = this.dialog.open(BottomSheet, {
+            data: this.activeActions,
+        });
+
+        dialogRef.afterDismissed().subscribe(res => {
+            if (res) {
+                this.onActionSelected(res);
+                this.dialog.dismiss();
+            }
+            else
+                this.dialog.dismiss();
+        });
+    }
     //#endregion
 }

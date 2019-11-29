@@ -126,7 +126,7 @@ namespace PasswordServerApi.Service
 
         private AccountActionResponse ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
         {
-
+            request.Account = null;
             return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
         }
 

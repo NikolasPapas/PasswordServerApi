@@ -1,6 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { NgModule } from '@angular/core';
-import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatOptionModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatOptionModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatBottomSheetModule } from '@angular/material';
 
 @NgModule({
 	imports: [
@@ -36,7 +36,8 @@ import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardM
 		MatPaginatorModule,
 		CdkTableModule,
 		MatSortModule,
-		MatNativeDateModule
+		MatNativeDateModule,
+		MatBottomSheetModule,
 	],
 	exports: [
 		MatToolbarModule,
@@ -71,7 +72,8 @@ import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardM
 		MatPaginatorModule,
 		CdkTableModule,
 		MatSortModule,
-		MatNativeDateModule
+		MatNativeDateModule,
+		MatBottomSheetModule,
 	]
 })
 export class MaterialModule { }

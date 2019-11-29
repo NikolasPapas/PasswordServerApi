@@ -1,5 +1,11 @@
 @import "./../../../../assets/styles/style.scss";
 
+.mainFloatingActions {
+  bottom: 2em;
+  right: 2em;
+  position: fixed !important;
+  z-index: 100;
+}
 
 mat-card {
   padding: 0.2em;
@@ -12,20 +18,20 @@ mat-accordion {
 }
 
 mat-expansion-panel {
-  padding: 0.5em!important;
-  margin: 0.5em!important;
+  padding: 0.5em !important;
+  margin: 0.5em !important;
 }
 
 .ListCard {
   width: 100%;
 }
 
-.matTabGroup{
- overflow: hidden;
+.matTabGroup {
+  overflow: hidden;
 }
 
 .mat-tab-body-content {
- overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 // .readonlyPanel {

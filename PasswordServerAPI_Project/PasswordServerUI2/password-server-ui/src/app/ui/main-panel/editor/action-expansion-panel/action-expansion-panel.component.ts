@@ -17,8 +17,6 @@ export class ActionExpansionPanelComponent extends BaseComponent implements OnIn
     validationMode=ApplicationValidationMode;
 
     constructor(
-        private configurationService: ConfigurationService,
-        //private language: TranslateService,
     ) {
         super();
     }

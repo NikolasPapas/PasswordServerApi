@@ -8,7 +8,7 @@
             </button>
 
             <!-- Content -->
-            <div class="col-12 row" *ngFor="let action of actions; let index = index;">
+            <!-- <div class="col-12 row" *ngFor="let action of actions; let index = index;">
                 <button class="col-auto" mat-button [matMenuTriggerFor]="actionMenu" [style.color]="action.color">{{action.name}}</button>
                 <mat-menu #actionMenu="matMenu">
                     <button mat-menu-item [disabled]="true">{{'ACTIONS.PANEL.TOOLTIP' | translate}}</button>
@@ -24,7 +24,7 @@
                 <hr class="col-12">
             </div>
             <button class="col-12" mat-button *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-            <button class="col-12" mat-button *ngIf="isActionAddPasswordIsOn != -1" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
+            <button class="col-12" mat-button *ngIf="isActionAddPasswordIsOn != -1" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button> -->
 
             <!-- Footer -->
             <button class="col-12" disabled="true" mat-button>

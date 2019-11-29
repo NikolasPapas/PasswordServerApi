@@ -14,7 +14,7 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
 
     @Input() account: FormGroup;
     @Output() selectedPasswordIndexEvent = new EventEmitter<number>();
-    step = 0;
+    step = -1;
 
     constructor(
         //private configurationService: ConfigurationService,
@@ -41,6 +41,13 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
         this.step = index;
     }
 
+    closePassword(index: number) {
+        if (this.step == index) {
+            this.step = -1;
+            this.selectedPasswordIndexEvent.emit(-1);
+        }
+    }
+
     nextStep() {
         this.step++;
     }
@@ -48,5 +55,4 @@ export class RequestEditorComponent extends BaseComponent implements OnInit {
     prevStep() {
         this.step--;
     }
-
 }

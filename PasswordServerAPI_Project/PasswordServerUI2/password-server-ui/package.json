@@ -25,6 +25,7 @@
     "@ngx-translate/core": "^11.0.1",
     "angular-material-icons": "^0.7.1",
     "hammerjs": "^2.0.8",
+    "ngx-float-button": "^1.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
