@@ -1,31 +1,31 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewEncapsulation } from "@angular/core";
-import { BaseComponent } from "../../../common/base/base.component";
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation } from "@angular/core";
+import { FormArray, FormGroup } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material';
+import { takeUntil } from 'rxjs/operators';
+import { Guid } from 'src/app/common/types/guid';
+import { Account } from 'src/app/models/account-model';
 import { ApplicationAction } from 'src/app/models/configuration/ApplicationAction';
-import { FormGroup, FormArray } from '@angular/forms';
-import { ConfigurationService } from 'src/app/services/configuration.service';
+import { DataNeeded } from 'src/app/models/enums/data-needed';
+import { NotificationLevel } from 'src/app/models/enums/notification-level';
+import { AccountActionRequest } from 'src/app/models/requests-responses/requests/account-action-request';
+import { BaseRequest } from 'src/app/models/requests-responses/requests/base-request';
+import { PasswordActionRequest } from 'src/app/models/requests-responses/requests/password-action-request';
+import { AccountActionResponse } from 'src/app/models/requests-responses/responses/account-action-response';
+import { PasswordActionResponse } from 'src/app/models/requests-responses/responses/password-action-response';
 import { AccountService } from 'src/app/services/account-action.service';
+import { ConfigurationService } from 'src/app/services/configuration.service';
 import { FileSaveService } from 'src/app/services/file-save.service';
 import { UiNotificationService } from 'src/app/services/ui-notification.service';
+import { BaseComponent } from "../../../common/base/base.component";
+import { BottomSheet } from '../../common/bottom-sheet/bottom-sheet.component';
 import { AccountForm } from './request-editor/account-editor/account-form.model';
 import { PasswordForm } from './request-editor/password-editor/password-form.model';
-import { AccountActionRequest } from 'src/app/models/requests-responses/requests/account-action-request';
-import { Guid } from 'src/app/common/types/guid';
-import { takeUntil } from 'rxjs/operators';
-import { AccountActionResponse } from 'src/app/models/requests-responses/responses/account-action-response';
-import { NotificationLevel } from 'src/app/models/enums/notification-level';
-import { PasswordActionRequest } from 'src/app/models/requests-responses/requests/password-action-request';
-import { PasswordActionResponse } from 'src/app/models/requests-responses/responses/password-action-response';
-import { Account } from 'src/app/models/account-model';
-import { BaseRequest } from 'src/app/models/requests-responses/requests/base-request';
-import { MatBottomSheet } from '@angular/material';
-import { BottomSheet } from '../../common/bottom-sheet/bottom-sheet.component';
-import { DataNeeded } from 'src/app/models/enums/data-needed';
 
 @Component({
     selector: 'app-editor',
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None
 })
 export class EditorComponent extends BaseComponent implements OnInit {
 
@@ -52,6 +52,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
 
 
 
+
     constructor(
         private configurationService: ConfigurationService,
         private accountService: AccountService,
@@ -60,6 +61,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         public dialog: MatBottomSheet,
     ) {
         super();
+
     }
 
     ngOnInit(): void {
@@ -82,6 +84,8 @@ export class EditorComponent extends BaseComponent implements OnInit {
             }
         }
     }
+
+
 
     open(index: number) {
         this.collapseAll();
@@ -202,7 +206,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
             let account: Account = new Account();
             if (res.passwords != null)
                 account.passwords = res.passwords;
-            this.accountModels.push(new AccountForm().fromModel(account).buildForm())
+            this.accountModels.push(new AccountForm().fromModel(account).buildForm());
         }
     }
 
@@ -247,7 +251,7 @@ export class EditorComponent extends BaseComponent implements OnInit {
         this.activeActions.push(... this.actions.filter(x => x.sendApplicationData == false));
         this.activeActions.push(... this.actions.filter(x => this.selectedAccountIndex != null && this.selectedAccountIndex >= 0 && x.dataNeeded == DataNeeded.Account));
         this.activeActions.push(... this.actions.filter(x => this.selectedPasswordIndex != null && this.selectedPasswordIndex >= 0 && x.dataNeeded == DataNeeded.Password));
-        this.activeActions.push(... this.actions.filter(x => this.selectedAccountIndex != null && this.selectedAccountIndex >= 0 && this.selectedPasswordIndex != null && this.selectedPasswordIndex > 0 && x.dataNeeded == DataNeeded.All));
+        this.activeActions.push(... this.actions.filter(x => this.selectedAccountIndex != null && this.selectedAccountIndex >= 0 && this.selectedPasswordIndex != null && this.selectedPasswordIndex >= 0 && x.dataNeeded == DataNeeded.All));
     }
 
 

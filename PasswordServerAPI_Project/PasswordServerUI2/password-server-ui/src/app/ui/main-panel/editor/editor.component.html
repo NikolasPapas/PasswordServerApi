@@ -3,16 +3,8 @@
     <mat-tab-group class="matTabGroup" mat-align-tabs="center">
         <mat-tab label="Accounts" *ngIf="accountModels !=null && accountModels.length > 0">
 
+      
             <!-- Account Editor -->
-            <!-- <mat-accordion>
-                    <mat-expansion-panel [disabled]="true" [expanded]="true" class="panel">
-                        <mat-expansion-panel-header>
-                            <mat-grid-list class="ListCard" rowHeight="48px" cols="12">
-                                <mat-grid-tile [colspan]="4">{{'ACTIONS.REQUEST.ACCOUNT.USER_NAME' | translate}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="6">{{'ACTIONS.REQUEST.ACCOUNT.LAST_NAME' | translate}}</mat-grid-tile>
-                                <mat-grid-tile [colspan]="2">{{'ACTIONS.REQUEST.ACCOUNT.ROLE' | translate}}</mat-grid-tile>
-                            </mat-grid-list>
-                        </mat-expansion-panel-header> -->
             <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
                 <mat-expansion-panel class="accordionContentClass" [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="accountModels.length==1 || selectedAccountIndex == indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount(indexAcc)">
                     <mat-expansion-panel-header>
@@ -26,8 +18,7 @@
                 </mat-expansion-panel>
             </div>
             <button mat-raised-button color="primary" *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-            <!-- </mat-expansion-panel>
-                </mat-accordion> -->
+          
         </mat-tab>
         <mat-tab label="Connections">
             <!-- Connection Token Viewer -->

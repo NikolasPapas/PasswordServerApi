@@ -45,7 +45,7 @@ export class AccountForm {
             sex: [{ value: this.sex, disabled: false }, [Validators.required]],
             lastLogIn: [{ value: this.lastLogIn, disabled: true }, [Validators.required]],
             password: [{ value: this.password, disabled: false }, [Validators.required]],
-            role: [{ value: this.role, disabled: false }, [Validators.required]],
+            role: [{ value: this.role, disabled: this.role !=null ? true : false }, [Validators.required]],
             //currentToken: [{ value: this.currentToken, disabled: false }, [Validators.required]],
         });
 
