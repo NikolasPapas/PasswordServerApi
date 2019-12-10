@@ -1,0 +1,43 @@
+@import 'src/assets/styles/palette.scss';
+
+
+$distances: ( 
+    "none" : 0px,
+    "minor" : 6px,
+    "small" : 10px, 
+    "medium" : 20px, 
+    "big" : 30px
+);
+
+$opacity: ( 
+    "invisible" : 0,
+    "transparent" : 0.88,
+    "visible" : 1,
+);
+
+
+
+.applicationDataCard {
+    height: 260px;
+    overflow-y: scroll;
+
+    .applicationDataTable {
+
+        .applicationDataTableLabel {
+            color: map-get($colorPalette, greyTextColor);
+            font-weight: 400;
+        }
+
+        .applicationDataTableData {
+            color: map-get($md-mypalette, 300);
+            font-weight: 300;
+        }
+
+        .applicationDataTableAction {
+            color: map-get($colorPalette, greyTextColor);
+            font-weight: 300;
+            min-width: 40px;
+            height: 50px;
+        }
+    }
+}
