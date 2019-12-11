@@ -1,9 +1,11 @@
+//https://fonts.google.com/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic&amp;subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Iceland:300,400,500,700,400italic&amp;subset=latin-ext');
 @import '~@angular/material/theming';
 
-
+// $font-family:   'Roboto, "Helvetica Neue", sans-serif',
 $general-typography-base: mat-typography-config(
-    $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+    $font-family:   'Iceland, "Helvetica Neue", sans-serif',
     $display-4:     mat-typography-level(112px, 112px, 300),
     $display-3:     mat-typography-level(56px, 56px, 400),
     $display-2:     mat-typography-level(45px, 48px, 400),
