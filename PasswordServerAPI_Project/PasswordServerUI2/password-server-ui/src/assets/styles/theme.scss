@@ -1,24 +1,35 @@
 //https://fonts.google.com/
+//Roboto
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic&amp;subset=latin-ext');
+//Iceland
 @import url('https://fonts.googleapis.com/css?family=Iceland:300,400,500,700,400italic&amp;subset=latin-ext');
+//Montserrat || PT Serif
+@import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Serif&display=swap:300,400,500,700,400italic&amp;subset=latin-ext');
+//Oswald
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700,400italic&amp;subset=latin-ext');
+//Open Sans Condensed
+@import url('https://fonts.googleapis.com/css?family=Open Sans Condensed:300,400,500,700,400italic&amp;subset=latin-ext');
+//Orbitron
+//@import url('https://fonts.googleapis.com/css?family=Orbitron:300,400,500,700,400italic&amp;subset=latin-ext');
+
 @import '~@angular/material/theming';
 
 // $font-family:   'Roboto, "Helvetica Neue", sans-serif',
 $general-typography-base: mat-typography-config(
-    $font-family:   'Iceland, "Helvetica Neue", sans-serif',
+    $font-family:   'Orbitron, "Helvetica Neue", sans-serif',
     $display-4:     mat-typography-level(112px, 112px, 300),
     $display-3:     mat-typography-level(56px, 56px, 400),
     $display-2:     mat-typography-level(45px, 48px, 400),
-    $display-1:     mat-typography-level(34px, 40px, 400),
+    $display-1:     mat-typography-level(30px, 35px, 400),
     $headline:      mat-typography-level(24px, 32px, 400),
     $title:         mat-typography-level(20px, 32px, 500),
     $subheading-2:  mat-typography-level(16px, 28px, 400),
-    $subheading-1:  mat-typography-level(1.5em, 1em, 800),
+    $subheading-1:  mat-typography-level(1.5em, 1em, 400), 
     $body-2:        mat-typography-level(14px, 24px, 500),
     $body-1:        mat-typography-level(14px, 20px, 400),
     $caption:       mat-typography-level(12px, 20px, 400),
-    $button:        mat-typography-level(14px, 14px, 500),
-    $input:         mat-typography-level(16px, 1.125, 400)
+    $button:        mat-typography-level(18px, 18px, 800),
+    $input:         mat-typography-level(18px, 1, 400)
 );
 
 // Be sure that you only ever include this mixin once!
@@ -26,3 +37,19 @@ $general-typography-base: mat-typography-config(
 @include mat-toolbar-typography($general-typography-base);
 @include mat-base-typography($general-typography-base);
 @include angular-material-typography($general-typography-base);
+
+
+//  $font-family:   'Iceland, "Helvetica Neue", sans-serif', Font
+//  $display-4:     mat-typography-level(112px, 112px, 300), 
+//  $display-3:     mat-typography-level(56px, 56px, 400),
+//  $display-2:     mat-typography-level(45px, 48px, 400),
+//  $display-1:     mat-typography-level(34px, 40px, 400),
+//  $headline:      mat-typography-level(24px, 32px, 400),  <h1>
+//  $title:         mat-typography-level(20px, 32px, 500),  <h2>
+//  $subheading-2:  mat-typography-level(16px, 28px, 400),  <h3>
+//  $subheading-1:  mat-typography-level(1.5em, 1em, 800),  <h4>
+//  $body-2:        mat-typography-level(14px, 24px, 500),
+//  $body-1:        mat-typography-level(14px, 20px, 400),
+//  $caption:       mat-typography-level(12px, 20px, 400),
+//  $button:        mat-typography-level(14px, 14px, 500),
+//  $input:         mat-typography-level(16px, 1.125, 400)  Form input Fields
