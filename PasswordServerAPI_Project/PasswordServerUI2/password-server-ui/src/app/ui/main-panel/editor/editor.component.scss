@@ -7,19 +7,17 @@
   z-index: 100;
 }
 
-mat-card {
-  padding: 0.2em;
-  margin: 0.5em;
-}
 
-mat-accordion {
+.accordionContentClass {
   padding: 0.1em;
   margin: 0.1em;
+  background: $matpanelBackground;
 }
 
-mat-expansion-panel {
+.accordionContentClass{
   padding: 0.5em !important;
-  margin: 0.5em !important;
+  margin: 0.5em !important;  
+  background: transparent !important;
 }
 
 .ListCard {
@@ -27,11 +25,13 @@ mat-expansion-panel {
 }
 
 .matTabGroup {
-  overflow: hidden;
+  overflow: hidden; 
+  background: $matsubBackground;
 }
 
 .mat-tab-body-content {
   overflow: hidden !important;
+  background: transparent;
 }
 
 // .readonlyPanel {
