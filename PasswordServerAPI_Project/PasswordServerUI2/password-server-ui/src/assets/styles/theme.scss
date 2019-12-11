@@ -9,14 +9,15 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700,400italic&amp;subset=latin-ext');
 //Open Sans Condensed
 @import url('https://fonts.googleapis.com/css?family=Open Sans Condensed:300,400,500,700,400italic&amp;subset=latin-ext');
-//Orbitron
-//@import url('https://fonts.googleapis.com/css?family=Orbitron:300,400,500,700,400italic&amp;subset=latin-ext');
 
 @import '~@angular/material/theming';
 
 // $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+// $font-family:   'Roboto',
+// $font-family:   'Helvetica Neue',
+// $font-family:   'sans-serif',
 $general-typography-base: mat-typography-config(
-    $font-family:   'Orbitron, "Helvetica Neue", sans-serif',
+    $font-family:   'Montserrat',
     $display-4:     mat-typography-level(112px, 112px, 300),
     $display-3:     mat-typography-level(56px, 56px, 400),
     $display-2:     mat-typography-level(45px, 48px, 400),
