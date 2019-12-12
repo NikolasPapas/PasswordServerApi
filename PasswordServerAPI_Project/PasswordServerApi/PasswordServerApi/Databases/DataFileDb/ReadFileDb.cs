@@ -22,7 +22,7 @@ namespace PasswordServerApi.DataFileDb
 
         public ReadFileDb(ILoggingService logger,string import_FilePath, string import_FileName_account, string import_FileName_password, string import_FileName_login_tokens)
 		{
-			IMPORT_PATH = import_FilePath;
+			IMPORT_PATH = Directory.GetCurrentDirectory() + "\\"+import_FilePath;
 			IMPORT_FILENAME_ACCOUNT = import_FileName_account;
 			IMPORT_FILENAME_PASSWORD = import_FileName_password;
 			IMPORT_FILENAME_LOGIN_TOKENS = import_FileName_login_tokens;
