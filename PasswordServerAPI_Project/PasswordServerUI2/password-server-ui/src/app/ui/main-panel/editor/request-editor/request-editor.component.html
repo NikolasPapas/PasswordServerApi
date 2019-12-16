@@ -5,7 +5,7 @@
                 <mat-card-title>{{'TITLES.CARDS.ACCOUNT' | translate}}</mat-card-title>
             </mat-card-header>
             <mat-card-content *ngIf="!collapsedAccount" class="col-12"> -->
-                    <app-account-editor-panel class="col-12" [account]="account"></app-account-editor-panel>
+    <app-account-editor-panel class="col-12" [account]="account"></app-account-editor-panel>
     <!-- </mat-card-content>
         </mat-card>
     </div> -->
@@ -17,7 +17,7 @@
             <mat-card-content *ngIf="!collapsedPassword" class="col-12"> -->
     <mat-accordion class="col-12">
         <div *ngFor="let password of account.get('passwords')['controls']; let i = index">
-            <mat-expansion-panel class="matPasswordExpandPanel" [expanded]="step === i" (opened)="setStep(i)"(closed)="closePassword(i)" hideToggle>
+            <mat-expansion-panel class="matPasswordExpandPanel" [expanded]="step === i" (opened)="setStep(i)" (closed)="closePassword(i)" hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title [style.color]="getColor(password.get('strength').value)">
                         <h4>{{i+1}}. {{password.get('name').value}}</h4>
@@ -35,7 +35,7 @@
             </mat-expansion-panel>
         </div>
     </mat-accordion>
-    <button mat-raised-button color="primary"class="col-auto" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
+    <button mat-raised-button color="primary" class="col-auto" (click)="addPassword()">{{'COMMON.ADD_PASSWORD' | translate}}</button>
 
     <!-- </mat-card-content>
         </mat-card>

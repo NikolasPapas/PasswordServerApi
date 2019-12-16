@@ -11,6 +11,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open Sans Condensed:300,400,500,700,400italic&amp;subset=latin-ext');
 
 @import '~@angular/material/theming';
+@import './palette.scss';
 
 // $font-family:   'Roboto, "Helvetica Neue", sans-serif',
 // $font-family:   'Roboto',
@@ -40,17 +41,14 @@ $general-typography-base: mat-typography-config(
 @include angular-material-typography($general-typography-base);
 
 
-//  $font-family:   'Iceland, "Helvetica Neue", sans-serif', Font
-//  $display-4:     mat-typography-level(112px, 112px, 300), 
-//  $display-3:     mat-typography-level(56px, 56px, 400),
-//  $display-2:     mat-typography-level(45px, 48px, 400),
-//  $display-1:     mat-typography-level(34px, 40px, 400),
-//  $headline:      mat-typography-level(24px, 32px, 400),  <h1>
-//  $title:         mat-typography-level(20px, 32px, 500),  <h2>
-//  $subheading-2:  mat-typography-level(16px, 28px, 400),  <h3>
-//  $subheading-1:  mat-typography-level(1.5em, 1em, 800),  <h4>
-//  $body-2:        mat-typography-level(14px, 24px, 500),
-//  $body-1:        mat-typography-level(14px, 20px, 400),
-//  $caption:       mat-typography-level(12px, 20px, 400),
-//  $button:        mat-typography-level(14px, 14px, 500),
-//  $input:         mat-typography-level(16px, 1.125, 400)  Form input Fields
+
+
+$custom-theme-primary: mat-palette($mat-grey);
+$custom-theme-accent: mat-palette($mat-amber, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-deep-orange);
+
+//$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+$custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+
+@include angular-material-theme($custom-theme);

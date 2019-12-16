@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigurationService } from './services/configuration.service';
 import { Greek } from './common/language/gr';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent {
   }
   
   ngOnInit() {
+
     // Language Configuration
     this.translate.setDefaultLang('gr');
     this.translate.use('gr');

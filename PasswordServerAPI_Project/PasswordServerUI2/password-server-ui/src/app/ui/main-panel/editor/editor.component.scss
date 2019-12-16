@@ -1,5 +1,6 @@
 @import "./../../../../assets/styles/style.scss";
 
+
 .mainFloatingActions {
   bottom: 2em;
   right: 2em;
@@ -11,7 +12,6 @@
 .accordionContentClass {
   padding: 0.1em;
   margin: 0.1em;
-  background: $matpanelBackground;
 }
 
 .accordionContentClass{
@@ -26,7 +26,6 @@
 
 .matTabGroup {
   overflow: hidden; 
-  background: $matsubBackground;
 }
 
 .mat-tab-body-content {
