@@ -52,6 +52,18 @@ namespace PasswordServerApi.Interfaces
 
 		#endregion
 
+		#region Notes
+
+		List<NoteDto> FindUserNotes(Guid id);
+
+		NoteDto FindNote(Guid id, string note);
+
+		NoteDto SaveNote(Guid id, string noteId, string note);
+
+		void DeleteNote(Guid id, string noteId);
+
+		#endregion
+
 		void FilldDatabase(List<AccountDto> accounts);
 
 	}
