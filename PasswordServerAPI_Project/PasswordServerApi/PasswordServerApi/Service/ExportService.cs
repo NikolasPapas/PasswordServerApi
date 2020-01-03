@@ -31,7 +31,7 @@ namespace PasswordServerApi.Service
 
 		public HttpResponseMessage Export()
 		{
-			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }, true).ToList();
+			List<AccountDto> accounts = _baseService.GetAccounts(new Models.Account.Requests.AccountActionRequest() { }).ToList();
 			var stream = new System.IO.MemoryStream();
 			using (var package = new ExcelPackage(stream))
 			{

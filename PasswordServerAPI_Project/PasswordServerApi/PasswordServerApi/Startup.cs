@@ -27,6 +27,7 @@ using System.Linq;
 using Serilog;
 using System.IO;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace PasswordServerApi
 {
@@ -77,6 +78,7 @@ namespace PasswordServerApi
 			services.AddTransient<IExceptionHandler, ExceptionHandler>();
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
 			services.AddScoped<IUserManagementService, UserManagementService>();
+			services.AddScoped<IPasswordHasher<AccountDto>, PasswordHasher<AccountDto>>();
 			//services.AddSingleton<HttpClient, HttpClient>();
 			//var serviceProvider = services.BuildServiceProvider();
 			//var httpClientservice = serviceProvider.GetService<HttpClient>();
@@ -233,7 +235,7 @@ namespace PasswordServerApi
 			for (int i = 105; i <= 115; i++)
 			{
 				var setData = GetDumyfullAccount(i);
-				storageService.SetAccount(setData.Item1);
+				storageService.SetAccount(setData.Item1, setData.Item1.Password);
 				setData.Item2.ForEach(pass => storageService.SetPassword(pass));
 			}
 		}

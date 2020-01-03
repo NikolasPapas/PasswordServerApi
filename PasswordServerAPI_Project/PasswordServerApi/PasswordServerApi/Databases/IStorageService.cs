@@ -11,9 +11,11 @@ namespace PasswordServerApi.StorageLayer
 	{
 		#region Account
 
+		bool ValidateAccount(AccountDto addAccount);
+
 		List<AccountDto> GetAccounts();
 
-		AccountDto SetAccount(AccountDto addAccount);
+		AccountDto SetAccount(AccountDto addAccount, string password);
 
 		void DeleteAccount(AccountDto addAccount);
 

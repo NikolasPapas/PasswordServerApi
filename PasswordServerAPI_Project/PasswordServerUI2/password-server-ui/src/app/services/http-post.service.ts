@@ -18,7 +18,7 @@ export class HttpPostService {
     ) { }
 
     private handleHttpError(error: any): Observable<any> {
-        if (error.status != 200 && error.status != 500) {
+        if (error.status != 200 && error.status != 500 && error.status != undefined) {
             this.configurationService.setToken(null);
             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.status + " " + error.statusText);
             throw of(error);
@@ -27,7 +27,7 @@ export class HttpPostService {
             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
             throw of(error);
         }
-        if (error.value && error.value.desc) {
+        if (error.value) {
             this.uiNotificationService.handleMessage(NotificationLevel.Error, error.value.desc);
             throw of(error);
         }
@@ -61,6 +61,9 @@ export class HttpPostService {
     private resolve<T>(response: any): any {      
         if (response.error) {
             let error = response.error;
+            throw of(new Error(error));
+        }else if(response.payload.warningMessages){
+            let error = response.payload.warningMessages;
             throw of(new Error(error));
         }
         else {

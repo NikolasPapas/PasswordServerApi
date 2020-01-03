@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DataSqliteDB.DataModels;
 using PasswordServerApi.DTO;
@@ -15,13 +16,15 @@ namespace PasswordServerApi.Service
 {
 	public class BaseService : IBaseService
 	{
-		private IStorageService _storageService;
+		private readonly IStorageService _storageService;
 
-		private ILoggingService _logger;
+		private readonly ILoggingService _logger;
+		private readonly IPasswordHasher<AccountDto> _passwordHasher;
 
-		public BaseService(IStorageService storageService, ILoggingService logger)
+		public BaseService(IStorageService storageService, ILoggingService logger, IPasswordHasher<AccountDto> passwordHasher)
 		{
 			_storageService = storageService;
+			_passwordHasher = passwordHasher;
 			_logger = logger;
 		}
 
@@ -30,16 +33,18 @@ namespace PasswordServerApi.Service
 		public AccountDto GetSpesificAccount(AccountActionRequest request)
 		{
 			List<AccountDto> accounts = _storageService.GetAccounts();
-
-			return accounts.Find(x => request?.Account?.UserName == x.UserName && request?.Account?.Password == x.Password);
+			AccountDto user = accounts.Find(x => request?.Account?.UserName == x.UserName);
+			if (_storageService.ValidateAccount(request.Account))
+				return user;
+			return null;
 		}
 
-		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full)
+		public IEnumerable<AccountDto> GetAccounts(AccountActionRequest request)
 		{
 			List<AccountDto> accounts = _storageService.GetAccounts();
 			List<AccountDto> filteredAccounts = new List<AccountDto>();
 
-			var filtered = accounts.FindAll(x =>
+			return accounts.FindAll(x =>
 			{
 				bool isCorrectAccount = false;
 				isCorrectAccount = (!string.IsNullOrWhiteSpace(request?.Account?.UserName) ? x.UserName == request?.Account?.UserName : true) &&
@@ -49,16 +54,13 @@ namespace PasswordServerApi.Service
 									(!string.IsNullOrWhiteSpace(request?.Account?.Role) ? x.Role == request?.Account?.Role : true);
 				return isCorrectAccount;
 			});
-			if (full)
-				return filtered;
-			return filtered.Select(x => { if (request?.Account?.Password == null) { x.Password = ""; /*x.CurrentToken = "";*/ } return x; });
 		}
 
 		public AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full = false)
 		{
 			AccountDto accountToApdate = _storageService.GetAccounts().Find(x => x.AccountId == accountDto.AccountId);
 
-			if (Role != "Admin" && accountDto.Password != accountToApdate.Password)
+			if (Role != "Admin" && _passwordHasher.VerifyHashedPassword(accountDto,accountDto.Password,accountToApdate.Password)== PasswordVerificationResult.Success)
 				throw new Exception("Invalid Password");
 
 			accountToApdate.Email = accountDto.Email;
@@ -70,12 +72,11 @@ namespace PasswordServerApi.Service
 			{
 				accountToApdate.LastLogIn = accountDto.LastLogIn;
 				accountToApdate.Role = accountDto.Role;
-				//accountToApdate.CurrentToken = accountDto.CurrentToken;
-				accountToApdate.Password = accountDto.Password;
+				accountToApdate.Password = _passwordHasher.HashPassword(accountDto, accountDto.Password);
 				accountToApdate.Passwords = accountDto.Passwords;
 			}
 
-			_storageService.SetAccount(accountToApdate);
+			accountDto=_storageService.SetAccount(accountToApdate, accountDto.Password);
 
 			return accountDto;
 		}
@@ -83,14 +84,12 @@ namespace PasswordServerApi.Service
 		public AccountDto GetAccountById(Guid id, bool full)
 		{
 			AccountDto results = _storageService.GetAccounts().Find(x => x.AccountId == id);
-			if (!full)
-				results.Password = "";
 			return results;
 		}
 
 		public AccountDto AddNewAccount(AccountDto request)
 		{
-			return _storageService.SetAccount(request);
+			return _storageService.SetAccount(request, request.Password);
 		}
 
 		public AccountDto RemoveAccount(AccountDto request)
@@ -149,7 +148,7 @@ namespace PasswordServerApi.Service
 		{
 			foreach (AccountDto account in accounts)
 			{
-				_storageService.SetAccount(account);
+				_storageService.SetAccount(account, account.Password);
 				account.Passwords.ForEach(pass => _storageService.SetPassword(pass));
 			}
 		}

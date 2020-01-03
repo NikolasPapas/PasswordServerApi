@@ -92,7 +92,7 @@ namespace PasswordServerApi.Service
         {
             AccountDto resultAccount = new AccountDto();
             request.Account = resultAccount;
-            List<AccountDto> accountsList = _baseService.GetAccounts(request, false).ToList();
+            List<AccountDto> accountsList = _baseService.GetAccounts(request).ToList();
 
             //if exist then update
             if (accountsList.Find(x => x.UserName == requestedAccount.UserName || x.AccountId == requestedAccount.AccountId) != null)
@@ -127,7 +127,7 @@ namespace PasswordServerApi.Service
         private AccountActionResponse ActionGetAccountAndPasswordFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
         {
             request.Account = null;
-            return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
+            return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request).ToList() };
         }
 
         private AccountActionResponse ActionRemoveAccountFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)
@@ -140,7 +140,7 @@ namespace PasswordServerApi.Service
             });
             _baseService.RemoveAccount(accountToDelete);
 
-            return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request, false).ToList() };
+            return new AccountActionResponse() { Accounts = _baseService.GetAccounts(request).ToList() };
         }
 
         private AccountActionResponse GetIfHackedFunc(AccountDto savedAccount, AccountDto requestedAccount, AccountActionRequest request, string Role)

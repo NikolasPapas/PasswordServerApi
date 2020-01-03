@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using PasswordServerApi.Databases.DataModels;
 using PasswordServerApi.DataSqliteDB;
 using PasswordServerApi.DataSqliteDB.DataModels;
@@ -14,10 +15,20 @@ namespace PasswordServerApi.StorageLayer
 	public class StorageServiceDb : IStorageService
 	{
 		ApplicationDbContext _dbContext;
+		private readonly IPasswordHasher<AccountDto> _passwordHasher;
 
-		public StorageServiceDb(ApplicationDbContext dbContext)
+		public bool ValidateAccount(AccountDto validateAccount)
+		{
+			List<AccountDto> accounts = new List<AccountDto>();
+			_dbContext?.Accounts?.ToList()?.ForEach(x => accounts.Add(GetAccountDto(JsonConvert.DeserializeObject<AccountModel>(x.JsonData), true)));
+			AccountDto validAccount = accounts.Find(x => x.UserName == validateAccount.UserName);
+			return validAccount != null && _passwordHasher.VerifyHashedPassword(validAccount, validAccount.Password, validateAccount?.Password) == PasswordVerificationResult.Success;
+		}
+
+		public StorageServiceDb(ApplicationDbContext dbContext, IPasswordHasher<AccountDto> passwordHasher)
 		{
 			_dbContext = dbContext;
+			_passwordHasher = passwordHasher;
 		}
 
 		#region Account
@@ -29,22 +40,29 @@ namespace PasswordServerApi.StorageLayer
 			return accounts;
 		}
 
-		public AccountDto SetAccount(AccountDto addAccount)
+		public AccountDto SetAccount(AccountDto addAccount, string password)
 		{
 			List<AccountDto> accounts = GetAccounts();
 			if (accounts.Find(x => x.AccountId == addAccount.AccountId) != null)
-				return UpdateAccount(addAccount);
+				return UpdateAccount(addAccount, password);
 			else
 				return AddNewAccount(addAccount);
 		}
 
 		#region Set AccountDto Helpers
 
-		public AccountDto UpdateAccount(AccountDto accountDto)
+		public AccountDto UpdateAccount(AccountDto accountDto, string password)
 		{
 			AccountModel updateAccount = GetAccountModel(accountDto);
 			EndityAbstractModelAccount AccountModelData = _dbContext.Accounts.ToList().Find(x => x.EndityId == updateAccount.AccountId);
 			AccountModel dbAccountModel = JsonConvert.DeserializeObject<AccountModel>(AccountModelData.JsonData);
+
+
+			updateAccount.Password = dbAccountModel.Password;
+			updateAccount.UserName = dbAccountModel.UserName;
+			updateAccount.Email = dbAccountModel.Email;
+			if (!string.IsNullOrWhiteSpace(password))
+				updateAccount.Password = _passwordHasher.HashPassword(accountDto, password);
 
 			AccountModelData.JsonData = JsonConvert.SerializeObject(updateAccount);
 			_dbContext.Accounts.Update(AccountModelData);
@@ -74,8 +92,11 @@ namespace PasswordServerApi.StorageLayer
 
 		#region Account Converter
 
-		private AccountDto GetAccountDto(AccountModel dbAccount)
+		private AccountDto GetAccountDto(AccountModel dbAccount ,bool  full =false)
 		{
+			string password = "";
+			if (full)
+				password = dbAccount.Password;
 			return new AccountDto()
 			{
 				AccountId = Guid.Parse(dbAccount.AccountId),
@@ -84,7 +105,7 @@ namespace PasswordServerApi.StorageLayer
 				UserName = dbAccount.UserName,
 				Email = dbAccount.Email,
 				Role = dbAccount.Role,
-				Password = dbAccount.Password,
+				Password = password,
 				Sex = dbAccount.Sex,
 				LastLogIn = dbAccount.LastLogIn,
 				//CurrentToken = dbAccount.CurrentToken,
@@ -102,7 +123,7 @@ namespace PasswordServerApi.StorageLayer
 				UserName = dtoAccount.UserName,
 				Email = dtoAccount.Email,
 				Role = dtoAccount.Role,
-				Password = dtoAccount.Password,
+				Password = _passwordHasher.HashPassword(dtoAccount, dtoAccount.Password),
 				Sex = dtoAccount.Sex,
 				LastLogIn = dtoAccount.LastLogIn,
 				//CurrentToken = dtoAccount.CurrentToken,

@@ -14,7 +14,7 @@ namespace PasswordServerApi.Interfaces
 
 		AccountDto GetSpesificAccount(AccountActionRequest request);
 
-		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request, bool full);
+		IEnumerable<AccountDto> GetAccounts(AccountActionRequest request);
 
 		AccountDto UpdateAccount(AccountDto accountDto, string Role, bool full);
 
