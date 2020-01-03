@@ -40,5 +40,15 @@ namespace PasswordServerApi.StorageLayer
 		void DeleteToken(LoginTokenDto loginToken);
 
 		#endregion
+
+		#region Notes
+
+		List<NoteDto> GetNotes();
+
+		List<NoteDto> SetNote(NoteDto note);
+
+		void DeleteNote(NoteDto note);
+
+		#endregion
 	}
 }

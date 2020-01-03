@@ -251,14 +251,14 @@ namespace PasswordServerApi.StorageLayer
         public List<LoginTokenDto> GetTokens()
         {
             List<LoginTokenDto> Tokens = new List<LoginTokenDto>();
-            _fileReader.ReadFileTokenToken()?.ToList().ForEach(x => Tokens.Add(GetLoginTokenDtoFromModel(x)));
+            _fileReader.ReadFileToken()?.ToList().ForEach(x => Tokens.Add(GetLoginTokenDtoFromModel(x)));
             return Tokens;
         }
 
         public List<LoginTokenDto> SetToken(LoginTokenDto loginToken)
         {
             List<LoginTokenDto> Tokens = new List<LoginTokenDto>();
-            List<LoginTokenModel> TokenModels = _fileReader.ReadFileTokenToken().ToList();
+            List<LoginTokenModel> TokenModels = _fileReader.ReadFileToken().ToList();
             int index = TokenModels.FindIndex(x => x.LoginTokenId == loginToken.LoginTokenId.ToString());
             if (index > 0 && index < TokenModels.Count)
             {
@@ -273,7 +273,7 @@ namespace PasswordServerApi.StorageLayer
         public void DeleteToken(LoginTokenDto loginToken)
         {
             List<LoginTokenDto> Tokens = new List<LoginTokenDto>();
-            List<LoginTokenModel> TokenModels = _fileReader.ReadFileTokenToken().ToList();
+            List<LoginTokenModel> TokenModels = _fileReader.ReadFileToken().ToList();
             int index = TokenModels.FindIndex(x => x.LoginTokenId == loginToken.LoginTokenId.ToString());
             if (index > 0 && index < TokenModels.Count)
             {
@@ -306,6 +306,71 @@ namespace PasswordServerApi.StorageLayer
                 Token = model.Token,
                 UserAgent = model.UserAgent,
                 LastLogIn = model.LastLogIn
+            };
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Notes
+
+        public List<NoteDto> GetNotes()
+        {
+            List<NoteDto> Notes = new List<NoteDto>();
+            _fileReader.ReadFileNote()?.ToList().ForEach(x => Notes.Add(GetNoteDtoFromModel(x)));
+            return Notes;
+        }
+
+        public List<NoteDto> SetNote(NoteDto note)
+        {
+            List<NoteDto> Notes = new List<NoteDto>();
+            List<NoteModel> NoteModels = _fileReader.ReadFileNote().ToList();
+            int index = NoteModels.FindIndex(x => x.NoteId == note.NoteId.ToString());
+            if (index > 0 && index < NoteModels.Count)
+            {
+                NoteModels.RemoveAt(index);
+            }
+            note.LastEdit = DateTime.Now;
+            NoteModels.Add(GetNoteModelFromDto(note));
+            _fileReader.WriteFileNote(NoteModels)?.ToList().ForEach(x => Notes.Add(GetNoteDtoFromModel(x)));
+            return Notes;
+        }
+
+        public void DeleteNote(NoteDto note)
+        {
+            List<NoteDto> Notes = new List<NoteDto>();
+            List<NoteModel> NoteModels = _fileReader.ReadFileNote().ToList();
+            int index = NoteModels.FindIndex(x => x.NoteId == note.NoteId.ToString());
+            if (index > 0 && index < NoteModels.Count)
+            {
+                NoteModels.RemoveAt(index);
+            }
+            _fileReader.WriteFileNote(NoteModels);
+        }
+
+        #region Helpers
+
+        private NoteDto GetNoteDtoFromModel(NoteModel model)
+        {
+            return new NoteDto
+            {
+                NoteId = Guid.Parse(model.NoteId),
+                UserId = Guid.Parse(model.UserId),
+                Note = model.Note,
+                LastEdit = model.LastEdit
+            };
+        }
+
+
+        private NoteModel GetNoteModelFromDto(NoteDto model)
+        {
+            return new NoteModel
+            {
+                NoteId = model.NoteId.ToString(),
+                UserId = model.UserId.ToString(),
+                Note = model.Note,
+                LastEdit = model.LastEdit
             };
         }
 

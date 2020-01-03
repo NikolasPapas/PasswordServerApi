@@ -23,6 +23,5 @@ namespace PasswordServerApi.Models.DTO
 
 		[DataMember(Name = "lastLogIn")]
 		public DateTime? LastLogIn { get; set; }
-
 	}
 }

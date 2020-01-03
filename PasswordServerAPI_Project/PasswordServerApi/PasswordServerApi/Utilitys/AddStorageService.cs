@@ -18,8 +18,9 @@ namespace PasswordServerApi.Utilitys
                 loggingService,
                 configurationManager.GetString("FileDB", "MainPath"),
 				configurationManager.GetString("FileDB", "AccountsPath"),
-				configurationManager.GetString("FileDB", "PasswordPath"),
-				configurationManager.GetString("FileDB", "LoginTokensPath")));
+				configurationManager.GetString("FileDB", "PasswordsPath"),
+				configurationManager.GetString("FileDB", "LoginTokensPath"),
+				configurationManager.GetString("FileDB", "NotesPath")));
 			services.AddTransient<IStorageService, StorageServiceFile>();
 		}
 

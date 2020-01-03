@@ -22,5 +22,7 @@ namespace PasswordServerApi.DataSqliteDB
 
 		public DbSet<LoginTokenModel> LoginTokens { get; set; }
 
+		public DbSet<NoteModel> Notes { get; set; }
+
 	}
 }

@@ -11,12 +11,16 @@ namespace PasswordServerApi.DataFileDb
 
 		IEnumerable<EndityAbstractModelPassword> ReadPasswordFile();
 
-		IEnumerable<LoginTokenModel> ReadFileTokenToken();
+		IEnumerable<LoginTokenModel> ReadFileToken();
+		
+		IEnumerable<NoteModel> ReadFileNote();
 
 		IEnumerable<EndityAbstractModelAccount> WriteAccountFile(List<EndityAbstractModelAccount> accountModel);
 
 		IEnumerable<EndityAbstractModelPassword> WritePasswordFile(List<EndityAbstractModelPassword> passwordModel);
 
 		IEnumerable<LoginTokenModel> WriteFileToken(List<LoginTokenModel> loginTokens);
+		
+		IEnumerable<NoteModel> WriteFileNote(List<NoteModel> loginTokens);
 	}
 }

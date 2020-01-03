@@ -283,5 +283,66 @@ namespace PasswordServerApi.StorageLayer
 
 		#endregion
 
+		#region Notes
+
+		public List<NoteDto> GetNotes()
+		{
+			List<NoteDto> tokens = new List<NoteDto>();
+			_dbContext.Notes.ToList().ForEach(x => tokens.Add(GetNoteDtoFromModel(x)));
+			return tokens;
+		}
+
+		public List<NoteDto> SetNote(NoteDto note)
+		{
+			List<NoteDto> Tokens = GetNotes();
+			if (Tokens.Find(x => x.NoteId == note.NoteId) != null)
+				DeleteNote(note);
+			return AddNewNote(note);
+		}
+
+		public List<NoteDto> AddNewNote(NoteDto note)
+		{
+			var newNote = GetNoteModelFromDto(note);
+			_dbContext.Notes.Add(newNote);
+			_dbContext.SaveChanges();
+			return GetNotes();
+		}
+
+		public void DeleteNote(NoteDto note)
+		{
+			var tokenToRemove = _dbContext.Notes.ToList().Find(x => x.NoteId == note.NoteId.ToString());
+			_dbContext.Notes.Remove(tokenToRemove);
+			_dbContext.SaveChanges();
+		}
+
+		#region Helpers
+
+		private NoteDto GetNoteDtoFromModel(NoteModel model)
+		{
+			return new NoteDto
+			{
+				NoteId = Guid.Parse(model.NoteId),
+				UserId = Guid.Parse(model.UserId),
+				Note = model.Note,
+				LastEdit = model.LastEdit
+			};
+		}
+
+
+		private NoteModel GetNoteModelFromDto(NoteDto model)
+		{
+			return new NoteModel
+			{
+				NoteId = model.NoteId.ToString(),
+				UserId = model.UserId.ToString(),
+				Note = model.Note,
+				LastEdit = model.LastEdit
+			};
+		}
+
+		#endregion
+
+		#endregion
+
 	}
 }
