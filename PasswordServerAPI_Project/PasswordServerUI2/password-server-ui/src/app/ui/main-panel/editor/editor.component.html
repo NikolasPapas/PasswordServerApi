@@ -1,9 +1,11 @@
 <!-- <mat-card class="row"> -->
 <form class="col-12">
     <mat-tab-group class="matTabGroup" mat-align-tabs="center">
+        <mat-tab label="Connections">
+            <!-- Connection Token Viewer -->
+            <app-token-section-panel></app-token-section-panel>
+        </mat-tab>
         <mat-tab label="Accounts" *ngIf="accountModels !=null && accountModels.length > 0">
-
-      
             <!-- Account Editor -->
             <div *ngFor="let accountModel of accountModels ; let indexAcc = index;">
                 <mat-expansion-panel class="accordionContentClass" [id]="'editor-panel-acc-'+ indexAcc" hideToggle="true" [expanded]="accountModels.length==1 || selectedAccountIndex == indexAcc" (opened)="openAccount(indexAcc)" (closed)="closeAccount(indexAcc)">
@@ -18,11 +20,6 @@
                 </mat-expansion-panel>
             </div>
             <button mat-raised-button color="primary" *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
-          
-        </mat-tab>
-        <mat-tab label="Connections">
-            <!-- Connection Token Viewer -->
-            <app-token-section-panel></app-token-section-panel>
         </mat-tab>
         <mat-tab label="Your Location">
             <!-- Try To Add Google Maps -->

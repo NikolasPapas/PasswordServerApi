@@ -10,7 +10,7 @@ namespace PasswordServerApi.Databases.DataModels
 	[DataContract]
 	public class LoginTokenModel
 	{
-		[Required]
+		[Key]
 		[DataMember(Name = "LoginTokenId")]
 		public string LoginTokenId { get; set; }
 
@@ -26,7 +26,6 @@ namespace PasswordServerApi.Databases.DataModels
 		[DataMember(Name = "userAgent")]
 		public string UserAgent { get; set; }
 
-		[Required]
 		[DataMember(Name = "lastLogIn")]
 		public DateTime? LastLogIn { get; set; }
 

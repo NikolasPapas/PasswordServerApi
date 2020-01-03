@@ -226,7 +226,7 @@ namespace PasswordServerApi.StorageLayer
 		{
 			List<LoginTokenDto> tokens = new List<LoginTokenDto>();
 			_dbContext.LoginTokens.ToList().ForEach(x => tokens.Add(GetLoginTokenDtoFromModel(x)));
-			return new List<LoginTokenDto>();
+			return tokens;
 		}
 
 		public List<LoginTokenDto> SetToken(LoginTokenDto loginToken)
