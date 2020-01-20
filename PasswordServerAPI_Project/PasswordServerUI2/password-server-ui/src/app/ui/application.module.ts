@@ -13,6 +13,7 @@ import { TokenSectionPanel } from './main-panel/editor/token-section-panel/token
 import { AgmCoreModule } from '@agm/core';
 import { BottomSheet } from './common/bottom-sheet/bottom-sheet.component';
 import { GoogleMap } from './common/google-map/google-map.component';
+import { NoteTabComponent } from './main-panel/editor/note-panel/note-tab.component';
 
 
 
@@ -34,6 +35,7 @@ import { GoogleMap } from './common/google-map/google-map.component';
         AccountEditorComponent,
         PasswordEditorComponent,
         BottomSheet,
+        NoteTabComponent,
     ],
     exports: [
         ApplicationComponent,

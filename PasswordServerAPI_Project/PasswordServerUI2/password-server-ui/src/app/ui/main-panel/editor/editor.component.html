@@ -21,6 +21,10 @@
             </div>
             <button mat-raised-button color="primary" *ngIf="isActionAddAccountIsOn" (click)="addAccount()">{{'COMMON.ADD_ACCOUNT' | translate}}</button>
         </mat-tab>
+        <mat-tab label="Notes">
+             <!-- Notes Editor -->
+            <app-note-tab></app-note-tab>
+        </mat-tab>
         <mat-tab label="Your Location">
             <!-- Try To Add Google Maps -->
             <app-google-map></app-google-map>

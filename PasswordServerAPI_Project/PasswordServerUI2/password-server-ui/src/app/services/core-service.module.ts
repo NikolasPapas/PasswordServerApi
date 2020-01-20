@@ -5,6 +5,7 @@ import { MetaData } from './urlBuilder';
 import { AccountService } from './account-action.service';
 import { FileSaveService } from './file-save.service';
 import { UiNotificationService } from './ui-notification.service';
+import { NoteService } from './note-servece';
 
 //
 //
@@ -31,6 +32,7 @@ export class CoreServiceModule {
 				ConfigurationService,
 				FileSaveService,
 				AccountService,
+				NoteService,
 			],
 		};
 	}

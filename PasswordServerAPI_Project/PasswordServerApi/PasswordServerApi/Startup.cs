@@ -74,6 +74,7 @@ namespace PasswordServerApi
 			services.AddTransient<IAccountService, AccountService>();
 			services.AddTransient<IBaseService, BaseService>();
 			services.AddTransient<IPasswordService, PasswordService>();
+			services.AddTransient<INoteService, NoteService>();
 			services.AddTransient<IExportService, ExportService>();
 			services.AddTransient<IExceptionHandler, ExceptionHandler>();
 			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
@@ -236,6 +237,13 @@ namespace PasswordServerApi
 			{
 				var setData = GetDumyfullAccount(i);
 				storageService.SetAccount(setData.Item1, setData.Item1.Password);
+				storageService.SetNote(new NoteDto()
+				{
+					NoteId = Guid.NewGuid(),
+					Note = "New Dumy Note",
+					UserId = setData.Item1.AccountId,
+					LastEdit = DateTime.Now
+				});
 				setData.Item2.ForEach(pass => storageService.SetPassword(pass));
 			}
 		}

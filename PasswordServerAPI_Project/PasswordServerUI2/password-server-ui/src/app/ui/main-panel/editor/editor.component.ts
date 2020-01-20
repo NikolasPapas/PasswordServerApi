@@ -50,9 +50,6 @@ export class EditorComponent extends BaseComponent implements OnInit {
     public selectedAccountIndex: number = -1;
     selectedPasswordIndex: number = -1;
 
-
-
-
     constructor(
         private configurationService: ConfigurationService,
         private accountService: AccountService,

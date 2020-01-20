@@ -200,16 +200,16 @@ namespace PasswordServerApi.Service
             return _storageService.GetNotes().Find(x => x.Note == note && x.UserId == id);
         }
 
-        public NoteDto SaveNote(Guid id, string noteId, string note)
+        public NoteDto SaveNote(Guid id, Guid noteId, string note)
         {
-            _storageService.SetNote(new NoteDto() { NoteId = Guid.NewGuid(), UserId = id, Note = note, LastEdit = DateTime.Now });
+            _storageService.SetNote(new NoteDto() { NoteId = noteId, UserId = id, Note = note, LastEdit = DateTime.Now });
 
-            return FindNote(id, noteId);
+            return FindNote(id, note);
         }
 
-        public void DeleteNote(Guid id, string noteId)
+        public void DeleteNote(Guid id, Guid noteId)
         {
-            List<NoteDto> NotesToDelete = _storageService.GetNotes().FindAll(x => x.UserId == id && x.NoteId.ToString() == noteId);
+            List<NoteDto> NotesToDelete = _storageService.GetNotes().FindAll(x => x.UserId == id && x.NoteId == noteId);
 
             NotesToDelete.ForEach(note =>
             {

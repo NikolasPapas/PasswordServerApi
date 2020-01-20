@@ -19,6 +19,6 @@ namespace PasswordServerApi.Models.DTO
 		public string Note { get; set; }
 
 		[DataMember(Name = "lastEdit")]
-		public DateTime? LastEdit { get; set; }
+		public DateTime ?LastEdit { get; set; }
 	}
 }

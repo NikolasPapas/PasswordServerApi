@@ -11,5 +11,6 @@ namespace PasswordServerApi.Models.Enums
 		Account = 1,
 		Password = 2,
         All=3,
+		Note = 4,
 	}
 }

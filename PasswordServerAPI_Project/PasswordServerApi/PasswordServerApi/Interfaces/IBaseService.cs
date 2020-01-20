@@ -58,9 +58,9 @@ namespace PasswordServerApi.Interfaces
 
 		NoteDto FindNote(Guid id, string note);
 
-		NoteDto SaveNote(Guid id, string noteId, string note);
+		NoteDto SaveNote(Guid id, Guid noteId, string note);
 
-		void DeleteNote(Guid id, string noteId);
+		void DeleteNote(Guid id, Guid noteId);
 
 		#endregion
 

@@ -294,8 +294,8 @@ namespace PasswordServerApi.StorageLayer
 
 		public List<NoteDto> SetNote(NoteDto note)
 		{
-			List<NoteDto> Tokens = GetNotes();
-			if (Tokens.Find(x => x.NoteId == note.NoteId) != null)
+			List<NoteDto> Notes = GetNotes();
+			if (Notes.Find(x => x.NoteId == note.NoteId) != null)
 				DeleteNote(note);
 			return AddNewNote(note);
 		}
