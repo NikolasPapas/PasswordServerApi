@@ -28,108 +28,110 @@ using Serilog;
 using System.IO;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
+using PasswordServerApi.ActionFilters;
 
 namespace PasswordServerApi
 {
-	public class Startup
-	{
-		public Startup(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-		public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
 
-		public void ConfigureServices(IServiceCollection services)
-		{
-			LogInfo("Starting add services");
-			InstallService(services, Configuration);
-			//services.InstallService(services,Configuration,"SQlLite");
-			InstallSecurity(services, Configuration);
-			InstallSwagger(services, Configuration);
-			services.AddRazorPages();
+        public void ConfigureServices(IServiceCollection services)
+        {
+            LogInfo("Starting add services");
+            InstallService(services, Configuration);
+            InstallFillters(services, Configuration);
+            //services.InstallService(services,Configuration,"SQlLite");
+            InstallSecurity(services, Configuration);
+            InstallSwagger(services, Configuration);
+            services.AddRazorPages();
             services.AddCors();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             LogInfo("End addingg services");
-		}
+        }
 
-		#region Register Service
+        #region Register Service
 
-		public void InstallService(IServiceCollection services, IConfiguration configuration)
-		{
-			services.AddTransient<ILoggingService, LoggingService>();
-			services.AddScoped<IConfigurationManager>(s => new ConfigurationManager(configuration));
-			var configurationManager = services.BuildServiceProvider().GetService<IConfigurationManager>();
+        public void InstallService(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddTransient<ILoggingService, LoggingService>();
+            services.AddScoped<IConfigurationManager>(s => new ConfigurationManager(configuration));
+            var configurationManager = services.BuildServiceProvider().GetService<IConfigurationManager>();
 
-			if (configurationManager.GetString(null, "Db") == "File")
-			{
-				services.AddFilleDB(configurationManager);
-			}
-			else if (configurationManager.GetString(null, "Db") == "SQlLite")
-			{
-				services.AddSQLLiteDb(configurationManager);
-			}
+            if (configurationManager.GetString(null, "Db") == "File")
+            {
+                services.AddFilleDB(configurationManager);
+            }
+            else if (configurationManager.GetString(null, "Db") == "SQlLite")
+            {
+                services.AddSQLLiteDb(configurationManager);
+            }
 
-			services.AddTransient<IAccountService, AccountService>();
-			services.AddTransient<IBaseService, BaseService>();
-			services.AddTransient<IPasswordService, PasswordService>();
-			services.AddTransient<INoteService, NoteService>();
-			services.AddTransient<IExportService, ExportService>();
-			services.AddTransient<IExceptionHandler, ExceptionHandler>();
-			services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
-			services.AddScoped<IUserManagementService, UserManagementService>();
-			services.AddScoped<IPasswordHasher<AccountDto>, PasswordHasher<AccountDto>>();
-			//services.AddSingleton<HttpClient, HttpClient>();
-			//var serviceProvider = services.BuildServiceProvider();
-			//var httpClientservice = serviceProvider.GetService<HttpClient>();
-			//string[] controllers = new string[2];
-			//controllers[0] = "isHacked";
-			//controllers[1] = "getHackTimes";
-			services.AddHttpClient<IPassswordHackScanner, PassswordHackScannerAPI>();
-			//services.AddScoped<IPassswordHackScanner>(s => new PassswordHackScannerAPI(httpClientservice,"http://localhost:51360/api/hackScanner/", controllers));
-		}
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IBaseService, BaseService>();
+            services.AddTransient<IPasswordService, PasswordService>();
+            services.AddTransient<INoteService, NoteService>();
+            services.AddTransient<IExportService, ExportService>();
+            services.AddTransient<IExceptionHandler, ExceptionHandler>();
+            services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
+            services.AddScoped<IUserManagementService, UserManagementService>();
+            services.AddScoped<IPasswordHasher<AccountDto>, PasswordHasher<AccountDto>>();
+            //services.AddSingleton<HttpClient, HttpClient>();
+            //var serviceProvider = services.BuildServiceProvider();
+            //var httpClientservice = serviceProvider.GetService<HttpClient>();
+            //string[] controllers = new string[2];
+            //controllers[0] = "isHacked";
+            //controllers[1] = "getHackTimes";
+            services.AddHttpClient<IPassswordHackScanner, PassswordHackScannerAPI>();
+            //services.AddScoped<IPassswordHackScanner>(s => new PassswordHackScannerAPI(httpClientservice,"http://localhost:51360/api/hackScanner/", controllers));
+        }
 
-		public void InstallSecurity(IServiceCollection services, IConfiguration Configuration)
-		{
-			services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
-			var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
-			var secret = System.Text.Encoding.ASCII.GetBytes(token.Secret);
-			services.AddAuthentication(x =>
-			{
-				x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-				x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-			}).AddJwtBearer(x =>
-			{
-				x.Events = new JwtBearerEvents
-				{
-					OnTokenValidated = context =>
-					{
-						var accessToken = context.SecurityToken as JwtSecurityToken;
-						var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
-						if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), accessToken.RawData))
-						{
-							// return unauthorized if user no longer exists
-							context.Fail("Unauthorized");
-						}
+        public void InstallSecurity(IServiceCollection services, IConfiguration Configuration)
+        {
+            services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
+            var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
+            var secret = System.Text.Encoding.ASCII.GetBytes(token.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var accessToken = context.SecurityToken as JwtSecurityToken;
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IAuthenticateService>();
+                        if (!userService.IsAuthorized(Guid.Parse(context.Principal.Identity.Name), accessToken.RawData))
+                        {
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
+                        }
 
-						return Task.CompletedTask;
-					}
-				};
-				//x.RequireHttpsMetadata = false;
-				x.SaveToken = true;
-				x.TokenValidationParameters = new TokenValidationParameters
-				{
-					ValidateIssuerSigningKey = true,
-					IssuerSigningKey = new SymmetricSecurityKey(secret),
-					ValidIssuer = Configuration["jwt:Issuer"], //token.Issuer,
-					ValidAudience = Configuration["jwt:Issuer"], //token.Audience,
-					ValidateIssuer = false,
-					ValidateAudience = false
-				};
+                        return Task.CompletedTask;
+                    }
+                };
+                //x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(secret),
+                    ValidIssuer = Configuration["jwt:Issuer"], //token.Issuer,
+                    ValidAudience = Configuration["jwt:Issuer"], //token.Audience,
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
 
-			});
-		}
+            });
+        }
 
         public void InstallSwagger(IServiceCollection services, IConfiguration Configuration)
         {
@@ -162,41 +164,50 @@ namespace PasswordServerApi
 
         #endregion
 
+        #region register Fillters
+
+        public void InstallFillters(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<VerificationActionFilter>();
+        }
+
+        #endregion
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IStorageService storageService, ILoggerFactory loggerFactory)
-		{
-			app.Use(async (context, next) =>
-			{
-				Stopwatch timeCounter = new Stopwatch();
-				timeCounter.Start();
-				//DateTime request = DateTime.Now;
-				//Log.Logger.Information($"MyMidlware: Now:{DateTime.Now} Request start: {request}");
+        {
+            app.Use(async (context, next) =>
+            {
+                Stopwatch timeCounter = new Stopwatch();
+                timeCounter.Start();
+                //DateTime request = DateTime.Now;
+                //Log.Logger.Information($"MyMidlware: Now:{DateTime.Now} Request start: {request}");
 
-				context.Response.OnStarting(() =>
-				{
-					timeCounter.Stop();
-					context.Response.Headers.Add("TimeResponce", $"{timeCounter.Elapsed.TotalMilliseconds}");
-					return Task.FromResult(0);
-				});
+                context.Response.OnStarting(() =>
+                {
+                    timeCounter.Stop();
+                    context.Response.Headers.Add("TimeResponce", $"{timeCounter.Elapsed.TotalMilliseconds}");
+                    return Task.FromResult(0);
+                });
 
-				await next();
-				//Log.Logger.Information($"MyMidlware: Now :{DateTime.Now} Request start: {request}");
-			});
+                await next();
+                //Log.Logger.Information($"MyMidlware: Now :{DateTime.Now} Request start: {request}");
+            });
 
-			loggerFactory.AddSerilog();
-			SetStartUpData(storageService);
+            loggerFactory.AddSerilog();
+            SetStartUpData(storageService);
 
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
-			else
-			{
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-			app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-			app.UseAuthentication();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseAuthentication();
             //app.UseHttpsRedirection();
             //app.UseMvc();
             app.UseRouting();
@@ -212,96 +223,96 @@ namespace PasswordServerApi
             });
         }
 
-		#region   SetStartUpData
+        #region   SetStartUpData
 
-		private void SetStartUpData(IStorageService storageService)
-		{
-			LogInfo("Start SetUP Database and Init");
-			List<AccountDto> oldAccounds = storageService.GetAccounts().ToList();
-			List<PasswordDto> oldPasswords = storageService.GetPasswords().ToList();
-			List<LoginTokenDto> oldTokens = storageService.GetTokens();
-			if (oldAccounds != null || oldAccounds.Count > 0)
-				oldAccounds.ForEach(accont => storageService.DeleteAccount(accont));
-			if (oldPasswords != null || oldPasswords.Count > 0)
-				oldPasswords.ForEach(pass => storageService.DeletePassword(pass));
-			if (oldTokens != null || oldTokens.Count > 0)
-				oldTokens.ForEach(pass => storageService.DeleteToken(pass));
-			FieldDatabae(storageService);
-			LogInfo("Stop SetUP Database and Init");
-		}
+        private void SetStartUpData(IStorageService storageService)
+        {
+            LogInfo("Start SetUP Database and Init");
+            List<AccountDto> oldAccounds = storageService.GetAccounts().ToList();
+            List<PasswordDto> oldPasswords = storageService.GetPasswords().ToList();
+            List<LoginTokenDto> oldTokens = storageService.GetTokens();
+            if (oldAccounds != null || oldAccounds.Count > 0)
+                oldAccounds.ForEach(accont => storageService.DeleteAccount(accont));
+            if (oldPasswords != null || oldPasswords.Count > 0)
+                oldPasswords.ForEach(pass => storageService.DeletePassword(pass));
+            if (oldTokens != null || oldTokens.Count > 0)
+                oldTokens.ForEach(pass => storageService.DeleteToken(pass));
+            FieldDatabae(storageService);
+            LogInfo("Stop SetUP Database and Init");
+        }
 
 
-		private void FieldDatabae(IStorageService storageService)
-		{
-			for (int i = 105; i <= 115; i++)
-			{
-				var setData = GetDumyfullAccount(i);
-				storageService.SetAccount(setData.Item1, setData.Item1.Password);
-				storageService.SetNote(new NoteDto()
-				{
-					NoteId = Guid.NewGuid(),
-					Note = "New Dumy Note",
-					UserId = setData.Item1.AccountId,
-					LastEdit = DateTime.Now
-				});
-				setData.Item2.ForEach(pass => storageService.SetPassword(pass));
-			}
-		}
+        private void FieldDatabae(IStorageService storageService)
+        {
+            for (int i = 105; i <= 115; i++)
+            {
+                var setData = GetDumyfullAccount(i);
+                storageService.SetAccount(setData.Item1, setData.Item1.Password);
+                storageService.SetNote(new NoteDto()
+                {
+                    NoteId = Guid.NewGuid(),
+                    Note = "New Dumy Note",
+                    UserId = setData.Item1.AccountId,
+                    LastEdit = DateTime.Now
+                });
+                setData.Item2.ForEach(pass => storageService.SetPassword(pass));
+            }
+        }
 
-		private PasswordDto GetDumyPassword(int i, int accountIndex)
-		{
-			return new PasswordDto()
-			{
-				PasswordId = Guid.NewGuid(),
-				Name = "Google" + i * i,
-				UserName = $"nikolaspapazian{accountIndex}@gmail.com",
-				Password = $"123{ i * i}",
-				LogInLink = $"google{accountIndex}.com",
-				Sensitivity = Sensitivity.OnlyUser,
-			};
-		}
+        private PasswordDto GetDumyPassword(int i, int accountIndex)
+        {
+            return new PasswordDto()
+            {
+                PasswordId = Guid.NewGuid(),
+                Name = "Google" + i * i,
+                UserName = $"nikolaspapazian{accountIndex}@gmail.com",
+                Password = $"123{ i * i}",
+                LogInLink = $"google{accountIndex}.com",
+                Sensitivity = Sensitivity.OnlyUser,
+            };
+        }
 
-		private AccountDto GetDumyAccount(int i)
-		{
-			return new AccountDto()
-			{
-				AccountId = Guid.NewGuid(),
-				FirstName = $"FirstName{i}",
-				LastName = $"LastName{i}",
-				UserName = $"username{i}",
-				Email = $"email{i}@cite.gr",
-				Role = i == 105 ? Role.Admin : i == 106 ? Role.User : Role.Viewer,
-				Password = $"{i}",
-				Sex = Sex.Male,
-				LastLogIn = null,
-				Passwords = new List<PasswordDto>(),
-			};
-		}
+        private AccountDto GetDumyAccount(int i)
+        {
+            return new AccountDto()
+            {
+                AccountId = Guid.NewGuid(),
+                FirstName = $"FirstName{i}",
+                LastName = $"LastName{i}",
+                UserName = $"username{i}",
+                Email = $"email{i}@cite.gr",
+                Role = i == 105 ? Role.Admin : i == 106 ? Role.User : Role.Viewer,
+                Password = $"{i}",
+                Sex = Sex.Male,
+                LastLogIn = null,
+                Passwords = new List<PasswordDto>(),
+            };
+        }
 
-		private Tuple<AccountDto, List<PasswordDto>> GetDumyfullAccount(int i)
-		{
-			AccountDto account = GetDumyAccount(i);
-			List<PasswordDto> passwords = new List<PasswordDto>();
-			for (int dumyi = i; dumyi <= i + 5; dumyi++)
-			{
-				PasswordDto pass = GetDumyPassword(dumyi, i);
-				passwords.Add(pass);
-				account.Passwords = passwords;
-			}
+        private Tuple<AccountDto, List<PasswordDto>> GetDumyfullAccount(int i)
+        {
+            AccountDto account = GetDumyAccount(i);
+            List<PasswordDto> passwords = new List<PasswordDto>();
+            for (int dumyi = i; dumyi <= i + 5; dumyi++)
+            {
+                PasswordDto pass = GetDumyPassword(dumyi, i);
+                passwords.Add(pass);
+                account.Passwords = passwords;
+            }
 
-			return new Tuple<AccountDto, List<PasswordDto>>(account, passwords);
-		}
+            return new Tuple<AccountDto, List<PasswordDto>>(account, passwords);
+        }
 
-		#endregion
+        #endregion
 
-		#region helpers 
+        #region helpers 
 
-		public void LogInfo(string message)
-		{
-			Log.Logger.Information($"StartUpLog: {message}");
-		}
+        public void LogInfo(string message)
+        {
+            Log.Logger.Information($"StartUpLog: {message}");
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }

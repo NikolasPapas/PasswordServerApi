@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpPostService } from "./http-post.service";
 import { Observable } from "rxjs";
 import { HttpHeaders } from '@angular/common/http';
-import { ConfigurationService } from "./configuration.service";
-import { UiNotificationService } from "./ui-notification.service";
 import { AccountActionRequest } from '../models/requests-responses/requests/account-action-request';
 import { AccountActionResponse } from '../models/requests-responses/responses/account-action-response';
 import { PasswordActionRequest } from '../models/requests-responses/requests/password-action-request';
@@ -18,8 +16,7 @@ import { ConfigurationResponse } from '../models/configuration/configuration_res
 export class AccountService {
 
     constructor(
-        private httpPostService: HttpPostService,
-        public uiNotificationService: UiNotificationService
+        private httpPostService: HttpPostService
     ) {
     }
 

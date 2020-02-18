@@ -14,7 +14,9 @@ import { AgmCoreModule } from '@agm/core';
 import { BottomSheet } from './common/bottom-sheet/bottom-sheet.component';
 import { GoogleMap } from './common/google-map/google-map.component';
 import { NoteTabComponent } from './main-panel/editor/note-panel/note-tab.component';
-
+import { RouterModule } from '@angular/router';
+import { AccountService } from '../services/account-action.service';
+import { NoteService } from '../services/note-servece';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { NoteTabComponent } from './main-panel/editor/note-panel/note-tab.compon
         CommonUiModule,
         CommonFormsModule,
         BrowserAnimationsModule,
+		RouterModule,
         AgmCoreModule.forRoot({ apiKey: 'AIzaSyCF21kad4kMsy3SLGsDDFz__HO-K6Csmxs' }),
     ],
     declarations: [
@@ -44,6 +47,10 @@ import { NoteTabComponent } from './main-panel/editor/note-panel/note-tab.compon
     entryComponents: [
         BottomSheet,
     ],
+    providers: [
+        AccountService,
+        NoteService
+	],
 })
 export class ApplicationModule { }
 

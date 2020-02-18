@@ -4,6 +4,7 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PasswordServerApi.ActionFilters;
 using PasswordServerApi.Interfaces;
 using PasswordServerApi.Models.Account.Requests;
 using PasswordServerApi.Models.DTO;
@@ -37,6 +38,7 @@ namespace PasswordServerApi.Controllers
 		}
 
 		[Authorize]
+		[ServiceFilter(typeof(VerificationActionFilter))]
 		[HttpPost("getMyAccount")]
 		public Response<AccountActionResponse> GetMyAccount([FromBody] BaseRequest request)
 		{

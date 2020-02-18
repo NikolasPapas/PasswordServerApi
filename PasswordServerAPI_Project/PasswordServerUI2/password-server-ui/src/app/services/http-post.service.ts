@@ -28,7 +28,7 @@ export class HttpPostService {
             throw of(error);
         }
         if (error.value) {
-            this.uiNotificationService.handleMessage(NotificationLevel.Error, error.value.desc);
+            this.uiNotificationService.handleMessage(NotificationLevel.Error, error.value);
             throw of(error);
         }
         this.uiNotificationService.handleMessage(NotificationLevel.Error, error.message);
@@ -61,6 +61,9 @@ export class HttpPostService {
     private resolve<T>(response: any): any {      
         if (response.error) {
             let error = response.error;
+            throw of(new Error(error));
+        }else if(response.warningMessages){
+            let error = response.warningMessages;
             throw of(new Error(error));
         }else if(response.payload.warningMessages){
             let error = response.payload.warningMessages;
