@@ -38,8 +38,6 @@ namespace PasswordServerApi.Service
 
         #region AcrionConfiguration
 
-        //private static string GREEN = "#00ff00";
-        //private static string PURPLE = "#ff0000";
         //Account
         public static readonly ApplicationAction ActionGetAccounts = new ApplicationAction { Id = ActionGetAccountId, Name = "Λογαριασμός", ToolTipText = "Αναζήτηση στοιχείων λογαριασμού", DataNeeded = DataNeeded.Account, NeedsComment = false, SendApplicationData = false, Icon = "search", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "accounts/accountAction" };
         public static readonly ApplicationAction ActionSaveAccount = new ApplicationAction { Id = ActionSaveAccountId, Name = "Αποθήκευση ή Προσθήκη", ToolTipText = "Αποθήκευση ή Προσθήκη λογαριασμού και κωδικών του", DataNeeded = DataNeeded.All, NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Account", ControllerPath = "accounts/accountAction" };
@@ -60,7 +58,6 @@ namespace PasswordServerApi.Service
         public static readonly ApplicationAction ActionUpdateOrAddNote = new ApplicationAction { Id = ActionUpdateOrAddNoteId, Name = "Αποθήκευση ή Προσθήκη Σημειωσεις", DataNeeded = DataNeeded.Note, ToolTipText = "Αποθήκευση Σημειωσεις ή Προσθήκη", NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Note", ControllerPath = "notes/noteAction" };
         public static readonly ApplicationAction ActionRemoveNote = new ApplicationAction { Id = ActionRemoveNotedId, Name = "Διαγραφή Σημειωσεις", ToolTipText = "Διαγραφή Σημειωσεις", DataNeeded = DataNeeded.Note, NeedsComment = false, RefreshAfterAction = true, SendApplicationData = true, Icon = "delete_forever", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Note", ControllerPath = "notes/noteAction" };
         public static readonly ApplicationAction ActionCreateNote = new ApplicationAction { Id = ActionCreateNoteId, Name = "Διμιοθργια Σημειωσεις", ToolTipText = "Διμιοθργια Σημειωσεις", DataNeeded = DataNeeded.Note, NeedsComment = false, RefreshAfterAction = true, SendApplicationData = false, Icon = "send", ValidationMode = ApplicationValidationMode.None, ControllerSend = "Note", ControllerPath = "notes/noteAction" };
-
 
         //REPORT
         public static readonly ApplicationAction ActionReport = new ApplicationAction { Id = ActionReportId, Name = "Report", ToolTipText = "Report PDF", DataNeeded = DataNeeded.None, NeedsComment = false, RefreshAfterAction = false, SendApplicationData = false, Icon = "save", ValidationMode = ApplicationValidationMode.Full, ControllerSend = "Report", ControllerPath = "accounts/exportReport" };
@@ -93,6 +90,7 @@ namespace PasswordServerApi.Service
             GetRoleByAction.ForEach(x => { if (x.Item2.Exists(y => y == role)) list.Add(x.Item1); });
             return list;
         }
+
         #endregion
 
     }

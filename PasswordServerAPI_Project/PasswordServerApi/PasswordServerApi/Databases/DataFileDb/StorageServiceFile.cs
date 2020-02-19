@@ -17,7 +17,6 @@ namespace PasswordServerApi.StorageLayer
         public IReadFileDb _fileReader;
         private readonly IPasswordHasher<AccountDto> _passwordHasher;
 
-
         public bool ValidateAccount(AccountDto validateAccount)
         {
             List<AccountDto> accounts = new List<AccountDto>();
@@ -25,7 +24,6 @@ namespace PasswordServerApi.StorageLayer
             AccountDto validAccount = accounts.Find(x => x.UserName == validateAccount.UserName);
             return validAccount != null && _passwordHasher.VerifyHashedPassword(validAccount, validAccount.Password, validateAccount?.Password) == PasswordVerificationResult.Success;
         }
-
 
         public StorageServiceFile(IReadFileDb fileReader, IPasswordHasher<AccountDto> passwordHasher)
         {

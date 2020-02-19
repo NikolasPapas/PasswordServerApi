@@ -10,7 +10,6 @@ using PasswordServerApi.Models.DTO;
 using PasswordServerApi.Utilitys.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -40,8 +39,7 @@ namespace PasswordServerApi
         }
 
         public IConfiguration Configuration { get; }
-
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             LogInfo("Starting add services");

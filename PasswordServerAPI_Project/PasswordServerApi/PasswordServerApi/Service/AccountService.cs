@@ -60,8 +60,6 @@ namespace PasswordServerApi.Service
             return new AccountActionResponse() { Accounts = new List<AccountDto>() { userAccount } };
         }
 
-
-
         public AccountActionResponse ExecuteAction(AccountActionRequest request, Guid userID)
         {
             AccountDto userAccount = _baseService.GetAccountById(userID, false);
@@ -162,8 +160,7 @@ namespace PasswordServerApi.Service
 
 
         #endregion
-
-
+        
         #region Tokens
         private Dictionary<TokenRequestActionEnum, Func<LoginTokenDto, Guid, List<LoginTokenDto>>> _TokenActionToFunction = null;
 

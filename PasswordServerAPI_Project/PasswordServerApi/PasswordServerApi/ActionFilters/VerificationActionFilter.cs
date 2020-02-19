@@ -17,13 +17,11 @@ namespace PasswordServerApi.ActionFilters
         private readonly IAccountService _accountService;
         private readonly IExceptionHandler _exceptionHandler;
 
-
         public VerificationActionFilter(IAccountService accountService, IExceptionHandler exceptionHandler)
         {
             _accountService = accountService;
             _exceptionHandler = exceptionHandler;
         }
-
      
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
@@ -42,24 +40,6 @@ namespace PasswordServerApi.ActionFilters
             {
                 var result = await next();
             }
-
-
-            //AccountDto account = _baseService.GetAccountById(Guid.Parse(context.HttpContext.User.Identity.Name), false);
-            //string isHacked = "";
-            //var responce = (_hackScanner.IsThisEmailHacked(account.Email)).GetAwaiter().GetResult();
-            //if (responce != null && responce.IsHacked)
-            //    _hackScanner.EmailHackedInfo(account.Email).GetAwaiter().GetResult()?.FromSites?.ForEach(x => isHacked = isHacked + "List: " + x.Site + " When: " + x.LastDate.ToString() + ". ");
-            //if (!string.IsNullOrWhiteSpace(isHacked))
-            //{
-            //    //context.HttpContext.Items.Add("results", results);
-            //    context.HttpContext.Response.WriteAsync(isHacked);
-            //    return;
-            //}
-            //else
-            //{
-            //    var result = await next();
-            //}
-
         }
     }
 }

@@ -34,6 +34,5 @@ namespace PasswordServerApi.Controllers
             return _exceptionHandler.HandleException(() => _notesService.NoteAction(request, Guid.Parse(HttpContext.User.Identity.Name)), request.ActionId);
         }
 
-
     }
 }

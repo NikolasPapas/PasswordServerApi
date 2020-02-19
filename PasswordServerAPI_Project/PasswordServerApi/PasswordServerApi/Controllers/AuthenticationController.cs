@@ -24,7 +24,6 @@ namespace PasswordServerApi.Security
             _authService = authService;
         }
 
-
         [AllowAnonymous]
         [HttpPost("logIn")]
         public Response<ResponceTokenRequest> RequestToken([FromBody] TokenRequest request)
