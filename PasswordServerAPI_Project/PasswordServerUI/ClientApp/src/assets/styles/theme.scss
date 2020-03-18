@@ -1,41 +1,54 @@
+//https://fonts.google.com/
+//Roboto
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic&amp;subset=latin-ext');
+//Iceland
+@import url('https://fonts.googleapis.com/css?family=Iceland:300,400,500,700,400italic&amp;subset=latin-ext');
+//Montserrat || PT Serif
+@import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Serif&display=swap:300,400,500,700,400italic&amp;subset=latin-ext');
+//Oswald
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700,400italic&amp;subset=latin-ext');
+//Open Sans Condensed
+@import url('https://fonts.googleapis.com/css?family=Open Sans Condensed:300,400,500,700,400italic&amp;subset=latin-ext');
+
 @import '~@angular/material/theming';
-//@import '~roboto-fontface/css/roboto-slab/roboto-slab-fontface.css';
-@import './palette';
+@import './palette.scss';
 
-@include mat-core();
-
-$theme-primary: mat-palette($md-mypalette);
-
-$theme-accent: mat-palette($md-mypalette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$theme-warn: mat-palette($md-errorpalette);
-
-$custom-typography: mat-typography-config(
-    $font-family: 'Roboto, sans-serif',
-
-    $title: mat-typography-level(28px, 32px, 400),
-    $subheading-1: mat-typography-level(14px, 16px, 400),
-    $input: mat-typography-level(16px, 1.125, 400),
-    $body-1: mat-typography-level(16px, 24px, 400),
-    $button: mat-typography-level(18px, 20px, 500)
-
+// $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+// $font-family:   'Roboto',
+// $font-family:   'Helvetica Neue',
+// $font-family:   'sans-serif',
+$general-typography-base: mat-typography-config(
+    $font-family:   'Montserrat',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(30px, 35px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(20px, 32px, 500),
+    $subheading-2:  mat-typography-level(16px, 28px, 400),
+    $subheading-1:  mat-typography-level(1.5em, 1em, 400), 
+    $body-2:        mat-typography-level(14px, 24px, 500),
+    $body-1:        mat-typography-level(14px, 20px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(18px, 18px, 800),
+    $input:         mat-typography-level(18px, 1, 400)
 );
-//$subheading-1: mat-typography-level(18px, 20px, 500),
 
-    // $display-4: mat-typography-level(56px, 56px, 300),
-    // $display-3: mat-typography-level(28px, 28px, 400),
-    // $display-2: mat-typography-level(22.5px, 24px, 400),
-    // $display-1: mat-typography-level(17px, 20px, 400),
-    // $headline: mat-typography-level(12px, 16px, 400),
-    // $subheading-2: mat-typography-level(8px, 14px, 400),
-    // $body-2: mat-typography-level(7px, 12px, 500),
-    // $caption: mat-typography-level(6px, 10px, 400),
+// Be sure that you only ever include this mixin once!
+@include mat-core($general-typography-base);
+@include mat-toolbar-typography($general-typography-base);
+@include mat-base-typography($general-typography-base);
+@include angular-material-typography($general-typography-base);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$custom-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+
+
+$custom-theme-primary: mat-palette($mat-grey);
+$custom-theme-accent: mat-palette($mat-amber, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-deep-orange);
+
+//$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+$custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
 
 @include angular-material-theme($custom-theme);
-
-// Override typography for all Angular Material, including mat-base-typography and all components.
-@include angular-material-typography($custom-typography);

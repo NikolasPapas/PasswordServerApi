@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ConfigurationService } from './services/configuration.service';
 import { Greek } from './common/language/gr';
-import { ConfigurationService } from './core/services/configuration.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
 
   constructor(
     private translate: TranslateService,
@@ -15,8 +18,9 @@ export class AppComponent {
   ) {
 
   }
-
+  
   ngOnInit() {
+
     // Language Configuration
     this.translate.setDefaultLang('gr');
     this.translate.use('gr');
@@ -24,4 +28,5 @@ export class AppComponent {
     //this.configurationService.init();
   }
 
+  title = 'password-server-ui';
 }

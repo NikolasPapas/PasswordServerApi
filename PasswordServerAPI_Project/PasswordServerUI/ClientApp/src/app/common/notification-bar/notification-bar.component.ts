@@ -2,9 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { interval } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { BaseComponent } from '../base/base.component';
-import { UiNotification } from '../../core/models/ui-notification';
-import { NotificationLevel } from '../../core/models/enums/notification-level';
-import { UiNotificationService } from '../../core/services/ui-notification.service';
+import { NotificationLevel } from 'src/app/models/enums/notification-level';
+import { UiNotificationService } from 'src/app/services/ui-notification.service';
+import { UiNotification } from './ui-notification';
 
 @Component({
     selector: 'app-notification-bar',

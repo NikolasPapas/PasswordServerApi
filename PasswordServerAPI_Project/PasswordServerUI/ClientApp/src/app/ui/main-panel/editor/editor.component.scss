@@ -1,0 +1,86 @@
+@import "./../../../../assets/styles/style.scss";
+
+
+.mainFloatingActions {
+  bottom: 2em;
+  right: 2em;
+  position: fixed !important;
+  z-index: 100;
+}
+
+
+.accordionContentClass {
+  padding: 0.1em;
+  margin: 0.1em;
+}
+
+.accordionContentClass{
+  padding: 0.5em !important;
+  margin: 0.5em !important;  
+  background: transparent !important;
+}
+
+.ListCard {
+  width: 100%;
+}
+
+.matTabGroup {
+  overflow: hidden; 
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+  background: transparent;
+}
+
+// .readonlyPanel {
+//   margin-bottom: 0.5em !important;
+//   .mat-expansion-panel-content {
+//     visibility: hidden;
+//     height: 0px;
+//   }
+// }
+
+// .list-header {
+//   width: 100%;
+//   text-align: center;
+//   color: map-get($md-mypalette, 500);
+// }
+
+// .actions-row {
+//   margin-top: 1em;
+// }
+
+// .inner-header {
+//   margin-top: 1em;
+// }
+
+// .warning-header {
+//   padding: 1em;
+//   font-weight: bold;
+//   text-align: center;
+//   color: map-get($md-errorpalette, 800);
+// }
+
+// .mat-expansion-panel {
+//   margin-bottom: 0.5em;
+//   border-radius: 0px !important;
+
+//   &.expansionPanelDisabled {
+//     background-color: map-get($colorPalette, lightGreyTextColor);
+//   }
+
+//   &.expansionPanelLastOpened {
+//     background-color: map-get($colorPalette, lightBlueTextColor);
+//   }
+
+//   &:not(.expansionPanelDisabled) {
+//   }
+
+//   &.readonlyPanel {
+//     .mat-expansion-panel-content {
+//       visibility: hidden;
+//       height: 0px;
+//     }
+//   }
+// }
