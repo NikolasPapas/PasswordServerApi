@@ -1,22 +1,6 @@
-# PasswordServerUI
+# PasswordServerUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
-
-## Description
-Info :
-
-
-Applications :
-- 	 Angular 8 :  For connection and use Api.
-
-## Tech
-UI :
--	 Angular 8.3.9 
-
-Editing & Using :
--	 Visual Studio Code IDE Code editor
--	 Browser
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server
 
