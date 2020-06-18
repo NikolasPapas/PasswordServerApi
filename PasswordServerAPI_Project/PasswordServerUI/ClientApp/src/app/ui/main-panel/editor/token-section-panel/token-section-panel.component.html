@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-list>
+        <mat-list-item *ngFor="let token of loginTokens; let index = index;">
+            <div class="row">
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="{{'TOKENS.PANEL.USER_ID' | translate}}" [value]="token.userId" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="{{'TOKENS.PANEL.USER_AGENT' | translate}}" [value]="token.userAgent" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="col-md-2">
+                    <input matInput placeholder="{{'TOKENS.PANEL.LAST_LOGIN' | translate}}" [value]="token.lastLogIn" [disabled]="true">
+                </mat-form-field>
+
+                <button mat-raised-button class="col-md-2" type="'submit'" (click)="deleteToken(index)">{{'ACTIONS.TOKENS.DELETE' | translate}}<mat-icon>clear</mat-icon></button>
+            </div>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="col-12 row">
+        <div class="col"></div>
+        <button mat-raised-button color="primary" class="col-auto" type="'submit'" (click)="refresh()">{{'ACTIONS.TOKENS.REFRESH' | translate}}<mat-icon>refresh</mat-icon></button>
+    </div>
+</mat-card>

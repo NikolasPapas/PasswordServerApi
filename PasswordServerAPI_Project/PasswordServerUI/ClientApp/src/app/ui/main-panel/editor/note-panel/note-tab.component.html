@@ -1,0 +1,9 @@
+<mat-card class="row">
+    <div class="col-12" *ngFor="let note of notes; let indexNote = index;">
+        <angular-editor id="note.noteId" [(ngModel)]="note.note" [config]="editorConfig"></angular-editor>
+        <div class="col-12 row">
+            <button mat-raised-button *ngFor="let action of noteActions ; let indexAct = index;" class="col-4 matButton" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected(indexNote,action)" matTooltip="{{action.toolTipText}}" matTooltipPosition="above"> {{action.name}} <mat-icon>{{action.icon}}</mat-icon></button>
+        </div>
+    </div>
+    <button mat-raised-button *ngFor="let stAction of stableActions ; let indexStAct = index;" class="col-4 matButton" type="stAction.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected(-1,stAction)" matTooltip="{{stAction.toolTipText}}" matTooltipPosition="above"> {{stAction.name}} <mat-icon>{{stAction.icon}}</mat-icon></button>
+</mat-card>

@@ -1,0 +1,25 @@
+<mat-card class="row">
+    <div class="col-12">
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="{{'ACTIONS.PANEL.NAME' | translate}}" [value]="action.name" [disabled]="true">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="{{'ACTIONS.PANEL.TOOLTIP' | translate}}" [value]="action.toolTipText" [disabled]="true">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="{{'ACTIONS.PANEL.CONTROLLER_PATH' | translate}}" [value]="action.controllerPath" [disabled]="true">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-select placeholder="{{'ACTIONS.PANEL.VALIDATION_MODE' | translate}}" [(value)]="action.validationMode" [disabled]="true">
+                <mat-option [value]="validationMode.None">{{'ENUMS.VALIDATION_MODE.NONE' | translate}}</mat-option>
+                <mat-option [value]="validationMode.Constraints">{{'ENUMS.VALIDATION_MODE.CONSTRAINTS' | translate}}</mat-option>
+                <mat-option [value]="validationMode.Full">{{'ENUMS.VALIDATION_MODE.FULL' | translate}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="col-12" type="action.validationMode === applicationValidationModeEnum.Full ? 'submit' : 'button'" color="primary" (click)="actionSelected()" matTooltip="{{action.toolTipText}}" matTooltipPosition="above"> {{action.name}} <mat-icon>{{action.icon}}</mat-icon></button>
+    </div>
+</mat-card>
