@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../material/material.module';
-import { NgxFloatButtonModule } from 'ngx-float-button';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
@@ -10,14 +9,12 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 		CommonModule,
 		MaterialModule,
 		TranslateModule,
-		NgxFloatButtonModule,
 		AngularEditorModule,
 	],
 	exports: [
 		CommonModule,
 		MaterialModule,
 		TranslateModule,
-		NgxFloatButtonModule,
 		AngularEditorModule,
 	]
 })
